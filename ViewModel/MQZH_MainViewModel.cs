@@ -9,24 +9,24 @@
  ************************************************************************************/
 
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.DEV;
-using MQZHWL.Communication;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.DEV;
+using MQDFJ_MB.Communication;
+using MQDFJ_MB.Model.Exp;
 using System.Windows;
-using MQZHWL.BLL;
+using MQDFJ_MB.BLL;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using GalaSoft.MvvmLight.Command;
-using MQZHWL.DAL;
-using MQZHWL.Model;
+using MQDFJ_MB.DAL;
+using MQDFJ_MB.Model;
 using System.Collections.Generic;
 using ChartModel;
 using System.Drawing;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using System.Linq;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 
-namespace MQZHWL.ViewModel
+namespace MQDFJ_MB.ViewModel
 {
     public partial class MQZH_MainViewModel : ViewModelBase
     {
@@ -40,7 +40,7 @@ namespace MQZHWL.ViewModel
             Messenger.Default.Register<Window>(this, "NewWindow", WindowAddedMessage);
 
             //试验列表已更新
-            Messenger.Default.Register<MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable>(this, "ExpTableChanged", ExpTableChangedMessage);
+            Messenger.Default.Register<MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable>(this, "ExpTableChanged", ExpTableChangedMessage);
 
             //订阅绘图数据更新消息
             Messenger.Default.Register<string>(this, "UpdateChart", UpdateChartMessage);
@@ -586,11 +586,11 @@ namespace MQZHWL.ViewModel
         /// <summary>
         /// 试验列表Table
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable _expListTable = new MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable();
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable _expListTable = new MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable();
         /// <summary>
         /// 试验列表Table
         /// </summary>
-        public MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable ExpListTable
+        public MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable ExpListTable
         {
             get { return _expListTable; }
             set
@@ -798,7 +798,7 @@ namespace MQZHWL.ViewModel
         ///更新试验列表消息消息回调
         /// </summary>
         /// <param name="msg"></param>
-        private void ExpTableChangedMessage(MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable msg)
+        private void ExpTableChangedMessage(MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable msg)
         {
             ExpListTable = (MQZH_DB_TestDataSet.A00试验参数DataTable)msg.Copy();
         }

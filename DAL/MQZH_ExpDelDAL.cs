@@ -15,7 +15,7 @@ using System;
 using System.Windows;
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验参数及数据读写操作类
@@ -35,7 +35,7 @@ namespace MQZHWL.DAL
                 MessageBox.Show("编号为空！", "错误提示");
                 return false;
             }
-            MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row checkExistRow = A00Table.FindBy试验编号(delExpNo);
+            MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row checkExistRow = A00Table.FindBy试验编号(delExpNo);
             if (checkExistRow == null)
             {
                 MessageBox.Show("此编号不存在，无法删除，请重新操作或联系厂家！", "错误提示");
@@ -68,7 +68,7 @@ namespace MQZHWL.DAL
             //删除气密进度A01
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度Row willDelA01Row = A01Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度Row willDelA01Row = A01Table.FindBy试验编号(delExpNo);
                 if (willDelA01Row != null)
                 {
                     willDelA01Row.Delete();
@@ -85,7 +85,7 @@ namespace MQZHWL.DAL
             //删除水密进度A02
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度Row willDelA02Row = A02Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度Row willDelA02Row = A02Table.FindBy试验编号(delExpNo);
                 if (willDelA02Row != null)
                 {
                     willDelA02Row.Delete();
@@ -102,7 +102,7 @@ namespace MQZHWL.DAL
             //删除抗风压进度A03
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度Row willDelA03Row = A03Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度Row willDelA03Row = A03Table.FindBy试验编号(delExpNo);
                 if (willDelA03Row != null)
                 {
                     willDelA03Row.Delete();
@@ -119,7 +119,7 @@ namespace MQZHWL.DAL
             //删除层间变形进度A04
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度Row willDelA04Row = A04Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度Row willDelA04Row = A04Table.FindBy试验编号(delExpNo);
                 if (willDelA04Row != null)
                 {
                     willDelA04Row.Delete();
@@ -136,7 +136,7 @@ namespace MQZHWL.DAL
             //删除气密数据B1
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据Row willDelB1Row = B1Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据Row willDelB1Row = B1Table.FindBy试验编号(delExpNo);
                 if (willDelB1Row != null)
                 {
                     willDelB1Row.Delete();
@@ -153,7 +153,7 @@ namespace MQZHWL.DAL
             //删除水密数据B2
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据Row willDelB2Row = B2Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据Row willDelB2Row = B2Table.FindBy试验编号(delExpNo);
                 if (willDelB2Row != null)
                 {
                     willDelB2Row.Delete();
@@ -170,7 +170,7 @@ namespace MQZHWL.DAL
             //删除抗风压数据B300
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据Row willDelB300Row = B300Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据Row willDelB300Row = B300Table.FindBy试验编号(delExpNo);
                 if (willDelB300Row != null)
                 {
                     willDelB300Row.Delete();
@@ -187,7 +187,7 @@ namespace MQZHWL.DAL
             //删除B311a抗风压定级组1点a位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row willDelB311aRow = B311aTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row willDelB311aRow = B311aTable.FindBy试验编号(delExpNo);
                 if (willDelB311aRow != null)
                 {
                     willDelB311aRow.Delete();
@@ -204,7 +204,7 @@ namespace MQZHWL.DAL
             //删除B311b抗风压定级组1点b位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row willDelB311bRow = B311bTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row willDelB311bRow = B311bTable.FindBy试验编号(delExpNo);
                 if (willDelB311bRow != null)
                 {
                     willDelB311bRow.Delete();
@@ -221,7 +221,7 @@ namespace MQZHWL.DAL
             //删除B311c抗风压定级组1点c位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row willDelB311cRow = B311cTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row willDelB311cRow = B311cTable.FindBy试验编号(delExpNo);
                 if (willDelB311cRow != null)
                 {
                     willDelB311cRow.Delete();
@@ -238,7 +238,7 @@ namespace MQZHWL.DAL
             //删除B311d抗风压定级组1点d位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row willDelB311dRow = B311dTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row willDelB311dRow = B311dTable.FindBy试验编号(delExpNo);
                 if (willDelB311dRow != null)
                 {
                     willDelB311dRow.Delete();
@@ -255,7 +255,7 @@ namespace MQZHWL.DAL
             //删除B312a抗风压定级组1点a位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row willDelB312aRow = B312aTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row willDelB312aRow = B312aTable.FindBy试验编号(delExpNo);
                 if (willDelB312aRow != null)
                 {
                     willDelB312aRow.Delete();
@@ -272,7 +272,7 @@ namespace MQZHWL.DAL
             //删除B312b抗风压定级组1点b位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row willDelB312bRow = B312bTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row willDelB312bRow = B312bTable.FindBy试验编号(delExpNo);
                 if (willDelB312bRow != null)
                 {
                     willDelB312bRow.Delete();
@@ -289,7 +289,7 @@ namespace MQZHWL.DAL
             //删除B312c抗风压定级组1点c位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row willDelB312cRow = B312cTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row willDelB312cRow = B312cTable.FindBy试验编号(delExpNo);
                 if (willDelB312cRow != null)
                 {
                     willDelB312cRow.Delete();
@@ -306,7 +306,7 @@ namespace MQZHWL.DAL
             //删除B313a抗风压定级组1点a位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row willDelB313aRow = B313aTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row willDelB313aRow = B313aTable.FindBy试验编号(delExpNo);
                 if (willDelB313aRow != null)
                 {
                     willDelB313aRow.Delete();
@@ -323,7 +323,7 @@ namespace MQZHWL.DAL
             //删除B313b抗风压定级组1点b位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row willDelB313bRow = B313bTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row willDelB313bRow = B313bTable.FindBy试验编号(delExpNo);
                 if (willDelB313bRow != null)
                 {
                     willDelB313bRow.Delete();
@@ -340,7 +340,7 @@ namespace MQZHWL.DAL
             //删除B313c抗风压定级组1点c位移数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row willDelB313cRow = B313cTable.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row willDelB313cRow = B313cTable.FindBy试验编号(delExpNo);
                 if (willDelB313cRow != null)
                 {
                     willDelB313cRow.Delete();
@@ -357,7 +357,7 @@ namespace MQZHWL.DAL
             //删除.B321抗风压定级组1相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row willDelB321Row = B321Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row willDelB321Row = B321Table.FindBy试验编号(delExpNo);
                 if (willDelB321Row != null)
                 {
                     willDelB321Row.Delete();
@@ -374,7 +374,7 @@ namespace MQZHWL.DAL
             //删除.B322抗风压定级组2相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row willDelB322Row = B322Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row willDelB322Row = B322Table.FindBy试验编号(delExpNo);
                 if (willDelB322Row != null)
                 {
                     willDelB322Row.Delete();
@@ -391,7 +391,7 @@ namespace MQZHWL.DAL
             //删除.B323抗风压定级组3相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row willDelB323Row = B323Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row willDelB323Row = B323Table.FindBy试验编号(delExpNo);
                 if (willDelB323Row != null)
                 {
                     willDelB323Row.Delete();
@@ -408,7 +408,7 @@ namespace MQZHWL.DAL
             //删除.B324抗风压定级相对挠度最大值数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row willDelB324Row = B324Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row willDelB324Row = B324Table.FindBy试验编号(delExpNo);
                 if (willDelB324Row != null)
                 {
                     willDelB324Row.Delete();
@@ -425,7 +425,7 @@ namespace MQZHWL.DAL
             //删除.B331抗风压定级组1挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row willDelB331Row = B331Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row willDelB331Row = B331Table.FindBy试验编号(delExpNo);
                 if (willDelB331Row != null)
                 {
                     willDelB331Row.Delete();
@@ -442,7 +442,7 @@ namespace MQZHWL.DAL
             //删除.B332抗风压定级组2挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row willDelB332Row = B332Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row willDelB332Row = B332Table.FindBy试验编号(delExpNo);
                 if (willDelB332Row != null)
                 {
                     willDelB332Row.Delete();
@@ -459,7 +459,7 @@ namespace MQZHWL.DAL
             //删除.B333抗风压定级组3挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row willDelB333Row = B333Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row willDelB333Row = B333Table.FindBy试验编号(delExpNo);
                 if (willDelB333Row != null)
                 {
                     willDelB333Row.Delete();
@@ -476,7 +476,7 @@ namespace MQZHWL.DAL
             //删除.B334抗风压定级挠度最大值数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row willDelB334Row = B334Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row willDelB334Row = B334Table.FindBy试验编号(delExpNo);
                 if (willDelB334Row != null)
                 {
                     willDelB334Row.Delete();
@@ -493,7 +493,7 @@ namespace MQZHWL.DAL
             //删除B340抗风压定级损坏情况数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row willDelB340Row = B340Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row willDelB340Row = B340Table.FindBy试验编号(delExpNo);
                 if (willDelB340Row != null)
                 {
                     willDelB340Row.Delete();
@@ -510,7 +510,7 @@ namespace MQZHWL.DAL
             //删除B350抗风压定级损坏说明数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row willDelB350Row = B350Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row willDelB350Row = B350Table.FindBy试验编号(delExpNo);
                 if (willDelB350Row != null)
                 {
                     willDelB350Row.Delete();
@@ -527,7 +527,7 @@ namespace MQZHWL.DAL
             //删除B361抗风压定级损坏说明数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row willDelB361Row = B361Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row willDelB361Row = B361Table.FindBy试验编号(delExpNo);
                 if (willDelB361Row != null)
                 {
                     willDelB361Row.Delete();
@@ -544,7 +544,7 @@ namespace MQZHWL.DAL
             //删除B362抗风压定级损坏说明数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row willDelB362Row = B362Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row willDelB362Row = B362Table.FindBy试验编号(delExpNo);
                 if (willDelB362Row != null)
                 {
                     willDelB362Row.Delete();
@@ -561,7 +561,7 @@ namespace MQZHWL.DAL
             //删除B363抗风压定级损坏说明数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row willDelB363Row = B363Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row willDelB363Row = B363Table.FindBy试验编号(delExpNo);
                 if (willDelB363Row != null)
                 {
                     willDelB363Row.Delete();
@@ -578,7 +578,7 @@ namespace MQZHWL.DAL
             //删除B371抗风压工程相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row willDelB371Row = B371Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row willDelB371Row = B371Table.FindBy试验编号(delExpNo);
                 if (willDelB371Row != null)
                 {
                     willDelB371Row.Delete();
@@ -595,7 +595,7 @@ namespace MQZHWL.DAL
             //删除B372抗风压工程相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row willDelB372Row = B372Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row willDelB372Row = B372Table.FindBy试验编号(delExpNo);
                 if (willDelB372Row != null)
                 {
                     willDelB372Row.Delete();
@@ -612,7 +612,7 @@ namespace MQZHWL.DAL
             //删除B381抗风压工程相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row willDelB381Row = B381Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row willDelB381Row = B381Table.FindBy试验编号(delExpNo);
                 if (willDelB381Row != null)
                 {
                     willDelB381Row.Delete();
@@ -629,7 +629,7 @@ namespace MQZHWL.DAL
             //删除B382抗风压工程相对挠度数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row willDelB382Row = B382Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row willDelB382Row = B382Table.FindBy试验编号(delExpNo);
                 if (willDelB382Row != null)
                 {
                     willDelB382Row.Delete();
@@ -646,7 +646,7 @@ namespace MQZHWL.DAL
             //删除B390抗风压工程损坏数据
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row willDelB390Row = B390Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row willDelB390Row = B390Table.FindBy试验编号(delExpNo);
                 if (willDelB390Row != null)
                 {
                     willDelB390Row.Delete();
@@ -663,7 +663,7 @@ namespace MQZHWL.DAL
             //删除层间变形数据B4
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据Row willDelB4Row = B4Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据Row willDelB4Row = B4Table.FindBy试验编号(delExpNo);
                 if (willDelB4Row != null)
                 {
                     willDelB4Row.Delete();
@@ -680,13 +680,13 @@ namespace MQZHWL.DAL
             //删除试验主参数A00
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row willDelA00Row = A00Table.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row willDelA00Row = A00Table.FindBy试验编号(delExpNo);
                 willDelA00Row.Delete();
                 A00TableAdapter.Update(A00Table);
                 A00Table.AcceptChanges();
                 RaisePropertyChanged(() => A00Table);
 
-                MQZHWL.MQZH_DB_TestDataSet.A00试验参数2Row willDelA00Row2 = A00Table2.FindBy试验编号(delExpNo);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2Row willDelA00Row2 = A00Table2.FindBy试验编号(delExpNo);
                 willDelA00Row2.Delete();
                 A00Table2Adapter.Update(A00Table2);
                 A00Table2.AcceptChanges();

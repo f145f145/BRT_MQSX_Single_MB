@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.View
+ * 命名空间：MQDFJ_MB.View
  * 文件名：  BoolToVisibilityConverter
  * 版本号：  V1.0.0.0
  * 唯一标识：a260e1ec-7bf5-4f5c-bedd-f6166604e876
@@ -22,9 +22,9 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 
-namespace MQZHWL.UICtl.Converter
+namespace MQDFJ_MB.UICtl.Converter
 {
 
     /// <summary>

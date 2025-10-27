@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows;
 using Microsoft.Research.DynamicDataDisplay.Charts;
 
-namespace MQZHWL.View.Others
+namespace MQDFJ_MB.View.Others
 {
     /// <summary>
     /// Window1.xaml 的交互逻辑

@@ -3,7 +3,7 @@ using System;
 using Microsoft.Research.DynamicDataDisplay.Charts;
 using GalaSoft.MvvmLight.Messaging;
 
-namespace MQZHWL.View.DebugPlot
+namespace MQDFJ_MB.View.DebugPlot
 {
     /// <summary>
     /// Debug.xaml 的交互逻辑

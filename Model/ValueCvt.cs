@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model
+ * 命名空间：MQDFJ_MB.Model
  * 文件名：  ValueCvt
  * 版本号：  V1.0.0.0
  * 唯一标识：710a0739-bb42-4d2c-b3a3-09045d40b374
@@ -19,7 +19,7 @@
 
 using System;
 
-namespace MQZHWL.Model
+namespace MQDFJ_MB.Model
 {
     public class ValueCvt
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 
-namespace MQZHWL.ViewModel
+namespace MQDFJ_MB.ViewModel
 {
     public static class LoginPasswordBoxHelper
     {

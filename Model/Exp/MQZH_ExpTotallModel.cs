@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.Exp
+ * 命名空间：MQDFJ_MB.Model.Exp
  * 文件名：  MQZH_ExpTotallModel
  * 版本号：  V1.0.0.0
  * 唯一标识：0dd9b81d-809e-44b6-9d15-d3594a1a424f
@@ -18,14 +18,14 @@
  ************************************************************************************/
 
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.ExpData;
+using MQDFJ_MB.Model.ExpData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Windows;
 
-namespace MQZHWL.Model.Exp
+namespace MQDFJ_MB.Model.Exp
 {
     /// <summary>
     /// 幕墙四性试验总类

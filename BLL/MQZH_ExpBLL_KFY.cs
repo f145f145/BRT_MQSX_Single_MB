@@ -12,14 +12,14 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.Exp;
 using System.Windows;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 using CtrlMethod;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model;
+using MQDFJ_MB.Model;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// 主控类

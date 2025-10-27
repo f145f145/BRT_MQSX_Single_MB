@@ -17,7 +17,7 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验报告读写操作类

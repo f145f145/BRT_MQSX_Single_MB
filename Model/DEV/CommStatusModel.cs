@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.DEV
+ * 命名空间：MQDFJ_MB.Model.DEV
  * 文件名：  CommStatusModel
  * 版本号：  V1.0.0.0
  * 唯一标识：38d70cff-6e07-40a5-80e6-c1e13dcb9933
@@ -19,7 +19,7 @@
 
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     /// <summary>
     /// 通讯状态类

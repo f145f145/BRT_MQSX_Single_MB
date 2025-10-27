@@ -1,7 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace MQZHWL.ViewModel
+namespace MQDFJ_MB.ViewModel
 {
     /// <summary>
     /// ViewModel×¢²á

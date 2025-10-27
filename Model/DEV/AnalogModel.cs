@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model
+ * 命名空间：MQDFJ_MB.Model
  * 文件名：  AnalogModel
  * 版本号：  V1.0.0.0
  * 唯一标识：84e950e3-bfb1-473c-a256-019f30241632
@@ -24,7 +24,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public class AnalogModel : ObservableObject
     {

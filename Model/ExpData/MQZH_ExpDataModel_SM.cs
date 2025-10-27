@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.ExpData
+ * 命名空间：MQDFJ_MB.Model.ExpData
  * 文件名：  MQZH_ExpDataModel_SM
  * 版本号：  V1.0.0.0
  * 唯一标识：1b555772-626f-4da1-af51-922619f76b92
@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.ExpData
+namespace MQDFJ_MB.Model.ExpData
 {
     public class MQZH_ExpDataModel_SM : ObservableObject
     {

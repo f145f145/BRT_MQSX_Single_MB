@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model
+ * 命名空间：MQDFJ_MB.Model
  * 文件名：  DigitalModel
  * 版本号：  V1.0.0.0
  * 唯一标识：c88aa0ac-8f90-40a6-bca0-a7110f59d5d4
@@ -25,7 +25,7 @@
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public class DigitalModel : ObservableObject
     {

@@ -1,10 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Research.DynamicDataDisplay.Charts;
-using MQZHWL.Model;
+using MQDFJ_MB.Model;
 using System;
 using System.Windows;
 
-namespace MQZHWL.View.ExpViews
+namespace MQDFJ_MB.View.ExpViews
 {
     /// <summary>
     /// ExperimentView.xaml 的交互逻辑

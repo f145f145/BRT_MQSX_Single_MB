@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     /// <summary>
     /// Prompt.xaml 的交互逻辑

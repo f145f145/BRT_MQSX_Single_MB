@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.Exp
+ * 命名空间：MQDFJ_MB.Model.Exp
  * 文件名：  MQZH_ExpParamModel
  * 版本号：  V1.0.0.0
  * 唯一标识：b77707e1-755e-4706-9a8f-70236c012d3d
@@ -20,7 +20,7 @@
 using System;
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.Exp
+namespace MQDFJ_MB.Model.Exp
 {
     /// <summary>
     /// 试验设定参数类

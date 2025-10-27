@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.Exp
+ * 命名空间：MQDFJ_MB.Model.Exp
  * 文件名：  MQZH_StepMode_CJBX
  * 版本号：  V1.0.0.0
  * 唯一标识：41e4c86b-1c10-4747-a54b-ff590b615714
@@ -19,7 +19,7 @@
 
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.Exp
+namespace MQDFJ_MB.Model.Exp
 {
     /// <summary>
     /// 幕墙四性步骤参数类

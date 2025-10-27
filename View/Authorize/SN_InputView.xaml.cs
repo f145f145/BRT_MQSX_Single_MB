@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MQZHWL.View.Authorize
+namespace MQDFJ_MB.View.Authorize
 {
     /// <summary>
     /// SN_InputView.xaml 的交互逻辑

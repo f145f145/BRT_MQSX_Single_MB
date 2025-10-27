@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace MQZHWL {
+namespace MQDFJ_MB {
     
     
     /// <summary>
@@ -22210,7 +22210,7 @@ namespace MQZHWL {
         }
     }
 }
-namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
+namespace MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters {
     
     
     /// <summary>
@@ -22487,7 +22487,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23873,7 +23873,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25682,7 +25682,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26339,7 +26339,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27494,7 +27494,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29205,7 +29205,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29818,7 +29818,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30315,7 +30315,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30897,7 +30897,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -32509,7 +32509,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -35371,7 +35371,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -38128,7 +38128,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -39645,7 +39645,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -40574,7 +40574,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -41415,7 +41415,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -41753,7 +41753,7 @@ namespace MQZHWL.MQZH_DB_DevDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::MQZHWL.Properties.Settings.Default.MQZH_DB_DevConnectionString;
+            this._connection.ConnectionString = global::MQDFJ_MB.Properties.Settings.Default.MQZH_DB_DevConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

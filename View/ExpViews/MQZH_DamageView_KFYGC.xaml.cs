@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MQZHWL.View.ExpViews
+namespace MQDFJ_MB.View.ExpViews
 {
     /// <summary>
     /// MQZH_DamageView_KFYDJ.xaml 的交互逻辑

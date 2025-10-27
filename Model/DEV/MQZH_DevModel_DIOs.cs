@@ -13,7 +13,7 @@
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public partial class MQZH_DevModel_Main : ObservableObject
     {

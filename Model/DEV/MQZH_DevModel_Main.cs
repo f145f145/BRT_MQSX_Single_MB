@@ -10,11 +10,11 @@
 using CtrlMethod;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.BLL;
+using MQDFJ_MB.BLL;
 using System;
 using System.Windows.Threading;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public partial class MQZH_DevModel_Main : ObservableObject
     {

@@ -12,15 +12,15 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.Exp;
 using System.Windows;
 using System.Threading;
 using CtrlMethod;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model;
+using MQDFJ_MB.Model;
 using NPOI.Util;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// 主控类

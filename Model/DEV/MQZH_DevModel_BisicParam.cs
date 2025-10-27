@@ -15,7 +15,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Windows;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public partial class MQZH_DevModel_Main : ObservableObject
     {

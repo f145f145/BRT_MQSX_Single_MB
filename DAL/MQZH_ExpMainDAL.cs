@@ -17,11 +17,11 @@ using System.Data;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model.Exp;
-using MQZHWL.MQZH_DB_TestDataSetTableAdapters;
-using MQZHWL.MQZH_DB_TestDataSetTableAdapters;
+using MQDFJ_MB.Model.Exp;
+using MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters;
+using MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验参数及数据读写操作类
@@ -34,7 +34,7 @@ namespace MQZHWL.DAL
 
             //Dataset、DataTable、TableAdapter初始化
             SetTableAdapterInit_Exp();
-            Messenger.Default.Send<MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable>(A00Table, "ExpTableChanged");
+            Messenger.Default.Send<MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable>(A00Table, "ExpTableChanged");
 
             //试验操作指令消息
             Messenger.Default.Register<string>(this, "LoadExpByName", LoadExpMessage);
@@ -78,12 +78,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A00试验参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable _a00Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable _a00Table;
 
         /// <summary>
         /// 幕墙四性A00试验参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A00试验参数DataTable A00Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable A00Table
         {
             get { return _a00Table; }
             set
@@ -96,12 +96,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A00试验参数2DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A00试验参数2DataTable _a00Table2;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2DataTable _a00Table2;
 
         /// <summary>
         /// 幕墙四性A00试验参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A00试验参数2DataTable A00Table2
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2DataTable A00Table2
         {
             get { return _a00Table2; }
             set
@@ -114,12 +114,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A01气密试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度DataTable _a01Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度DataTable _a01Table;
 
         /// <summary>
         /// 幕墙四性A01气密试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度DataTable A01Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度DataTable A01Table
         {
             get { return _a01Table; }
             set
@@ -132,12 +132,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A02水密试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度DataTable _a02Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度DataTable _a02Table;
 
         /// <summary>
         /// 幕墙四性A02水密试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度DataTable A02Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度DataTable A02Table
         {
             get { return _a02Table; }
             set
@@ -150,12 +150,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A03抗风压试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度DataTable _a03Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度DataTable _a03Table;
 
         /// <summary>
         /// 幕墙四性A03抗风压试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度DataTable A03Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度DataTable A03Table
         {
             get { return _a03Table; }
             set
@@ -168,12 +168,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A04层间变形试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度DataTable _a04Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度DataTable _a04Table;
 
         /// <summary>
         /// 幕墙四性A04层间变形试验进度DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度DataTable A04Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度DataTable A04Table
         {
             get { return _a04Table; }
             set
@@ -190,11 +190,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B1气密试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据DataTable _b1Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据DataTable _b1Table;
         /// <summary>
         /// 幕墙四性B1气密试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据DataTable B1Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据DataTable B1Table
         {
             get { return _b1Table; }
             set
@@ -207,11 +207,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B2水密试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据DataTable _b2Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据DataTable _b2Table;
         /// <summary>
         /// 幕墙四性B2水密试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据DataTable B2Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据DataTable B2Table
         {
             get { return _b2Table; }
             set
@@ -224,11 +224,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B300抗风压试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据DataTable _b300Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据DataTable _b300Table;
         /// <summary>
         /// 幕墙四性B300抗风压试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据DataTable B300Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据DataTable B300Table
         {
             get { return _b300Table; }
             set
@@ -241,12 +241,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311a抗风压定级组1点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据DataTable _b311aTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据DataTable _b311aTable;
 
         /// <summary>
         /// 幕墙四性B311a抗风压定级组1点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据DataTable B311aTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据DataTable B311aTable
         {
             get { return _b311aTable; }
             set
@@ -259,12 +259,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311b抗风压定级组1点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据DataTable _b311bTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据DataTable _b311bTable;
 
         /// <summary>
         /// 幕墙四性B311b抗风压定级组1点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据DataTable B311bTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据DataTable B311bTable
         {
             get { return _b311bTable; }
             set
@@ -277,12 +277,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311c抗风压定级组1点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据DataTable _b311cTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据DataTable _b311cTable;
 
         /// <summary>
         /// 幕墙四性B311c抗风压定级组1点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据DataTable B311cTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据DataTable B311cTable
         {
             get { return _b311cTable; }
             set
@@ -295,12 +295,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311d抗风压定级组1点d位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据DataTable _b311dTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据DataTable _b311dTable;
 
         /// <summary>
         /// 幕墙四性B311d抗风压定级组1点d位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据DataTable B311dTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据DataTable B311dTable
         {
             get { return _b311dTable; }
             set
@@ -313,12 +313,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312a抗风压定级组1点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据DataTable _b312aTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据DataTable _b312aTable;
 
         /// <summary>
         /// 幕墙四性B312a抗风压定级组2点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据DataTable B312aTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据DataTable B312aTable
         {
             get { return _b312aTable; }
             set
@@ -331,12 +331,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312b抗风压定级组2点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据DataTable _b312bTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据DataTable _b312bTable;
 
         /// <summary>
         /// 幕墙四性B312b抗风压定级组2点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据DataTable B312bTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据DataTable B312bTable
         {
             get { return _b312bTable; }
             set
@@ -349,12 +349,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312c抗风压定级组2点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据DataTable _b312cTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据DataTable _b312cTable;
 
         /// <summary>
         /// 幕墙四性B312c抗风压定级组2点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据DataTable B312cTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据DataTable B312cTable
         {
             get { return _b312cTable; }
             set
@@ -367,12 +367,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313a抗风压定级组3点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据DataTable _b313aTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据DataTable _b313aTable;
 
         /// <summary>
         /// 幕墙四性B313a抗风压定级组3点a位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据DataTable B313aTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据DataTable B313aTable
         {
             get { return _b313aTable; }
             set
@@ -385,12 +385,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313b抗风压定级组3点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据DataTable _b313bTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据DataTable _b313bTable;
 
         /// <summary>
         /// 幕墙四性B313b抗风压定级组3点b位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据DataTable B313bTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据DataTable B313bTable
         {
             get { return _b313bTable; }
             set
@@ -403,12 +403,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313c抗风压定级组3点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据DataTable _b313cTable;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据DataTable _b313cTable;
 
         /// <summary>
         /// 幕墙四性B313c抗风压定级组3点c位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据DataTable B313cTable
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据DataTable B313cTable
         {
             get { return _b313cTable; }
             set
@@ -421,11 +421,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B321抗风压定级组1相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据DataTable  _b321Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据DataTable  _b321Table;
         /// <summary>
         /// 幕墙四性B321抗风压定级组1相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据DataTable B321Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据DataTable B321Table
         {
             get { return _b321Table; }
             set
@@ -438,11 +438,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B322抗风压定级组2相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据DataTable _b322Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据DataTable _b322Table;
         /// <summary>
         /// 幕墙四性B322抗风压定级组2相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据DataTable B322Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据DataTable B322Table
         {
             get { return _b322Table; }
             set
@@ -455,11 +455,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B323抗风压定级组3相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据DataTable _b323Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据DataTable _b323Table;
         /// <summary>
         /// 幕墙四性B323抗风压定级组3相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据DataTable B323Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据DataTable B323Table
         {
             get { return _b323Table; }
             set
@@ -472,11 +472,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B324抗风压定级相对挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据DataTable _b324Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据DataTable _b324Table;
         /// <summary>
         /// 幕墙四性B324抗风压定级相对挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据DataTable B324Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据DataTable B324Table
         {
             get { return _b324Table; }
             set
@@ -489,11 +489,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B331抗风压定级组1挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据DataTable _b331Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据DataTable _b331Table;
         /// <summary>
         /// 幕墙四性B331抗风压定级组1挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据DataTable B331Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据DataTable B331Table
         {
             get { return _b331Table; }
             set
@@ -506,11 +506,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B332抗风压定级组2挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据DataTable _b332Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据DataTable _b332Table;
         /// <summary>
         /// 幕墙四性B332抗风压定级组2挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据DataTable B332Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据DataTable B332Table
         {
             get { return _b332Table; }
             set
@@ -523,11 +523,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B333抗风压定级组3挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据DataTable _b333Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据DataTable _b333Table;
         /// <summary>
         /// 幕墙四性B333抗风压定级组3挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据DataTable B333Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据DataTable B333Table
         {
             get { return _b333Table; }
             set
@@ -540,11 +540,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B334抗风压定级挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据DataTable _b334Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据DataTable _b334Table;
         /// <summary>
         /// 幕墙四性B334抗风压定级挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据DataTable B334Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据DataTable B334Table
         {
             get { return _b334Table; }
             set
@@ -557,11 +557,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B340抗风压定级损坏情况数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据DataTable  _b340Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据DataTable  _b340Table;
         /// <summary>
         /// 幕墙四性B340抗风压定级损坏情况数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据DataTable B340Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据DataTable B340Table
         {
             get { return _b340Table; }
             set
@@ -574,11 +574,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B350抗风压定级损坏说明数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据DataTable _b350Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据DataTable _b350Table;
         /// <summary>
         /// 幕墙四性B350抗风压定级损坏说明数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据DataTable B350Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据DataTable B350Table
         {
             get { return _b350Table; }
             set
@@ -591,11 +591,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据DataTable _b361Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据DataTable _b361Table;
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据DataTable B361Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据DataTable B361Table
         {
             get { return _b361Table; }
             set
@@ -608,11 +608,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B362抗风压组2工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据DataTable _b362Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据DataTable _b362Table;
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据DataTable B362Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据DataTable B362Table
         {
             get { return _b362Table; }
             set
@@ -625,11 +625,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B363抗风压组3工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据DataTable _b363Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据DataTable _b363Table;
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据DataTable B363Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据DataTable B363Table
         {
             get { return _b363Table; }
             set
@@ -642,11 +642,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B371抗风压工程相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据DataTable _b371Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据DataTable _b371Table;
         /// <summary>
         /// 幕墙四性B371抗风压工程相对挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据DataTable B371Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据DataTable B371Table
         {
             get { return _b371Table; }
             set
@@ -659,11 +659,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B372抗风压工程相对挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据DataTable _b372Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据DataTable _b372Table;
         /// <summary>
         /// 幕墙四性B372抗风压工程相对挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据DataTable B372Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据DataTable B372Table
         {
             get { return _b372Table; }
             set
@@ -676,11 +676,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B381抗风压工程挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据DataTable _b381Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据DataTable _b381Table;
         /// <summary>
         /// 幕墙四性B381抗风压工程挠度数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据DataTable B381Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据DataTable B381Table
         {
             get { return _b381Table; }
             set
@@ -693,11 +693,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B382抗风压工程挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据DataTable _b382Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据DataTable _b382Table;
         /// <summary>
         /// 幕墙四性B382抗风压工程挠度最大值数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据DataTable B382Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据DataTable B382Table
         {
             get { return _b382Table; }
             set
@@ -710,11 +710,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B390抗风压工程损坏数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据DataTable _b390Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据DataTable _b390Table;
         /// <summary>
         /// 幕墙四性B390抗风压工程损坏数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据DataTable B390Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据DataTable B390Table
         {
             get { return _b390Table; }
             set
@@ -727,12 +727,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B4层间变形试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据DataTable _b4Table;
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据DataTable _b4Table;
 
         /// <summary>
         /// 幕墙四性B4层间变形试验数据DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据DataTable B4Table
+        private MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据DataTable B4Table
         {
             get { return _b4Table; }
             set
@@ -754,12 +754,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A00试验参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A00试验参数TableAdapter _a00TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A00试验参数TableAdapter _a00TableAdapter;
 
         /// <summary>
         /// 幕墙四性A00试验参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A00试验参数TableAdapter A00TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A00试验参数TableAdapter A00TableAdapter
         {
             get { return _a00TableAdapter; }
             set
@@ -772,12 +772,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A00试验参数2TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A00试验参数2TableAdapter _a00Table2Adapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A00试验参数2TableAdapter _a00Table2Adapter;
 
         /// <summary>
         /// 幕墙四性A00试验参数2TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A00试验参数2TableAdapter A00Table2Adapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A00试验参数2TableAdapter A00Table2Adapter
         {
             get { return _a00Table2Adapter; }
             set
@@ -790,12 +790,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A01气密试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A01气密试验进度TableAdapter _a01TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A01气密试验进度TableAdapter _a01TableAdapter;
 
         /// <summary>
         /// 幕墙四性A01气密试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A01气密试验进度TableAdapter A01TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A01气密试验进度TableAdapter A01TableAdapter
         {
             get { return _a01TableAdapter; }
             set
@@ -808,12 +808,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A02水密试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A02水密试验进度TableAdapter _a02TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A02水密试验进度TableAdapter _a02TableAdapter;
 
         /// <summary>
         /// 幕墙四性A02水密试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A02水密试验进度TableAdapter A02TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A02水密试验进度TableAdapter A02TableAdapter
         {
             get { return _a02TableAdapter; }
             set
@@ -826,12 +826,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A03抗风压试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A03抗风压试验进度TableAdapter _a03TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A03抗风压试验进度TableAdapter _a03TableAdapter;
 
         /// <summary>
         /// 幕墙四性A03抗风压试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A03抗风压试验进度TableAdapter A03TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A03抗风压试验进度TableAdapter A03TableAdapter
         {
             get { return _a03TableAdapter; }
             set
@@ -844,12 +844,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性A04层间变形试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A04层间变形试验进度TableAdapter _a04TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A04层间变形试验进度TableAdapter _a04TableAdapter;
 
         /// <summary>
         /// 幕墙四性A04层间变形试验进度TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.A04层间变形试验进度TableAdapter A04TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.A04层间变形试验进度TableAdapter A04TableAdapter
         {
             get { return _a04TableAdapter; }
             set
@@ -866,12 +866,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B1气密数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B1气密试验数据TableAdapter _b1TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B1气密试验数据TableAdapter _b1TableAdapter;
 
         /// <summary>
         /// 幕墙四性B1气密数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B1气密试验数据TableAdapter B1TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B1气密试验数据TableAdapter B1TableAdapter
         {
             get { return _b1TableAdapter; }
             set
@@ -884,12 +884,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B2水密数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B2水密试验数据TableAdapter _b2TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B2水密试验数据TableAdapter _b2TableAdapter;
 
         /// <summary>
         /// 幕墙四性B2水密数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B2水密试验数据TableAdapter B2TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B2水密试验数据TableAdapter B2TableAdapter
         {
             get { return _b2TableAdapter; }
             set
@@ -902,12 +902,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B300抗风压数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B300抗风压试验数据TableAdapter _b300TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B300抗风压试验数据TableAdapter _b300TableAdapter;
 
         /// <summary>
         /// 幕墙四性B300抗风压数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B300抗风压试验数据TableAdapter B300TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B300抗风压试验数据TableAdapter B300TableAdapter
         {
             get { return _b300TableAdapter; }
             set
@@ -920,12 +920,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311a抗风压定级组1点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311a抗风压定级组1点a位移数据TableAdapter _b311aTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311a抗风压定级组1点a位移数据TableAdapter _b311aTableAdapter;
 
         /// <summary>
         /// 幕墙四性B311a抗风压定级组1点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311a抗风压定级组1点a位移数据TableAdapter B311aTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311a抗风压定级组1点a位移数据TableAdapter B311aTableAdapter
         {
             get { return _b311aTableAdapter; }
             set
@@ -938,12 +938,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311b抗风压定级组1点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311b抗风压定级组1点b位移数据TableAdapter _b311bTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311b抗风压定级组1点b位移数据TableAdapter _b311bTableAdapter;
 
         /// <summary>
         /// 幕墙四性B311b抗风压定级组1点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311b抗风压定级组1点b位移数据TableAdapter B311bTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311b抗风压定级组1点b位移数据TableAdapter B311bTableAdapter
         {
             get { return _b311bTableAdapter; }
             set
@@ -956,12 +956,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311c抗风压定级组1点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311c抗风压定级组1点c位移数据TableAdapter _b311cTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311c抗风压定级组1点c位移数据TableAdapter _b311cTableAdapter;
 
         /// <summary>
         /// 幕墙四性B311c抗风压定级组1点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311c抗风压定级组1点c位移数据TableAdapter B311cTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311c抗风压定级组1点c位移数据TableAdapter B311cTableAdapter
         {
             get { return _b311cTableAdapter; }
             set
@@ -974,12 +974,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B311d抗风压定级组1点d位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311d抗风压定级组1点d位移数据TableAdapter _b311dTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311d抗风压定级组1点d位移数据TableAdapter _b311dTableAdapter;
 
         /// <summary>
         /// 幕墙四性B311d抗风压定级组1点d位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B311d抗风压定级组1点d位移数据TableAdapter B311dTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B311d抗风压定级组1点d位移数据TableAdapter B311dTableAdapter
         {
             get { return _b311dTableAdapter; }
             set
@@ -992,12 +992,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312a抗风压定级组2点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312a抗风压定级组2点a位移数据TableAdapter _b312aTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312a抗风压定级组2点a位移数据TableAdapter _b312aTableAdapter;
 
         /// <summary>
         /// 幕墙四性B312a抗风压定级组2点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312a抗风压定级组2点a位移数据TableAdapter B312aTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312a抗风压定级组2点a位移数据TableAdapter B312aTableAdapter
         {
             get { return _b312aTableAdapter; }
             set
@@ -1010,12 +1010,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312b抗风压定级组2点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312b抗风压定级组2点b位移数据TableAdapter _b312bTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312b抗风压定级组2点b位移数据TableAdapter _b312bTableAdapter;
 
         /// <summary>
         /// 幕墙四性B312b抗风压定级组2点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312b抗风压定级组2点b位移数据TableAdapter B312bTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312b抗风压定级组2点b位移数据TableAdapter B312bTableAdapter
         {
             get { return _b312bTableAdapter; }
             set
@@ -1028,12 +1028,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B312c抗风压定级组2点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312c抗风压定级组2点c位移数据TableAdapter _b312cTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312c抗风压定级组2点c位移数据TableAdapter _b312cTableAdapter;
 
         /// <summary>
         /// 幕墙四性B312c抗风压定级组2点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B312c抗风压定级组2点c位移数据TableAdapter B312cTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B312c抗风压定级组2点c位移数据TableAdapter B312cTableAdapter
         {
             get { return _b312cTableAdapter; }
             set
@@ -1046,12 +1046,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313a抗风压定级组3点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313a抗风压定级组3点a位移数据TableAdapter _b313aTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313a抗风压定级组3点a位移数据TableAdapter _b313aTableAdapter;
 
         /// <summary>
         /// 幕墙四性B313a抗风压定级组3点a位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313a抗风压定级组3点a位移数据TableAdapter B313aTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313a抗风压定级组3点a位移数据TableAdapter B313aTableAdapter
         {
             get { return _b313aTableAdapter; }
             set
@@ -1064,12 +1064,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313b抗风压定级组3点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313b抗风压定级组3点b位移数据TableAdapter _b313bTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313b抗风压定级组3点b位移数据TableAdapter _b313bTableAdapter;
 
         /// <summary>
         /// 幕墙四性B313b抗风压定级组3点b位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313b抗风压定级组3点b位移数据TableAdapter B313bTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313b抗风压定级组3点b位移数据TableAdapter B313bTableAdapter
         {
             get { return _b313bTableAdapter; }
             set
@@ -1082,12 +1082,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B313c抗风压定级组3点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313c抗风压定级组3点c位移数据TableAdapter _b313cTableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313c抗风压定级组3点c位移数据TableAdapter _b313cTableAdapter;
 
         /// <summary>
         /// 幕墙四性B313c抗风压定级组3点c位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B313c抗风压定级组3点c位移数据TableAdapter B313cTableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B313c抗风压定级组3点c位移数据TableAdapter B313cTableAdapter
         {
             get { return _b313cTableAdapter; }
             set
@@ -1100,12 +1100,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B321抗风压定级组1相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B321抗风压定级组1相对挠度数据TableAdapter  _b321TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B321抗风压定级组1相对挠度数据TableAdapter  _b321TableAdapter;
 
         /// <summary>
         /// 幕墙四性B321抗风压定级组1相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B321抗风压定级组1相对挠度数据TableAdapter B321TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B321抗风压定级组1相对挠度数据TableAdapter B321TableAdapter
         {
             get { return _b321TableAdapter; }
             set
@@ -1118,12 +1118,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B322抗风压定级组2相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B322抗风压定级组2相对挠度数据TableAdapter _b322TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B322抗风压定级组2相对挠度数据TableAdapter _b322TableAdapter;
 
         /// <summary>
         /// 幕墙四性B322抗风压定级组2相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B322抗风压定级组2相对挠度数据TableAdapter B322TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B322抗风压定级组2相对挠度数据TableAdapter B322TableAdapter
         {
             get { return _b322TableAdapter; }
             set
@@ -1136,12 +1136,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B323抗风压定级组3相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B323抗风压定级组3相对挠度数据TableAdapter _b323TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B323抗风压定级组3相对挠度数据TableAdapter _b323TableAdapter;
 
         /// <summary>
         /// 幕墙四性B323抗风压定级组3相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B323抗风压定级组3相对挠度数据TableAdapter B323TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B323抗风压定级组3相对挠度数据TableAdapter B323TableAdapter
         {
             get { return _b323TableAdapter; }
             set
@@ -1154,12 +1154,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B324抗风压定级相对挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B324抗风压定级相对挠度最大值数据TableAdapter _b324TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B324抗风压定级相对挠度最大值数据TableAdapter _b324TableAdapter;
 
         /// <summary>
         /// 幕墙四性B324抗风压定级相对挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B324抗风压定级相对挠度最大值数据TableAdapter B324TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B324抗风压定级相对挠度最大值数据TableAdapter B324TableAdapter
         {
             get { return _b324TableAdapter; }
             set
@@ -1172,12 +1172,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B331抗风压定级组1挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B331抗风压定级组1挠度数据TableAdapter  _b331TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B331抗风压定级组1挠度数据TableAdapter  _b331TableAdapter;
 
         /// <summary>
         /// 幕墙四性B331抗风压定级组1挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B331抗风压定级组1挠度数据TableAdapter B331TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B331抗风压定级组1挠度数据TableAdapter B331TableAdapter
         {
             get { return _b331TableAdapter; }
             set
@@ -1190,12 +1190,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B332抗风压定级组2挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B332抗风压定级组2挠度数据TableAdapter _b332TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B332抗风压定级组2挠度数据TableAdapter _b332TableAdapter;
 
         /// <summary>
         /// 幕墙四性B332抗风压定级组2挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B332抗风压定级组2挠度数据TableAdapter B332TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B332抗风压定级组2挠度数据TableAdapter B332TableAdapter
         {
             get { return _b332TableAdapter; }
             set
@@ -1208,12 +1208,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B333抗风压定级组3挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B333抗风压定级组3挠度数据TableAdapter _b333TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B333抗风压定级组3挠度数据TableAdapter _b333TableAdapter;
 
         /// <summary>
         /// 幕墙四性B333抗风压定级组3挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B333抗风压定级组3挠度数据TableAdapter B333TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B333抗风压定级组3挠度数据TableAdapter B333TableAdapter
         {
             get { return _b333TableAdapter; }
             set
@@ -1226,12 +1226,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B334抗风压定级挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B334抗风压定级挠度最大值数据TableAdapter _b334TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B334抗风压定级挠度最大值数据TableAdapter _b334TableAdapter;
 
         /// <summary>
         /// 幕墙四性B334抗风压定级挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B334抗风压定级挠度最大值数据TableAdapter B334TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B334抗风压定级挠度最大值数据TableAdapter B334TableAdapter
         {
             get { return _b334TableAdapter; }
             set
@@ -1244,12 +1244,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B340抗风压定级损坏情况数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B340抗风压定级损坏情况数据TableAdapter _b340TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B340抗风压定级损坏情况数据TableAdapter _b340TableAdapter;
 
         /// <summary>
         /// 幕墙四性B340抗风压定级损坏情况数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B340抗风压定级损坏情况数据TableAdapter B340TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B340抗风压定级损坏情况数据TableAdapter B340TableAdapter
         {
             get { return _b340TableAdapter; }
             set
@@ -1262,12 +1262,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B350抗风压定级损坏说明数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B350抗风压定级损坏说明数据TableAdapter _b350TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B350抗风压定级损坏说明数据TableAdapter _b350TableAdapter;
 
         /// <summary>
         /// 幕墙四性B350抗风压定级损坏说明数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B350抗风压定级损坏说明数据TableAdapter B350TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B350抗风压定级损坏说明数据TableAdapter B350TableAdapter
         {
             get { return _b350TableAdapter; }
             set
@@ -1280,12 +1280,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B361抗风压组1工程位移数据TableAdapter _b361TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B361抗风压组1工程位移数据TableAdapter _b361TableAdapter;
 
         /// <summary>
         /// 幕墙四性B361抗风压组1工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B361抗风压组1工程位移数据TableAdapter B361TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B361抗风压组1工程位移数据TableAdapter B361TableAdapter
         {
             get { return _b361TableAdapter; }
             set
@@ -1298,12 +1298,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B362抗风压组2工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B362抗风压组2工程位移数据TableAdapter _b362TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B362抗风压组2工程位移数据TableAdapter _b362TableAdapter;
 
         /// <summary>
         /// 幕墙四性B362抗风压组2工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B362抗风压组2工程位移数据TableAdapter B362TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B362抗风压组2工程位移数据TableAdapter B362TableAdapter
         {
             get { return _b362TableAdapter; }
             set
@@ -1316,12 +1316,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B363抗风压组3工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B363抗风压组3工程位移数据TableAdapter _b363TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B363抗风压组3工程位移数据TableAdapter _b363TableAdapter;
 
         /// <summary>
         /// 幕墙四性B363抗风压组3工程位移数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B363抗风压组3工程位移数据TableAdapter B363TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B363抗风压组3工程位移数据TableAdapter B363TableAdapter
         {
             get { return _b363TableAdapter; }
             set
@@ -1334,11 +1334,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B371抗风压工程相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B371抗风压工程相对挠度数据TableAdapter _b371TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B371抗风压工程相对挠度数据TableAdapter _b371TableAdapter;
         /// <summary>
         /// 幕墙四性B371抗风压工程相对挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B371抗风压工程相对挠度数据TableAdapter B371TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B371抗风压工程相对挠度数据TableAdapter B371TableAdapter
         {
             get { return _b371TableAdapter; }
             set
@@ -1351,11 +1351,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B372抗风压工程相对挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B372抗风压工程相对挠度最大值数据TableAdapter _b372TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B372抗风压工程相对挠度最大值数据TableAdapter _b372TableAdapter;
         /// <summary>
         /// 幕墙四性B372抗风压工程相对挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B372抗风压工程相对挠度最大值数据TableAdapter B372TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B372抗风压工程相对挠度最大值数据TableAdapter B372TableAdapter
         {
             get { return _b372TableAdapter; }
             set
@@ -1368,11 +1368,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B381抗风压工程挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B381抗风压工程挠度数据TableAdapter _b381TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B381抗风压工程挠度数据TableAdapter _b381TableAdapter;
         /// <summary>
         /// 幕墙四性B381抗风压工程挠度数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B381抗风压工程挠度数据TableAdapter B381TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B381抗风压工程挠度数据TableAdapter B381TableAdapter
         {
             get { return _b381TableAdapter; }
             set
@@ -1385,11 +1385,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B382抗风压工程挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B382抗风压工程挠度最大值数据TableAdapter _b382TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B382抗风压工程挠度最大值数据TableAdapter _b382TableAdapter;
         /// <summary>
         /// 幕墙四性B382抗风压工程挠度最大值数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B382抗风压工程挠度最大值数据TableAdapter B382TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B382抗风压工程挠度最大值数据TableAdapter B382TableAdapter
         {
             get { return _b382TableAdapter; }
             set
@@ -1402,11 +1402,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B390抗风压工程损坏数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B390抗风压工程损坏数据TableAdapter  _b390TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B390抗风压工程损坏数据TableAdapter  _b390TableAdapter;
         /// <summary>
         /// 幕墙四性B390抗风压工程损坏数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B390抗风压工程损坏数据TableAdapter B390TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B390抗风压工程损坏数据TableAdapter B390TableAdapter
         {
             get { return _b390TableAdapter; }
             set
@@ -1419,12 +1419,12 @@ namespace MQZHWL.DAL
         /// <summary>
         /// 幕墙四性B4层间变形数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B4层间变形试验数据TableAdapter _b4TableAdapter;
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B4层间变形试验数据TableAdapter _b4TableAdapter;
 
         /// <summary>
         /// 幕墙四性B4层间变形数据TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_TestDataSetTableAdapters.B4层间变形试验数据TableAdapter B4TableAdapter
+        private MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters.B4层间变形试验数据TableAdapter B4TableAdapter
         {
             get { return _b4TableAdapter; }
             set

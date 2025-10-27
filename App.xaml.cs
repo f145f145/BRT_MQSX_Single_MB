@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace MQZHWL
+namespace MQDFJ_MB
 {
     /// <summary>
     /// App.xaml 的交互逻辑

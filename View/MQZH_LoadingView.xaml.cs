@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using MQZHWL.View.Authorize;
-using MQZHWL.Model;
+using MQDFJ_MB.View.Authorize;
+using MQDFJ_MB.Model;
 using Authorize;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     /// <summary>
     /// MQZH_LoadingView.xaml 的交互逻辑

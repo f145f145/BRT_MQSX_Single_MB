@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MQZH_DB_DevConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MQZH_DB_DevConnectionString (Settings)" PropertyReference="ApplicationSettings.MQZHWL.Properties.Settings.GlobalReference.Default.MQZH_DB_DevConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MQZH_DB_DevConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MQZH_DB_DevConnectionString (Settings)" PropertyReference="ApplicationSettings.MQDFJ_MB.Properties.Settings.GlobalReference.Default.MQZH_DB_DevConnectionString" Provider="System.Data.OleDb" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="C01装置基本信息TableAdapter" GeneratorDataComponentClassName="C01装置基本信息TableAdapter" Name="C01装置基本信息" UserDataComponentName="C01装置基本信息TableAdapter">

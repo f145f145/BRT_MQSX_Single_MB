@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.BLL
+ * 命名空间：MQDFJ_MB.BLL
  * 文件名：  MQZH_ValueCvtBLL
  * 版本号：  V1.0.0.0
  * 唯一标识：0894184e-a492-4ee3-b1ba-67f22870eedd
@@ -19,7 +19,7 @@
 
 using System;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// DIO用ushort数据生成及解析类。modbus通讯用。

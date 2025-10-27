@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.DEV
+ * 命名空间：MQDFJ_MB.Model.DEV
  * 文件名：  ComSetParaModel
  * 版本号：  V1.0.0.0
  * 唯一标识：7869ea38-fa1a-4b48-9edc-3a02ab3e5b37
@@ -20,7 +20,7 @@
 using GalaSoft.MvvmLight;
 using System.IO.Ports;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     /// <summary>
     /// 通讯参数设定类

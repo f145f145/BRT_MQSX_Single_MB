@@ -14,7 +14,7 @@ using System;
 using System.Windows;
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验参数及数据读写操作类
@@ -54,11 +54,11 @@ namespace MQZHWL.DAL
             //若编号在主表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row checkExistA00Row = A00Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row checkExistA00Row = A00Table.FindBy试验编号(tempNOStr);
                 if (checkExistA00Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row defExpA00Row = A00Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row newExpA00Row = A00Table.NewA00试验参数Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row defExpA00Row = A00Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row newExpA00Row = A00Table.NewA00试验参数Row();
                     newExpA00Row.ItemArray = (object[])defExpA00Row.ItemArray.Clone();
                     newExpA00Row.试验编号 = tempNOStr;
                     A00Table.AddA00试验参数Row(newExpA00Row);
@@ -66,8 +66,8 @@ namespace MQZHWL.DAL
                     A00Table.AcceptChanges();
                     RaisePropertyChanged(() => A00Table);
 
-                    MQZHWL.MQZH_DB_TestDataSet.A00试验参数2Row defExpA00Row2 = A00Table2.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A00试验参数2Row newExpA00Row2 = A00Table2.NewA00试验参数2Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2Row defExpA00Row2 = A00Table2.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2Row newExpA00Row2 = A00Table2.NewA00试验参数2Row();
                     newExpA00Row2.ItemArray = (object[])defExpA00Row2.ItemArray.Clone();
                     newExpA00Row2.试验编号 = tempNOStr;
                     A00Table2.AddA00试验参数2Row(newExpA00Row2);
@@ -84,7 +84,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A00试验参数Row expA00Row = A00Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数Row expA00Row = A00Table.FindBy试验编号(tempNOStr);
                 if (expA00Row != null)
                 {
                     //试验基本信息
@@ -176,7 +176,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A00试验参数2Row expA00Row2 = A00Table2.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数2Row expA00Row2 = A00Table2.FindBy试验编号(tempNOStr);
                 if (expA00Row2 != null)
                 {
                     //试验基本信息
@@ -253,11 +253,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度Row checkExistA01Row = A01Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度Row checkExistA01Row = A01Table.FindBy试验编号(tempNOStr);
                 if (checkExistA01Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度Row defExpA01Row = A01Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度Row newExpA01Row = A01Table.NewA01气密试验进度Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度Row defExpA01Row = A01Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度Row newExpA01Row = A01Table.NewA01气密试验进度Row();
                     newExpA01Row.ItemArray = (object[])defExpA01Row.ItemArray.Clone();
                     newExpA01Row.试验编号 = tempNOStr;
                     A01Table.AddA01气密试验进度Row(newExpA01Row);
@@ -274,7 +274,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A01气密试验进度Row expA01Row = A01Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A01气密试验进度Row expA01Row = A01Table.FindBy试验编号(tempNOStr);
                 if (expA01Row != null)
                 {
                     //定级进度
@@ -325,11 +325,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度Row checkExistA02Row = A02Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度Row checkExistA02Row = A02Table.FindBy试验编号(tempNOStr);
                 if (checkExistA02Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度Row defExpA02Row = A02Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度Row newExpA02Row = A02Table.NewA02水密试验进度Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度Row defExpA02Row = A02Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度Row newExpA02Row = A02Table.NewA02水密试验进度Row();
                     newExpA02Row.ItemArray = (object[])defExpA02Row.ItemArray.Clone();
                     newExpA02Row.试验编号 = tempNOStr;
                     A02Table.AddA02水密试验进度Row(newExpA02Row);
@@ -346,7 +346,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A02水密试验进度Row expA02Row = A02Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A02水密试验进度Row expA02Row = A02Table.FindBy试验编号(tempNOStr);
                 if (expA02Row != null)
                 {
                     expA02Row.定级水密预加压完成状态 = DAL_ExpDQ.Exp_SM.StageList_SMDJ[0].CompleteStatus;
@@ -375,11 +375,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度Row checkExistA03Row = A03Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度Row checkExistA03Row = A03Table.FindBy试验编号(tempNOStr);
                 if (checkExistA03Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度Row defExpA03Row = A03Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度Row newExpA03Row = A03Table.NewA03抗风压试验进度Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度Row defExpA03Row = A03Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度Row newExpA03Row = A03Table.NewA03抗风压试验进度Row();
                     newExpA03Row.ItemArray = (object[])defExpA03Row.ItemArray.Clone();
                     newExpA03Row.试验编号 = tempNOStr;
                     A03Table.AddA03抗风压试验进度Row(newExpA03Row);
@@ -396,7 +396,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A03抗风压试验进度Row expA03Row = A03Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A03抗风压试验进度Row expA03Row = A03Table.FindBy试验编号(tempNOStr);
                 if (expA03Row != null)
                 {
                     expA03Row.定级p1正压预加压完成状态 = DAL_ExpDQ.Exp_KFY.StageList_KFYDJ[0].CompleteStatus;
@@ -441,11 +441,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度Row checkExistA04Row = A04Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度Row checkExistA04Row = A04Table.FindBy试验编号(tempNOStr);
                 if (checkExistA04Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度Row defExpA04Row = A04Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度Row newExpA04Row = A04Table.NewA04层间变形试验进度Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度Row defExpA04Row = A04Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度Row newExpA04Row = A04Table.NewA04层间变形试验进度Row();
                     newExpA04Row.ItemArray = (object[])defExpA04Row.ItemArray.Clone();
                     newExpA04Row.试验编号 = tempNOStr;
                     A04Table.AddA04层间变形试验进度Row(newExpA04Row);
@@ -462,7 +462,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.A04层间变形试验进度Row expA04Row = A04Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.A04层间变形试验进度Row expA04Row = A04Table.FindBy试验编号(tempNOStr);
                 if (expA04Row != null)
                 {
                     //定级检测进度X轴
@@ -517,11 +517,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据Row checkExistB1Row = B1Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据Row checkExistB1Row = B1Table.FindBy试验编号(tempNOStr);
                 if (checkExistB1Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据Row defExpB1Row = B1Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据Row newExpB1Row = B1Table.NewB1气密试验数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据Row defExpB1Row = B1Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据Row newExpB1Row = B1Table.NewB1气密试验数据Row();
                     newExpB1Row.ItemArray = (object[])defExpB1Row.ItemArray.Clone();
                     newExpB1Row.试验编号 = tempNOStr;
                     B1Table.AddB1气密试验数据Row(newExpB1Row);
@@ -538,7 +538,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B1气密试验数据Row expB1Row = B1Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B1气密试验数据Row expB1Row = B1Table.FindBy试验编号(tempNOStr);
                 if (expB1Row != null)
                 {
                     expB1Row.Qf_GC_Z = DAL_ExpDQ.ExpData_QM.Stl_QMGC[1][0];
@@ -650,11 +650,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据Row checkExistB2Row = B2Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据Row checkExistB2Row = B2Table.FindBy试验编号(tempNOStr);
                 if (checkExistB2Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据Row defExpB2Row = B2Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据Row newExpB2Row = B2Table.NewB2水密试验数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据Row defExpB2Row = B2Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据Row newExpB2Row = B2Table.NewB2水密试验数据Row();
                     newExpB2Row.ItemArray = (object[])defExpB2Row.ItemArray.Clone();
                     newExpB2Row.试验编号 = tempNOStr;
                     B2Table.AddB2水密试验数据Row(newExpB2Row);
@@ -671,7 +671,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B2水密试验数据Row expB2Row = B2Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B2水密试验数据Row expB2Row = B2Table.FindBy试验编号(tempNOStr);
                 if (expB2Row != null)
                 {
                     expB2Row.定级第1级检测压力 = DAL_ExpDQ.ExpData_SM.Press_DJ[0];
@@ -755,11 +755,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据Row checkExistB300Row = B300Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据Row checkExistB300Row = B300Table.FindBy试验编号(tempNOStr);
                 if (checkExistB300Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据Row defExpB300Row = B300Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据Row newExpB300Row = B300Table.NewB300抗风压试验数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据Row defExpB300Row = B300Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据Row newExpB300Row = B300Table.NewB300抗风压试验数据Row();
                     newExpB300Row.ItemArray = (object[])defExpB300Row.ItemArray.Clone();
                     newExpB300Row.试验编号 = tempNOStr;
                     B300Table.AddB300抗风压试验数据Row(newExpB300Row);
@@ -776,7 +776,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B300抗风压试验数据Row expB300Row = B300Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B300抗风压试验数据Row expB300Row = B300Table.FindBy试验编号(tempNOStr);
                 if (expB300Row != null)
                 {
                     //定级检测压力
@@ -878,11 +878,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row checkExistB311aRow = B311aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row checkExistB311aRow = B311aTable.FindBy试验编号(tempNOStr);
                 if (checkExistB311aRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row defExpB311aRow = B311aTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row newExpB311aRow = B311aTable.NewB311a抗风压定级组1点a位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row defExpB311aRow = B311aTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row newExpB311aRow = B311aTable.NewB311a抗风压定级组1点a位移数据Row();
                     newExpB311aRow.ItemArray = (object[])defExpB311aRow.ItemArray.Clone();
                     newExpB311aRow.试验编号 = tempNOStr;
                     B311aTable.AddB311a抗风压定级组1点a位移数据Row(newExpB311aRow);
@@ -899,7 +899,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row expB311aRow = B311aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311a抗风压定级组1点a位移数据Row expB311aRow = B311aTable.FindBy试验编号(tempNOStr);
                 if (expB311aRow != null)
                 {
                     //定级P1正
@@ -974,11 +974,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row checkExistB311bRow = B311bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row checkExistB311bRow = B311bTable.FindBy试验编号(tempNOStr);
                 if (checkExistB311bRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row defExpB311bRow = B311bTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row newExpB311bRow = B311bTable.NewB311b抗风压定级组1点b位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row defExpB311bRow = B311bTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row newExpB311bRow = B311bTable.NewB311b抗风压定级组1点b位移数据Row();
                     newExpB311bRow.ItemArray = (object[])defExpB311bRow.ItemArray.Clone();
                     newExpB311bRow.试验编号 = tempNOStr;
                     B311bTable.AddB311b抗风压定级组1点b位移数据Row(newExpB311bRow);
@@ -995,7 +995,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row expB311bRow = B311bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311b抗风压定级组1点b位移数据Row expB311bRow = B311bTable.FindBy试验编号(tempNOStr);
                 if (expB311bRow != null)
                 {
                     //定级P1正
@@ -1070,11 +1070,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row checkExistB311cRow = B311cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row checkExistB311cRow = B311cTable.FindBy试验编号(tempNOStr);
                 if (checkExistB311cRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row defExpB311cRow = B311cTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row newExpB311cRow = B311cTable.NewB311c抗风压定级组1点c位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row defExpB311cRow = B311cTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row newExpB311cRow = B311cTable.NewB311c抗风压定级组1点c位移数据Row();
                     newExpB311cRow.ItemArray = (object[])defExpB311cRow.ItemArray.Clone();
                     newExpB311cRow.试验编号 = tempNOStr;
                     B311cTable.AddB311c抗风压定级组1点c位移数据Row(newExpB311cRow);
@@ -1091,7 +1091,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row expB311cRow = B311cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311c抗风压定级组1点c位移数据Row expB311cRow = B311cTable.FindBy试验编号(tempNOStr);
                 if (expB311cRow != null)
                 {
                     //定级P1正
@@ -1166,11 +1166,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row checkExistB311dRow = B311dTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row checkExistB311dRow = B311dTable.FindBy试验编号(tempNOStr);
                 if (checkExistB311dRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row defExpB311dRow = B311dTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row newExpB311dRow = B311dTable.NewB311d抗风压定级组1点d位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row defExpB311dRow = B311dTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row newExpB311dRow = B311dTable.NewB311d抗风压定级组1点d位移数据Row();
                     newExpB311dRow.ItemArray = (object[])defExpB311dRow.ItemArray.Clone();
                     newExpB311dRow.试验编号 = tempNOStr;
                     B311dTable.AddB311d抗风压定级组1点d位移数据Row(newExpB311dRow);
@@ -1187,7 +1187,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row expB311dRow = B311dTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B311d抗风压定级组1点d位移数据Row expB311dRow = B311dTable.FindBy试验编号(tempNOStr);
                 if (expB311dRow != null)
                 {
                     //定级P1正
@@ -1262,11 +1262,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row checkExistB312aRow = B312aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row checkExistB312aRow = B312aTable.FindBy试验编号(tempNOStr);
                 if (checkExistB312aRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row defExpB312aRow = B312aTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row newExpB312aRow = B312aTable.NewB312a抗风压定级组2点a位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row defExpB312aRow = B312aTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row newExpB312aRow = B312aTable.NewB312a抗风压定级组2点a位移数据Row();
                     newExpB312aRow.ItemArray = (object[])defExpB312aRow.ItemArray.Clone();
                     newExpB312aRow.试验编号 = tempNOStr;
                     B312aTable.AddB312a抗风压定级组2点a位移数据Row(newExpB312aRow);
@@ -1283,7 +1283,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row expB312aRow = B312aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312a抗风压定级组2点a位移数据Row expB312aRow = B312aTable.FindBy试验编号(tempNOStr);
                 if (expB312aRow != null)
                 {
                     //定级P1正
@@ -1358,11 +1358,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row checkExistB312bRow = B312bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row checkExistB312bRow = B312bTable.FindBy试验编号(tempNOStr);
                 if (checkExistB312bRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row defExpB312bRow = B312bTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row newExpB312bRow = B312bTable.NewB312b抗风压定级组2点b位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row defExpB312bRow = B312bTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row newExpB312bRow = B312bTable.NewB312b抗风压定级组2点b位移数据Row();
                     newExpB312bRow.ItemArray = (object[])defExpB312bRow.ItemArray.Clone();
                     newExpB312bRow.试验编号 = tempNOStr;
                     B312bTable.AddB312b抗风压定级组2点b位移数据Row(newExpB312bRow);
@@ -1379,7 +1379,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row expB312bRow = B312bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312b抗风压定级组2点b位移数据Row expB312bRow = B312bTable.FindBy试验编号(tempNOStr);
                 if (expB312bRow != null)
                 {
                     //定级P1正
@@ -1454,11 +1454,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row checkExistB312cRow = B312cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row checkExistB312cRow = B312cTable.FindBy试验编号(tempNOStr);
                 if (checkExistB312cRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row defExpB312cRow = B312cTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row newExpB312cRow = B312cTable.NewB312c抗风压定级组2点c位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row defExpB312cRow = B312cTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row newExpB312cRow = B312cTable.NewB312c抗风压定级组2点c位移数据Row();
                     newExpB312cRow.ItemArray = (object[])defExpB312cRow.ItemArray.Clone();
                     newExpB312cRow.试验编号 = tempNOStr;
                     B312cTable.AddB312c抗风压定级组2点c位移数据Row(newExpB312cRow);
@@ -1475,7 +1475,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row expB312cRow = B312cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B312c抗风压定级组2点c位移数据Row expB312cRow = B312cTable.FindBy试验编号(tempNOStr);
                 if (expB312cRow != null)
                 {
                     //定级P1正
@@ -1550,11 +1550,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row checkExistB313aRow = B313aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row checkExistB313aRow = B313aTable.FindBy试验编号(tempNOStr);
                 if (checkExistB313aRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row defExpB313aRow = B313aTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row newExpB313aRow = B313aTable.NewB313a抗风压定级组3点a位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row defExpB313aRow = B313aTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row newExpB313aRow = B313aTable.NewB313a抗风压定级组3点a位移数据Row();
                     newExpB313aRow.ItemArray = (object[])defExpB313aRow.ItemArray.Clone();
                     newExpB313aRow.试验编号 = tempNOStr;
                     B313aTable.AddB313a抗风压定级组3点a位移数据Row(newExpB313aRow);
@@ -1571,7 +1571,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row expB313aRow = B313aTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313a抗风压定级组3点a位移数据Row expB313aRow = B313aTable.FindBy试验编号(tempNOStr);
                 if (expB313aRow != null)
                 {
                     //定级P1正
@@ -1646,11 +1646,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row checkExistB313bRow = B313bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row checkExistB313bRow = B313bTable.FindBy试验编号(tempNOStr);
                 if (checkExistB313bRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row defExpB313bRow = B313bTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row newExpB313bRow = B313bTable.NewB313b抗风压定级组3点b位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row defExpB313bRow = B313bTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row newExpB313bRow = B313bTable.NewB313b抗风压定级组3点b位移数据Row();
                     newExpB313bRow.ItemArray = (object[])defExpB313bRow.ItemArray.Clone();
                     newExpB313bRow.试验编号 = tempNOStr;
                     B313bTable.AddB313b抗风压定级组3点b位移数据Row(newExpB313bRow);
@@ -1667,7 +1667,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row expB313bRow = B313bTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313b抗风压定级组3点b位移数据Row expB313bRow = B313bTable.FindBy试验编号(tempNOStr);
                 if (expB313bRow != null)
                 {
 
@@ -1743,11 +1743,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row checkExistB313cRow = B313cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row checkExistB313cRow = B313cTable.FindBy试验编号(tempNOStr);
                 if (checkExistB313cRow == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row defExpB313cRow = B313cTable.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row newExpB313cRow = B313cTable.NewB313c抗风压定级组3点c位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row defExpB313cRow = B313cTable.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row newExpB313cRow = B313cTable.NewB313c抗风压定级组3点c位移数据Row();
                     newExpB313cRow.ItemArray = (object[])defExpB313cRow.ItemArray.Clone();
                     newExpB313cRow.试验编号 = tempNOStr;
                     B313cTable.AddB313c抗风压定级组3点c位移数据Row(newExpB313cRow);
@@ -1764,7 +1764,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row expB313cRow = B313cTable.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B313c抗风压定级组3点c位移数据Row expB313cRow = B313cTable.FindBy试验编号(tempNOStr);
                 if (expB313cRow != null)
                 {
                     //定级P1正
@@ -1839,11 +1839,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row checkExistB321Row = B321Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row checkExistB321Row = B321Table.FindBy试验编号(tempNOStr);
                 if (checkExistB321Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row defExpB321Row = B321Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row newExpB321Row = B321Table.NewB321抗风压定级组1相对挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row defExpB321Row = B321Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row newExpB321Row = B321Table.NewB321抗风压定级组1相对挠度数据Row();
                     newExpB321Row.ItemArray = (object[])defExpB321Row.ItemArray.Clone();
                     newExpB321Row.试验编号 = tempNOStr;
                     B321Table.AddB321抗风压定级组1相对挠度数据Row(newExpB321Row);
@@ -1860,7 +1860,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row expB321Row = B321Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B321抗风压定级组1相对挠度数据Row expB321Row = B321Table.FindBy试验编号(tempNOStr);
                 if (expB321Row != null)
                 {
                     //定级P1正
@@ -1935,11 +1935,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row checkExistB322Row = B322Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row checkExistB322Row = B322Table.FindBy试验编号(tempNOStr);
                 if (checkExistB322Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row defExpB322Row = B322Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row newExpB322Row = B322Table.NewB322抗风压定级组2相对挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row defExpB322Row = B322Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row newExpB322Row = B322Table.NewB322抗风压定级组2相对挠度数据Row();
                     newExpB322Row.ItemArray = (object[])defExpB322Row.ItemArray.Clone();
                     newExpB322Row.试验编号 = tempNOStr;
                     B322Table.AddB322抗风压定级组2相对挠度数据Row(newExpB322Row);
@@ -1956,7 +1956,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row expB322Row = B322Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B322抗风压定级组2相对挠度数据Row expB322Row = B322Table.FindBy试验编号(tempNOStr);
                 if (expB322Row != null)
                 {
                     //定级P1正
@@ -2031,11 +2031,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row checkExistB323Row = B323Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row checkExistB323Row = B323Table.FindBy试验编号(tempNOStr);
                 if (checkExistB323Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row defExpB323Row = B323Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row newExpB323Row = B323Table.NewB323抗风压定级组3相对挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row defExpB323Row = B323Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row newExpB323Row = B323Table.NewB323抗风压定级组3相对挠度数据Row();
                     newExpB323Row.ItemArray = (object[])defExpB323Row.ItemArray.Clone();
                     newExpB323Row.试验编号 = tempNOStr;
                     B323Table.AddB323抗风压定级组3相对挠度数据Row(newExpB323Row);
@@ -2052,7 +2052,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row expB323Row = B323Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B323抗风压定级组3相对挠度数据Row expB323Row = B323Table.FindBy试验编号(tempNOStr);
                 if (expB323Row != null)
                 {
                     //定级P1正
@@ -2127,11 +2127,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row checkExistB324Row = B324Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row checkExistB324Row = B324Table.FindBy试验编号(tempNOStr);
                 if (checkExistB324Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row defExpB324Row = B324Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row newExpB324Row = B324Table.NewB324抗风压定级相对挠度最大值数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row defExpB324Row = B324Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row newExpB324Row = B324Table.NewB324抗风压定级相对挠度最大值数据Row();
                     newExpB324Row.ItemArray = (object[])defExpB324Row.ItemArray.Clone();
                     newExpB324Row.试验编号 = tempNOStr;
                     B324Table.AddB324抗风压定级相对挠度最大值数据Row(newExpB324Row);
@@ -2148,7 +2148,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row expB324Row = B324Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B324抗风压定级相对挠度最大值数据Row expB324Row = B324Table.FindBy试验编号(tempNOStr);
                 if (expB324Row != null)
                 {
                     //定级P1正
@@ -2219,11 +2219,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row checkExistB331Row = B331Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row checkExistB331Row = B331Table.FindBy试验编号(tempNOStr);
                 if (checkExistB331Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row defExpB331Row = B331Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row newExpB331Row = B331Table.NewB331抗风压定级组1挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row defExpB331Row = B331Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row newExpB331Row = B331Table.NewB331抗风压定级组1挠度数据Row();
                     newExpB331Row.ItemArray = (object[])defExpB331Row.ItemArray.Clone();
                     newExpB331Row.试验编号 = tempNOStr;
                     B331Table.AddB331抗风压定级组1挠度数据Row(newExpB331Row);
@@ -2240,7 +2240,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row expB331Row = B331Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B331抗风压定级组1挠度数据Row expB331Row = B331Table.FindBy试验编号(tempNOStr);
                 if (expB331Row != null)
                 {
                     //定级P1正
@@ -2315,11 +2315,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row checkExistB332Row = B332Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row checkExistB332Row = B332Table.FindBy试验编号(tempNOStr);
                 if (checkExistB332Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row defExpB332Row = B332Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row newExpB332Row = B332Table.NewB332抗风压定级组2挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row defExpB332Row = B332Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row newExpB332Row = B332Table.NewB332抗风压定级组2挠度数据Row();
                     newExpB332Row.ItemArray = (object[])defExpB332Row.ItemArray.Clone();
                     newExpB332Row.试验编号 = tempNOStr;
                     B332Table.AddB332抗风压定级组2挠度数据Row(newExpB332Row);
@@ -2336,7 +2336,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row expB332Row = B332Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B332抗风压定级组2挠度数据Row expB332Row = B332Table.FindBy试验编号(tempNOStr);
                 if (expB332Row != null)
                 {
                     //定级P1正
@@ -2411,11 +2411,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row checkExistB333Row = B333Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row checkExistB333Row = B333Table.FindBy试验编号(tempNOStr);
                 if (checkExistB333Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row defExpB333Row = B333Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row newExpB333Row = B333Table.NewB333抗风压定级组3挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row defExpB333Row = B333Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row newExpB333Row = B333Table.NewB333抗风压定级组3挠度数据Row();
                     newExpB333Row.ItemArray = (object[])defExpB333Row.ItemArray.Clone();
                     newExpB333Row.试验编号 = tempNOStr;
                     B333Table.AddB333抗风压定级组3挠度数据Row(newExpB333Row);
@@ -2432,7 +2432,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row expB333Row = B333Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B333抗风压定级组3挠度数据Row expB333Row = B333Table.FindBy试验编号(tempNOStr);
                 if (expB333Row != null)
                 {
                     //定级P1正
@@ -2507,11 +2507,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row checkExistB334Row = B334Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row checkExistB334Row = B334Table.FindBy试验编号(tempNOStr);
                 if (checkExistB334Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row defExpB334Row = B334Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row newExpB334Row = B334Table.NewB334抗风压定级挠度最大值数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row defExpB334Row = B334Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row newExpB334Row = B334Table.NewB334抗风压定级挠度最大值数据Row();
                     newExpB334Row.ItemArray = (object[])defExpB334Row.ItemArray.Clone();
                     newExpB334Row.试验编号 = tempNOStr;
                     B334Table.AddB334抗风压定级挠度最大值数据Row(newExpB334Row);
@@ -2528,7 +2528,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row expB334Row = B334Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B334抗风压定级挠度最大值数据Row expB334Row = B334Table.FindBy试验编号(tempNOStr);
                 if (expB334Row != null)
                 {
                     //定级P1正
@@ -2599,11 +2599,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row checkExistB340Row = B340Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row checkExistB340Row = B340Table.FindBy试验编号(tempNOStr);
                 if (checkExistB340Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row defExpB340Row = B340Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row newExpB340Row = B340Table.NewB340抗风压定级损坏情况数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row defExpB340Row = B340Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row newExpB340Row = B340Table.NewB340抗风压定级损坏情况数据Row();
                     newExpB340Row.ItemArray = (object[])defExpB340Row.ItemArray.Clone();
                     newExpB340Row.试验编号 = tempNOStr;
                     B340Table.AddB340抗风压定级损坏情况数据Row(newExpB340Row);
@@ -2620,7 +2620,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row expB340Row = B340Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B340抗风压定级损坏情况数据Row expB340Row = B340Table.FindBy试验编号(tempNOStr);
                 if (expB340Row != null)
                 {
                     expB340Row.定级变形100Pa损坏情况 = DAL_ExpDQ.ExpData_KFY.Damage_DJBX_Z[0];
@@ -2687,11 +2687,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row checkExistB350Row = B350Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row checkExistB350Row = B350Table.FindBy试验编号(tempNOStr);
                 if (checkExistB350Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row defExpB350Row = B350Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row newExpB350Row = B350Table.NewB350抗风压定级损坏说明数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row defExpB350Row = B350Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row newExpB350Row = B350Table.NewB350抗风压定级损坏说明数据Row();
                     newExpB350Row.ItemArray = (object[])defExpB350Row.ItemArray.Clone();
                     newExpB350Row.试验编号 = tempNOStr;
                     B350Table.AddB350抗风压定级损坏说明数据Row(newExpB350Row);
@@ -2708,7 +2708,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row expB350Row = B350Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B350抗风压定级损坏说明数据Row expB350Row = B350Table.FindBy试验编号(tempNOStr);
                 if (expB350Row != null)
                 {
                     expB350Row.定级变形100Pa损坏说明 = DAL_ExpDQ.ExpData_KFY.DamagePS_DJBX_Z[0];
@@ -2775,11 +2775,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row checkExistB361Row = B361Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row checkExistB361Row = B361Table.FindBy试验编号(tempNOStr);
                 if (checkExistB361Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row defExpB361Row = B361Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row newExpB361Row = B361Table.NewB361抗风压组1工程位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row defExpB361Row = B361Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row newExpB361Row = B361Table.NewB361抗风压组1工程位移数据Row();
                     newExpB361Row.ItemArray = (object[])defExpB361Row.ItemArray.Clone();
                     newExpB361Row.试验编号 = tempNOStr;
                     B361Table.AddB361抗风压组1工程位移数据Row(newExpB361Row);
@@ -2796,7 +2796,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row expB361Row = B361Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B361抗风压组1工程位移数据Row expB361Row = B361Table.FindBy试验编号(tempNOStr);
                 if (expB361Row != null)
                 {
                     expB361Row.工程变形1aZ00 = DAL_ExpDQ.ExpData_KFY.WY_GCBX_Z[0][0];
@@ -2889,11 +2889,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row checkExistB362Row = B362Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row checkExistB362Row = B362Table.FindBy试验编号(tempNOStr);
                 if (checkExistB362Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row defExpB362Row = B362Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row newExpB362Row = B362Table.NewB362抗风压组2工程位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row defExpB362Row = B362Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row newExpB362Row = B362Table.NewB362抗风压组2工程位移数据Row();
                     newExpB362Row.ItemArray = (object[])defExpB362Row.ItemArray.Clone();
                     newExpB362Row.试验编号 = tempNOStr;
                     B362Table.AddB362抗风压组2工程位移数据Row(newExpB362Row);
@@ -2910,7 +2910,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row expB362Row = B362Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B362抗风压组2工程位移数据Row expB362Row = B362Table.FindBy试验编号(tempNOStr);
                 if (expB362Row != null)
                 {
                     expB362Row.工程变形2aZ00 = DAL_ExpDQ.ExpData_KFY.WY_GCBX_Z[0][4];
@@ -2985,11 +2985,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row checkExistB363Row = B363Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row checkExistB363Row = B363Table.FindBy试验编号(tempNOStr);
                 if (checkExistB363Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row defExpB363Row = B363Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row newExpB363Row = B363Table.NewB363抗风压组3工程位移数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row defExpB363Row = B363Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row newExpB363Row = B363Table.NewB363抗风压组3工程位移数据Row();
                     newExpB363Row.ItemArray = (object[])defExpB363Row.ItemArray.Clone();
                     newExpB363Row.试验编号 = tempNOStr;
                     B363Table.AddB363抗风压组3工程位移数据Row(newExpB363Row);
@@ -3006,7 +3006,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row expB363Row = B363Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B363抗风压组3工程位移数据Row expB363Row = B363Table.FindBy试验编号(tempNOStr);
                 if (expB363Row != null)
                 {
                     expB363Row.工程变形3aZ00 = DAL_ExpDQ.ExpData_KFY.WY_GCBX_Z[0][7];
@@ -3081,11 +3081,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row checkExistB371Row = B371Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row checkExistB371Row = B371Table.FindBy试验编号(tempNOStr);
                 if (checkExistB371Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row defExpB371Row = B371Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row newExpB371Row = B371Table.NewB371抗风压工程相对挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row defExpB371Row = B371Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row newExpB371Row = B371Table.NewB371抗风压工程相对挠度数据Row();
                     newExpB371Row.ItemArray = (object[])defExpB371Row.ItemArray.Clone();
                     newExpB371Row.试验编号 = tempNOStr;
                     B371Table.AddB371抗风压工程相对挠度数据Row(newExpB371Row);
@@ -3102,7 +3102,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row expB371Row = B371Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B371抗风压工程相对挠度数据Row expB371Row = B371Table.FindBy试验编号(tempNOStr);
                 if (expB371Row != null)
                 {
                     expB371Row.工程变形0相对挠度1 = DAL_ExpDQ.ExpData_KFY.XDND_GCBX_Z[0][0];
@@ -3177,11 +3177,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row checkExistB372Row = B372Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row checkExistB372Row = B372Table.FindBy试验编号(tempNOStr);
                 if (checkExistB372Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row defExpB372Row = B372Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row newExpB372Row = B372Table.NewB372抗风压工程相对挠度最大值数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row defExpB372Row = B372Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row newExpB372Row = B372Table.NewB372抗风压工程相对挠度最大值数据Row();
                     newExpB372Row.ItemArray = (object[])defExpB372Row.ItemArray.Clone();
                     newExpB372Row.试验编号 = tempNOStr;
                     B372Table.AddB372抗风压工程相对挠度最大值数据Row(newExpB372Row);
@@ -3198,7 +3198,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row expB372Row = B372Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B372抗风压工程相对挠度最大值数据Row expB372Row = B372Table.FindBy试验编号(tempNOStr);
                 if (expB372Row != null)
                 {
                     expB372Row.工程变形0相对挠度fmax = DAL_ExpDQ.ExpData_KFY.XDND_Max_GCBX_Z[0];
@@ -3233,11 +3233,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row checkExistB381Row = B381Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row checkExistB381Row = B381Table.FindBy试验编号(tempNOStr);
                 if (checkExistB381Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row defExpB381Row = B381Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row newExpB381Row = B381Table.NewB381抗风压工程挠度数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row defExpB381Row = B381Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row newExpB381Row = B381Table.NewB381抗风压工程挠度数据Row();
                     newExpB381Row.ItemArray = (object[])defExpB381Row.ItemArray.Clone();
                     newExpB381Row.试验编号 = tempNOStr;
                     B381Table.AddB381抗风压工程挠度数据Row(newExpB381Row);
@@ -3254,7 +3254,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row expB381Row = B381Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B381抗风压工程挠度数据Row expB381Row = B381Table.FindBy试验编号(tempNOStr);
                 if (expB381Row != null)
                 {
                     expB381Row.工程变形0挠度1 = DAL_ExpDQ.ExpData_KFY.ND_GCBX_Z[0][0];
@@ -3329,11 +3329,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row checkExistB382Row = B382Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row checkExistB382Row = B382Table.FindBy试验编号(tempNOStr);
                 if (checkExistB382Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row defExpB382Row = B382Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row newExpB382Row = B382Table.NewB382抗风压工程挠度最大值数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row defExpB382Row = B382Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row newExpB382Row = B382Table.NewB382抗风压工程挠度最大值数据Row();
                     newExpB382Row.ItemArray = (object[])defExpB382Row.ItemArray.Clone();
                     newExpB382Row.试验编号 = tempNOStr;
                     B382Table.AddB382抗风压工程挠度最大值数据Row(newExpB382Row);
@@ -3350,7 +3350,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row expB382Row = B382Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B382抗风压工程挠度最大值数据Row expB382Row = B382Table.FindBy试验编号(tempNOStr);
                 if (expB382Row != null)
                 {
                     expB382Row.工程变形0挠度fmax = DAL_ExpDQ.ExpData_KFY.ND_Max_GCBX_Z[0];
@@ -3385,11 +3385,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row checkExistB390Row = B390Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row checkExistB390Row = B390Table.FindBy试验编号(tempNOStr);
                 if (checkExistB390Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row defExpB390Row = B390Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row newExpB390Row = B390Table.NewB390抗风压工程损坏数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row defExpB390Row = B390Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row newExpB390Row = B390Table.NewB390抗风压工程损坏数据Row();
                     newExpB390Row.ItemArray = (object[])defExpB390Row.ItemArray.Clone();
                     newExpB390Row.试验编号 = tempNOStr;
                     B390Table.AddB390抗风压工程损坏数据Row(newExpB390Row);
@@ -3406,7 +3406,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row expB390Row = B390Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B390抗风压工程损坏数据Row expB390Row = B390Table.FindBy试验编号(tempNOStr);
                 if (expB390Row != null)
                 {
                     expB390Row.工程变形0损坏情况 = DAL_ExpDQ.ExpData_KFY.Damage_GCBX_Z[0];
@@ -3465,11 +3465,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据Row checkExistB4Row = B4Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据Row checkExistB4Row = B4Table.FindBy试验编号(tempNOStr);
                 if (checkExistB4Row == null)
                 {
-                    MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据Row defDataB4Row = B4Table.FindBy试验编号("DefaultExp");
-                    MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据Row newDataB4Row = B4Table.NewB4层间变形试验数据Row();
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据Row defDataB4Row = B4Table.FindBy试验编号("DefaultExp");
+                    MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据Row newDataB4Row = B4Table.NewB4层间变形试验数据Row();
                     newDataB4Row.ItemArray = (object[])defDataB4Row.ItemArray.Clone();
                     newDataB4Row.试验编号 = tempNOStr;
                     B4Table.AddB4层间变形试验数据Row(newDataB4Row);
@@ -3487,7 +3487,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_TestDataSet.B4层间变形试验数据Row expB4Row = B4Table.FindBy试验编号(tempNOStr);
+                MQDFJ_MB.MQZH_DB_TestDataSet.B4层间变形试验数据Row expB4Row = B4Table.FindBy试验编号(tempNOStr);
                 if (expB4Row != null)
                 {
                     //定级X轴检测数据

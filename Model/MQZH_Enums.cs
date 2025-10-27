@@ -8,7 +8,7 @@
  *
  ************************************************************************************/
 
-namespace MQZHWL.Model
+namespace MQDFJ_MB.Model
 {
     public static class MQZH_Enums
     {

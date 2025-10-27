@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.DAL
+ * 命名空间：MQDFJ_MB.DAL
  * 文件名：  MQZH_RepDAL
  * 版本号：  V1.0.0.0
  * 唯一标识：eb830ea8-3bc1-4ce9-9718-111d01b1f89e
@@ -24,7 +24,7 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验报告读写操作类

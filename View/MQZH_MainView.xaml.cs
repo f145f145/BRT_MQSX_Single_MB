@@ -1,16 +1,16 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.View.ExpViews;
-using MQZHWL.View.Others;
-using MQZHWL.View.RepAndData;
+using MQDFJ_MB.View.ExpViews;
+using MQDFJ_MB.View.Others;
+using MQDFJ_MB.View.RepAndData;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
-using MQZHWL.Model;
-using MQZHWL.View.DebugPlot;
+using MQDFJ_MB.Model;
+using MQDFJ_MB.View.DebugPlot;
 
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
 
     public partial class MQZH_MainView : Window

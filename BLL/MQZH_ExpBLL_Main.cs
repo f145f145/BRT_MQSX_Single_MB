@@ -11,17 +11,17 @@
 using System;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.DEV;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.DEV;
+using MQDFJ_MB.Model.Exp;
 using System.Linq;
 using System.Windows;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model;
+using MQDFJ_MB.Model;
 using CtrlMethod;
 using System.Windows.Threading;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// 主控类

@@ -12,10 +12,10 @@ using System;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model.DEV;
-using MQZHWL.MQZH_DB_DevDataSetTableAdapters;
+using MQDFJ_MB.Model.DEV;
+using MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 装置参数读写操作类
@@ -63,11 +63,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C01装置基本信息DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息DataTable _c01Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息DataTable _c01Table;
         /// <summary>
         /// C01装置基本信息DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息DataTable C01Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息DataTable C01Table
         {
             get { return _c01Table; }
             set
@@ -80,11 +80,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C02装置基本参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数DataTable _c02Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数DataTable _c02Table;
         /// <summary>
         /// C02装置基本参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数DataTable C02Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数DataTable C02Table
         {
             get { return _c02Table; }
             set
@@ -97,11 +97,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C03公司信息DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C03公司信息DataTable _c03Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息DataTable _c03Table;
         /// <summary>
         /// C03公司信息DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C03公司信息DataTable C03Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息DataTable C03Table
         {
             get { return _c03Table; }
             set
@@ -114,11 +114,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C04串口参数设置DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C04串口参数设置DataTable _c04Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C04串口参数设置DataTable _c04Table;
         /// <summary>
         /// C04串口参数设置DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C04串口参数设置DataTable C04Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C04串口参数设置DataTable C04Table
         {
             get { return _c04Table; }
             set
@@ -131,11 +131,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C05模拟量参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C05模拟量参数DataTable _c05Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C05模拟量参数DataTable _c05Table;
         /// <summary>
         /// C05模拟量参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C05模拟量参数DataTable C05Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C05模拟量参数DataTable C05Table
         {
             get { return _c05Table; }
             set
@@ -148,11 +148,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C06模拟量通道参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C06模拟量通道参数DataTable _c06Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C06模拟量通道参数DataTable _c06Table;
         /// <summary>
         /// C06模拟量通道参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C06模拟量通道参数DataTable C06Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C06模拟量通道参数DataTable C06Table
         {
             get { return _c06Table; }
             set
@@ -165,11 +165,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C07数字量参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C07数字量参数DataTable _c07Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C07数字量参数DataTable _c07Table;
         /// <summary>
         /// C07数字量参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C07数字量参数DataTable C07Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C07数字量参数DataTable C07Table
         {
             get { return _c07Table; }
             set
@@ -182,11 +182,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C08数字量通道参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C08数字量通道参数DataTable _c08Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C08数字量通道参数DataTable _c08Table;
         /// <summary>
         /// C08数字量通道参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C08数字量通道参数DataTable C08Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C08数字量通道参数DataTable C08Table
         {
             get { return _c08Table; }
             set
@@ -199,11 +199,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C09PID控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数DataTable _c09Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数DataTable _c09Table;
         /// <summary>
         /// C09PID控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数DataTable C09Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数DataTable C09Table
         {
             get { return _c09Table; }
             set
@@ -216,11 +216,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C12气水密压力设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数DataTable _c12Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数DataTable _c12Table;
         /// <summary>
         /// C12气水密压力设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数DataTable C12Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数DataTable C12Table
         {
             get { return _c12Table; }
             set
@@ -233,11 +233,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C13抗风压压力设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数DataTable _c13Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数DataTable _c13Table;
         /// <summary>
         /// C13抗风压压力设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数DataTable C13Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数DataTable C13Table
         {
             get { return _c13Table; }
             set
@@ -250,11 +250,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C14压力控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数DataTable _c14Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数DataTable _c14Table;
         /// <summary>
         /// C14压力控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数DataTable C14Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数DataTable C14Table
         {
             get { return _c14Table; }
             set
@@ -267,11 +267,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C15位移设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数DataTable _c15Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数DataTable _c15Table;
         /// <summary>
         /// C15位移设定参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数DataTable C15Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数DataTable C15Table
         {
             get { return _c15Table; }
             set
@@ -284,11 +284,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C16位移控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数DataTable _c16Table;
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数DataTable _c16Table;
         /// <summary>
         /// C16位移控制参数DataTable
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数DataTable C16Table
+        private MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数DataTable C16Table
         {
             get { return _c16Table; }
             set
@@ -305,11 +305,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C01装置基本信息TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C01装置基本信息TableAdapter _c01TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C01装置基本信息TableAdapter _c01TableAdapter;
         /// <summary>
         /// C01装置基本信息TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C01装置基本信息TableAdapter C01TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C01装置基本信息TableAdapter C01TableAdapter
         {
             get { return _c01TableAdapter; }
             set
@@ -322,11 +322,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C02装置基本参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C02装置基本参数TableAdapter _c02TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C02装置基本参数TableAdapter _c02TableAdapter;
         /// <summary>
         /// C02装置基本参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C02装置基本参数TableAdapter C02TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C02装置基本参数TableAdapter C02TableAdapter
         {
             get { return _c02TableAdapter; }
             set
@@ -339,11 +339,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C03公司信息TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C03公司信息TableAdapter _c03TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C03公司信息TableAdapter _c03TableAdapter;
         /// <summary>
         /// C03公司信息TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C03公司信息TableAdapter C03TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C03公司信息TableAdapter C03TableAdapter
         {
             get { return _c03TableAdapter; }
             set
@@ -356,11 +356,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C04串口参数设置TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C04串口参数设置TableAdapter _c04TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C04串口参数设置TableAdapter _c04TableAdapter;
         /// <summary>
         /// C04串口参数设置TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C04串口参数设置TableAdapter C04TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C04串口参数设置TableAdapter C04TableAdapter
         {
             get { return _c04TableAdapter; }
             set
@@ -373,11 +373,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C05模拟量参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C05模拟量参数TableAdapter _c05TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C05模拟量参数TableAdapter _c05TableAdapter;
         /// <summary>
         /// C05模拟量参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C05模拟量参数TableAdapter C05TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C05模拟量参数TableAdapter C05TableAdapter
         {
             get { return _c05TableAdapter; }
             set
@@ -390,11 +390,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C06模拟量通道参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C06模拟量通道参数TableAdapter _c06TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C06模拟量通道参数TableAdapter _c06TableAdapter;
         /// <summary>
         /// C06模拟量通道参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C06模拟量通道参数TableAdapter C06TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C06模拟量通道参数TableAdapter C06TableAdapter
         {
             get { return _c06TableAdapter; }
             set
@@ -407,11 +407,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C07数字量参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C07数字量参数TableAdapter _c07TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C07数字量参数TableAdapter _c07TableAdapter;
         /// <summary>
         /// C07数字量参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C07数字量参数TableAdapter C07TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C07数字量参数TableAdapter C07TableAdapter
         {
             get { return _c07TableAdapter; }
             set
@@ -424,11 +424,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C08数字量通道参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C08数字量通道参数TableAdapter _c08TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C08数字量通道参数TableAdapter _c08TableAdapter;
         /// <summary>
         /// C08数字量通道参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C08数字量通道参数TableAdapter C08TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C08数字量通道参数TableAdapter C08TableAdapter
         {
             get { return _c08TableAdapter; }
             set
@@ -441,11 +441,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C09PID控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C09PID控制参数TableAdapter _c09TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C09PID控制参数TableAdapter _c09TableAdapter;
         /// <summary>
         /// C09PID控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C09PID控制参数TableAdapter C09TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C09PID控制参数TableAdapter C09TableAdapter
         {
             get { return _c09TableAdapter; }
             set
@@ -459,11 +459,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C12气水密压力设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C12气水密压力设定参数TableAdapter _c12TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C12气水密压力设定参数TableAdapter _c12TableAdapter;
         /// <summary>
         /// C12气水密压力设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C12气水密压力设定参数TableAdapter C12TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C12气水密压力设定参数TableAdapter C12TableAdapter
         {
             get { return _c12TableAdapter; }
             set
@@ -476,11 +476,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C13抗风压压力设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C13抗风压压力设定参数TableAdapter _c13TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C13抗风压压力设定参数TableAdapter _c13TableAdapter;
         /// <summary>
         /// C13抗风压压力设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C13抗风压压力设定参数TableAdapter C13TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C13抗风压压力设定参数TableAdapter C13TableAdapter
         {
             get { return _c13TableAdapter; }
             set
@@ -493,11 +493,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C14压力控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C14压力控制参数TableAdapter _c14TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C14压力控制参数TableAdapter _c14TableAdapter;
         /// <summary>
         /// C14压力控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C14压力控制参数TableAdapter C14TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C14压力控制参数TableAdapter C14TableAdapter
         {
             get { return _c14TableAdapter; }
             set
@@ -510,11 +510,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C15位移设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C15位移设定参数TableAdapter _c15TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C15位移设定参数TableAdapter _c15TableAdapter;
         /// <summary>
         /// C15位移设定参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C15位移设定参数TableAdapter C15TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C15位移设定参数TableAdapter C15TableAdapter
         {
             get { return _c15TableAdapter; }
             set
@@ -527,11 +527,11 @@ namespace MQZHWL.DAL
         /// <summary>
         /// C16位移控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C16位移控制参数TableAdapter _c16TableAdapter;
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C16位移控制参数TableAdapter _c16TableAdapter;
         /// <summary>
         /// C16位移控制参数TableAdapter
         /// </summary>
-        private MQZHWL.MQZH_DB_DevDataSetTableAdapters.C16位移控制参数TableAdapter C16TableAdapter
+        private MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters.C16位移控制参数TableAdapter C16TableAdapter
         {
             get { return _c16TableAdapter; }
             set

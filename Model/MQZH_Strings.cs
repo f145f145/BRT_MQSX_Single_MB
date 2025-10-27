@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model
+ * 命名空间：MQDFJ_MB.Model
  * 文件名：  MQZH_Enums
  * 版本号：  V1.0.0.0
  * 唯一标识：a50b8dcc-4ba6-4065-8708-579a9031125e
@@ -17,9 +17,9 @@
  *
  ************************************************************************************/
 
-using MQZHWL.View.DebugPlot;
+using MQDFJ_MB.View.DebugPlot;
 
-namespace MQZHWL.Model
+namespace MQDFJ_MB.Model
 {
     /// <summary>
     /// 系统各种常量字符串

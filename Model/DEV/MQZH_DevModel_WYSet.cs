@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.DEV
+ * 命名空间：MQDFJ_MB.Model.DEV
  * 文件名：  MQZHDevModel_WYSet
  * 版本号：  V1.0.0.0
  * 唯一标识：e8aa8f34-44d8-44e3-8d1e-fd700a832100
@@ -20,7 +20,7 @@
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public partial class MQZH_DevModel_Main : ObservableObject
     {

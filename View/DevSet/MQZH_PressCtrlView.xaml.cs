@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MQZHWL.View.Others
+namespace MQDFJ_MB.View.Others
 {
     /// <summary>
     /// MQZH_PressCtrlView.xaml 的交互逻辑

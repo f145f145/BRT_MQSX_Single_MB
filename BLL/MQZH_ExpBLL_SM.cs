@@ -15,16 +15,16 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using GalaSoft.MvvmLight;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.Exp;
 using System.Windows;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 using CtrlMethod;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model;
+using MQDFJ_MB.Model;
 using System.Threading;
 using NPOI.SS.Formula.Functions;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// 主控类

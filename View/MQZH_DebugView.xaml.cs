@@ -1,11 +1,11 @@
 ﻿using System.Windows;
 using System;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Communication;
-using static MQZHWL.Model.MQZH_Enums;
-using MQZHWL.Model;
+using MQDFJ_MB.Communication;
+using static MQDFJ_MB.Model.MQZH_Enums;
+using MQDFJ_MB.Model;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     /// <summary>
     /// Debug.xaml 的交互逻辑

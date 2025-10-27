@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     /// <summary>
     /// CORRandCAL.xaml 的交互逻辑

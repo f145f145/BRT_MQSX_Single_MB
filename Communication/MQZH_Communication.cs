@@ -18,11 +18,11 @@ using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Modbus.Device;
-using MQZHWL.Model;
-using MQZHWL.Model.DEV;
-using static MQZHWL.Model.MQZH_Enums;
+using MQDFJ_MB.Model;
+using MQDFJ_MB.Model.DEV;
+using static MQDFJ_MB.Model.MQZH_Enums;
 
-namespace MQZHWL.Communication
+namespace MQDFJ_MB.Communication
 {
     public class MQZH_Communication : ObservableObject
     {

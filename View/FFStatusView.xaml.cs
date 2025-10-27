@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑

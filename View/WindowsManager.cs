@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.View
+ * 命名空间：MQDFJ_MB.View
  * 文件名：  WindowsManager
  * 版本号：  V1.0.0.0
  * 唯一标识：2c194190-d345-484a-88a1-aa27b2d7490c
@@ -22,7 +22,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace MQZHWL.View
+namespace MQDFJ_MB.View
 {
     public class WindowsManager<TWindow> where TWindow : Window, new()
     {

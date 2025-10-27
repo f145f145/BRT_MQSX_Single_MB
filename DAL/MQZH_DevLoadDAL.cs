@@ -12,9 +12,9 @@ using System;
 using System.IO.Ports;
 using System.Windows;
 using GalaSoft.MvvmLight;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 装置参数读写操作类
@@ -72,11 +72,11 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息Row checkExistC01Row = C01Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息Row checkExistC01Row = C01Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC01Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息Row defDevC01Row = C01Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息Row newDevC01Row = C01Table.NewC01装置基本信息Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息Row defDevC01Row = C01Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息Row newDevC01Row = C01Table.NewC01装置基本信息Row();
                     newDevC01Row.ItemArray = (object[])defDevC01Row.ItemArray.Clone();
                     newDevC01Row.配置编号 = tempSettingsNO;
                     C01Table.AddC01装置基本信息Row(newDevC01Row);
@@ -93,7 +93,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C01装置基本信息Row devC01Row = C01Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息Row devC01Row = C01Table.FindBy配置编号(tempSettingsNO);
                 if (devC01Row != null)
                 {
                     DAL_Dev.DeviceID = devC01Row.装置ID;
@@ -122,11 +122,11 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数Row checkExistC02Row = C02Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数Row checkExistC02Row = C02Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC02Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数Row defDevC02Row = C02Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数Row newDevC02Row = C02Table.NewC02装置基本参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数Row defDevC02Row = C02Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数Row newDevC02Row = C02Table.NewC02装置基本参数Row();
                     newDevC02Row.ItemArray = (object[])defDevC02Row.ItemArray.Clone();
                     newDevC02Row.配置编号 = tempSettingsNO;
                     C02Table.AddC02装置基本参数Row(newDevC02Row);
@@ -143,7 +143,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C02装置基本参数Row devC02Row = C02Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数Row devC02Row = C02Table.FindBy配置编号(tempSettingsNO);
                 if (devC02Row != null)
                 {
                     DAL_Dev.PlotPeriod = devC02Row.绘图更新周期;
@@ -203,11 +203,11 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C03公司信息Row checkExistC03Row = C03Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息Row checkExistC03Row = C03Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC03Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C03公司信息Row defDevC03Row = C03Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C03公司信息Row newDevC03Row = C03Table.NewC03公司信息Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息Row defDevC03Row = C03Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息Row newDevC03Row = C03Table.NewC03公司信息Row();
                     newDevC03Row.ItemArray = (object[])defDevC03Row.ItemArray.Clone();
                     newDevC03Row.配置编号 = tempSettingsNO;
                     C03Table.AddC03公司信息Row(newDevC03Row);
@@ -224,7 +224,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C03公司信息Row devC03Row = C03Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息Row devC03Row = C03Table.FindBy配置编号(tempSettingsNO);
                 if (devC03Row != null)
                 {
                     DAL_Dev.MQZH_CompanyShortName = devC03Row.公司简称;
@@ -258,12 +258,12 @@ namespace MQZHWL.DAL
             {
                 try
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C04串口参数设置Row checkExistC04Row = C04Table.FindBy配置编号(tempC04RowName[i]);
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C04串口参数设置Row checkExistC04Row = C04Table.FindBy配置编号(tempC04RowName[i]);
                     if (checkExistC04Row == null)
                     {
-                        MQZHWL.MQZH_DB_DevDataSet.C04串口参数设置Row defDevC04Row =
+                        MQDFJ_MB.MQZH_DB_DevDataSet.C04串口参数设置Row defDevC04Row =
                             C04Table.FindBy配置编号(tempC04RowName[i].ToString() + "Def");
-                        MQZHWL.MQZH_DB_DevDataSet.C04串口参数设置Row newDevC04ow = C04Table.NewC04串口参数设置Row();
+                        MQDFJ_MB.MQZH_DB_DevDataSet.C04串口参数设置Row newDevC04ow = C04Table.NewC04串口参数设置Row();
                         newDevC04ow.ItemArray = (object[])defDevC04Row.ItemArray.Clone();
                         newDevC04ow.配置编号 = tempC04RowName[i];
                         C04Table.AddC04串口参数设置Row(newDevC04ow);
@@ -1327,12 +1327,12 @@ namespace MQZHWL.DAL
             {
                 try
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row checkExistC09Row = C09Table.FindBy配置编号(tempC09RowName[i]);
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row checkExistC09Row = C09Table.FindBy配置编号(tempC09RowName[i]);
                     if (checkExistC09Row == null)
                     {
-                        MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row defDevC09Row =
+                        MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row defDevC09Row =
                             C09Table.FindBy配置编号(tempC09RowName[i].ToString() + "Def");
-                        MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row newDevC09ow = C09Table.NewC09PID控制参数Row();
+                        MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row newDevC09ow = C09Table.NewC09PID控制参数Row();
                         newDevC09ow.ItemArray = (object[])defDevC09Row.ItemArray.Clone();
                         newDevC09ow.配置编号 = tempC09RowName[i];
                         C09Table.AddC09PID控制参数Row(newDevC09ow);
@@ -1351,7 +1351,7 @@ namespace MQZHWL.DAL
             //PID11
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0911Row = C09Table.FindBy配置编号(tempC09RowName[0]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0911Row = C09Table.FindBy配置编号(tempC09RowName[0]);
                 if (devC0911Row != null)
                 {
                     DAL_Dev.PID11.ControllerName = devC0911Row.PIDName;
@@ -1380,7 +1380,7 @@ namespace MQZHWL.DAL
             //PID12
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0912Row = C09Table.FindBy配置编号(tempC09RowName[1]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0912Row = C09Table.FindBy配置编号(tempC09RowName[1]);
                 if (devC0912Row != null)
                 {
                     DAL_Dev.PID12.ControllerName = devC0912Row.PIDName;
@@ -1409,7 +1409,7 @@ namespace MQZHWL.DAL
             //PID13
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0913Row = C09Table.FindBy配置编号(tempC09RowName[2]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0913Row = C09Table.FindBy配置编号(tempC09RowName[2]);
                 if (devC0913Row != null)
                 {
                     DAL_Dev.PID13.ControllerName = devC0913Row.PIDName;
@@ -1438,7 +1438,7 @@ namespace MQZHWL.DAL
             //PID14
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0914Row = C09Table.FindBy配置编号(tempC09RowName[3]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0914Row = C09Table.FindBy配置编号(tempC09RowName[3]);
                 if (devC0914Row != null)
                 {
                     DAL_Dev.PID14.ControllerName = devC0914Row.PIDName;
@@ -1467,7 +1467,7 @@ namespace MQZHWL.DAL
             //PID15
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0915Row = C09Table.FindBy配置编号(tempC09RowName[4]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0915Row = C09Table.FindBy配置编号(tempC09RowName[4]);
                 if (devC0915Row != null)
                 {
                     DAL_Dev.PID15.ControllerName = devC0915Row.PIDName;
@@ -1496,7 +1496,7 @@ namespace MQZHWL.DAL
             //PID41
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0941Row = C09Table.FindBy配置编号(tempC09RowName[17]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0941Row = C09Table.FindBy配置编号(tempC09RowName[17]);
                 if (devC0941Row != null)
                 {
                     DAL_Dev.PID41.ControllerName = devC0941Row.PIDName;
@@ -1525,7 +1525,7 @@ namespace MQZHWL.DAL
             //PID42
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0942Row = C09Table.FindBy配置编号(tempC09RowName[18]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0942Row = C09Table.FindBy配置编号(tempC09RowName[18]);
                 if (devC0942Row != null)
                 {
                     DAL_Dev.PID42.ControllerName = devC0942Row.PIDName;
@@ -1554,7 +1554,7 @@ namespace MQZHWL.DAL
             //PID43
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0943Row = C09Table.FindBy配置编号(tempC09RowName[19]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0943Row = C09Table.FindBy配置编号(tempC09RowName[19]);
                 if (devC0943Row != null)
                 {
                     DAL_Dev.PID43.ControllerName = devC0943Row.PIDName;
@@ -1583,7 +1583,7 @@ namespace MQZHWL.DAL
             //PID44
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0944Row = C09Table.FindBy配置编号(tempC09RowName[20]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0944Row = C09Table.FindBy配置编号(tempC09RowName[20]);
                 if (devC0944Row != null)
                 {
                     DAL_Dev.PID44.ControllerName = devC0944Row.PIDName;
@@ -1612,7 +1612,7 @@ namespace MQZHWL.DAL
             //PID45
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0945Row = C09Table.FindBy配置编号(tempC09RowName[21]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0945Row = C09Table.FindBy配置编号(tempC09RowName[21]);
                 if (devC0945Row != null)
                 {
                     DAL_Dev.PID45.ControllerName = devC0945Row.PIDName;
@@ -1641,7 +1641,7 @@ namespace MQZHWL.DAL
             //PID61
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0961Row = C09Table.FindBy配置编号(tempC09RowName[23]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0961Row = C09Table.FindBy配置编号(tempC09RowName[23]);
                 if (devC0961Row != null)
                 {
                     DAL_Dev.PID61.ControllerName = devC0961Row.PIDName;
@@ -1670,7 +1670,7 @@ namespace MQZHWL.DAL
             //PID62
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0962Row = C09Table.FindBy配置编号(tempC09RowName[24]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0962Row = C09Table.FindBy配置编号(tempC09RowName[24]);
                 if (devC0962Row != null)
                 {
                     DAL_Dev.PID62.ControllerName = devC0962Row.PIDName;
@@ -1699,7 +1699,7 @@ namespace MQZHWL.DAL
             //PID63
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0963Row = C09Table.FindBy配置编号(tempC09RowName[25]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0963Row = C09Table.FindBy配置编号(tempC09RowName[25]);
                 if (devC0963Row != null)
                 {
                     DAL_Dev.PID63.ControllerName = devC0963Row.PIDName;
@@ -1728,7 +1728,7 @@ namespace MQZHWL.DAL
             //PID64
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0964Row = C09Table.FindBy配置编号(tempC09RowName[26]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0964Row = C09Table.FindBy配置编号(tempC09RowName[26]);
                 if (devC0964Row != null)
                 {
                     DAL_Dev.PID64.ControllerName = devC0964Row.PIDName;
@@ -1757,7 +1757,7 @@ namespace MQZHWL.DAL
             //PID65
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0965Row = C09Table.FindBy配置编号(tempC09RowName[27]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0965Row = C09Table.FindBy配置编号(tempC09RowName[27]);
                 if (devC0965Row != null)
                 {
                     DAL_Dev.PID65.ControllerName = devC0965Row.PIDName;
@@ -1786,7 +1786,7 @@ namespace MQZHWL.DAL
             //PID21
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0921Row = C09Table.FindBy配置编号(tempC09RowName[5]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0921Row = C09Table.FindBy配置编号(tempC09RowName[5]);
                 if (devC0921Row != null)
                 {
                     DAL_Dev.PID21.ControllerName = devC0921Row.PIDName;
@@ -1815,7 +1815,7 @@ namespace MQZHWL.DAL
             //PID22
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0922Row = C09Table.FindBy配置编号(tempC09RowName[6]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0922Row = C09Table.FindBy配置编号(tempC09RowName[6]);
                 if (devC0922Row != null)
                 {
                     DAL_Dev.PID22.ControllerName = devC0922Row.PIDName;
@@ -1844,7 +1844,7 @@ namespace MQZHWL.DAL
             //PID23
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0923Row = C09Table.FindBy配置编号(tempC09RowName[7]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0923Row = C09Table.FindBy配置编号(tempC09RowName[7]);
                 if (devC0923Row != null)
                 {
                     DAL_Dev.PID23.ControllerName = devC0923Row.PIDName;
@@ -1873,7 +1873,7 @@ namespace MQZHWL.DAL
             //PID24
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0924Row = C09Table.FindBy配置编号(tempC09RowName[8]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0924Row = C09Table.FindBy配置编号(tempC09RowName[8]);
                 if (devC0924Row != null)
                 {
                     DAL_Dev.PID24.ControllerName = devC0924Row.PIDName;
@@ -1902,7 +1902,7 @@ namespace MQZHWL.DAL
             //PID25
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0925Row = C09Table.FindBy配置编号(tempC09RowName[9]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0925Row = C09Table.FindBy配置编号(tempC09RowName[9]);
                 if (devC0925Row != null)
                 {
                     DAL_Dev.PID25.ControllerName = devC0925Row.PIDName;
@@ -1931,7 +1931,7 @@ namespace MQZHWL.DAL
             //PID26
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0926Row = C09Table.FindBy配置编号(tempC09RowName[10]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0926Row = C09Table.FindBy配置编号(tempC09RowName[10]);
                 if (devC0926Row != null)
                 {
                     DAL_Dev.PID26.ControllerName = devC0926Row.PIDName;
@@ -1960,7 +1960,7 @@ namespace MQZHWL.DAL
             //PID51
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C09PID控制参数Row devC0951Row = C09Table.FindBy配置编号(tempC09RowName[22]);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0951Row = C09Table.FindBy配置编号(tempC09RowName[22]);
                 if (devC0951Row != null)
                 {
                     DAL_Dev.PID51.ControllerName = devC0951Row.PIDName;
@@ -1997,11 +1997,11 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数Row checkExistC12Row = C12Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数Row checkExistC12Row = C12Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC12Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数Row defDevC12Row = C12Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数Row newDevC12Row = C12Table.NewC12气水密压力设定参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数Row defDevC12Row = C12Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数Row newDevC12Row = C12Table.NewC12气水密压力设定参数Row();
                     newDevC12Row.ItemArray = (object[])defDevC12Row.ItemArray.Clone();
                     newDevC12Row.配置编号 = tempSettingsNO;
                     C12Table.AddC12气水密压力设定参数Row(newDevC12Row);
@@ -2018,7 +2018,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C12气水密压力设定参数Row devC12Row = C12Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C12气水密压力设定参数Row devC12Row = C12Table.FindBy配置编号(tempSettingsNO);
                 if (devC12Row != null)
                 {
                     //气密定级标准值
@@ -2190,11 +2190,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建（拷贝DefaultSetting）
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row checkExistC13Row = C13Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row checkExistC13Row = C13Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC13Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row defDevC13Row = C13Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row newDevC13Row = C13Table.NewC13抗风压压力设定参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row defDevC13Row = C13Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row newDevC13Row = C13Table.NewC13抗风压压力设定参数Row();
                     newDevC13Row.ItemArray = (object[])defDevC13Row.ItemArray.Clone();
                     newDevC13Row.配置编号 = tempSettingsNO;
                     C13Table.AddC13抗风压压力设定参数Row(newDevC13Row);
@@ -2211,7 +2211,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row devC13Row = C13Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C13抗风压压力设定参数Row devC13Row = C13Table.FindBy配置编号(tempSettingsNO);
                 if (devC13Row != null)
                 {
                     //抗风压定级变形
@@ -2360,11 +2360,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建（拷贝DefaultSetting）
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数Row checkExistC14Row = C14Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数Row checkExistC14Row = C14Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC14Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数Row defDevC14Row = C14Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数Row newDevC14ow = C14Table.NewC14压力控制参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数Row defDevC14Row = C14Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数Row newDevC14ow = C14Table.NewC14压力控制参数Row();
                     newDevC14ow.ItemArray = (object[])defDevC14Row.ItemArray.Clone();
                     newDevC14ow.配置编号 = tempSettingsNO;
                     C14Table.AddC14压力控制参数Row(newDevC14ow);
@@ -2381,7 +2381,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C14压力控制参数Row devC14Row = C14Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C14压力控制参数Row devC14Row = C14Table.FindBy配置编号(tempSettingsNO);
                 if (devC14Row != null)
                 {
                     //控制允许偏差
@@ -2439,11 +2439,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建（拷贝DefaultSetting）
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数Row checkExistC15Row = C15Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数Row checkExistC15Row = C15Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC15Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数Row defDevC15Row = C15Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数Row newDevC15ow = C15Table.NewC15位移设定参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数Row defDevC15Row = C15Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数Row newDevC15ow = C15Table.NewC15位移设定参数Row();
                     newDevC15ow.ItemArray = (object[])defDevC15Row.ItemArray.Clone();
                     newDevC15ow.配置编号 = tempSettingsNO;
                     C15Table.AddC15位移设定参数Row(newDevC15ow);
@@ -2460,7 +2460,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C15位移设定参数Row devC15Row = C15Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数Row devC15Row = C15Table.FindBy配置编号(tempSettingsNO);
                 if (devC15Row != null)
                 {
                     DAL_Dev.WYJ_Ctl_X[0] = devC15Row.X轴第1级最小位移角;
@@ -2498,11 +2498,11 @@ namespace MQZHWL.DAL
             //若编号在表中不存在，则新建（拷贝DefaultSetting）
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数Row checkExistC16Row = C16Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数Row checkExistC16Row = C16Table.FindBy配置编号(tempSettingsNO);
                 if (checkExistC16Row == null)
                 {
-                    MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数Row defDevC16Row = C16Table.FindBy配置编号("DefaultSetting");
-                    MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数Row newDevC16ow = C16Table.NewC16位移控制参数Row();
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数Row defDevC16Row = C16Table.FindBy配置编号("DefaultSetting");
+                    MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数Row newDevC16ow = C16Table.NewC16位移控制参数Row();
                     newDevC16ow.ItemArray = (object[])defDevC16Row.ItemArray.Clone();
                     newDevC16ow.配置编号 = tempSettingsNO;
                     C16Table.AddC16位移控制参数Row(newDevC16ow);
@@ -2519,7 +2519,7 @@ namespace MQZHWL.DAL
 
             try
             {
-                MQZHWL.MQZH_DB_DevDataSet.C16位移控制参数Row devC16Row = C16Table.FindBy配置编号(tempSettingsNO);
+                MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数Row devC16Row = C16Table.FindBy配置编号(tempSettingsNO);
                 if (devC16Row != null)
                 {
                     DAL_Dev.CJBX_XYPeriod = devC16Row.CJBX_XYPeriod;

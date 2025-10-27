@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace MQZHWL.View.ExpViews
+namespace MQDFJ_MB.View.ExpViews
 {
     /// <summary>
     /// MQZH_ExpSettingView.xaml 的交互逻辑

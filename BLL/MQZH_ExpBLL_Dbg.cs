@@ -11,8 +11,8 @@
 using System;
 using GalaSoft.MvvmLight;
 using System.Linq;
-using static MQZHWL.Model.MQZH_Enums;
-using MQZHWL.Communication;
+using static MQDFJ_MB.Model.MQZH_Enums;
+using MQDFJ_MB.Communication;
 using CtrlMethod;
 using System.Windows;
 using NPOI.Util;
@@ -21,7 +21,7 @@ using System.Threading;
 using GalaSoft.MvvmLight.Messaging;
 using System.Diagnostics;
 
-namespace MQZHWL.BLL
+namespace MQDFJ_MB.BLL
 {
     /// <summary>
     /// 主控类

@@ -12,8 +12,8 @@
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using MQZHWL.Model.DEV;
-using MQZHWL.Model.Exp;
+using MQDFJ_MB.Model.DEV;
+using MQDFJ_MB.Model.Exp;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
@@ -21,7 +21,7 @@ using System.IO;
 using System.Threading;
 using System.Windows;
 
-namespace MQZHWL.DAL
+namespace MQDFJ_MB.DAL
 {
     /// <summary>
     /// 试验报告读写操作类

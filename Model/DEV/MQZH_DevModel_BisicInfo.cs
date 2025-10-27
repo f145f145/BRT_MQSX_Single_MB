@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2022  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model
+ * 命名空间：MQDFJ_MB.Model
  * 文件名：  MQZH_DevModel_BisicInfo
  * 版本号：  V1.0.0.0
  * 唯一标识：04728a36-efc8-44c5-8286-d42041618c58
@@ -19,7 +19,7 @@
 
 using GalaSoft.MvvmLight;
 
-namespace MQZHWL.Model.DEV
+namespace MQDFJ_MB.Model.DEV
 {
     public partial class MQZH_DevModel_Main : ObservableObject
     {

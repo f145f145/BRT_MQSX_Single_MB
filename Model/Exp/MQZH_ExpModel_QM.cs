@@ -1,7 +1,7 @@
 ﻿/************************************************************************************
  * Copyright (c) 2021  All Rights Reserved.
  * CLR版本： 4.0.30319.42000
- * 命名空间：MQZHWL.Model.Exp
+ * 命名空间：MQDFJ_MB.Model.Exp
  * 文件名：  MQZH_ExpModel_QM
  * 版本号：  V1.0.0.0
  * 唯一标识：2f3f96fb-6ae3-4bfc-b597-550152445590
@@ -21,10 +21,10 @@ using System;
 using GalaSoft.MvvmLight;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using static MQZHWL.Model.MQZH_Enums;
+using static MQDFJ_MB.Model.MQZH_Enums;
 using System.Windows;
 
-namespace MQZHWL.Model.Exp
+namespace MQDFJ_MB.Model.Exp
 {
     /// <summary>
     /// 幕墙四性气密试验Model类
