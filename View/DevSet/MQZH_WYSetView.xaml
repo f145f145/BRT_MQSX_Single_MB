@@ -1,0 +1,224 @@
+﻿<Window x:Class="MQZHWL.View.Others.MQZH_WYSetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MQZHWL.View.Others"
+ mc:Ignorable="d"
+        Title="幕墙四性—位移设定参数" Height="500" Width="1100"
+        WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+        Closing="Window_Closing" WindowState="Normal " ResizeMode ="CanMinimize"
+        DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
+
+    <Window.Resources>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button1">
+            <Border Margin ="10,5,10,5" Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="100" Height ="40">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--Label模板1，参数名-->
+        <Style x:Key="Label1" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+        </Style>
+        <!--Label模板2，提示信息-->
+        <Style x:Key="Label2" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Coral"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--TextBox模板1，参数信息-->
+        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        </Style>
+        <!--默认CheckBox样式-->
+        <Style TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Tag">
+                    <Setter.Value>
+                        <SolidColorBrush Color="Black"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <StackPanel Orientation="Horizontal">
+                                <Border x:Name="bd" BorderBrush="Black" 
+                                        BorderThickness="2" Margin="5,2">
+                                    <Path x:Name="cp" Width="15" Height="15"  
+                                          Stroke="Blue"  
+                                          StrokeThickness="3"/>
+                                </Border>
+                                <ContentPresenter/>
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="cp" Property="Data"  
+                                            Value="M 0,6 L 6,12 12,0"/>
+                                    <Setter TargetName="bd" 
+                                            Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="Blue"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background ="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" Grid.ColumnSpan ="3"  HorizontalAlignment=" stretch" Margin ="5">
+            <TabItem Header="检测位移设定" FontSize="15" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="X轴位移角" Grid.Row ="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto "/>
+                                <ColumnDefinition Width="Auto "/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="第1级最小位移角：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第2级最小位移角：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第3级最小位移角：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第4级最小位移角："  Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第5级最小位移角：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="0" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="1" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="2" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="4" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_X [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Y轴位移角" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto "/>
+                                <ColumnDefinition Width="Auto "/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="第1级最小位移角：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第2级最小位移角：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第3级最小位移角：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第4级最小位移角："  Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第5级最小位移角：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="0" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="1" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="2" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <Label Content="1/" Grid.Row="4" Grid.Column ="1" Style="{StaticResource Label1}"/>
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Z轴位移量" Grid.Row ="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto "/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="第1级最小位移量(mm)：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第2级最小位移量(mm)：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第3级最小位移量(mm)：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第4级最小位移量(mm)："  Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <Label Content="第5级最小位移量(mm)：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                            <TextBox Text="{Binding Dev.WY_Ctl_Z [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WY_Ctl_Z[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WY_Ctl_Z[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WY_Ctl_Z[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding Dev.WY_Ctl_Z[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="10" Grid.Row="1" Grid.Column ="2" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>
+        <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99"  Grid.Row="1" Grid.Column ="2" Template="{StaticResource Button1}" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True"/>
+        <Label Content="修改后请先保存再关闭窗口！" Margin ="10"  Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label2}"/>
+    </Grid>
+</Window>

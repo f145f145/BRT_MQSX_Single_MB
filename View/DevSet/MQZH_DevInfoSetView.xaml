@@ -1,0 +1,113 @@
+﻿<Window x:Class="MQZHWL.View.Others.MQZH_DevInfoSetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MQZHWL.View.Others"
+        mc:Ignorable="d"
+        Title="幕墙四性—装置基本信息设置" Height="600" Width="900"
+        MinWidth="600" MinHeight="500"
+        WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+        Closing="Window_Closing" WindowState="Normal " ResizeMode ="CanMinimize"
+        DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
+
+    <Window.Resources>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button1">
+            <Border Margin ="10,5,10,5" Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="100" Height ="40">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--Label模板1，参数名-->
+        <Style x:Key="Label1" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,5,5,5"/>
+        </Style>
+        <!--Label模板2，提示信息-->
+        <Style x:Key="Label2" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Coral"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--TextBox模板1，参数信息-->
+        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="400"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background ="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column ="0" Grid.ColumnSpan ="2" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="装置名称：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="装置型号：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="出厂编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="气密试验方法标准：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="水密试验方法标准：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="抗风压试验方法标准：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="层间位移变形试验方法标准：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding Dev.DeviceName, Mode=TwoWay}"  Grid.Row="0" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceTypeNO, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceSerialNO, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceQMStd, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceSMStd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceKFYStd, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DeviceCJBXStd, Mode=TwoWay}"  Grid.Row="6" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+            </Grid>
+        </Border>
+        <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="1" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>
+        <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99"  Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True"/>
+        <Label Content="修改后请先保存再关闭窗口！" Margin ="10"  Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label2}"/>
+    </Grid>
+</Window>

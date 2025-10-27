@@ -1,0 +1,180 @@
+﻿<Window
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:local="clr-namespace:MQZHWL.View.Others"
+ xmlns:MQZHWL="clr-namespace:MQZHWL" x:Class="MQZHWL.View.Others.MQZH_ComSetting"
+ xmlns:converterPath="clr-namespace:MQZHWL.UICtl.Converter"
+ mc:Ignorable="d"
+ Title="幕墙四性—通讯设置" Height="600" Width="750"
+ MinWidth="600" MinHeight="500" ResizeMode ="CanMinimize"
+ WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+ Closing="Window_Closing" WindowState="Normal "
+ DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
+
+    <Window.Resources>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button1">
+            <Border Margin ="10,5,10,5" Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
+   CornerRadius="3" Padding="5"
+   TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="100" Height ="40">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!--Label模板1，参数名-->
+        <Style x:Key="Label1" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,5,5,5"/>
+        </Style>
+        <!--Label模板2，提示信息-->
+        <Style x:Key="Label2" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Coral"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--TextBox模板1，试验信息-->
+        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        </Style>
+        <!--ComboBox模板1-->
+        <Style x:Key="ComboBox1" TargetType="{x:Type ComboBox}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,10,5"/>
+        </Style>
+        <!--值转换器-->
+        <converterPath:StrToParityConverter x:Key="ParityConverter"/>
+        <converterPath:StrToStopBitsConverter x:Key="StopBitsConverter"/>
+    </Window.Resources>
+
+    <Grid Background ="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="PLC主机通讯参数" Grid.Row ="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" BorderBrush="Black" FontSize="16">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="通讯端口：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="波特率：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="数据位：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="校验位：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="停止位：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="设备地址：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="参数读写周期(ms)：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="看门狗周期(ms)：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="通讯超时(ms)：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="忙时延迟(ms)：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <ComboBox ItemsSource="{Binding Dev.SerialPortNames}" SelectedItem ="{Binding Dev .DVPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.BaudRateList}" SelectedItem="{Binding Dev .DVPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.DataBitsList}" SelectedItem="{Binding Dev .DVPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.ParityList}" SelectedItem="{Binding Dev .DVPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.StopBitsList}" SelectedItem="{Binding Dev .DVPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <TextBox Text="{Binding Dev.DVPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DVPCom.PeriodRW, Mode=TwoWay}" IsEnabled="True" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DVPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="True" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DVPCom.Timeout, Mode=TwoWay}" IsEnabled="True" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.DVPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="True" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="三合一通讯参数" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" BorderBrush="Black" FontSize="16">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="通讯端口：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="波特率：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="数据位：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="校验位：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="停止位：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="设备地址：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="参数读写周期(ms)：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="看门狗周期(ms)：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="通讯超时(ms)：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="忙时延迟(ms)：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <ComboBox ItemsSource="{Binding Dev.SerialPortNames}" SelectedItem ="{Binding Dev .THPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.BaudRateList}" SelectedItem="{Binding Dev .THPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.DataBitsList}" SelectedItem="{Binding Dev .THPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.ParityList}" SelectedItem="{Binding Dev .THPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.StopBitsList}" SelectedItem="{Binding Dev .THPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <TextBox Text="{Binding Dev.THPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.THPCom.PeriodRW, Mode=TwoWay}" IsEnabled="False" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.THPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="False" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.THPCom.Timeout, Mode=TwoWay}" IsEnabled="False" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.THPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="False" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+            </Grid>
+        </GroupBox>
+
+        <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="4" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>
+        <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True"/>
+        <Label Content="此页内数据请勿擅自改动！" Margin ="10" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label2}"/>
+
+    </Grid>
+</Window>

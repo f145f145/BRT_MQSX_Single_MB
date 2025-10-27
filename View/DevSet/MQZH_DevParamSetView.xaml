@@ -1,0 +1,343 @@
+﻿<Window x:Class="MQZHWL.View.Others.MQZH_DevParamSetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MQZHWL.View.Others"
+        xmlns:vm="clr-namespace:MQZHWL.ViewModel"
+        xmlns:converterPath="clr-namespace:MQZHWL.UICtl.Converter"
+        mc:Ignorable="d"
+        Title="幕墙四性-装置基本参数配置" Height="1000" Width="1100"
+        WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+        Closing="Window_Closing" WindowState="Normal " ResizeMode ="CanMinimize"
+        DataContext ="{Binding Source ={StaticResource Locator},Path =Main_ViewModel}">
+
+    <Window.Resources>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button1">
+            <Border Margin ="10,5,10,5" Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="100" Height ="40">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--Label模板1，参数名-->
+        <Style x:Key="Label1" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Left "/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,5,5,5"/>
+        </Style>
+        <!--Label模板2，提示信息-->
+        <Style x:Key="Label2" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--TextBox模板1，参数信息-->
+        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        </Style>
+        <!--默认CheckBox样式-->
+        <Style TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Tag">
+                    <Setter.Value>
+                        <SolidColorBrush Color="Black"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <StackPanel Orientation="Horizontal">
+                                <Border x:Name="bd" BorderBrush="Black" 
+                                        BorderThickness="2" Margin="5,2">
+                                    <Path x:Name="cp" Width="15" Height="15"  
+                                          Stroke="Blue"  
+                                          StrokeThickness="3"/>
+                                </Border>
+                                <ContentPresenter/>
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="cp" Property="Data"  
+                                            Value="M 0,6 L 6,12 12,0"/>
+                                    <Setter TargetName="bd" 
+                                            Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="Blue"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+        <!--ComboBox模板1-->
+        <Style x:Key="ComboBox1" TargetType="{x:Type ComboBox}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,10,5"/>
+        </Style>
+
+
+        <converterPath:BoolToVisibilityConverter x:Key="BVConverter"/>
+    </Window.Resources>
+
+    <Grid Background ="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column ="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Background="LawnGreen">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="位移尺数量：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
+                <Label Content="X轴位移尺编号：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Y轴左位移尺编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Y轴中位移尺编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Y轴右位移尺编号：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Z轴左位移尺编号：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Z轴中位移尺编号：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="Z轴右位移尺编号：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYQtyList}" SelectedItem ="{Binding Dev .WYQty, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[1], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[2], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[3], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[4], Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[5], Mode=TwoWay}" Grid.Row="6" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[6], Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column ="0" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="绘图更新周期（ms）：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="单曲线总点数：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="是否使用三合一传感器：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="三合一传感器类型：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" />
+                <Label Content="有中等量程差压传感器：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="有加电子水流量计：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding Dev.PlotPeriod , Mode=TwoWay}" ToolTip ="纯数字，默认100"   Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.PointsPerLine , Mode=TwoWay}" ToolTip ="纯数字，默认10000"   Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <CheckBox Content="使用" IsChecked ="{Binding Dev.IsUseTHP,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <ComboBox ItemsSource="{Binding Dev.THPTypeList}" SelectedItem ="{Binding Dev .THPType, Mode=TwoWay}" IsEnabled ="{Binding Dev.IsUseTHP}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" Style="{StaticResource ComboBox1}"/>
+                <CheckBox Content="有" IsChecked ="{Binding Dev.IsWithCYM,Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
+                <CheckBox Content="有" IsChecked ="{Binding Dev.IsWithSLL,Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <Label Content="抗风压位移取反：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <CheckBox Content="取反" IsChecked ="{Binding Dev.IsWYKFYF,Mode =TwoWay}" Grid.Row="6" Grid.Column="1" />
+
+                <Label Content="波动低压准备频率：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding Dev.PhBDZB , Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+
+                <Label Content="层间变形类别：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <ComboBox ItemsSource="{Binding Dev.CJBXTypeList}" SelectedIndex ="{Binding Dev.CJBXType, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Width="220" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ComboBox1}"/>
+
+                <Label Content="外框高度：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="X轴液压轴到外框顶轴的高度"/>
+                <Label Content="外框宽度：" Grid.Row="10" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="外框两侧立柱的中心距"/>
+                <TextBox Text="{Binding Dev.H_HDK , Mode=TwoWay}" ToolTip ="X轴液压轴到外框顶轴的高度"   Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding Dev.W_HDK , Mode=TwoWay}" ToolTip ="外框两侧立柱的中心距"   Grid.Row="10" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column ="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Background="DarkSeaGreen">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="是否载入上次试验：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="显示PID控制输出数据：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <CheckBox Content="启动时载入上次试验" IsChecked ="{Binding Dev.IsLoadLastExpPowerOn,Mode =TwoWay}" ToolTip ="软件启动时自动载入上次退出前的试验，否则载入默认试验"  Grid.Row="0" Grid.Column="1" />
+                <CheckBox Content="显示" IsChecked ="{Binding Dev.IsPIDInfoShow,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+
+                <Label Content="允许修改数据：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <CheckBox Content="允许修改" IsChecked ="{Binding Dev.PermitChangeData,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column ="1" BorderBrush="Black" Background="LightSkyBlue" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="有测速风管1：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="风管管径（内径，mm）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+
+                <CheckBox Content="有测速风管1" IsChecked ="{Binding Dev.WithCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.GJ_FG1 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.DFNo_FG1, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.FSNo_FG1, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column ="1" BorderBrush="Black" Background="LightSkyBlue" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="有测速风管2：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="风管管径（内径，mm）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+
+                <CheckBox Content="有测速风管2" IsChecked ="{Binding Dev.WithCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.GJ_FG2 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.DFNo_FG2, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.FSNo_FG2, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column ="1" BorderBrush="Black" Background="LightSkyBlue" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="有测速风管3：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="风管管径（内径，mm）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+
+                <CheckBox Content="有测速风管3" IsChecked ="{Binding Dev.WithCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.GJ_FG3 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.DFNo_FG3, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding Dev.FSNo_FG3, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="测速风管选择：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
+            <CheckBox Content="测速管1" IsChecked ="{Binding Dev.UseCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" Visibility="{Binding Dev.WithCSFG1 ,Converter={StaticResource BVConverter}}"/>
+            <CheckBox Content="测速管2" IsChecked ="{Binding Dev.UseCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="2" Visibility="{Binding Dev.WithCSFG2 ,Converter={StaticResource BVConverter}}"/>
+            <CheckBox Content="测速管3" IsChecked ="{Binding Dev.UseCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="3" Visibility="{Binding Dev.WithCSFG3 ,Converter={StaticResource BVConverter}}"/>
+        </Grid>
+
+        <StackPanel  Grid.Row="5" Grid.Column ="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label Content="管理员登录：" Style="{StaticResource Label1}"/>
+            <PasswordBox  Name="AdminPasswordBox" Width="200" Height="40"  Margin="5 0 5 0" FontSize="20" PasswordChar="*" Background="White" Foreground="Blue"
+                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  vm:LoginPasswordBoxHelper.IsPasswordBindingEnable="True"
+                  vm:LoginPasswordBoxHelper.Password="{Binding Dev.PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  KeyDown="AdminPasswordBox_OnKeyDown"/>
+            <Button Content="管理员登录" Command="{Binding DevSetCommand}" CommandParameter="8888" Template="{StaticResource Button1}" HorizontalAlignment="Left" Width="120" Margin="5 0 5 0" Foreground="Blue"/>
+            <Button Content="退出登录" Command="{Binding DevSetCommand}" CommandParameter="8889" Template="{StaticResource Button1}" HorizontalAlignment="Right" Width="120" Margin="5 0 5 0" Foreground="Blue"/>
+
+            <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="2" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True" Margin="150 0 0 0"/>
+            <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99"  Template="{StaticResource Button1}" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True" Margin="50 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</Window>

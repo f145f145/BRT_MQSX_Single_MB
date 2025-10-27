@@ -1,0 +1,107 @@
+﻿<Window x:Class="MQZHWL.View.DebugPlot.MQZH_SDSMPlotView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MQZHWL.View.DebugPlot"
+        mc:Ignorable="d"
+        Title="手动水密调试曲线" 
+        Width="800" Height="600"
+        WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+        Closing="Window_Closing"
+        xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main_ViewModel}">
+
+    <Window.Resources>
+        <!--紧急按钮模板-->
+        <ControlTemplate TargetType="Button" x:Key="EmergencyStpButton">
+            <Border Background="Yellow" Name="back" BorderBrush="Red" BorderThickness="1"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Red" TextBlock.FontSize="15" TextBlock.FontWeight="Bold">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="Aqua"/>
+                    <Setter Property="TextElement.Foreground" TargetName="back" Value="Red"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="BlueViolet"/>
+                    <Setter Property="TextElement.Foreground" TargetName="back" Value="White"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="Button" x:Key="NormalButton">
+            <Border Background="LightGray" Name="back" BorderBrush="Black" BorderThickness="0.5"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Black" TextBlock.FontSize="15" TextBlock.FontWeight="Bold">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="gray"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--Label模板1，状态信息-->
+        <Style x:Key="Label1" TargetType="Label">
+            <!--<Setter Property="Height" Value="30"/>-->
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <!--圆圈模版1，绿色-->
+        <Style x:Key="Ellipse1" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="Chartreuse"/>
+        </Style>
+        <!--圆圈模版2，灰色-->
+        <Style x:Key="Ellipse2" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="DarkGray"/>
+        </Style>
+        <!--圆圈模版3，黄色-->
+        <Style x:Key="Ellipse3" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="DarkOrange"/>
+        </Style>
+        <!--圆圈模版4，红色-->
+        <Style x:Key="Ellipse4" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="Red"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <d3:ChartPlotter x:Name="MQWL_ChartPlotter"  Margin="5,5,5,5" >
+            <d3:VerticalAxisTitle x:Name="AxisY_Default_Title" Content="检测值" />
+            <d3:HorizontalAxisTitle x:Name="AxisX_Title" Content="时间"/>
+            <d3:AxisGrid Visibility ="Visible "></d3:AxisGrid>
+            <d3:Header Content="水密/抗风压压力PID调试曲线"/>
+            <!--添加气压曲线-->
+            <d3:LineGraph Name="LineSMDbg01" StrokeThickness="0.6" DataSource="{Binding PlotLines[1].LineDataSource}" Stroke ="Red"></d3:LineGraph>
+            <d3:LineGraph Name="LineSMDbg02" StrokeThickness="0.6" DataSource="{Binding PlotLines[2].LineDataSource}" Stroke ="DarkGreen"></d3:LineGraph>
+            <d3:LineGraph Name="LineSMDbg03" StrokeThickness="0.6" DataSource="{Binding PlotLines[23].LineDataSource}" Stroke ="Blue"></d3:LineGraph>
+            <d3:CursorCoordinateGraph  Name="Cross" AutoHide="True" />
+        </d3:ChartPlotter>
+    </Grid>
+</Window>
