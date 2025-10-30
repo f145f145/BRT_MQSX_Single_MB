@@ -294,49 +294,49 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="风量1：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0" Visibility="{Binding Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="风量2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility="{Binding Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="风量3：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0" Visibility="{Binding Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="风量1：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0" Visibility="{Binding PublicData.Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="风量2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility="{Binding PublicData.Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="风量3：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0" Visibility="{Binding PublicData.Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
                     <Label Content="压力小：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="0"/>
-                    <Label Content="压力中：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="0" Visibility="{Binding Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="压力中：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="0" Visibility="{Binding PublicData.Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
                     <Label Content="压力大：" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="0"/>
                     <Label Content="风机频率：" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="0"/>
-                    <Label Content="{Binding Dev.FL1,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1" Visibility="{Binding Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.FL2,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility="{Binding Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.FL3,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1" Visibility="{Binding Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.AIList[12].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="3" Grid.Column ="1"/>
-                    <Label Content="{Binding Dev.AIList[13].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="1" Visibility="{Binding Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.AIList[14].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="5" Grid.Column ="1"/>
-                    <Label Content="{Binding Dev.AIList[22].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="6" Grid.Column ="1"/>
-                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="2" Visibility="{Binding Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility="{Binding Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
-                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="2" Visibility="{Binding Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.FL1,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1" Visibility="{Binding PublicData.Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.FL2,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility="{Binding PublicData.Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.FL3,Mode=OneWay}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1" Visibility="{Binding PublicData.Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[12].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="3" Grid.Column ="1"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[13].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="1" Visibility="{Binding PublicData.Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[14].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="5" Grid.Column ="1"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="6" Grid.Column ="1"/>
+                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="2" Visibility="{Binding PublicData.Dev.UseCSFG1 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility="{Binding PublicData.Dev.UseCSFG2 ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="2" Visibility="{Binding PublicData.Dev.UseCSFG3 ,Converter={StaticResource BVConverter}}"/>
                     <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="3" Grid.Column ="2"/>
-                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="4" Grid.Column ="2" Visibility="{Binding Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
+                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="4" Grid.Column ="2" Visibility="{Binding PublicData.Dev.IsWithCYM ,Converter={StaticResource BVConverter}}"/>
                     <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="5" Grid.Column ="2"/>
                     <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="6" Grid.Column ="2"/>
 
-                    <Label Content="{Binding Dev.DIList[0].WZ}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[0].WZ}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
 
                     <Label Content="主管蝶阀1：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="3" />
                     <Label Content="粗管蝶阀2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="3" />
                     <Label Content="细管蝶阀3：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="3" />
                     <Label Content="加粗管蝶阀4：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="3" />
-                    <Ellipse Fill="{Binding Dev.DIList[0].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[1].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[2].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[3].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
-                    <Label Content="{Binding Dev.DIList[0].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[1].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[2].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[3].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="5"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[0].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[1].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[2].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[3].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[0].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[1].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[2].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[3].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="5"/>
 
                     <Label Content="蝶 阀 选 择 ：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="3"/>
                     <Label Content="风速管选择：" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="3"/>
                     <Label Content="风速传感器：" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="3"/>
-                    <Label Content="{Binding Dev.DFUse}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.FSGUse}" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.FSYUse}" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DFUse}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.FSGUse}" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.FSYUse}" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="5"/>
 
                     <Label Content="KM1：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="6" />
                     <Label Content="风机变频器：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="6" />
@@ -344,21 +344,21 @@
                     <Label Content="风阀模式：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="6"/>
                     <Label Content="风阀正压：" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="6" />
                     <Label Content="风阀负压：" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="6" />
-                    <Ellipse Fill="{Binding Dev.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="7"/>
-                    <Ellipse Fill="{Binding Dev.DIList[8].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
-                    <Ellipse Fill="{Binding Dev.DIList[7].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
-                    <Ellipse Fill="{Binding Dev.Valve.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="7"/>
-                    <Ellipse Fill="{Binding Dev.Valve.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
-                    <Label Content="{Binding Dev.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.DIList[8].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.DIList[7].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.Valve.FFMode,Mode=OneWay, Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.Valve.DIList[6].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="8"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="7"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[8].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[7].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="7"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[8].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[7].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.FFMode,Mode=OneWay, Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.DIList[6].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="8"/>
 
                     <Label Content="差压电磁阀：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="6" />
-                    <Ellipse Fill="{Binding Dev.DIList[4].IsOn ,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
-                    <Label Content="{Binding Dev.DIList[4].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="8"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[4].IsOn ,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[4].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="8"/>
 
                     <Button Grid.Row="4" Grid.Column="7" Height="40" Width="40" Padding="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                             BorderBrush="{x:Null}"  ToolTip ="阀门详细状态" Click="FFStatusButtonClick">
@@ -406,8 +406,8 @@
             </TabControl>
 
             <!--左屏底端，提醒、警告信息栏-->
-            <Label Content="{Binding Dev.PIDInfo}"  FontSize="18" FontWeight="Bold" Foreground="#FFFF7400"
-                   Grid.Row="3" Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding Dev.IsPIDInfoShow ,Converter={StaticResource BVConverter}}"/>
+            <Label Content="{Binding PublicData.Dev.PIDInfo}"  FontSize="18" FontWeight="Bold" Foreground="#FFFF7400"
+                   Grid.Row="3" Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding PublicData.Dev.IsPIDInfoShow ,Converter={StaticResource BVConverter}}"/>
         </Grid>
 
         <!--=========================================左右屏纵向分割线==========================================================-->
@@ -436,17 +436,17 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top">
                         <Label Content="试验编号" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.ExpSettingParam.ExpNO,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="检测模式" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_QM.IsGC,Mode=OneWay, Converter={StaticResource ExpTypeConverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_QM.IsGC,Mode=OneWay, Converter={StaticResource ExpTypeConverter}}" Style="{StaticResource Label4}"/>
                         <Label Content="当前项目" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_QM.Stage_DQ.Stage_Name,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_QM.Stage_DQ.Stage_Name,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="管路/蝶阀选择" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding Dev.DFUse,Mode=OneWay, Converter={StaticResource BCXGonverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.Dev.DFUse,Mode=OneWay, Converter={StaticResource BCXGonverter}}" Style="{StaticResource Label4}"/>
                         <Label Content="当前步骤" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_QM.Step_DQ.StepName,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_QM.Step_DQ.StepName,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="设备状态" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding Dev.DeviceRunMode,Mode=OneWay, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.Dev.DeviceRunMode,Mode=OneWay, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label4}"/>
                     </StackPanel>
                     <Button Content="紧急停机" Command="{Binding QMCommand}" CommandParameter="119" Template="{StaticResource EmStpButton}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
@@ -455,8 +455,8 @@
             <!--试验阶段状态及选择-->
             <Border Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="stretch" VerticalAlignment="stretch" CornerRadius="5" Background="LightGray">
                 <TabControl HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="0" >
-                    <TabItem Header="【气密定级检测】" FontSize="15" Padding="5" Visibility ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}">
-                        <Grid Background="LightGray" Visibility ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}">
+                    <TabItem Header="【气密定级检测】" FontSize="15" Padding="5" Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}">
+                        <Grid Background="LightGray" Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="*"/>
@@ -480,42 +480,42 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="步骤选择" Grid.Row="0" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             <Label Content="完成&#x000A;情况" Grid.Row="0" Grid.Column="1" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin ="0"/>
-                            <CheckBox Content="正压附加渗透 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[0],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="1" Grid.Column="0" />
-                            <CheckBox Content="正压附加渗透 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[1],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="2" Grid.Column="0"/>
-                            <CheckBox Content="负压附加渗透 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[2],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="3" Grid.Column="0" />
-                            <CheckBox Content="负压附加渗透 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[3],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="4" Grid.Column="0"/>
-                            <CheckBox Content="正压附加+固定 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[4],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="0"/>
-                            <CheckBox Content="正压附加+固定 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[5],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="0"/>
-                            <CheckBox Content="负压附加+固定 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[6],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="0" />
-                            <CheckBox Content="负压附加+固定 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[7],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="0"/>
-                            <CheckBox Content="正压总渗透量 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[8],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="9" Grid.Column="0"/>
-                            <CheckBox Content="正压总渗透量 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[9],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="10" Grid.Column="0"/>
-                            <CheckBox Content="负压总渗透量 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[10],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="11" Grid.Column="0" />
-                            <CheckBox Content="负压总渗透量 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedDJ[11],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="12" Grid.Column="0"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[0].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[1].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[2].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[3].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[4].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[5].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[6].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[7].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[8].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="9" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[9].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="10" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[10].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM. StageList_QMDJ[11].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="12" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <CheckBox Content="正压附加渗透 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[0],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="1" Grid.Column="0" />
+                            <CheckBox Content="正压附加渗透 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[1],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="2" Grid.Column="0"/>
+                            <CheckBox Content="负压附加渗透 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[2],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="3" Grid.Column="0" />
+                            <CheckBox Content="负压附加渗透 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[3],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="4" Grid.Column="0"/>
+                            <CheckBox Content="正压附加+固定 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[4],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="0"/>
+                            <CheckBox Content="正压附加+固定 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[5],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="0"/>
+                            <CheckBox Content="负压附加+固定 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[6],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="0" />
+                            <CheckBox Content="负压附加+固定 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[7],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="0"/>
+                            <CheckBox Content="正压总渗透量 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[8],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="9" Grid.Column="0"/>
+                            <CheckBox Content="正压总渗透量 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[9],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="10" Grid.Column="0"/>
+                            <CheckBox Content="负压总渗透量 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[10],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="11" Grid.Column="0" />
+                            <CheckBox Content="负压总渗透量 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedDJ[11],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked}" Grid.Row="12" Grid.Column="0"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[0].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[1].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[2].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[3].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[4].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[5].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[6].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[7].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[8].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="9" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[9].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="10" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[10].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM. StageList_QMDJ[11].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="12" Grid.Column="1" Style="{StaticResource Label5}"/>
                             <!--开始、终止测试控制按钮栏-->
                             <Button Content="开始测试" Command="{Binding QMCommand}" CommandParameter="1101" Template="{StaticResource Button1}" 
                                     Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin ="5,5,5,0" 
-                                    Visibility ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}"/>
+                                    Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}"/>
                             <Button Content="停止测试" Command="{Binding QMCommand}" CommandParameter="1201" Template="{StaticResource Button1}" 
                                     Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin ="5,5,20,0"  
-                                    Visibility ="{Binding ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}" />
+                                    Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsDJcanbeChecked, Converter={StaticResource BVConverter}}" />
                         </Grid>
                     </TabItem>
 
-                    <TabItem Header="【气密工程检测】" FontSize="15" Padding="5" Visibility ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked, Converter={StaticResource BVConverter}}">
-                        <Grid Background="LightGray" Visibility ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked, Converter={StaticResource BVConverter}}">
+                    <TabItem Header="【气密工程检测】" FontSize="15" Padding="5" Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked, Converter={StaticResource BVConverter}}">
+                        <Grid Background="LightGray" Visibility ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked, Converter={StaticResource BVConverter}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="70"/>
                                 <RowDefinition Height="*"/>
@@ -539,33 +539,33 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="步骤选择" Grid.Row="0" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             <Label Content="完成&#x000A;情况" Grid.Row="0" Grid.Column="1" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin ="0"/>
-                            <CheckBox Content="正压附加渗透 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[0],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="1" Grid.Column="0" />
-                            <CheckBox Content="正压附加渗透 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[1],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="2" Grid.Column="0"/>
-                            <CheckBox Content="负压附加渗透 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[2],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="3" Grid.Column="0" />
-                            <CheckBox Content="负压附加渗透 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[3],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="4" Grid.Column="0"/>
-                            <CheckBox Content="正压附加+固定 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[4],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="0"/>
-                            <CheckBox Content="正压附加+固定 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[5],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="0"/>
-                            <CheckBox Content="负压附加+固定 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[6],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="0" />
-                            <CheckBox Content="负压附加+固定 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[7],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="0"/>
-                            <CheckBox Content="正压总渗透量 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[8],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="9" Grid.Column="0"/>
-                            <CheckBox Content="正压总渗透量 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[9],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="10" Grid.Column="0"/>
-                            <CheckBox Content="负压总渗透量 预备加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[10],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="11" Grid.Column="0" />
-                            <CheckBox Content="负压总渗透量 检测加压" IsChecked ="{Binding ExpDQ.Exp_QM.BeenCheckedGC[11],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="12" Grid.Column="0"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[0].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[1].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[2].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[3].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[4].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[5].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[6].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[7].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[8].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="9" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[9].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="10" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[10].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_QM.StageList_QMGC[11].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="12" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <CheckBox Content="正压附加渗透 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[0],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="1" Grid.Column="0" />
+                            <CheckBox Content="正压附加渗透 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[1],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="2" Grid.Column="0"/>
+                            <CheckBox Content="负压附加渗透 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[2],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="3" Grid.Column="0" />
+                            <CheckBox Content="负压附加渗透 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[3],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="4" Grid.Column="0"/>
+                            <CheckBox Content="正压附加+固定 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[4],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="0"/>
+                            <CheckBox Content="正压附加+固定 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[5],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="0"/>
+                            <CheckBox Content="负压附加+固定 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[6],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="0" />
+                            <CheckBox Content="负压附加+固定 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[7],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="0"/>
+                            <CheckBox Content="正压总渗透量 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[8],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="9" Grid.Column="0"/>
+                            <CheckBox Content="正压总渗透量 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[9],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="10" Grid.Column="0"/>
+                            <CheckBox Content="负压总渗透量 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[10],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="11" Grid.Column="0" />
+                            <CheckBox Content="负压总渗透量 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.BeenCheckedGC[11],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Grid.Row="12" Grid.Column="0"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[0].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[1].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[2].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[3].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[4].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[5].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[6].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="7" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[7].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}" Grid.Row="8" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[8].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="9" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[9].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="10" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[10].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_QM.StageList_QMGC[11].CompleteStatus ,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="12" Grid.Column="1" Style="{StaticResource Label5}"/>
                             <!--开始、终止测试控制按钮栏-->
-                            <Button Content="开始测试" Command="{Binding QMCommand}" CommandParameter="1111"  IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin ="5,5,5,0"/>
-                            <Button Content="停止测试" Command="{Binding QMCommand}" CommandParameter="1211"  IsEnabled ="{Binding ExpDQ.Exp_QM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin ="5,5,20,0"/>
+                            <Button Content="开始测试" Command="{Binding QMCommand}" CommandParameter="1111"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin ="5,5,5,0"/>
+                            <Button Content="停止测试" Command="{Binding QMCommand}" CommandParameter="1211"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin ="5,5,20,0"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

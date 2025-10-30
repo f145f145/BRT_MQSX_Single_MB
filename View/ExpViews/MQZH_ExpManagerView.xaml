@@ -156,7 +156,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="当前试验：" Grid.Row="0"  Grid.Column="0" Style="{StaticResource Label1}" ToolTip="当前正在进行的检测试验"/>
-                <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpNO}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" Foreground="Black" IsReadOnly="True" VerticalAlignment ="Bottom" ToolTip="当前正在进行的检测试验" Background="LightGray"/>
+                <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" Foreground="Black" IsReadOnly="True" VerticalAlignment ="Bottom" ToolTip="当前正在进行的检测试验" Background="LightGray"/>
                 <Button Content="关闭当前试验" Command="{Binding ExpManCommand}" CommandParameter="5" Grid.Row="1"  Grid.Column ="1" Height="45" Width="150" ToolTip="关闭当前试验后载入默认试验DefaultExp" FontSize="16" FontWeight="Bold"/>
             </Grid>
         </Border>

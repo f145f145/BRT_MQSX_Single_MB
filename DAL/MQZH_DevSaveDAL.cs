@@ -102,14 +102,14 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C01装置基本信息Row devC01Row = C01Table.FindBy配置编号(tempSettingsNO);
                 if (devC01Row != null)
                 {
-                    devC01Row.装置ID = DAL_Dev.DeviceID;
-                    devC01Row.装置名称 = DAL_Dev.DeviceName;
-                    devC01Row.出厂编号 = DAL_Dev.DeviceSerialNO;
-                    devC01Row.设备型号 = DAL_Dev.DeviceTypeNO;
-                    devC01Row.抗风压试验方法标准 = DAL_Dev.DeviceKFYStd;
-                    devC01Row.气密试验方法标准 = DAL_Dev.DeviceQMStd;
-                    devC01Row.水密试验方法标准 = DAL_Dev.DeviceSMStd;
-                    devC01Row.层间变形试验方法标准 = DAL_Dev.DeviceCJBXStd;
+                    devC01Row.装置ID = PublicData.Dev.DeviceID;
+                    devC01Row.装置名称 = PublicData.Dev.DeviceName;
+                    devC01Row.出厂编号 = PublicData.Dev.DeviceSerialNO;
+                    devC01Row.设备型号 = PublicData.Dev.DeviceTypeNO;
+                    devC01Row.抗风压试验方法标准 = PublicData.Dev.DeviceKFYStd;
+                    devC01Row.气密试验方法标准 = PublicData.Dev.DeviceQMStd;
+                    devC01Row.水密试验方法标准 = PublicData.Dev.DeviceSMStd;
+                    devC01Row.层间变形试验方法标准 = PublicData.Dev.DeviceCJBXStd;
 
                     C01TableAdapter.Update(C01Table);
                     C01Table.AcceptChanges();
@@ -156,46 +156,46 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C02装置基本参数Row devC02Row = C02Table.FindBy配置编号(tempSettingsNO);
                 if (devC02Row != null)
                 {
-                    devC02Row.绘图更新周期 = DAL_Dev.PlotPeriod;
-                    devC02Row.单曲线总点数 = DAL_Dev.PointsPerLine;
-                    devC02Row.UseCSFG1 = DAL_Dev.UseCSFG1;
-                    devC02Row.WithCSFG1 = DAL_Dev.WithCSFG1;
-                    devC02Row.GJ_FG1 = DAL_Dev.GJ_FG1;
-                    devC02Row.DFNo_FG1 = DAL_Dev.DFNo_FG1;
-                    devC02Row.FSNo_FG1 = DAL_Dev.FSNo_FG1;
-                    devC02Row.UseCSFG2 = DAL_Dev.UseCSFG2;
-                    devC02Row.WithCSFG2 = DAL_Dev.WithCSFG2;
-                    devC02Row.GJ_FG2 = DAL_Dev.GJ_FG2;
-                    devC02Row.DFNo_FG2 = DAL_Dev.DFNo_FG2;
-                    devC02Row.FSNo_FG2 = DAL_Dev.FSNo_FG2;
-                    devC02Row.UseCSFG3 = DAL_Dev.UseCSFG3;
-                    devC02Row.WithCSFG3 = DAL_Dev.WithCSFG3;
-                    devC02Row.GJ_FG3 = DAL_Dev.GJ_FG3;
-                    devC02Row.DFNo_FG3 = DAL_Dev.DFNo_FG3;
-                    devC02Row.FSNo_FG3 = DAL_Dev.FSNo_FG3;
-                    devC02Row.水管管径 = DAL_Dev.GJ_SG;
-                    devC02Row.活动框高度 = DAL_Dev.H_HDK;
-                    devC02Row.活动框宽度 = DAL_Dev.W_HDK;
-                    devC02Row.是否使用三合一 = DAL_Dev.IsUseTHP;
-                    devC02Row.THPType = DAL_Dev.THPType;
-                    devC02Row.有电子流量计 = DAL_Dev.IsWithSLL;
-                    devC02Row.有中压差传感器 = DAL_Dev.IsWithCYM;
-                    devC02Row.位移尺数量 = DAL_Dev.WYQty;
-                    devC02Row.X轴位移尺编号 = DAL_Dev.WYNOList[0];
-                    devC02Row.Y轴位移尺编号左 = DAL_Dev.WYNOList[1];
-                    devC02Row.Y轴位移尺编号中 = DAL_Dev.WYNOList[2];
-                    devC02Row.Y轴位移尺编号右 = DAL_Dev.WYNOList[3];
-                    devC02Row.Z轴位移尺编号左 = DAL_Dev.WYNOList[4];
-                    devC02Row.Z轴位移尺编号中 = DAL_Dev.WYNOList[5];
-                    devC02Row.Z轴位移尺编号右 = DAL_Dev.WYNOList[6];
+                    devC02Row.绘图更新周期 = PublicData.Dev.PlotPeriod;
+                    devC02Row.单曲线总点数 = PublicData.Dev.PointsPerLine;
+                    devC02Row.UseCSFG1 = PublicData.Dev.UseCSFG1;
+                    devC02Row.WithCSFG1 = PublicData.Dev.WithCSFG1;
+                    devC02Row.GJ_FG1 = PublicData.Dev.GJ_FG1;
+                    devC02Row.DFNo_FG1 = PublicData.Dev.DFNo_FG1;
+                    devC02Row.FSNo_FG1 = PublicData.Dev.FSNo_FG1;
+                    devC02Row.UseCSFG2 = PublicData.Dev.UseCSFG2;
+                    devC02Row.WithCSFG2 = PublicData.Dev.WithCSFG2;
+                    devC02Row.GJ_FG2 = PublicData.Dev.GJ_FG2;
+                    devC02Row.DFNo_FG2 = PublicData.Dev.DFNo_FG2;
+                    devC02Row.FSNo_FG2 = PublicData.Dev.FSNo_FG2;
+                    devC02Row.UseCSFG3 = PublicData.Dev.UseCSFG3;
+                    devC02Row.WithCSFG3 = PublicData.Dev.WithCSFG3;
+                    devC02Row.GJ_FG3 = PublicData.Dev.GJ_FG3;
+                    devC02Row.DFNo_FG3 = PublicData.Dev.DFNo_FG3;
+                    devC02Row.FSNo_FG3 = PublicData.Dev.FSNo_FG3;
+                    devC02Row.水管管径 = PublicData.Dev.GJ_SG;
+                    devC02Row.活动框高度 = PublicData.Dev.H_HDK;
+                    devC02Row.活动框宽度 = PublicData.Dev.W_HDK;
+                    devC02Row.是否使用三合一 = PublicData.Dev.IsUseTHP;
+                    devC02Row.THPType = PublicData.Dev.THPType;
+                    devC02Row.有电子流量计 = PublicData.Dev.IsWithSLL;
+                    devC02Row.有中压差传感器 = PublicData.Dev.IsWithCYM;
+                    devC02Row.位移尺数量 = PublicData.Dev.WYQty;
+                    devC02Row.X轴位移尺编号 = PublicData.Dev.WYNOList[0];
+                    devC02Row.Y轴位移尺编号左 = PublicData.Dev.WYNOList[1];
+                    devC02Row.Y轴位移尺编号中 = PublicData.Dev.WYNOList[2];
+                    devC02Row.Y轴位移尺编号右 = PublicData.Dev.WYNOList[3];
+                    devC02Row.Z轴位移尺编号左 = PublicData.Dev.WYNOList[4];
+                    devC02Row.Z轴位移尺编号中 = PublicData.Dev.WYNOList[5];
+                    devC02Row.Z轴位移尺编号右 = PublicData.Dev.WYNOList[6];
 
-                    devC02Row.最后试验编号 = DAL_Dev.ExpNOLast;
-                    devC02Row.开机是否载入最后试验 = DAL_Dev.IsLoadLastExpPowerOn;
+                    devC02Row.最后试验编号 = PublicData.Dev.ExpNOLast;
+                    devC02Row.开机是否载入最后试验 = PublicData.Dev.IsLoadLastExpPowerOn;
 
-                    devC02Row.允许修改数据 = DAL_Dev.PermitChangeData;
-                    devC02Row.抗风压位移取反 = DAL_Dev.IsWYKFYF;
-                    devC02Row.波动低压准备频率 = DAL_Dev.PhBDZB;
-                    devC02Row.层间变形类别 = DAL_Dev.CJBXType;
+                    devC02Row.允许修改数据 = PublicData.Dev.PermitChangeData;
+                    devC02Row.抗风压位移取反 = PublicData.Dev.IsWYKFYF;
+                    devC02Row.波动低压准备频率 = PublicData.Dev.PhBDZB;
+                    devC02Row.层间变形类别 = PublicData.Dev.CJBXType;
 
                     C02TableAdapter.Update(C02Table);
                     C02Table.AcceptChanges();
@@ -242,14 +242,14 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C03公司信息Row devC03Row = C03Table.FindBy配置编号(tempSettingsNO);
                 if (devC03Row != null)
                 {
-                    devC03Row.公司简称 = DAL_Dev.MQZH_CompanyShortName;
-                    devC03Row.公司全称 = DAL_Dev.MQZH_CompanyName;
-                    devC03Row.公司地址 = DAL_Dev.MQZH_CompanyAddr;
-                    devC03Row.实验室地址 = DAL_Dev.MQZH_LabAddr;
-                    devC03Row.公司邮政编码 = DAL_Dev.MQZH_ComPostNO;
-                    devC03Row.实验室邮政编码 = DAL_Dev.MQZH_LabPostNO;
-                    devC03Row.公司电话 = DAL_Dev.MQZH_CompanyTel;
-                    devC03Row.实验室电话 = DAL_Dev.MQZH_LabTel;
+                    devC03Row.公司简称 = PublicData.Dev.MQZH_CompanyShortName;
+                    devC03Row.公司全称 = PublicData.Dev.MQZH_CompanyName;
+                    devC03Row.公司地址 = PublicData.Dev.MQZH_CompanyAddr;
+                    devC03Row.实验室地址 = PublicData.Dev.MQZH_LabAddr;
+                    devC03Row.公司邮政编码 = PublicData.Dev.MQZH_ComPostNO;
+                    devC03Row.实验室邮政编码 = PublicData.Dev.MQZH_LabPostNO;
+                    devC03Row.公司电话 = PublicData.Dev.MQZH_CompanyTel;
+                    devC03Row.实验室电话 = PublicData.Dev.MQZH_LabTel;
                     C03TableAdapter.Update(C03Table);
                     C03Table.AcceptChanges();
                 }
@@ -300,33 +300,33 @@ namespace MQDFJ_MB.DAL
                 MQZH_DB_DevDataSet.C04串口参数设置Row devC04dvpRow = C04Table.FindBy配置编号(tempC04RowName[0]);
                 if (devC04dvpRow != null)
                 {
-                    devC04dvpRow.PortNO = DAL_Dev.DVPCom.PhyPortNO;
-                    devC04dvpRow.BaudRate = DAL_Dev.DVPCom.BoundRate;
-                    devC04dvpRow.StartBits = DAL_Dev.DVPCom.StartBits;
-                    devC04dvpRow.DataBits = DAL_Dev.DVPCom.DataBits;
-                    devC04dvpRow.PlCAddr = DAL_Dev.DVPCom.Addr;
-                    devC04dvpRow.CommRW_Period = DAL_Dev.DVPCom.PeriodRW;
-                    devC04dvpRow.WatchDogReset_Period = DAL_Dev.DVPCom.WatchDogPeriod;
-                    devC04dvpRow.Timeout = DAL_Dev.DVPCom.Timeout;
-                    devC04dvpRow.Time_BusyDealy = DAL_Dev.DVPCom.Time_BusyDealy;
-                    devC04dvpRow.CMDRepeat = DAL_Dev.DVPCom.CMDRepeat;
+                    devC04dvpRow.PortNO = PublicData.Dev.DVPCom.PhyPortNO;
+                    devC04dvpRow.BaudRate = PublicData.Dev.DVPCom.BoundRate;
+                    devC04dvpRow.StartBits = PublicData.Dev.DVPCom.StartBits;
+                    devC04dvpRow.DataBits = PublicData.Dev.DVPCom.DataBits;
+                    devC04dvpRow.PlCAddr = PublicData.Dev.DVPCom.Addr;
+                    devC04dvpRow.CommRW_Period = PublicData.Dev.DVPCom.PeriodRW;
+                    devC04dvpRow.WatchDogReset_Period = PublicData.Dev.DVPCom.WatchDogPeriod;
+                    devC04dvpRow.Timeout = PublicData.Dev.DVPCom.Timeout;
+                    devC04dvpRow.Time_BusyDealy = PublicData.Dev.DVPCom.Time_BusyDealy;
+                    devC04dvpRow.CMDRepeat = PublicData.Dev.DVPCom.CMDRepeat;
                     //除2外，默认为停止位1
-                    if (DAL_Dev.DVPCom.StopBits == StopBits.One)
+                    if (PublicData.Dev.DVPCom.StopBits == StopBits.One)
                         devC04dvpRow.StopBits = 1;
-                    else if (DAL_Dev.DVPCom.StopBits == StopBits.Two)
+                    else if (PublicData.Dev.DVPCom.StopBits == StopBits.Two)
                         devC04dvpRow.StopBits = 2;
                     else
                         devC04dvpRow.StopBits = 1;
 
-                    if (DAL_Dev.DVPCom.Parity == Parity.None)
+                    if (PublicData.Dev.DVPCom.Parity == Parity.None)
                         devC04dvpRow.Parity = 0;
-                    else if (DAL_Dev.DVPCom.Parity == Parity.Odd)
+                    else if (PublicData.Dev.DVPCom.Parity == Parity.Odd)
                         devC04dvpRow.Parity = 1;
-                    else if (DAL_Dev.DVPCom.Parity == Parity.Even)
+                    else if (PublicData.Dev.DVPCom.Parity == Parity.Even)
                         devC04dvpRow.Parity = 2;
-                    else if (DAL_Dev.DVPCom.Parity == Parity.Mark)
+                    else if (PublicData.Dev.DVPCom.Parity == Parity.Mark)
                         devC04dvpRow.Parity = 10;
-                    else if (DAL_Dev.DVPCom.Parity == Parity.Space)
+                    else if (PublicData.Dev.DVPCom.Parity == Parity.Space)
                         devC04dvpRow.Parity = 20;
                     C04TableAdapter.Update(C04Table);
                     C04Table.AcceptChanges();
@@ -341,7 +341,7 @@ namespace MQDFJ_MB.DAL
             try
             {
                 MQZH_DB_DevDataSet.C04串口参数设置Row devC04thpRow;
-                switch (DAL_Dev.THPType)
+                switch (PublicData.Dev.THPType)
                 {
                     case 1:
                         devC04thpRow = C04Table.FindBy配置编号(tempC04RowName[1]);
@@ -362,37 +362,37 @@ namespace MQDFJ_MB.DAL
 
                 if (devC04thpRow != null)
                 {
-                    devC04thpRow.PortNO = DAL_Dev.THPCom.PhyPortNO;
-                    devC04thpRow.BaudRate = DAL_Dev.THPCom.BoundRate;
-                    devC04thpRow.StartBits = DAL_Dev.THPCom.StartBits;
-                    devC04thpRow.DataBits = DAL_Dev.THPCom.DataBits;
-                    devC04thpRow.PlCAddr = DAL_Dev.THPCom.Addr;
-                    devC04thpRow.CommRW_Period = DAL_Dev.THPCom.PeriodRW;
-                    devC04thpRow.WatchDogReset_Period = DAL_Dev.THPCom.WatchDogPeriod;
-                    devC04thpRow.Timeout = DAL_Dev.THPCom.Timeout;
-                    devC04thpRow.Time_BusyDealy = DAL_Dev.THPCom.Time_BusyDealy;
-                    devC04thpRow.CMDRepeat = DAL_Dev.THPCom.CMDRepeat;
+                    devC04thpRow.PortNO = PublicData.Dev.THPCom.PhyPortNO;
+                    devC04thpRow.BaudRate = PublicData.Dev.THPCom.BoundRate;
+                    devC04thpRow.StartBits = PublicData.Dev.THPCom.StartBits;
+                    devC04thpRow.DataBits = PublicData.Dev.THPCom.DataBits;
+                    devC04thpRow.PlCAddr = PublicData.Dev.THPCom.Addr;
+                    devC04thpRow.CommRW_Period = PublicData.Dev.THPCom.PeriodRW;
+                    devC04thpRow.WatchDogReset_Period = PublicData.Dev.THPCom.WatchDogPeriod;
+                    devC04thpRow.Timeout = PublicData.Dev.THPCom.Timeout;
+                    devC04thpRow.Time_BusyDealy = PublicData.Dev.THPCom.Time_BusyDealy;
+                    devC04thpRow.CMDRepeat = PublicData.Dev.THPCom.CMDRepeat;
 
-                    if (DAL_Dev.THPCom.StopBits == StopBits.None)
+                    if (PublicData.Dev.THPCom.StopBits == StopBits.None)
                         devC04thpRow.StopBits = 0;
-                    else if (DAL_Dev.THPCom.StopBits == StopBits.One)
+                    else if (PublicData.Dev.THPCom.StopBits == StopBits.One)
                         devC04thpRow.StopBits = 1;
-                    else if (DAL_Dev.THPCom.StopBits == StopBits.Two)
+                    else if (PublicData.Dev.THPCom.StopBits == StopBits.Two)
                         devC04thpRow.StopBits = 2;
-                    else if (DAL_Dev.THPCom.StopBits == StopBits.Two)
+                    else if (PublicData.Dev.THPCom.StopBits == StopBits.Two)
                         devC04thpRow.StopBits = 2;
-                    else if (DAL_Dev.THPCom.StopBits == StopBits.OnePointFive)
+                    else if (PublicData.Dev.THPCom.StopBits == StopBits.OnePointFive)
                         devC04thpRow.StopBits = 15;
 
-                    if (DAL_Dev.THPCom.Parity == Parity.None)
+                    if (PublicData.Dev.THPCom.Parity == Parity.None)
                         devC04thpRow.Parity = 0;
-                    else if (DAL_Dev.THPCom.Parity == Parity.Odd)
+                    else if (PublicData.Dev.THPCom.Parity == Parity.Odd)
                         devC04thpRow.Parity = 1;
-                    else if (DAL_Dev.THPCom.Parity == Parity.Even)
+                    else if (PublicData.Dev.THPCom.Parity == Parity.Even)
                         devC04thpRow.Parity = 2;
-                    else if (DAL_Dev.THPCom.Parity == Parity.Mark)
+                    else if (PublicData.Dev.THPCom.Parity == Parity.Mark)
                         devC04thpRow.Parity = 10;
-                    else if (DAL_Dev.THPCom.Parity == Parity.Space)
+                    else if (PublicData.Dev.THPCom.Parity == Parity.Space)
                         devC04thpRow.Parity = 20;
                     C04TableAdapter.Update(C04Table);
                     C04Table.AcceptChanges();
@@ -449,24 +449,24 @@ namespace MQDFJ_MB.DAL
                     if (devC05aiRow != null)
                     {
                         //基本参数
-                        devC05aiRow.SingalUnit = DAL_Dev.AIList[i].SingalUnit;
-                        devC05aiRow.IsOutType = DAL_Dev.AIList[i].IsOutType;
-                        devC05aiRow.InfType = DAL_Dev.AIList[i].InfType;
-                        devC05aiRow.ElecSig_Unit = DAL_Dev.AIList[i].ElecSig_Unit;
-                        devC05aiRow.ElecSig_LowerRange = DAL_Dev.AIList[i].ElecSigLowerRange;
-                        devC05aiRow.ElecSig_UpperRange = DAL_Dev.AIList[i].ElecSigUpperRange;
-                        devC05aiRow.SingalLowerRange = DAL_Dev.AIList[i].SingalLowerRange;
-                        devC05aiRow.SingalUpperRange = DAL_Dev.AIList[i].SingalUpperRange;
-                        devC05aiRow.ZeroCalValue = DAL_Dev.AIList[i].ZeroCalValue;
-                        devC05aiRow.KCalValue = DAL_Dev.AIList[i].KCalValue;
-                        devC05aiRow.ModulNO = DAL_Dev.AIList[i].ModulNO;
-                        if (DAL_Dev.AIList[i].ChannelSerialNO < 1)
-                            DAL_Dev.AIList[i].ChannelSerialNO = 1;
-                        devC05aiRow.ChannelSerialNO = DAL_Dev.AIList[i].ChannelSerialNO;
-                        devC05aiRow.ConvRatio = DAL_Dev.AIList[i].ConvRatio;
+                        devC05aiRow.SingalUnit = PublicData.Dev.AIList[i].SingalUnit;
+                        devC05aiRow.IsOutType = PublicData.Dev.AIList[i].IsOutType;
+                        devC05aiRow.InfType = PublicData.Dev.AIList[i].InfType;
+                        devC05aiRow.ElecSig_Unit = PublicData.Dev.AIList[i].ElecSig_Unit;
+                        devC05aiRow.ElecSig_LowerRange = PublicData.Dev.AIList[i].ElecSigLowerRange;
+                        devC05aiRow.ElecSig_UpperRange = PublicData.Dev.AIList[i].ElecSigUpperRange;
+                        devC05aiRow.SingalLowerRange = PublicData.Dev.AIList[i].SingalLowerRange;
+                        devC05aiRow.SingalUpperRange = PublicData.Dev.AIList[i].SingalUpperRange;
+                        devC05aiRow.ZeroCalValue = PublicData.Dev.AIList[i].ZeroCalValue;
+                        devC05aiRow.KCalValue = PublicData.Dev.AIList[i].KCalValue;
+                        devC05aiRow.ModulNO = PublicData.Dev.AIList[i].ModulNO;
+                        if (PublicData.Dev.AIList[i].ChannelSerialNO < 1)
+                            PublicData.Dev.AIList[i].ChannelSerialNO = 1;
+                        devC05aiRow.ChannelSerialNO = PublicData.Dev.AIList[i].ChannelSerialNO;
+                        devC05aiRow.ConvRatio = PublicData.Dev.AIList[i].ConvRatio;
 
 
-                        DAL_Dev.AIList[i].CalPointsTemp = new ObservableCollection<CalPoint>()
+                        PublicData.Dev.AIList[i].CalPointsTemp = new ObservableCollection<CalPoint>()
                         {
                             new CalPoint(),new CalPoint(),new CalPoint(),new CalPoint(),new CalPoint(),
                             new CalPoint(),new CalPoint(),new CalPoint(),new CalPoint(),new CalPoint(),new CalPoint()
@@ -479,9 +479,9 @@ namespace MQDFJ_MB.DAL
                         //标定点参数复制
                         for (int j = 0; j < 11; j++)
                         {
-                            collectionForDel[j].IsUse = DAL_Dev.AIList[i].CalPoints[j].IsUse;
-                            collectionForDel[j].StdValue = DAL_Dev.AIList[i].CalPoints[j].StdValue;
-                            collectionForDel[j].ViewValue = DAL_Dev.AIList[i].CalPoints[j].ViewValue;
+                            collectionForDel[j].IsUse = PublicData.Dev.AIList[i].CalPoints[j].IsUse;
+                            collectionForDel[j].StdValue = PublicData.Dev.AIList[i].CalPoints[j].StdValue;
+                            collectionForDel[j].ViewValue = PublicData.Dev.AIList[i].CalPoints[j].ViewValue;
                         }
                         //未启用标定点的数值清零
                         for (int j = 0; j < collectionForDel.Count; j++)
@@ -497,62 +497,62 @@ namespace MQDFJ_MB.DAL
                         int usefulPoints = 0;
                         for (int index = 0; index < collectionDeleted.Count; index++)
                         {
-                            DAL_Dev.AIList[i].CalPointsTemp[index].IsUse = collectionDeleted[index].IsUse;
-                            DAL_Dev.AIList[i].CalPointsTemp[index].StdValue = collectionDeleted[index].StdValue;
-                            DAL_Dev.AIList[i].CalPointsTemp[index].ViewValue = collectionDeleted[index].ViewValue;
-                            if (DAL_Dev.AIList[i].CalPointsTemp[index].IsUse)
+                            PublicData.Dev.AIList[i].CalPointsTemp[index].IsUse = collectionDeleted[index].IsUse;
+                            PublicData.Dev.AIList[i].CalPointsTemp[index].StdValue = collectionDeleted[index].StdValue;
+                            PublicData.Dev.AIList[i].CalPointsTemp[index].ViewValue = collectionDeleted[index].ViewValue;
+                            if (PublicData.Dev.AIList[i].CalPointsTemp[index].IsUse)
                                 usefulPoints++;
                         }                        
                         //仅1个标定点时，设置为无标定点
                         if (usefulPoints == 1)
                         {
-                            DAL_Dev.AIList[i].CalPointsTemp[0].IsUse = false;
-                            DAL_Dev.AIList[i].CalPointsTemp[0].StdValue = 0;
-                            DAL_Dev.AIList[i].CalPointsTemp[0].ViewValue = 0;
+                            PublicData.Dev.AIList[i].CalPointsTemp[0].IsUse = false;
+                            PublicData.Dev.AIList[i].CalPointsTemp[0].StdValue = 0;
+                            PublicData.Dev.AIList[i].CalPointsTemp[0].ViewValue = 0;
                         }
                         //标定点参数反向复制
                         for (int j = 0; j < 11; j++)
                         {
-                            DAL_Dev.AIList[i].CalPoints[j].IsUse = DAL_Dev.AIList[i].CalPointsTemp[j].IsUse;
-                            DAL_Dev.AIList[i].CalPoints[j].StdValue = DAL_Dev.AIList[i].CalPointsTemp[j].StdValue;
-                            DAL_Dev.AIList[i].CalPoints[j].ViewValue = DAL_Dev.AIList[i].CalPointsTemp[j].ViewValue;
+                            PublicData.Dev.AIList[i].CalPoints[j].IsUse = PublicData.Dev.AIList[i].CalPointsTemp[j].IsUse;
+                            PublicData.Dev.AIList[i].CalPoints[j].StdValue = PublicData.Dev.AIList[i].CalPointsTemp[j].StdValue;
+                            PublicData.Dev.AIList[i].CalPoints[j].ViewValue = PublicData.Dev.AIList[i].CalPointsTemp[j].ViewValue;
                         }
                         //标定点启用
-                        devC05aiRow.Use_Corr1 = DAL_Dev.AIList[i].CalPoints[0].IsUse;
-                        devC05aiRow.Use_Corr2 = DAL_Dev.AIList[i].CalPoints[1].IsUse;
-                        devC05aiRow.Use_Corr3 = DAL_Dev.AIList[i].CalPoints[2].IsUse;
-                        devC05aiRow.Use_Corr4 = DAL_Dev.AIList[i].CalPoints[3].IsUse;
-                        devC05aiRow.Use_Corr5 = DAL_Dev.AIList[i].CalPoints[4].IsUse;
-                        devC05aiRow.Use_Corr6 = DAL_Dev.AIList[i].CalPoints[5].IsUse;
-                        devC05aiRow.Use_Corr7 = DAL_Dev.AIList[i].CalPoints[6].IsUse;
-                        devC05aiRow.Use_Corr8 = DAL_Dev.AIList[i].CalPoints[7].IsUse;
-                        devC05aiRow.Use_Corr9 = DAL_Dev.AIList[i].CalPoints[8].IsUse;
-                        devC05aiRow.Use_Corr10 = DAL_Dev.AIList[i].CalPoints[9].IsUse;
-                        devC05aiRow.Use_Corr11 = DAL_Dev.AIList[i].CalPoints[10].IsUse;
+                        devC05aiRow.Use_Corr1 = PublicData.Dev.AIList[i].CalPoints[0].IsUse;
+                        devC05aiRow.Use_Corr2 = PublicData.Dev.AIList[i].CalPoints[1].IsUse;
+                        devC05aiRow.Use_Corr3 = PublicData.Dev.AIList[i].CalPoints[2].IsUse;
+                        devC05aiRow.Use_Corr4 = PublicData.Dev.AIList[i].CalPoints[3].IsUse;
+                        devC05aiRow.Use_Corr5 = PublicData.Dev.AIList[i].CalPoints[4].IsUse;
+                        devC05aiRow.Use_Corr6 = PublicData.Dev.AIList[i].CalPoints[5].IsUse;
+                        devC05aiRow.Use_Corr7 = PublicData.Dev.AIList[i].CalPoints[6].IsUse;
+                        devC05aiRow.Use_Corr8 = PublicData.Dev.AIList[i].CalPoints[7].IsUse;
+                        devC05aiRow.Use_Corr9 = PublicData.Dev.AIList[i].CalPoints[8].IsUse;
+                        devC05aiRow.Use_Corr10 = PublicData.Dev.AIList[i].CalPoints[9].IsUse;
+                        devC05aiRow.Use_Corr11 = PublicData.Dev.AIList[i].CalPoints[10].IsUse;
                         //标定点标准值
-                        devC05aiRow.Sensor_Corr1_StdValue = DAL_Dev.AIList[i].CalPoints[0].StdValue;
-                        devC05aiRow.Sensor_Corr2_StdValue = DAL_Dev.AIList[i].CalPoints[1].StdValue;
-                        devC05aiRow.Sensor_Corr3_StdValue = DAL_Dev.AIList[i].CalPoints[2].StdValue;
-                        devC05aiRow.Sensor_Corr4_StdValue = DAL_Dev.AIList[i].CalPoints[3].StdValue;
-                        devC05aiRow.Sensor_Corr5_StdValue = DAL_Dev.AIList[i].CalPoints[4].StdValue;
-                        devC05aiRow.Sensor_Corr6_StdValue = DAL_Dev.AIList[i].CalPoints[5].StdValue;
-                        devC05aiRow.Sensor_Corr7_StdValue = DAL_Dev.AIList[i].CalPoints[6].StdValue;
-                        devC05aiRow.Sensor_Corr8_StdValue = DAL_Dev.AIList[i].CalPoints[7].StdValue;
-                        devC05aiRow.Sensor_Corr9_StdValue = DAL_Dev.AIList[i].CalPoints[8].StdValue;
-                        devC05aiRow.Sensor_Corr10_StdValue = DAL_Dev.AIList[i].CalPoints[9].StdValue;
-                        devC05aiRow.Sensor_Corr11_StdValue = DAL_Dev.AIList[i].CalPoints[10].StdValue;
+                        devC05aiRow.Sensor_Corr1_StdValue = PublicData.Dev.AIList[i].CalPoints[0].StdValue;
+                        devC05aiRow.Sensor_Corr2_StdValue = PublicData.Dev.AIList[i].CalPoints[1].StdValue;
+                        devC05aiRow.Sensor_Corr3_StdValue = PublicData.Dev.AIList[i].CalPoints[2].StdValue;
+                        devC05aiRow.Sensor_Corr4_StdValue = PublicData.Dev.AIList[i].CalPoints[3].StdValue;
+                        devC05aiRow.Sensor_Corr5_StdValue = PublicData.Dev.AIList[i].CalPoints[4].StdValue;
+                        devC05aiRow.Sensor_Corr6_StdValue = PublicData.Dev.AIList[i].CalPoints[5].StdValue;
+                        devC05aiRow.Sensor_Corr7_StdValue = PublicData.Dev.AIList[i].CalPoints[6].StdValue;
+                        devC05aiRow.Sensor_Corr8_StdValue = PublicData.Dev.AIList[i].CalPoints[7].StdValue;
+                        devC05aiRow.Sensor_Corr9_StdValue = PublicData.Dev.AIList[i].CalPoints[8].StdValue;
+                        devC05aiRow.Sensor_Corr10_StdValue = PublicData.Dev.AIList[i].CalPoints[9].StdValue;
+                        devC05aiRow.Sensor_Corr11_StdValue = PublicData.Dev.AIList[i].CalPoints[10].StdValue;
                         //标定点显示值
-                        devC05aiRow.Sensor_Corr1_ViewValue = DAL_Dev.AIList[i].CalPoints[0].ViewValue;
-                        devC05aiRow.Sensor_Corr2_ViewValue = DAL_Dev.AIList[i].CalPoints[1].ViewValue;
-                        devC05aiRow.Sensor_Corr3_ViewValue = DAL_Dev.AIList[i].CalPoints[2].ViewValue;
-                        devC05aiRow.Sensor_Corr4_ViewValue = DAL_Dev.AIList[i].CalPoints[3].ViewValue;
-                        devC05aiRow.Sensor_Corr5_ViewValue = DAL_Dev.AIList[i].CalPoints[4].ViewValue;
-                        devC05aiRow.Sensor_Corr6_ViewValue = DAL_Dev.AIList[i].CalPoints[5].ViewValue;
-                        devC05aiRow.Sensor_Corr7_ViewValue = DAL_Dev.AIList[i].CalPoints[6].ViewValue;
-                        devC05aiRow.Sensor_Corr8_ViewValue = DAL_Dev.AIList[i].CalPoints[7].ViewValue;
-                        devC05aiRow.Sensor_Corr9_ViewValue = DAL_Dev.AIList[i].CalPoints[8].ViewValue;
-                        devC05aiRow.Sensor_Corr10_ViewValue = DAL_Dev.AIList[i].CalPoints[9].ViewValue;
-                        devC05aiRow.Sensor_Corr11_ViewValue = DAL_Dev.AIList[i].CalPoints[10].ViewValue;
+                        devC05aiRow.Sensor_Corr1_ViewValue = PublicData.Dev.AIList[i].CalPoints[0].ViewValue;
+                        devC05aiRow.Sensor_Corr2_ViewValue = PublicData.Dev.AIList[i].CalPoints[1].ViewValue;
+                        devC05aiRow.Sensor_Corr3_ViewValue = PublicData.Dev.AIList[i].CalPoints[2].ViewValue;
+                        devC05aiRow.Sensor_Corr4_ViewValue = PublicData.Dev.AIList[i].CalPoints[3].ViewValue;
+                        devC05aiRow.Sensor_Corr5_ViewValue = PublicData.Dev.AIList[i].CalPoints[4].ViewValue;
+                        devC05aiRow.Sensor_Corr6_ViewValue = PublicData.Dev.AIList[i].CalPoints[5].ViewValue;
+                        devC05aiRow.Sensor_Corr7_ViewValue = PublicData.Dev.AIList[i].CalPoints[6].ViewValue;
+                        devC05aiRow.Sensor_Corr8_ViewValue = PublicData.Dev.AIList[i].CalPoints[7].ViewValue;
+                        devC05aiRow.Sensor_Corr9_ViewValue = PublicData.Dev.AIList[i].CalPoints[8].ViewValue;
+                        devC05aiRow.Sensor_Corr10_ViewValue = PublicData.Dev.AIList[i].CalPoints[9].ViewValue;
+                        devC05aiRow.Sensor_Corr11_ViewValue = PublicData.Dev.AIList[i].CalPoints[10].ViewValue;
 
                         C05TableAdapter.Update(C05Table);
                         C05Table.AcceptChanges();
@@ -607,79 +607,79 @@ namespace MQDFJ_MB.DAL
                     if (devC05aoRow != null)
                     {
                         //基本参数
-                        devC05aoRow.SingalUnit = DAL_Dev.AOList[i].SingalUnit;
-                        devC05aoRow.IsOutType = DAL_Dev.AOList[i].IsOutType;
-                        devC05aoRow.InfType = DAL_Dev.AOList[i].InfType;
-                        devC05aoRow.ElecSig_Unit = DAL_Dev.AOList[i].ElecSig_Unit;
-                        devC05aoRow.ElecSig_LowerRange = DAL_Dev.AOList[i].ElecSigLowerRange;
-                        devC05aoRow.ElecSig_UpperRange = DAL_Dev.AOList[i].ElecSigUpperRange;
-                        devC05aoRow.SingalLowerRange = DAL_Dev.AOList[i].SingalLowerRange;
-                        devC05aoRow.SingalUpperRange = DAL_Dev.AOList[i].SingalUpperRange;
-                        devC05aoRow.ZeroCalValue = DAL_Dev.AOList[i].ZeroCalValue;
-                        devC05aoRow.KCalValue = DAL_Dev.AOList[i].KCalValue;
-                        devC05aoRow.ModulNO = DAL_Dev.AOList[i].ModulNO;
-                        devC05aoRow.ChannelSerialNO = DAL_Dev.AOList[i].ChannelSerialNO;
-                        devC05aoRow.ConvRatio = DAL_Dev.AOList[i].ConvRatio;
+                        devC05aoRow.SingalUnit = PublicData.Dev.AOList[i].SingalUnit;
+                        devC05aoRow.IsOutType = PublicData.Dev.AOList[i].IsOutType;
+                        devC05aoRow.InfType = PublicData.Dev.AOList[i].InfType;
+                        devC05aoRow.ElecSig_Unit = PublicData.Dev.AOList[i].ElecSig_Unit;
+                        devC05aoRow.ElecSig_LowerRange = PublicData.Dev.AOList[i].ElecSigLowerRange;
+                        devC05aoRow.ElecSig_UpperRange = PublicData.Dev.AOList[i].ElecSigUpperRange;
+                        devC05aoRow.SingalLowerRange = PublicData.Dev.AOList[i].SingalLowerRange;
+                        devC05aoRow.SingalUpperRange = PublicData.Dev.AOList[i].SingalUpperRange;
+                        devC05aoRow.ZeroCalValue = PublicData.Dev.AOList[i].ZeroCalValue;
+                        devC05aoRow.KCalValue = PublicData.Dev.AOList[i].KCalValue;
+                        devC05aoRow.ModulNO = PublicData.Dev.AOList[i].ModulNO;
+                        devC05aoRow.ChannelSerialNO = PublicData.Dev.AOList[i].ChannelSerialNO;
+                        devC05aoRow.ConvRatio = PublicData.Dev.AOList[i].ConvRatio;
 
                         //标定点参数复制
                         for (int j = 0; j < 11; j++)
                         {
-                            DAL_Dev.AOList[i].CalPointsTemp[j].IsUse = DAL_Dev.AOList[i].CalPoints[j].IsUse;
-                            DAL_Dev.AOList[i].CalPointsTemp[j].StdValue = DAL_Dev.AOList[i].CalPoints[j].StdValue;
-                            DAL_Dev.AOList[i].CalPointsTemp[j].ViewValue = DAL_Dev.AOList[i].CalPoints[j].ViewValue;
+                            PublicData.Dev.AOList[i].CalPointsTemp[j].IsUse = PublicData.Dev.AOList[i].CalPoints[j].IsUse;
+                            PublicData.Dev.AOList[i].CalPointsTemp[j].StdValue = PublicData.Dev.AOList[i].CalPoints[j].StdValue;
+                            PublicData.Dev.AOList[i].CalPointsTemp[j].ViewValue = PublicData.Dev.AOList[i].CalPoints[j].ViewValue;
                         }
 
                         int usefulPoints = 0;
                         //未启用标定点的数值清零
                         for (int j = 0; j < 11; j++)
                         {
-                            if (!DAL_Dev.AOList[i].CalPointsTemp[j].IsUse)
+                            if (!PublicData.Dev.AOList[i].CalPointsTemp[j].IsUse)
                             {
-                                DAL_Dev.AOList[i].CalPointsTemp[j].StdValue = 0;
-                                DAL_Dev.AOList[i].CalPointsTemp[j].ViewValue = 0;
+                                PublicData.Dev.AOList[i].CalPointsTemp[j].StdValue = 0;
+                                PublicData.Dev.AOList[i].CalPointsTemp[j].ViewValue = 0;
                             }
                             else
                                 usefulPoints++;
                         }
                         //对标定点列表先按启用情况排序，后按viewValu排序
-                        DAL_Dev.AOList[i].CalPoints = new ObservableCollection<CalPoint>(DAL_Dev.AOList[i].CalPointsTemp.OrderByDescending(v => v.IsUse).ThenBy(v => v.ViewValue));
+                        PublicData.Dev.AOList[i].CalPoints = new ObservableCollection<CalPoint>(PublicData.Dev.AOList[i].CalPointsTemp.OrderByDescending(v => v.IsUse).ThenBy(v => v.ViewValue));
 
                         //标定点启用
-                        devC05aoRow.Use_Corr1 = DAL_Dev.AOList[i].CalPoints[0].IsUse;
-                        devC05aoRow.Use_Corr2 = DAL_Dev.AOList[i].CalPoints[1].IsUse;
-                        devC05aoRow.Use_Corr3 = DAL_Dev.AOList[i].CalPoints[2].IsUse;
-                        devC05aoRow.Use_Corr4 = DAL_Dev.AOList[i].CalPoints[3].IsUse;
-                        devC05aoRow.Use_Corr5 = DAL_Dev.AOList[i].CalPoints[4].IsUse;
-                        devC05aoRow.Use_Corr6 = DAL_Dev.AOList[i].CalPoints[5].IsUse;
-                        devC05aoRow.Use_Corr7 = DAL_Dev.AOList[i].CalPoints[6].IsUse;
-                        devC05aoRow.Use_Corr8 = DAL_Dev.AOList[i].CalPoints[7].IsUse;
-                        devC05aoRow.Use_Corr9 = DAL_Dev.AOList[i].CalPoints[8].IsUse;
-                        devC05aoRow.Use_Corr10 = DAL_Dev.AOList[i].CalPoints[9].IsUse;
-                        devC05aoRow.Use_Corr11 = DAL_Dev.AOList[i].CalPoints[10].IsUse;
+                        devC05aoRow.Use_Corr1 = PublicData.Dev.AOList[i].CalPoints[0].IsUse;
+                        devC05aoRow.Use_Corr2 = PublicData.Dev.AOList[i].CalPoints[1].IsUse;
+                        devC05aoRow.Use_Corr3 = PublicData.Dev.AOList[i].CalPoints[2].IsUse;
+                        devC05aoRow.Use_Corr4 = PublicData.Dev.AOList[i].CalPoints[3].IsUse;
+                        devC05aoRow.Use_Corr5 = PublicData.Dev.AOList[i].CalPoints[4].IsUse;
+                        devC05aoRow.Use_Corr6 = PublicData.Dev.AOList[i].CalPoints[5].IsUse;
+                        devC05aoRow.Use_Corr7 = PublicData.Dev.AOList[i].CalPoints[6].IsUse;
+                        devC05aoRow.Use_Corr8 = PublicData.Dev.AOList[i].CalPoints[7].IsUse;
+                        devC05aoRow.Use_Corr9 = PublicData.Dev.AOList[i].CalPoints[8].IsUse;
+                        devC05aoRow.Use_Corr10 = PublicData.Dev.AOList[i].CalPoints[9].IsUse;
+                        devC05aoRow.Use_Corr11 = PublicData.Dev.AOList[i].CalPoints[10].IsUse;
                         //标定点标准值
-                        devC05aoRow.Sensor_Corr1_StdValue = DAL_Dev.AOList[i].CalPoints[0].StdValue;
-                        devC05aoRow.Sensor_Corr2_StdValue = DAL_Dev.AOList[i].CalPoints[1].StdValue;
-                        devC05aoRow.Sensor_Corr3_StdValue = DAL_Dev.AOList[i].CalPoints[2].StdValue;
-                        devC05aoRow.Sensor_Corr4_StdValue = DAL_Dev.AOList[i].CalPoints[3].StdValue;
-                        devC05aoRow.Sensor_Corr5_StdValue = DAL_Dev.AOList[i].CalPoints[4].StdValue;
-                        devC05aoRow.Sensor_Corr6_StdValue = DAL_Dev.AOList[i].CalPoints[5].StdValue;
-                        devC05aoRow.Sensor_Corr7_StdValue = DAL_Dev.AOList[i].CalPoints[6].StdValue;
-                        devC05aoRow.Sensor_Corr8_StdValue = DAL_Dev.AOList[i].CalPoints[7].StdValue;
-                        devC05aoRow.Sensor_Corr9_StdValue = DAL_Dev.AOList[i].CalPoints[8].StdValue;
-                        devC05aoRow.Sensor_Corr10_StdValue = DAL_Dev.AOList[i].CalPoints[9].StdValue;
-                        devC05aoRow.Sensor_Corr11_StdValue = DAL_Dev.AOList[i].CalPoints[10].StdValue;
+                        devC05aoRow.Sensor_Corr1_StdValue = PublicData.Dev.AOList[i].CalPoints[0].StdValue;
+                        devC05aoRow.Sensor_Corr2_StdValue = PublicData.Dev.AOList[i].CalPoints[1].StdValue;
+                        devC05aoRow.Sensor_Corr3_StdValue = PublicData.Dev.AOList[i].CalPoints[2].StdValue;
+                        devC05aoRow.Sensor_Corr4_StdValue = PublicData.Dev.AOList[i].CalPoints[3].StdValue;
+                        devC05aoRow.Sensor_Corr5_StdValue = PublicData.Dev.AOList[i].CalPoints[4].StdValue;
+                        devC05aoRow.Sensor_Corr6_StdValue = PublicData.Dev.AOList[i].CalPoints[5].StdValue;
+                        devC05aoRow.Sensor_Corr7_StdValue = PublicData.Dev.AOList[i].CalPoints[6].StdValue;
+                        devC05aoRow.Sensor_Corr8_StdValue = PublicData.Dev.AOList[i].CalPoints[7].StdValue;
+                        devC05aoRow.Sensor_Corr9_StdValue = PublicData.Dev.AOList[i].CalPoints[8].StdValue;
+                        devC05aoRow.Sensor_Corr10_StdValue = PublicData.Dev.AOList[i].CalPoints[9].StdValue;
+                        devC05aoRow.Sensor_Corr11_StdValue = PublicData.Dev.AOList[i].CalPoints[10].StdValue;
                         //标定点显示值
-                        devC05aoRow.Sensor_Corr1_ViewValue = DAL_Dev.AOList[i].CalPoints[0].ViewValue;
-                        devC05aoRow.Sensor_Corr2_ViewValue = DAL_Dev.AOList[i].CalPoints[1].ViewValue;
-                        devC05aoRow.Sensor_Corr3_ViewValue = DAL_Dev.AOList[i].CalPoints[2].ViewValue;
-                        devC05aoRow.Sensor_Corr4_ViewValue = DAL_Dev.AOList[i].CalPoints[3].ViewValue;
-                        devC05aoRow.Sensor_Corr5_ViewValue = DAL_Dev.AOList[i].CalPoints[4].ViewValue;
-                        devC05aoRow.Sensor_Corr6_ViewValue = DAL_Dev.AOList[i].CalPoints[5].ViewValue;
-                        devC05aoRow.Sensor_Corr7_ViewValue = DAL_Dev.AOList[i].CalPoints[6].ViewValue;
-                        devC05aoRow.Sensor_Corr8_ViewValue = DAL_Dev.AOList[i].CalPoints[7].ViewValue;
-                        devC05aoRow.Sensor_Corr9_ViewValue = DAL_Dev.AOList[i].CalPoints[8].ViewValue;
-                        devC05aoRow.Sensor_Corr10_ViewValue = DAL_Dev.AOList[i].CalPoints[9].ViewValue;
-                        devC05aoRow.Sensor_Corr11_ViewValue = DAL_Dev.AOList[i].CalPoints[10].ViewValue;
+                        devC05aoRow.Sensor_Corr1_ViewValue = PublicData.Dev.AOList[i].CalPoints[0].ViewValue;
+                        devC05aoRow.Sensor_Corr2_ViewValue = PublicData.Dev.AOList[i].CalPoints[1].ViewValue;
+                        devC05aoRow.Sensor_Corr3_ViewValue = PublicData.Dev.AOList[i].CalPoints[2].ViewValue;
+                        devC05aoRow.Sensor_Corr4_ViewValue = PublicData.Dev.AOList[i].CalPoints[3].ViewValue;
+                        devC05aoRow.Sensor_Corr5_ViewValue = PublicData.Dev.AOList[i].CalPoints[4].ViewValue;
+                        devC05aoRow.Sensor_Corr6_ViewValue = PublicData.Dev.AOList[i].CalPoints[5].ViewValue;
+                        devC05aoRow.Sensor_Corr7_ViewValue = PublicData.Dev.AOList[i].CalPoints[6].ViewValue;
+                        devC05aoRow.Sensor_Corr8_ViewValue = PublicData.Dev.AOList[i].CalPoints[7].ViewValue;
+                        devC05aoRow.Sensor_Corr9_ViewValue = PublicData.Dev.AOList[i].CalPoints[8].ViewValue;
+                        devC05aoRow.Sensor_Corr10_ViewValue = PublicData.Dev.AOList[i].CalPoints[9].ViewValue;
+                        devC05aoRow.Sensor_Corr11_ViewValue = PublicData.Dev.AOList[i].CalPoints[10].ViewValue;
 
                         C05TableAdapter.Update(C05Table);
                         C05Table.AcceptChanges();
@@ -740,16 +740,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_04AD1.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_04AD1.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_04AD1.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_04AD1.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_04AD1.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_04AD1.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_04AD1.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_04AD1.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_04AD1.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_04AD1.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_04AD1.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_04AD1.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_04AD1.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_04AD1.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_04AD1.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_04AD1.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_04AD1.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_04AD1.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_04AD1.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_04AD1.Channels[i].FitRatio;
                     }
                 }
                 catch (Exception ex)
@@ -763,16 +763,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i+4]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_04AD2.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_04AD2.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_04AD2.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_04AD2.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_04AD2.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_04AD2.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_04AD2.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_04AD2.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_04AD2.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_04AD2.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_04AD2.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_04AD2.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_04AD2.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_04AD2.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_04AD2.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_04AD2.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_04AD2.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_04AD2.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_04AD2.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_04AD2.Channels[i].FitRatio;
                         C06TableAdapter.Update(C06Table);
                         C06Table.AcceptChanges();
                     }
@@ -788,16 +788,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i+8]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_04AD3.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_04AD3.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_04AD3.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_04AD3.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_04AD3.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_04AD3.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_04AD3.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_04AD3.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_04AD3.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_04AD3.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_04AD3.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_04AD3.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_04AD3.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_04AD3.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_04AD3.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_04AD3.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_04AD3.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_04AD3.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_04AD3.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_04AD3.Channels[i].FitRatio;
                     }
                 }
                 catch (Exception ex)
@@ -811,16 +811,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i+12]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_04AD4.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_04AD4.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_04AD4.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_04AD4.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_04AD4.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_04AD4.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_04AD4.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_04AD4.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_04AD4.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_04AD4.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_04AD4.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_04AD4.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_04AD4.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_04AD4.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_04AD4.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_04AD4.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_04AD4.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_04AD4.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_04AD4.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_04AD4.Channels[i].FitRatio;
                     }
                 }
                 catch (Exception ex)
@@ -834,16 +834,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i + 16]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_04AD5.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_04AD5.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_04AD5.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_04AD5.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_04AD5.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_04AD5.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_04AD5.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_04AD5.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_04AD5.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_04AD5.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_04AD5.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_04AD5.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_04AD5.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_04AD5.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_04AD5.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_04AD5.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_04AD5.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_04AD5.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_04AD5.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_04AD5.Channels[i].FitRatio;
                     }
                 }
                 catch (Exception ex)
@@ -857,16 +857,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06ad1chlRowName[i + 20]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_DAView.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_DAView.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_DAView.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_DAView.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_DAView.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_DAView.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_DAView.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_DAView.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_DAView.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_DAView.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_DAView.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_DAView.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_DAView.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_DAView.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_DAView.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_DAView.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_DAView.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_DAView.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_DAView.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_DAView.Channels[i].FitRatio;
                     }
                 }
                 catch (Exception ex)
@@ -924,15 +924,15 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06da1chlRowName[i]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_DA.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_DA.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_DA.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_DA.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_DA.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_DA.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_DA.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_DA.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_DA.Channels[i].IsOutType;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_DA.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_DA.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_DA.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_DA.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_DA.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_DA.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_DA.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_DA.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_DA.Channels[i].IsOutType;
                     }
                 }
                 catch (Exception ex)
@@ -991,16 +991,16 @@ namespace MQDFJ_MB.DAL
                     MQZH_DB_DevDataSet.C06模拟量通道参数Row devC06chlRow = C06Table.FindByChannelNO(tempC06thpchlRowName[i]);
                     if (devC06chlRow != null)
                     {
-                        devC06chlRow.ChannelNO = DAL_Dev.Mod_THP.Channels[i].ChannelNO;
-                        devC06chlRow.ColType = DAL_Dev.Mod_THP.Channels[i].InfType;
-                        devC06chlRow.ElecSig_Unit = DAL_Dev.Mod_THP.Channels[i].ElecSigUnit;
-                        devC06chlRow.ElecSig_LowerRange = DAL_Dev.Mod_THP.Channels[i].ElecSigLowerRange;
-                        devC06chlRow.ElecSig_UpperRange = DAL_Dev.Mod_THP.Channels[i].ElecSigUpperRange;
-                        devC06chlRow.Data_LowerRange = DAL_Dev.Mod_THP.Channels[i].DataLowerRange;
-                        devC06chlRow.Data_UpperRange = DAL_Dev.Mod_THP.Channels[i].DataUpperRange;
-                        devC06chlRow.IsUsed = DAL_Dev.Mod_THP.Channels[i].IsUsed;
-                        devC06chlRow.IsOutType = DAL_Dev.Mod_THP.Channels[i].IsOutType;
-                        devC06chlRow.FitRitio = DAL_Dev.Mod_THP.Channels[i].FitRatio;
+                        devC06chlRow.ChannelNO = PublicData.Dev.Mod_THP.Channels[i].ChannelNO;
+                        devC06chlRow.ColType = PublicData.Dev.Mod_THP.Channels[i].InfType;
+                        devC06chlRow.ElecSig_Unit = PublicData.Dev.Mod_THP.Channels[i].ElecSigUnit;
+                        devC06chlRow.ElecSig_LowerRange = PublicData.Dev.Mod_THP.Channels[i].ElecSigLowerRange;
+                        devC06chlRow.ElecSig_UpperRange = PublicData.Dev.Mod_THP.Channels[i].ElecSigUpperRange;
+                        devC06chlRow.Data_LowerRange = PublicData.Dev.Mod_THP.Channels[i].DataLowerRange;
+                        devC06chlRow.Data_UpperRange = PublicData.Dev.Mod_THP.Channels[i].DataUpperRange;
+                        devC06chlRow.IsUsed = PublicData.Dev.Mod_THP.Channels[i].IsUsed;
+                        devC06chlRow.IsOutType = PublicData.Dev.Mod_THP.Channels[i].IsOutType;
+                        devC06chlRow.FitRitio = PublicData.Dev.Mod_THP.Channels[i].FitRatio;
 
                         C06TableAdapter.Update(C06Table);
                         C06Table.AcceptChanges();
@@ -1062,22 +1062,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0911Row = C09Table.FindBy配置编号(tempC09RowName[0]);
                 if (devC0911Row != null)
                 {
-                    devC0911Row.PIDName = DAL_Dev.PID11.ControllerName;
-                    devC0911Row.Kp = DAL_Dev.PID11.Kp;
-                    devC0911Row.Ki = DAL_Dev.PID11.Ki;
-                    devC0911Row.Kd = DAL_Dev.PID11.Kd;
-                    devC0911Row.U_UpperBound = DAL_Dev.PID11.U_UpperBound;
-                    devC0911Row.U_LowerBound = DAL_Dev.PID11.U_LowerBound;
-                    //devC0911Row.T = DAL_Dev.PID11.T;
-                    devC0911Row.PIDType = (int)DAL_Dev.PID11.ControllerType;
-                    devC0911Row.U_IMax_Limit = DAL_Dev.PID11.U_IMax_Limit;
-                    devC0911Row.ErrBound_IntegralSeparate = DAL_Dev.PID11.ErrBound_IntegralSeparate;
-                    devC0911Row.Is_Kp_Used = DAL_Dev.PID11.Is_Kp_Used;
-                    devC0911Row.Is_Ki_Used = DAL_Dev.PID11.Is_Ki_Used;
-                    devC0911Row.Is_Kd_Used = DAL_Dev.PID11.Is_Kd_Used;
-                    devC0911Row.Is_U_Limit = DAL_Dev.PID11.Is_U_Limit;
-                    devC0911Row.Is_UILimit_Used = DAL_Dev.PID11.Is_UILimit_Used;
-                    devC0911Row.Is_ISeparate_Used = DAL_Dev.PID11.Is_ISeparate_Used;
+                    devC0911Row.PIDName = PublicData.Dev.PID11.ControllerName;
+                    devC0911Row.Kp = PublicData.Dev.PID11.Kp;
+                    devC0911Row.Ki = PublicData.Dev.PID11.Ki;
+                    devC0911Row.Kd = PublicData.Dev.PID11.Kd;
+                    devC0911Row.U_UpperBound = PublicData.Dev.PID11.U_UpperBound;
+                    devC0911Row.U_LowerBound = PublicData.Dev.PID11.U_LowerBound;
+                    //devC0911Row.T = PublicData.Dev.PID11.T;
+                    devC0911Row.PIDType = (int)PublicData.Dev.PID11.ControllerType;
+                    devC0911Row.U_IMax_Limit = PublicData.Dev.PID11.U_IMax_Limit;
+                    devC0911Row.ErrBound_IntegralSeparate = PublicData.Dev.PID11.ErrBound_IntegralSeparate;
+                    devC0911Row.Is_Kp_Used = PublicData.Dev.PID11.Is_Kp_Used;
+                    devC0911Row.Is_Ki_Used = PublicData.Dev.PID11.Is_Ki_Used;
+                    devC0911Row.Is_Kd_Used = PublicData.Dev.PID11.Is_Kd_Used;
+                    devC0911Row.Is_U_Limit = PublicData.Dev.PID11.Is_U_Limit;
+                    devC0911Row.Is_UILimit_Used = PublicData.Dev.PID11.Is_UILimit_Used;
+                    devC0911Row.Is_ISeparate_Used = PublicData.Dev.PID11.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1093,22 +1093,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0912Row = C09Table.FindBy配置编号(tempC09RowName[1]);
                 if (devC0912Row != null)
                 {
-                    devC0912Row.PIDName = DAL_Dev.PID12.ControllerName;
-                    devC0912Row.Kp = DAL_Dev.PID12.Kp;
-                    devC0912Row.Ki = DAL_Dev.PID12.Ki;
-                    devC0912Row.Kd = DAL_Dev.PID12.Kd;
-                    devC0912Row.U_UpperBound = DAL_Dev.PID12.U_UpperBound;
-                    devC0912Row.U_LowerBound = DAL_Dev.PID12.U_LowerBound;
-                    //devC0912Row.T = DAL_Dev.PID12.T;
-                    devC0912Row.PIDType = (int)DAL_Dev.PID12.ControllerType;
-                    devC0912Row.U_IMax_Limit = DAL_Dev.PID12.U_IMax_Limit;
-                    devC0912Row.ErrBound_IntegralSeparate = DAL_Dev.PID12.ErrBound_IntegralSeparate;
-                    devC0912Row.Is_Kp_Used = DAL_Dev.PID12.Is_Kp_Used;
-                    devC0912Row.Is_Ki_Used = DAL_Dev.PID12.Is_Ki_Used;
-                    devC0912Row.Is_Kd_Used = DAL_Dev.PID12.Is_Kd_Used;
-                    devC0912Row.Is_U_Limit = DAL_Dev.PID12.Is_U_Limit;
-                    devC0912Row.Is_UILimit_Used = DAL_Dev.PID12.Is_UILimit_Used;
-                    devC0912Row.Is_ISeparate_Used = DAL_Dev.PID12.Is_ISeparate_Used;
+                    devC0912Row.PIDName = PublicData.Dev.PID12.ControllerName;
+                    devC0912Row.Kp = PublicData.Dev.PID12.Kp;
+                    devC0912Row.Ki = PublicData.Dev.PID12.Ki;
+                    devC0912Row.Kd = PublicData.Dev.PID12.Kd;
+                    devC0912Row.U_UpperBound = PublicData.Dev.PID12.U_UpperBound;
+                    devC0912Row.U_LowerBound = PublicData.Dev.PID12.U_LowerBound;
+                    //devC0912Row.T = PublicData.Dev.PID12.T;
+                    devC0912Row.PIDType = (int)PublicData.Dev.PID12.ControllerType;
+                    devC0912Row.U_IMax_Limit = PublicData.Dev.PID12.U_IMax_Limit;
+                    devC0912Row.ErrBound_IntegralSeparate = PublicData.Dev.PID12.ErrBound_IntegralSeparate;
+                    devC0912Row.Is_Kp_Used = PublicData.Dev.PID12.Is_Kp_Used;
+                    devC0912Row.Is_Ki_Used = PublicData.Dev.PID12.Is_Ki_Used;
+                    devC0912Row.Is_Kd_Used = PublicData.Dev.PID12.Is_Kd_Used;
+                    devC0912Row.Is_U_Limit = PublicData.Dev.PID12.Is_U_Limit;
+                    devC0912Row.Is_UILimit_Used = PublicData.Dev.PID12.Is_UILimit_Used;
+                    devC0912Row.Is_ISeparate_Used = PublicData.Dev.PID12.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1124,22 +1124,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0913Row = C09Table.FindBy配置编号(tempC09RowName[2]);
                 if (devC0913Row != null)
                 {
-                    devC0913Row.PIDName = DAL_Dev.PID13.ControllerName;
-                    devC0913Row.Kp = DAL_Dev.PID13.Kp;
-                    devC0913Row.Ki = DAL_Dev.PID13.Ki;
-                    devC0913Row.Kd = DAL_Dev.PID13.Kd;
-                    devC0913Row.U_UpperBound = DAL_Dev.PID13.U_UpperBound;
-                    devC0913Row.U_LowerBound = DAL_Dev.PID13.U_LowerBound;
-                    //devC0913Row.T = DAL_Dev.PID13.T;
-                    devC0913Row.PIDType = (int)DAL_Dev.PID13.ControllerType;
-                    devC0913Row.U_IMax_Limit = DAL_Dev.PID13.U_IMax_Limit;
-                    devC0913Row.ErrBound_IntegralSeparate = DAL_Dev.PID13.ErrBound_IntegralSeparate;
-                    devC0913Row.Is_Kp_Used = DAL_Dev.PID13.Is_Kp_Used;
-                    devC0913Row.Is_Ki_Used = DAL_Dev.PID13.Is_Ki_Used;
-                    devC0913Row.Is_Kd_Used = DAL_Dev.PID13.Is_Kd_Used;
-                    devC0913Row.Is_U_Limit = DAL_Dev.PID13.Is_U_Limit;
-                    devC0913Row.Is_UILimit_Used = DAL_Dev.PID13.Is_UILimit_Used;
-                    devC0913Row.Is_ISeparate_Used = DAL_Dev.PID13.Is_ISeparate_Used;
+                    devC0913Row.PIDName = PublicData.Dev.PID13.ControllerName;
+                    devC0913Row.Kp = PublicData.Dev.PID13.Kp;
+                    devC0913Row.Ki = PublicData.Dev.PID13.Ki;
+                    devC0913Row.Kd = PublicData.Dev.PID13.Kd;
+                    devC0913Row.U_UpperBound = PublicData.Dev.PID13.U_UpperBound;
+                    devC0913Row.U_LowerBound = PublicData.Dev.PID13.U_LowerBound;
+                    //devC0913Row.T = PublicData.Dev.PID13.T;
+                    devC0913Row.PIDType = (int)PublicData.Dev.PID13.ControllerType;
+                    devC0913Row.U_IMax_Limit = PublicData.Dev.PID13.U_IMax_Limit;
+                    devC0913Row.ErrBound_IntegralSeparate = PublicData.Dev.PID13.ErrBound_IntegralSeparate;
+                    devC0913Row.Is_Kp_Used = PublicData.Dev.PID13.Is_Kp_Used;
+                    devC0913Row.Is_Ki_Used = PublicData.Dev.PID13.Is_Ki_Used;
+                    devC0913Row.Is_Kd_Used = PublicData.Dev.PID13.Is_Kd_Used;
+                    devC0913Row.Is_U_Limit = PublicData.Dev.PID13.Is_U_Limit;
+                    devC0913Row.Is_UILimit_Used = PublicData.Dev.PID13.Is_UILimit_Used;
+                    devC0913Row.Is_ISeparate_Used = PublicData.Dev.PID13.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1155,22 +1155,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0914Row = C09Table.FindBy配置编号(tempC09RowName[3]);
                 if (devC0914Row != null)
                 {
-                    devC0914Row.PIDName = DAL_Dev.PID14.ControllerName;
-                    devC0914Row.Kp = DAL_Dev.PID14.Kp;
-                    devC0914Row.Ki = DAL_Dev.PID14.Ki;
-                    devC0914Row.Kd = DAL_Dev.PID14.Kd;
-                    devC0914Row.U_UpperBound = DAL_Dev.PID14.U_UpperBound;
-                    devC0914Row.U_LowerBound = DAL_Dev.PID14.U_LowerBound;
-                    //devC0914Row.T = DAL_Dev.PID14.T;
-                    devC0914Row.PIDType = (int)DAL_Dev.PID14.ControllerType;
-                    devC0914Row.U_IMax_Limit = DAL_Dev.PID14.U_IMax_Limit;
-                    devC0914Row.ErrBound_IntegralSeparate = DAL_Dev.PID14.ErrBound_IntegralSeparate;
-                    devC0914Row.Is_Kp_Used = DAL_Dev.PID14.Is_Kp_Used;
-                    devC0914Row.Is_Ki_Used = DAL_Dev.PID14.Is_Ki_Used;
-                    devC0914Row.Is_Kd_Used = DAL_Dev.PID14.Is_Kd_Used;
-                    devC0914Row.Is_U_Limit = DAL_Dev.PID14.Is_U_Limit;
-                    devC0914Row.Is_UILimit_Used = DAL_Dev.PID14.Is_UILimit_Used;
-                    devC0914Row.Is_ISeparate_Used = DAL_Dev.PID14.Is_ISeparate_Used;
+                    devC0914Row.PIDName = PublicData.Dev.PID14.ControllerName;
+                    devC0914Row.Kp = PublicData.Dev.PID14.Kp;
+                    devC0914Row.Ki = PublicData.Dev.PID14.Ki;
+                    devC0914Row.Kd = PublicData.Dev.PID14.Kd;
+                    devC0914Row.U_UpperBound = PublicData.Dev.PID14.U_UpperBound;
+                    devC0914Row.U_LowerBound = PublicData.Dev.PID14.U_LowerBound;
+                    //devC0914Row.T = PublicData.Dev.PID14.T;
+                    devC0914Row.PIDType = (int)PublicData.Dev.PID14.ControllerType;
+                    devC0914Row.U_IMax_Limit = PublicData.Dev.PID14.U_IMax_Limit;
+                    devC0914Row.ErrBound_IntegralSeparate = PublicData.Dev.PID14.ErrBound_IntegralSeparate;
+                    devC0914Row.Is_Kp_Used = PublicData.Dev.PID14.Is_Kp_Used;
+                    devC0914Row.Is_Ki_Used = PublicData.Dev.PID14.Is_Ki_Used;
+                    devC0914Row.Is_Kd_Used = PublicData.Dev.PID14.Is_Kd_Used;
+                    devC0914Row.Is_U_Limit = PublicData.Dev.PID14.Is_U_Limit;
+                    devC0914Row.Is_UILimit_Used = PublicData.Dev.PID14.Is_UILimit_Used;
+                    devC0914Row.Is_ISeparate_Used = PublicData.Dev.PID14.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1186,22 +1186,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0915Row = C09Table.FindBy配置编号(tempC09RowName[4]);
                 if (devC0915Row != null)
                 {
-                    devC0915Row.PIDName = DAL_Dev.PID15.ControllerName;
-                    devC0915Row.Kp = DAL_Dev.PID15.Kp;
-                    devC0915Row.Ki = DAL_Dev.PID15.Ki;
-                    devC0915Row.Kd = DAL_Dev.PID15.Kd;
-                    devC0915Row.U_UpperBound = DAL_Dev.PID15.U_UpperBound;
-                    devC0915Row.U_LowerBound = DAL_Dev.PID15.U_LowerBound;
-                    //devC0915Row.T = DAL_Dev.PID15.T;
-                    devC0915Row.PIDType = (int)DAL_Dev.PID15.ControllerType;
-                    devC0915Row.U_IMax_Limit = DAL_Dev.PID15.U_IMax_Limit;
-                    devC0915Row.ErrBound_IntegralSeparate = DAL_Dev.PID15.ErrBound_IntegralSeparate;
-                    devC0915Row.Is_Kp_Used = DAL_Dev.PID15.Is_Kp_Used;
-                    devC0915Row.Is_Ki_Used = DAL_Dev.PID15.Is_Ki_Used;
-                    devC0915Row.Is_Kd_Used = DAL_Dev.PID15.Is_Kd_Used;
-                    devC0915Row.Is_U_Limit = DAL_Dev.PID15.Is_U_Limit;
-                    devC0915Row.Is_UILimit_Used = DAL_Dev.PID15.Is_UILimit_Used;
-                    devC0915Row.Is_ISeparate_Used = DAL_Dev.PID15.Is_ISeparate_Used;
+                    devC0915Row.PIDName = PublicData.Dev.PID15.ControllerName;
+                    devC0915Row.Kp = PublicData.Dev.PID15.Kp;
+                    devC0915Row.Ki = PublicData.Dev.PID15.Ki;
+                    devC0915Row.Kd = PublicData.Dev.PID15.Kd;
+                    devC0915Row.U_UpperBound = PublicData.Dev.PID15.U_UpperBound;
+                    devC0915Row.U_LowerBound = PublicData.Dev.PID15.U_LowerBound;
+                    //devC0915Row.T = PublicData.Dev.PID15.T;
+                    devC0915Row.PIDType = (int)PublicData.Dev.PID15.ControllerType;
+                    devC0915Row.U_IMax_Limit = PublicData.Dev.PID15.U_IMax_Limit;
+                    devC0915Row.ErrBound_IntegralSeparate = PublicData.Dev.PID15.ErrBound_IntegralSeparate;
+                    devC0915Row.Is_Kp_Used = PublicData.Dev.PID15.Is_Kp_Used;
+                    devC0915Row.Is_Ki_Used = PublicData.Dev.PID15.Is_Ki_Used;
+                    devC0915Row.Is_Kd_Used = PublicData.Dev.PID15.Is_Kd_Used;
+                    devC0915Row.Is_U_Limit = PublicData.Dev.PID15.Is_U_Limit;
+                    devC0915Row.Is_UILimit_Used = PublicData.Dev.PID15.Is_UILimit_Used;
+                    devC0915Row.Is_ISeparate_Used = PublicData.Dev.PID15.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1217,22 +1217,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0941Row = C09Table.FindBy配置编号(tempC09RowName[17]);
                 if (devC0941Row != null)
                 {
-                    devC0941Row.PIDName = DAL_Dev.PID41.ControllerName;
-                    devC0941Row.Kp = DAL_Dev.PID41.Kp;
-                    devC0941Row.Ki = DAL_Dev.PID41.Ki;
-                    devC0941Row.Kd = DAL_Dev.PID41.Kd;
-                    devC0941Row.U_UpperBound = DAL_Dev.PID41.U_UpperBound;
-                    devC0941Row.U_LowerBound = DAL_Dev.PID41.U_LowerBound;
-                    //devC0941Row.T = DAL_Dev.PID41.T;
-                    devC0941Row.PIDType = (int)DAL_Dev.PID41.ControllerType;
-                    devC0941Row.U_IMax_Limit = DAL_Dev.PID41.U_IMax_Limit;
-                    devC0941Row.ErrBound_IntegralSeparate = DAL_Dev.PID41.ErrBound_IntegralSeparate;
-                    devC0941Row.Is_Kp_Used = DAL_Dev.PID41.Is_Kp_Used;
-                    devC0941Row.Is_Ki_Used = DAL_Dev.PID41.Is_Ki_Used;
-                    devC0941Row.Is_Kd_Used = DAL_Dev.PID41.Is_Kd_Used;
-                    devC0941Row.Is_U_Limit = DAL_Dev.PID41.Is_U_Limit;
-                    devC0941Row.Is_UILimit_Used = DAL_Dev.PID41.Is_UILimit_Used;
-                    devC0941Row.Is_ISeparate_Used = DAL_Dev.PID41.Is_ISeparate_Used;
+                    devC0941Row.PIDName = PublicData.Dev.PID41.ControllerName;
+                    devC0941Row.Kp = PublicData.Dev.PID41.Kp;
+                    devC0941Row.Ki = PublicData.Dev.PID41.Ki;
+                    devC0941Row.Kd = PublicData.Dev.PID41.Kd;
+                    devC0941Row.U_UpperBound = PublicData.Dev.PID41.U_UpperBound;
+                    devC0941Row.U_LowerBound = PublicData.Dev.PID41.U_LowerBound;
+                    //devC0941Row.T = PublicData.Dev.PID41.T;
+                    devC0941Row.PIDType = (int)PublicData.Dev.PID41.ControllerType;
+                    devC0941Row.U_IMax_Limit = PublicData.Dev.PID41.U_IMax_Limit;
+                    devC0941Row.ErrBound_IntegralSeparate = PublicData.Dev.PID41.ErrBound_IntegralSeparate;
+                    devC0941Row.Is_Kp_Used = PublicData.Dev.PID41.Is_Kp_Used;
+                    devC0941Row.Is_Ki_Used = PublicData.Dev.PID41.Is_Ki_Used;
+                    devC0941Row.Is_Kd_Used = PublicData.Dev.PID41.Is_Kd_Used;
+                    devC0941Row.Is_U_Limit = PublicData.Dev.PID41.Is_U_Limit;
+                    devC0941Row.Is_UILimit_Used = PublicData.Dev.PID41.Is_UILimit_Used;
+                    devC0941Row.Is_ISeparate_Used = PublicData.Dev.PID41.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1248,22 +1248,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0942Row = C09Table.FindBy配置编号(tempC09RowName[18]);
                 if (devC0942Row != null)
                 {
-                    devC0942Row.PIDName = DAL_Dev.PID42.ControllerName;
-                    devC0942Row.Kp = DAL_Dev.PID42.Kp;
-                    devC0942Row.Ki = DAL_Dev.PID42.Ki;
-                    devC0942Row.Kd = DAL_Dev.PID42.Kd;
-                    devC0942Row.U_UpperBound = DAL_Dev.PID42.U_UpperBound;
-                    devC0942Row.U_LowerBound = DAL_Dev.PID42.U_LowerBound;
-                    //devC0942Row.T = DAL_Dev.PID42.T;
-                    devC0942Row.PIDType = (int)DAL_Dev.PID42.ControllerType;
-                    devC0942Row.U_IMax_Limit = DAL_Dev.PID42.U_IMax_Limit;
-                    devC0942Row.ErrBound_IntegralSeparate = DAL_Dev.PID42.ErrBound_IntegralSeparate;
-                    devC0942Row.Is_Kp_Used = DAL_Dev.PID42.Is_Kp_Used;
-                    devC0942Row.Is_Ki_Used = DAL_Dev.PID42.Is_Ki_Used;
-                    devC0942Row.Is_Kd_Used = DAL_Dev.PID42.Is_Kd_Used;
-                    devC0942Row.Is_U_Limit = DAL_Dev.PID42.Is_U_Limit;
-                    devC0942Row.Is_UILimit_Used = DAL_Dev.PID42.Is_UILimit_Used;
-                    devC0942Row.Is_ISeparate_Used = DAL_Dev.PID42.Is_ISeparate_Used;
+                    devC0942Row.PIDName = PublicData.Dev.PID42.ControllerName;
+                    devC0942Row.Kp = PublicData.Dev.PID42.Kp;
+                    devC0942Row.Ki = PublicData.Dev.PID42.Ki;
+                    devC0942Row.Kd = PublicData.Dev.PID42.Kd;
+                    devC0942Row.U_UpperBound = PublicData.Dev.PID42.U_UpperBound;
+                    devC0942Row.U_LowerBound = PublicData.Dev.PID42.U_LowerBound;
+                    //devC0942Row.T = PublicData.Dev.PID42.T;
+                    devC0942Row.PIDType = (int)PublicData.Dev.PID42.ControllerType;
+                    devC0942Row.U_IMax_Limit = PublicData.Dev.PID42.U_IMax_Limit;
+                    devC0942Row.ErrBound_IntegralSeparate = PublicData.Dev.PID42.ErrBound_IntegralSeparate;
+                    devC0942Row.Is_Kp_Used = PublicData.Dev.PID42.Is_Kp_Used;
+                    devC0942Row.Is_Ki_Used = PublicData.Dev.PID42.Is_Ki_Used;
+                    devC0942Row.Is_Kd_Used = PublicData.Dev.PID42.Is_Kd_Used;
+                    devC0942Row.Is_U_Limit = PublicData.Dev.PID42.Is_U_Limit;
+                    devC0942Row.Is_UILimit_Used = PublicData.Dev.PID42.Is_UILimit_Used;
+                    devC0942Row.Is_ISeparate_Used = PublicData.Dev.PID42.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1279,22 +1279,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0943Row = C09Table.FindBy配置编号(tempC09RowName[19]);
                 if (devC0943Row != null)
                 {
-                    devC0943Row.PIDName = DAL_Dev.PID43.ControllerName;
-                    devC0943Row.Kp = DAL_Dev.PID43.Kp;
-                    devC0943Row.Ki = DAL_Dev.PID43.Ki;
-                    devC0943Row.Kd = DAL_Dev.PID43.Kd;
-                    devC0943Row.U_UpperBound = DAL_Dev.PID43.U_UpperBound;
-                    devC0943Row.U_LowerBound = DAL_Dev.PID43.U_LowerBound;
-                    //devC0943Row.T = DAL_Dev.PID43.T;
-                    devC0943Row.PIDType = (int)DAL_Dev.PID43.ControllerType;
-                    devC0943Row.U_IMax_Limit = DAL_Dev.PID43.U_IMax_Limit;
-                    devC0943Row.ErrBound_IntegralSeparate = DAL_Dev.PID43.ErrBound_IntegralSeparate;
-                    devC0943Row.Is_Kp_Used = DAL_Dev.PID43.Is_Kp_Used;
-                    devC0943Row.Is_Ki_Used = DAL_Dev.PID43.Is_Ki_Used;
-                    devC0943Row.Is_Kd_Used = DAL_Dev.PID43.Is_Kd_Used;
-                    devC0943Row.Is_U_Limit = DAL_Dev.PID43.Is_U_Limit;
-                    devC0943Row.Is_UILimit_Used = DAL_Dev.PID43.Is_UILimit_Used;
-                    devC0943Row.Is_ISeparate_Used = DAL_Dev.PID43.Is_ISeparate_Used;
+                    devC0943Row.PIDName = PublicData.Dev.PID43.ControllerName;
+                    devC0943Row.Kp = PublicData.Dev.PID43.Kp;
+                    devC0943Row.Ki = PublicData.Dev.PID43.Ki;
+                    devC0943Row.Kd = PublicData.Dev.PID43.Kd;
+                    devC0943Row.U_UpperBound = PublicData.Dev.PID43.U_UpperBound;
+                    devC0943Row.U_LowerBound = PublicData.Dev.PID43.U_LowerBound;
+                    //devC0943Row.T = PublicData.Dev.PID43.T;
+                    devC0943Row.PIDType = (int)PublicData.Dev.PID43.ControllerType;
+                    devC0943Row.U_IMax_Limit = PublicData.Dev.PID43.U_IMax_Limit;
+                    devC0943Row.ErrBound_IntegralSeparate = PublicData.Dev.PID43.ErrBound_IntegralSeparate;
+                    devC0943Row.Is_Kp_Used = PublicData.Dev.PID43.Is_Kp_Used;
+                    devC0943Row.Is_Ki_Used = PublicData.Dev.PID43.Is_Ki_Used;
+                    devC0943Row.Is_Kd_Used = PublicData.Dev.PID43.Is_Kd_Used;
+                    devC0943Row.Is_U_Limit = PublicData.Dev.PID43.Is_U_Limit;
+                    devC0943Row.Is_UILimit_Used = PublicData.Dev.PID43.Is_UILimit_Used;
+                    devC0943Row.Is_ISeparate_Used = PublicData.Dev.PID43.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1310,22 +1310,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0944Row = C09Table.FindBy配置编号(tempC09RowName[20]);
                 if (devC0944Row != null)
                 {
-                    devC0944Row.PIDName = DAL_Dev.PID44.ControllerName;
-                    devC0944Row.Kp = DAL_Dev.PID44.Kp;
-                    devC0944Row.Ki = DAL_Dev.PID44.Ki;
-                    devC0944Row.Kd = DAL_Dev.PID44.Kd;
-                    devC0944Row.U_UpperBound = DAL_Dev.PID44.U_UpperBound;
-                    devC0944Row.U_LowerBound = DAL_Dev.PID44.U_LowerBound;
-                    //devC0944Row.T = DAL_Dev.PID44.T;
-                    devC0944Row.PIDType = (int)DAL_Dev.PID44.ControllerType;
-                    devC0944Row.U_IMax_Limit = DAL_Dev.PID44.U_IMax_Limit;
-                    devC0944Row.ErrBound_IntegralSeparate = DAL_Dev.PID44.ErrBound_IntegralSeparate;
-                    devC0944Row.Is_Kp_Used = DAL_Dev.PID44.Is_Kp_Used;
-                    devC0944Row.Is_Ki_Used = DAL_Dev.PID44.Is_Ki_Used;
-                    devC0944Row.Is_Kd_Used = DAL_Dev.PID44.Is_Kd_Used;
-                    devC0944Row.Is_U_Limit = DAL_Dev.PID44.Is_U_Limit;
-                    devC0944Row.Is_UILimit_Used = DAL_Dev.PID44.Is_UILimit_Used;
-                    devC0944Row.Is_ISeparate_Used = DAL_Dev.PID44.Is_ISeparate_Used;
+                    devC0944Row.PIDName = PublicData.Dev.PID44.ControllerName;
+                    devC0944Row.Kp = PublicData.Dev.PID44.Kp;
+                    devC0944Row.Ki = PublicData.Dev.PID44.Ki;
+                    devC0944Row.Kd = PublicData.Dev.PID44.Kd;
+                    devC0944Row.U_UpperBound = PublicData.Dev.PID44.U_UpperBound;
+                    devC0944Row.U_LowerBound = PublicData.Dev.PID44.U_LowerBound;
+                    //devC0944Row.T = PublicData.Dev.PID44.T;
+                    devC0944Row.PIDType = (int)PublicData.Dev.PID44.ControllerType;
+                    devC0944Row.U_IMax_Limit = PublicData.Dev.PID44.U_IMax_Limit;
+                    devC0944Row.ErrBound_IntegralSeparate = PublicData.Dev.PID44.ErrBound_IntegralSeparate;
+                    devC0944Row.Is_Kp_Used = PublicData.Dev.PID44.Is_Kp_Used;
+                    devC0944Row.Is_Ki_Used = PublicData.Dev.PID44.Is_Ki_Used;
+                    devC0944Row.Is_Kd_Used = PublicData.Dev.PID44.Is_Kd_Used;
+                    devC0944Row.Is_U_Limit = PublicData.Dev.PID44.Is_U_Limit;
+                    devC0944Row.Is_UILimit_Used = PublicData.Dev.PID44.Is_UILimit_Used;
+                    devC0944Row.Is_ISeparate_Used = PublicData.Dev.PID44.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1341,22 +1341,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0945Row = C09Table.FindBy配置编号(tempC09RowName[21]);
                 if (devC0945Row != null)
                 {
-                    devC0945Row.PIDName = DAL_Dev.PID45.ControllerName;
-                    devC0945Row.Kp = DAL_Dev.PID45.Kp;
-                    devC0945Row.Ki = DAL_Dev.PID45.Ki;
-                    devC0945Row.Kd = DAL_Dev.PID45.Kd;
-                    devC0945Row.U_UpperBound = DAL_Dev.PID45.U_UpperBound;
-                    devC0945Row.U_LowerBound = DAL_Dev.PID45.U_LowerBound;
-                    //devC0945Row.T = DAL_Dev.PID45.T;
-                    devC0945Row.PIDType = (int)DAL_Dev.PID45.ControllerType;
-                    devC0945Row.U_IMax_Limit = DAL_Dev.PID45.U_IMax_Limit;
-                    devC0945Row.ErrBound_IntegralSeparate = DAL_Dev.PID45.ErrBound_IntegralSeparate;
-                    devC0945Row.Is_Kp_Used = DAL_Dev.PID45.Is_Kp_Used;
-                    devC0945Row.Is_Ki_Used = DAL_Dev.PID45.Is_Ki_Used;
-                    devC0945Row.Is_Kd_Used = DAL_Dev.PID45.Is_Kd_Used;
-                    devC0945Row.Is_U_Limit = DAL_Dev.PID45.Is_U_Limit;
-                    devC0945Row.Is_UILimit_Used = DAL_Dev.PID45.Is_UILimit_Used;
-                    devC0945Row.Is_ISeparate_Used = DAL_Dev.PID45.Is_ISeparate_Used;
+                    devC0945Row.PIDName = PublicData.Dev.PID45.ControllerName;
+                    devC0945Row.Kp = PublicData.Dev.PID45.Kp;
+                    devC0945Row.Ki = PublicData.Dev.PID45.Ki;
+                    devC0945Row.Kd = PublicData.Dev.PID45.Kd;
+                    devC0945Row.U_UpperBound = PublicData.Dev.PID45.U_UpperBound;
+                    devC0945Row.U_LowerBound = PublicData.Dev.PID45.U_LowerBound;
+                    //devC0945Row.T = PublicData.Dev.PID45.T;
+                    devC0945Row.PIDType = (int)PublicData.Dev.PID45.ControllerType;
+                    devC0945Row.U_IMax_Limit = PublicData.Dev.PID45.U_IMax_Limit;
+                    devC0945Row.ErrBound_IntegralSeparate = PublicData.Dev.PID45.ErrBound_IntegralSeparate;
+                    devC0945Row.Is_Kp_Used = PublicData.Dev.PID45.Is_Kp_Used;
+                    devC0945Row.Is_Ki_Used = PublicData.Dev.PID45.Is_Ki_Used;
+                    devC0945Row.Is_Kd_Used = PublicData.Dev.PID45.Is_Kd_Used;
+                    devC0945Row.Is_U_Limit = PublicData.Dev.PID45.Is_U_Limit;
+                    devC0945Row.Is_UILimit_Used = PublicData.Dev.PID45.Is_UILimit_Used;
+                    devC0945Row.Is_ISeparate_Used = PublicData.Dev.PID45.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1372,22 +1372,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0961Row = C09Table.FindBy配置编号(tempC09RowName[23]);
                 if (devC0961Row != null)
                 {
-                    devC0961Row.PIDName = DAL_Dev.PID61.ControllerName;
-                    devC0961Row.Kp = DAL_Dev.PID61.Kp;
-                    devC0961Row.Ki = DAL_Dev.PID61.Ki;
-                    devC0961Row.Kd = DAL_Dev.PID61.Kd;
-                    devC0961Row.U_UpperBound = DAL_Dev.PID61.U_UpperBound;
-                    devC0961Row.U_LowerBound = DAL_Dev.PID61.U_LowerBound;
-                    //devC0961Row.T = DAL_Dev.PID61.T;
-                    devC0961Row.PIDType = (int)DAL_Dev.PID61.ControllerType;
-                    devC0961Row.U_IMax_Limit = DAL_Dev.PID61.U_IMax_Limit;
-                    devC0961Row.ErrBound_IntegralSeparate = DAL_Dev.PID61.ErrBound_IntegralSeparate;
-                    devC0961Row.Is_Kp_Used = DAL_Dev.PID61.Is_Kp_Used;
-                    devC0961Row.Is_Ki_Used = DAL_Dev.PID61.Is_Ki_Used;
-                    devC0961Row.Is_Kd_Used = DAL_Dev.PID61.Is_Kd_Used;
-                    devC0961Row.Is_U_Limit = DAL_Dev.PID61.Is_U_Limit;
-                    devC0961Row.Is_UILimit_Used = DAL_Dev.PID61.Is_UILimit_Used;
-                    devC0961Row.Is_ISeparate_Used = DAL_Dev.PID61.Is_ISeparate_Used;
+                    devC0961Row.PIDName = PublicData.Dev.PID61.ControllerName;
+                    devC0961Row.Kp = PublicData.Dev.PID61.Kp;
+                    devC0961Row.Ki = PublicData.Dev.PID61.Ki;
+                    devC0961Row.Kd = PublicData.Dev.PID61.Kd;
+                    devC0961Row.U_UpperBound = PublicData.Dev.PID61.U_UpperBound;
+                    devC0961Row.U_LowerBound = PublicData.Dev.PID61.U_LowerBound;
+                    //devC0961Row.T = PublicData.Dev.PID61.T;
+                    devC0961Row.PIDType = (int)PublicData.Dev.PID61.ControllerType;
+                    devC0961Row.U_IMax_Limit = PublicData.Dev.PID61.U_IMax_Limit;
+                    devC0961Row.ErrBound_IntegralSeparate = PublicData.Dev.PID61.ErrBound_IntegralSeparate;
+                    devC0961Row.Is_Kp_Used = PublicData.Dev.PID61.Is_Kp_Used;
+                    devC0961Row.Is_Ki_Used = PublicData.Dev.PID61.Is_Ki_Used;
+                    devC0961Row.Is_Kd_Used = PublicData.Dev.PID61.Is_Kd_Used;
+                    devC0961Row.Is_U_Limit = PublicData.Dev.PID61.Is_U_Limit;
+                    devC0961Row.Is_UILimit_Used = PublicData.Dev.PID61.Is_UILimit_Used;
+                    devC0961Row.Is_ISeparate_Used = PublicData.Dev.PID61.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1403,22 +1403,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0962Row = C09Table.FindBy配置编号(tempC09RowName[24]);
                 if (devC0962Row != null)
                 {
-                    devC0962Row.PIDName = DAL_Dev.PID62.ControllerName;
-                    devC0962Row.Kp = DAL_Dev.PID62.Kp;
-                    devC0962Row.Ki = DAL_Dev.PID62.Ki;
-                    devC0962Row.Kd = DAL_Dev.PID62.Kd;
-                    devC0962Row.U_UpperBound = DAL_Dev.PID62.U_UpperBound;
-                    devC0962Row.U_LowerBound = DAL_Dev.PID62.U_LowerBound;
-                    //devC0962Row.T = DAL_Dev.PID62.T;
-                    devC0962Row.PIDType = (int)DAL_Dev.PID62.ControllerType;
-                    devC0962Row.U_IMax_Limit = DAL_Dev.PID62.U_IMax_Limit;
-                    devC0962Row.ErrBound_IntegralSeparate = DAL_Dev.PID62.ErrBound_IntegralSeparate;
-                    devC0962Row.Is_Kp_Used = DAL_Dev.PID62.Is_Kp_Used;
-                    devC0962Row.Is_Ki_Used = DAL_Dev.PID62.Is_Ki_Used;
-                    devC0962Row.Is_Kd_Used = DAL_Dev.PID62.Is_Kd_Used;
-                    devC0962Row.Is_U_Limit = DAL_Dev.PID62.Is_U_Limit;
-                    devC0962Row.Is_UILimit_Used = DAL_Dev.PID62.Is_UILimit_Used;
-                    devC0962Row.Is_ISeparate_Used = DAL_Dev.PID62.Is_ISeparate_Used;
+                    devC0962Row.PIDName = PublicData.Dev.PID62.ControllerName;
+                    devC0962Row.Kp = PublicData.Dev.PID62.Kp;
+                    devC0962Row.Ki = PublicData.Dev.PID62.Ki;
+                    devC0962Row.Kd = PublicData.Dev.PID62.Kd;
+                    devC0962Row.U_UpperBound = PublicData.Dev.PID62.U_UpperBound;
+                    devC0962Row.U_LowerBound = PublicData.Dev.PID62.U_LowerBound;
+                    //devC0962Row.T = PublicData.Dev.PID62.T;
+                    devC0962Row.PIDType = (int)PublicData.Dev.PID62.ControllerType;
+                    devC0962Row.U_IMax_Limit = PublicData.Dev.PID62.U_IMax_Limit;
+                    devC0962Row.ErrBound_IntegralSeparate = PublicData.Dev.PID62.ErrBound_IntegralSeparate;
+                    devC0962Row.Is_Kp_Used = PublicData.Dev.PID62.Is_Kp_Used;
+                    devC0962Row.Is_Ki_Used = PublicData.Dev.PID62.Is_Ki_Used;
+                    devC0962Row.Is_Kd_Used = PublicData.Dev.PID62.Is_Kd_Used;
+                    devC0962Row.Is_U_Limit = PublicData.Dev.PID62.Is_U_Limit;
+                    devC0962Row.Is_UILimit_Used = PublicData.Dev.PID62.Is_UILimit_Used;
+                    devC0962Row.Is_ISeparate_Used = PublicData.Dev.PID62.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1434,22 +1434,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0963Row = C09Table.FindBy配置编号(tempC09RowName[25]);
                 if (devC0963Row != null)
                 {
-                    devC0963Row.PIDName = DAL_Dev.PID63.ControllerName;
-                    devC0963Row.Kp = DAL_Dev.PID63.Kp;
-                    devC0963Row.Ki = DAL_Dev.PID63.Ki;
-                    devC0963Row.Kd = DAL_Dev.PID63.Kd;
-                    devC0963Row.U_UpperBound = DAL_Dev.PID63.U_UpperBound;
-                    devC0963Row.U_LowerBound = DAL_Dev.PID63.U_LowerBound;
-                    //devC0963Row.T = DAL_Dev.PID63.T;
-                    devC0963Row.PIDType = (int)DAL_Dev.PID63.ControllerType;
-                    devC0963Row.U_IMax_Limit = DAL_Dev.PID63.U_IMax_Limit;
-                    devC0963Row.ErrBound_IntegralSeparate = DAL_Dev.PID63.ErrBound_IntegralSeparate;
-                    devC0963Row.Is_Kp_Used = DAL_Dev.PID63.Is_Kp_Used;
-                    devC0963Row.Is_Ki_Used = DAL_Dev.PID63.Is_Ki_Used;
-                    devC0963Row.Is_Kd_Used = DAL_Dev.PID63.Is_Kd_Used;
-                    devC0963Row.Is_U_Limit = DAL_Dev.PID63.Is_U_Limit;
-                    devC0963Row.Is_UILimit_Used = DAL_Dev.PID63.Is_UILimit_Used;
-                    devC0963Row.Is_ISeparate_Used = DAL_Dev.PID63.Is_ISeparate_Used;
+                    devC0963Row.PIDName = PublicData.Dev.PID63.ControllerName;
+                    devC0963Row.Kp = PublicData.Dev.PID63.Kp;
+                    devC0963Row.Ki = PublicData.Dev.PID63.Ki;
+                    devC0963Row.Kd = PublicData.Dev.PID63.Kd;
+                    devC0963Row.U_UpperBound = PublicData.Dev.PID63.U_UpperBound;
+                    devC0963Row.U_LowerBound = PublicData.Dev.PID63.U_LowerBound;
+                    //devC0963Row.T = PublicData.Dev.PID63.T;
+                    devC0963Row.PIDType = (int)PublicData.Dev.PID63.ControllerType;
+                    devC0963Row.U_IMax_Limit = PublicData.Dev.PID63.U_IMax_Limit;
+                    devC0963Row.ErrBound_IntegralSeparate = PublicData.Dev.PID63.ErrBound_IntegralSeparate;
+                    devC0963Row.Is_Kp_Used = PublicData.Dev.PID63.Is_Kp_Used;
+                    devC0963Row.Is_Ki_Used = PublicData.Dev.PID63.Is_Ki_Used;
+                    devC0963Row.Is_Kd_Used = PublicData.Dev.PID63.Is_Kd_Used;
+                    devC0963Row.Is_U_Limit = PublicData.Dev.PID63.Is_U_Limit;
+                    devC0963Row.Is_UILimit_Used = PublicData.Dev.PID63.Is_UILimit_Used;
+                    devC0963Row.Is_ISeparate_Used = PublicData.Dev.PID63.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1465,22 +1465,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0964Row = C09Table.FindBy配置编号(tempC09RowName[26]);
                 if (devC0964Row != null)
                 {
-                    devC0964Row.PIDName = DAL_Dev.PID64.ControllerName;
-                    devC0964Row.Kp = DAL_Dev.PID64.Kp;
-                    devC0964Row.Ki = DAL_Dev.PID64.Ki;
-                    devC0964Row.Kd = DAL_Dev.PID64.Kd;
-                    devC0964Row.U_UpperBound = DAL_Dev.PID64.U_UpperBound;
-                    devC0964Row.U_LowerBound = DAL_Dev.PID64.U_LowerBound;
-                    //devC0964Row.T = DAL_Dev.PID64.T;
-                    devC0964Row.PIDType = (int)DAL_Dev.PID64.ControllerType;
-                    devC0964Row.U_IMax_Limit = DAL_Dev.PID64.U_IMax_Limit;
-                    devC0964Row.ErrBound_IntegralSeparate = DAL_Dev.PID64.ErrBound_IntegralSeparate;
-                    devC0964Row.Is_Kp_Used = DAL_Dev.PID64.Is_Kp_Used;
-                    devC0964Row.Is_Ki_Used = DAL_Dev.PID64.Is_Ki_Used;
-                    devC0964Row.Is_Kd_Used = DAL_Dev.PID64.Is_Kd_Used;
-                    devC0964Row.Is_U_Limit = DAL_Dev.PID64.Is_U_Limit;
-                    devC0964Row.Is_UILimit_Used = DAL_Dev.PID64.Is_UILimit_Used;
-                    devC0964Row.Is_ISeparate_Used = DAL_Dev.PID64.Is_ISeparate_Used;
+                    devC0964Row.PIDName = PublicData.Dev.PID64.ControllerName;
+                    devC0964Row.Kp = PublicData.Dev.PID64.Kp;
+                    devC0964Row.Ki = PublicData.Dev.PID64.Ki;
+                    devC0964Row.Kd = PublicData.Dev.PID64.Kd;
+                    devC0964Row.U_UpperBound = PublicData.Dev.PID64.U_UpperBound;
+                    devC0964Row.U_LowerBound = PublicData.Dev.PID64.U_LowerBound;
+                    //devC0964Row.T = PublicData.Dev.PID64.T;
+                    devC0964Row.PIDType = (int)PublicData.Dev.PID64.ControllerType;
+                    devC0964Row.U_IMax_Limit = PublicData.Dev.PID64.U_IMax_Limit;
+                    devC0964Row.ErrBound_IntegralSeparate = PublicData.Dev.PID64.ErrBound_IntegralSeparate;
+                    devC0964Row.Is_Kp_Used = PublicData.Dev.PID64.Is_Kp_Used;
+                    devC0964Row.Is_Ki_Used = PublicData.Dev.PID64.Is_Ki_Used;
+                    devC0964Row.Is_Kd_Used = PublicData.Dev.PID64.Is_Kd_Used;
+                    devC0964Row.Is_U_Limit = PublicData.Dev.PID64.Is_U_Limit;
+                    devC0964Row.Is_UILimit_Used = PublicData.Dev.PID64.Is_UILimit_Used;
+                    devC0964Row.Is_ISeparate_Used = PublicData.Dev.PID64.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1496,22 +1496,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0965Row = C09Table.FindBy配置编号(tempC09RowName[27]);
                 if (devC0965Row != null)
                 {
-                    devC0965Row.PIDName = DAL_Dev.PID65.ControllerName;
-                    devC0965Row.Kp = DAL_Dev.PID65.Kp;
-                    devC0965Row.Ki = DAL_Dev.PID65.Ki;
-                    devC0965Row.Kd = DAL_Dev.PID65.Kd;
-                    devC0965Row.U_UpperBound = DAL_Dev.PID65.U_UpperBound;
-                    devC0965Row.U_LowerBound = DAL_Dev.PID65.U_LowerBound;
-                    //devC0965Row.T = DAL_Dev.PID65.T;
-                    devC0965Row.PIDType = (int)DAL_Dev.PID65.ControllerType;
-                    devC0965Row.U_IMax_Limit = DAL_Dev.PID65.U_IMax_Limit;
-                    devC0965Row.ErrBound_IntegralSeparate = DAL_Dev.PID65.ErrBound_IntegralSeparate;
-                    devC0965Row.Is_Kp_Used = DAL_Dev.PID65.Is_Kp_Used;
-                    devC0965Row.Is_Ki_Used = DAL_Dev.PID65.Is_Ki_Used;
-                    devC0965Row.Is_Kd_Used = DAL_Dev.PID65.Is_Kd_Used;
-                    devC0965Row.Is_U_Limit = DAL_Dev.PID65.Is_U_Limit;
-                    devC0965Row.Is_UILimit_Used = DAL_Dev.PID65.Is_UILimit_Used;
-                    devC0965Row.Is_ISeparate_Used = DAL_Dev.PID65.Is_ISeparate_Used;
+                    devC0965Row.PIDName = PublicData.Dev.PID65.ControllerName;
+                    devC0965Row.Kp = PublicData.Dev.PID65.Kp;
+                    devC0965Row.Ki = PublicData.Dev.PID65.Ki;
+                    devC0965Row.Kd = PublicData.Dev.PID65.Kd;
+                    devC0965Row.U_UpperBound = PublicData.Dev.PID65.U_UpperBound;
+                    devC0965Row.U_LowerBound = PublicData.Dev.PID65.U_LowerBound;
+                    //devC0965Row.T = PublicData.Dev.PID65.T;
+                    devC0965Row.PIDType = (int)PublicData.Dev.PID65.ControllerType;
+                    devC0965Row.U_IMax_Limit = PublicData.Dev.PID65.U_IMax_Limit;
+                    devC0965Row.ErrBound_IntegralSeparate = PublicData.Dev.PID65.ErrBound_IntegralSeparate;
+                    devC0965Row.Is_Kp_Used = PublicData.Dev.PID65.Is_Kp_Used;
+                    devC0965Row.Is_Ki_Used = PublicData.Dev.PID65.Is_Ki_Used;
+                    devC0965Row.Is_Kd_Used = PublicData.Dev.PID65.Is_Kd_Used;
+                    devC0965Row.Is_U_Limit = PublicData.Dev.PID65.Is_U_Limit;
+                    devC0965Row.Is_UILimit_Used = PublicData.Dev.PID65.Is_UILimit_Used;
+                    devC0965Row.Is_ISeparate_Used = PublicData.Dev.PID65.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1527,22 +1527,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0921Row = C09Table.FindBy配置编号(tempC09RowName[5]);
                 if (devC0921Row != null)
                 {
-                    devC0921Row.PIDName = DAL_Dev.PID21.ControllerName;
-                    devC0921Row.Kp = DAL_Dev.PID21.Kp;
-                    devC0921Row.Ki = DAL_Dev.PID21.Ki;
-                    devC0921Row.Kd = DAL_Dev.PID21.Kd;
-                    devC0921Row.U_UpperBound = DAL_Dev.PID21.U_UpperBound;
-                    devC0921Row.U_LowerBound = DAL_Dev.PID21.U_LowerBound;
-                    //devC0921Row.T = DAL_Dev.PID21.T;
-                    devC0921Row.PIDType = (int)DAL_Dev.PID21.ControllerType;
-                    devC0921Row.U_IMax_Limit = DAL_Dev.PID21.U_IMax_Limit;
-                    devC0921Row.ErrBound_IntegralSeparate = DAL_Dev.PID21.ErrBound_IntegralSeparate;
-                    devC0921Row.Is_Kp_Used = DAL_Dev.PID21.Is_Kp_Used;
-                    devC0921Row.Is_Ki_Used = DAL_Dev.PID21.Is_Ki_Used;
-                    devC0921Row.Is_Kd_Used = DAL_Dev.PID21.Is_Kd_Used;
-                    devC0921Row.Is_U_Limit = DAL_Dev.PID21.Is_U_Limit;
-                    devC0921Row.Is_UILimit_Used = DAL_Dev.PID21.Is_UILimit_Used;
-                    devC0921Row.Is_ISeparate_Used = DAL_Dev.PID21.Is_ISeparate_Used;
+                    devC0921Row.PIDName = PublicData.Dev.PID21.ControllerName;
+                    devC0921Row.Kp = PublicData.Dev.PID21.Kp;
+                    devC0921Row.Ki = PublicData.Dev.PID21.Ki;
+                    devC0921Row.Kd = PublicData.Dev.PID21.Kd;
+                    devC0921Row.U_UpperBound = PublicData.Dev.PID21.U_UpperBound;
+                    devC0921Row.U_LowerBound = PublicData.Dev.PID21.U_LowerBound;
+                    //devC0921Row.T = PublicData.Dev.PID21.T;
+                    devC0921Row.PIDType = (int)PublicData.Dev.PID21.ControllerType;
+                    devC0921Row.U_IMax_Limit = PublicData.Dev.PID21.U_IMax_Limit;
+                    devC0921Row.ErrBound_IntegralSeparate = PublicData.Dev.PID21.ErrBound_IntegralSeparate;
+                    devC0921Row.Is_Kp_Used = PublicData.Dev.PID21.Is_Kp_Used;
+                    devC0921Row.Is_Ki_Used = PublicData.Dev.PID21.Is_Ki_Used;
+                    devC0921Row.Is_Kd_Used = PublicData.Dev.PID21.Is_Kd_Used;
+                    devC0921Row.Is_U_Limit = PublicData.Dev.PID21.Is_U_Limit;
+                    devC0921Row.Is_UILimit_Used = PublicData.Dev.PID21.Is_UILimit_Used;
+                    devC0921Row.Is_ISeparate_Used = PublicData.Dev.PID21.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1558,22 +1558,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0922Row = C09Table.FindBy配置编号(tempC09RowName[6]);
                 if (devC0922Row != null)
                 {
-                    devC0922Row.PIDName = DAL_Dev.PID22.ControllerName;
-                    devC0922Row.Kp = DAL_Dev.PID22.Kp;
-                    devC0922Row.Ki = DAL_Dev.PID22.Ki;
-                    devC0922Row.Kd = DAL_Dev.PID22.Kd;
-                    devC0922Row.U_UpperBound = DAL_Dev.PID22.U_UpperBound;
-                    devC0922Row.U_LowerBound = DAL_Dev.PID22.U_LowerBound;
-                    //devC0922Row.T = DAL_Dev.PID22.T;
-                    devC0922Row.PIDType =(int) DAL_Dev.PID22.ControllerType;
-                    devC0922Row.U_IMax_Limit = DAL_Dev.PID22.U_IMax_Limit;
-                    devC0922Row.ErrBound_IntegralSeparate = DAL_Dev.PID22.ErrBound_IntegralSeparate;
-                    devC0922Row.Is_Kp_Used = DAL_Dev.PID22.Is_Kp_Used;
-                    devC0922Row.Is_Ki_Used = DAL_Dev.PID22.Is_Ki_Used;
-                    devC0922Row.Is_Kd_Used = DAL_Dev.PID22.Is_Kd_Used;
-                    devC0922Row.Is_U_Limit = DAL_Dev.PID22.Is_U_Limit;
-                    devC0922Row.Is_UILimit_Used = DAL_Dev.PID22.Is_UILimit_Used;
-                    devC0922Row.Is_ISeparate_Used = DAL_Dev.PID22.Is_ISeparate_Used;
+                    devC0922Row.PIDName = PublicData.Dev.PID22.ControllerName;
+                    devC0922Row.Kp = PublicData.Dev.PID22.Kp;
+                    devC0922Row.Ki = PublicData.Dev.PID22.Ki;
+                    devC0922Row.Kd = PublicData.Dev.PID22.Kd;
+                    devC0922Row.U_UpperBound = PublicData.Dev.PID22.U_UpperBound;
+                    devC0922Row.U_LowerBound = PublicData.Dev.PID22.U_LowerBound;
+                    //devC0922Row.T = PublicData.Dev.PID22.T;
+                    devC0922Row.PIDType =(int) PublicData.Dev.PID22.ControllerType;
+                    devC0922Row.U_IMax_Limit = PublicData.Dev.PID22.U_IMax_Limit;
+                    devC0922Row.ErrBound_IntegralSeparate = PublicData.Dev.PID22.ErrBound_IntegralSeparate;
+                    devC0922Row.Is_Kp_Used = PublicData.Dev.PID22.Is_Kp_Used;
+                    devC0922Row.Is_Ki_Used = PublicData.Dev.PID22.Is_Ki_Used;
+                    devC0922Row.Is_Kd_Used = PublicData.Dev.PID22.Is_Kd_Used;
+                    devC0922Row.Is_U_Limit = PublicData.Dev.PID22.Is_U_Limit;
+                    devC0922Row.Is_UILimit_Used = PublicData.Dev.PID22.Is_UILimit_Used;
+                    devC0922Row.Is_ISeparate_Used = PublicData.Dev.PID22.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1589,22 +1589,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0923Row = C09Table.FindBy配置编号(tempC09RowName[7]);
                 if (devC0923Row != null)
                 {
-                    devC0923Row.PIDName = DAL_Dev.PID23.ControllerName;
-                    devC0923Row.Kp = DAL_Dev.PID23.Kp;
-                    devC0923Row.Ki = DAL_Dev.PID23.Ki;
-                    devC0923Row.Kd = DAL_Dev.PID23.Kd;
-                    devC0923Row.U_UpperBound = DAL_Dev.PID23.U_UpperBound;
-                    devC0923Row.U_LowerBound = DAL_Dev.PID23.U_LowerBound;
-                    //devC0923Row.T = DAL_Dev.PID23.T;
-                    devC0923Row.PIDType = (int)DAL_Dev.PID23.ControllerType;
-                    devC0923Row.U_IMax_Limit = DAL_Dev.PID23.U_IMax_Limit;
-                    devC0923Row.ErrBound_IntegralSeparate = DAL_Dev.PID23.ErrBound_IntegralSeparate;
-                    devC0923Row.Is_Kp_Used = DAL_Dev.PID23.Is_Kp_Used;
-                    devC0923Row.Is_Ki_Used = DAL_Dev.PID23.Is_Ki_Used;
-                    devC0923Row.Is_Kd_Used = DAL_Dev.PID23.Is_Kd_Used;
-                    devC0923Row.Is_U_Limit = DAL_Dev.PID23.Is_U_Limit;
-                    devC0923Row.Is_UILimit_Used = DAL_Dev.PID23.Is_UILimit_Used;
-                    devC0923Row.Is_ISeparate_Used = DAL_Dev.PID23.Is_ISeparate_Used;
+                    devC0923Row.PIDName = PublicData.Dev.PID23.ControllerName;
+                    devC0923Row.Kp = PublicData.Dev.PID23.Kp;
+                    devC0923Row.Ki = PublicData.Dev.PID23.Ki;
+                    devC0923Row.Kd = PublicData.Dev.PID23.Kd;
+                    devC0923Row.U_UpperBound = PublicData.Dev.PID23.U_UpperBound;
+                    devC0923Row.U_LowerBound = PublicData.Dev.PID23.U_LowerBound;
+                    //devC0923Row.T = PublicData.Dev.PID23.T;
+                    devC0923Row.PIDType = (int)PublicData.Dev.PID23.ControllerType;
+                    devC0923Row.U_IMax_Limit = PublicData.Dev.PID23.U_IMax_Limit;
+                    devC0923Row.ErrBound_IntegralSeparate = PublicData.Dev.PID23.ErrBound_IntegralSeparate;
+                    devC0923Row.Is_Kp_Used = PublicData.Dev.PID23.Is_Kp_Used;
+                    devC0923Row.Is_Ki_Used = PublicData.Dev.PID23.Is_Ki_Used;
+                    devC0923Row.Is_Kd_Used = PublicData.Dev.PID23.Is_Kd_Used;
+                    devC0923Row.Is_U_Limit = PublicData.Dev.PID23.Is_U_Limit;
+                    devC0923Row.Is_UILimit_Used = PublicData.Dev.PID23.Is_UILimit_Used;
+                    devC0923Row.Is_ISeparate_Used = PublicData.Dev.PID23.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1620,22 +1620,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0924Row = C09Table.FindBy配置编号(tempC09RowName[8]);
                 if (devC0924Row != null)
                 {
-                    devC0924Row.PIDName = DAL_Dev.PID24.ControllerName;
-                    devC0924Row.Kp = DAL_Dev.PID24.Kp;
-                    devC0924Row.Ki = DAL_Dev.PID24.Ki;
-                    devC0924Row.Kd = DAL_Dev.PID24.Kd;
-                    devC0924Row.U_UpperBound = DAL_Dev.PID24.U_UpperBound;
-                    devC0924Row.U_LowerBound = DAL_Dev.PID24.U_LowerBound;
-                    //devC0924Row.T = DAL_Dev.PID24.T;
-                    devC0924Row.PIDType = (int)DAL_Dev.PID24.ControllerType;
-                    devC0924Row.U_IMax_Limit = DAL_Dev.PID24.U_IMax_Limit;
-                    devC0924Row.ErrBound_IntegralSeparate = DAL_Dev.PID24.ErrBound_IntegralSeparate;
-                    devC0924Row.Is_Kp_Used = DAL_Dev.PID24.Is_Kp_Used;
-                    devC0924Row.Is_Ki_Used = DAL_Dev.PID24.Is_Ki_Used;
-                    devC0924Row.Is_Kd_Used = DAL_Dev.PID24.Is_Kd_Used;
-                    devC0924Row.Is_U_Limit = DAL_Dev.PID24.Is_U_Limit;
-                    devC0924Row.Is_UILimit_Used = DAL_Dev.PID24.Is_UILimit_Used;
-                    devC0924Row.Is_ISeparate_Used = DAL_Dev.PID24.Is_ISeparate_Used;
+                    devC0924Row.PIDName = PublicData.Dev.PID24.ControllerName;
+                    devC0924Row.Kp = PublicData.Dev.PID24.Kp;
+                    devC0924Row.Ki = PublicData.Dev.PID24.Ki;
+                    devC0924Row.Kd = PublicData.Dev.PID24.Kd;
+                    devC0924Row.U_UpperBound = PublicData.Dev.PID24.U_UpperBound;
+                    devC0924Row.U_LowerBound = PublicData.Dev.PID24.U_LowerBound;
+                    //devC0924Row.T = PublicData.Dev.PID24.T;
+                    devC0924Row.PIDType = (int)PublicData.Dev.PID24.ControllerType;
+                    devC0924Row.U_IMax_Limit = PublicData.Dev.PID24.U_IMax_Limit;
+                    devC0924Row.ErrBound_IntegralSeparate = PublicData.Dev.PID24.ErrBound_IntegralSeparate;
+                    devC0924Row.Is_Kp_Used = PublicData.Dev.PID24.Is_Kp_Used;
+                    devC0924Row.Is_Ki_Used = PublicData.Dev.PID24.Is_Ki_Used;
+                    devC0924Row.Is_Kd_Used = PublicData.Dev.PID24.Is_Kd_Used;
+                    devC0924Row.Is_U_Limit = PublicData.Dev.PID24.Is_U_Limit;
+                    devC0924Row.Is_UILimit_Used = PublicData.Dev.PID24.Is_UILimit_Used;
+                    devC0924Row.Is_ISeparate_Used = PublicData.Dev.PID24.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1651,22 +1651,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0925Row = C09Table.FindBy配置编号(tempC09RowName[9]);
                 if (devC0925Row != null)
                 {
-                    devC0925Row.PIDName = DAL_Dev.PID25.ControllerName;
-                    devC0925Row.Kp = DAL_Dev.PID25.Kp;
-                    devC0925Row.Ki = DAL_Dev.PID25.Ki;
-                    devC0925Row.Kd = DAL_Dev.PID25.Kd;
-                    devC0925Row.U_UpperBound = DAL_Dev.PID25.U_UpperBound;
-                    devC0925Row.U_LowerBound = DAL_Dev.PID25.U_LowerBound;
-                    //devC0925Row.T = DAL_Dev.PID25.T;
-                    devC0925Row.PIDType = (int)DAL_Dev.PID25.ControllerType;
-                    devC0925Row.U_IMax_Limit = DAL_Dev.PID25.U_IMax_Limit;
-                    devC0925Row.ErrBound_IntegralSeparate = DAL_Dev.PID25.ErrBound_IntegralSeparate;
-                    devC0925Row.Is_Kp_Used = DAL_Dev.PID25.Is_Kp_Used;
-                    devC0925Row.Is_Ki_Used = DAL_Dev.PID25.Is_Ki_Used;
-                    devC0925Row.Is_Kd_Used = DAL_Dev.PID25.Is_Kd_Used;
-                    devC0925Row.Is_U_Limit = DAL_Dev.PID25.Is_U_Limit;
-                    devC0925Row.Is_UILimit_Used = DAL_Dev.PID25.Is_UILimit_Used;
-                    devC0925Row.Is_ISeparate_Used = DAL_Dev.PID25.Is_ISeparate_Used;
+                    devC0925Row.PIDName = PublicData.Dev.PID25.ControllerName;
+                    devC0925Row.Kp = PublicData.Dev.PID25.Kp;
+                    devC0925Row.Ki = PublicData.Dev.PID25.Ki;
+                    devC0925Row.Kd = PublicData.Dev.PID25.Kd;
+                    devC0925Row.U_UpperBound = PublicData.Dev.PID25.U_UpperBound;
+                    devC0925Row.U_LowerBound = PublicData.Dev.PID25.U_LowerBound;
+                    //devC0925Row.T = PublicData.Dev.PID25.T;
+                    devC0925Row.PIDType = (int)PublicData.Dev.PID25.ControllerType;
+                    devC0925Row.U_IMax_Limit = PublicData.Dev.PID25.U_IMax_Limit;
+                    devC0925Row.ErrBound_IntegralSeparate = PublicData.Dev.PID25.ErrBound_IntegralSeparate;
+                    devC0925Row.Is_Kp_Used = PublicData.Dev.PID25.Is_Kp_Used;
+                    devC0925Row.Is_Ki_Used = PublicData.Dev.PID25.Is_Ki_Used;
+                    devC0925Row.Is_Kd_Used = PublicData.Dev.PID25.Is_Kd_Used;
+                    devC0925Row.Is_U_Limit = PublicData.Dev.PID25.Is_U_Limit;
+                    devC0925Row.Is_UILimit_Used = PublicData.Dev.PID25.Is_UILimit_Used;
+                    devC0925Row.Is_ISeparate_Used = PublicData.Dev.PID25.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1682,22 +1682,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0926Row = C09Table.FindBy配置编号(tempC09RowName[10]);
                 if (devC0926Row != null)
                 {
-                    devC0926Row.PIDName = DAL_Dev.PID26.ControllerName;
-                    devC0926Row.Kp = DAL_Dev.PID26.Kp;
-                    devC0926Row.Ki = DAL_Dev.PID26.Ki;
-                    devC0926Row.Kd = DAL_Dev.PID26.Kd;
-                    devC0926Row.U_UpperBound = DAL_Dev.PID26.U_UpperBound;
-                    devC0926Row.U_LowerBound = DAL_Dev.PID26.U_LowerBound;
-                    //devC0926Row.T = DAL_Dev.PID26.T;
-                    devC0926Row.PIDType = (int)DAL_Dev.PID26.ControllerType;
-                    devC0926Row.U_IMax_Limit = DAL_Dev.PID26.U_IMax_Limit;
-                    devC0926Row.ErrBound_IntegralSeparate = DAL_Dev.PID26.ErrBound_IntegralSeparate;
-                    devC0926Row.Is_Kp_Used = DAL_Dev.PID26.Is_Kp_Used;
-                    devC0926Row.Is_Ki_Used = DAL_Dev.PID26.Is_Ki_Used;
-                    devC0926Row.Is_Kd_Used = DAL_Dev.PID26.Is_Kd_Used;
-                    devC0926Row.Is_U_Limit = DAL_Dev.PID26.Is_U_Limit;
-                    devC0926Row.Is_UILimit_Used = DAL_Dev.PID26.Is_UILimit_Used;
-                    devC0926Row.Is_ISeparate_Used = DAL_Dev.PID26.Is_ISeparate_Used;
+                    devC0926Row.PIDName = PublicData.Dev.PID26.ControllerName;
+                    devC0926Row.Kp = PublicData.Dev.PID26.Kp;
+                    devC0926Row.Ki = PublicData.Dev.PID26.Ki;
+                    devC0926Row.Kd = PublicData.Dev.PID26.Kd;
+                    devC0926Row.U_UpperBound = PublicData.Dev.PID26.U_UpperBound;
+                    devC0926Row.U_LowerBound = PublicData.Dev.PID26.U_LowerBound;
+                    //devC0926Row.T = PublicData.Dev.PID26.T;
+                    devC0926Row.PIDType = (int)PublicData.Dev.PID26.ControllerType;
+                    devC0926Row.U_IMax_Limit = PublicData.Dev.PID26.U_IMax_Limit;
+                    devC0926Row.ErrBound_IntegralSeparate = PublicData.Dev.PID26.ErrBound_IntegralSeparate;
+                    devC0926Row.Is_Kp_Used = PublicData.Dev.PID26.Is_Kp_Used;
+                    devC0926Row.Is_Ki_Used = PublicData.Dev.PID26.Is_Ki_Used;
+                    devC0926Row.Is_Kd_Used = PublicData.Dev.PID26.Is_Kd_Used;
+                    devC0926Row.Is_U_Limit = PublicData.Dev.PID26.Is_U_Limit;
+                    devC0926Row.Is_UILimit_Used = PublicData.Dev.PID26.Is_UILimit_Used;
+                    devC0926Row.Is_ISeparate_Used = PublicData.Dev.PID26.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1713,22 +1713,22 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C09PID控制参数Row devC0951Row = C09Table.FindBy配置编号(tempC09RowName[22]);
                 if (devC0951Row != null)
                 {
-                    devC0951Row.PIDName = DAL_Dev.PID51.ControllerName;
-                    devC0951Row.Kp = DAL_Dev.PID51.Kp;
-                    devC0951Row.Ki = DAL_Dev.PID51.Ki;
-                    devC0951Row.Kd = DAL_Dev.PID51.Kd;
-                    devC0951Row.U_UpperBound = DAL_Dev.PID51.U_UpperBound;
-                    devC0951Row.U_LowerBound = DAL_Dev.PID51.U_LowerBound;
-                    //devC0936Row.T = DAL_Dev.PID51.T;
-                    devC0951Row.PIDType = (int)DAL_Dev.PID51.ControllerType;
-                    devC0951Row.U_IMax_Limit = DAL_Dev.PID51.U_IMax_Limit;
-                    devC0951Row.ErrBound_IntegralSeparate = DAL_Dev.PID51.ErrBound_IntegralSeparate;
-                    devC0951Row.Is_Kp_Used = DAL_Dev.PID51.Is_Kp_Used;
-                    devC0951Row.Is_Ki_Used = DAL_Dev.PID51.Is_Ki_Used;
-                    devC0951Row.Is_Kd_Used = DAL_Dev.PID51.Is_Kd_Used;
-                    devC0951Row.Is_U_Limit = DAL_Dev.PID51.Is_U_Limit;
-                    devC0951Row.Is_UILimit_Used = DAL_Dev.PID51.Is_UILimit_Used;
-                    devC0951Row.Is_ISeparate_Used = DAL_Dev.PID51.Is_ISeparate_Used;
+                    devC0951Row.PIDName = PublicData.Dev.PID51.ControllerName;
+                    devC0951Row.Kp = PublicData.Dev.PID51.Kp;
+                    devC0951Row.Ki = PublicData.Dev.PID51.Ki;
+                    devC0951Row.Kd = PublicData.Dev.PID51.Kd;
+                    devC0951Row.U_UpperBound = PublicData.Dev.PID51.U_UpperBound;
+                    devC0951Row.U_LowerBound = PublicData.Dev.PID51.U_LowerBound;
+                    //devC0936Row.T = PublicData.Dev.PID51.T;
+                    devC0951Row.PIDType = (int)PublicData.Dev.PID51.ControllerType;
+                    devC0951Row.U_IMax_Limit = PublicData.Dev.PID51.U_IMax_Limit;
+                    devC0951Row.ErrBound_IntegralSeparate = PublicData.Dev.PID51.ErrBound_IntegralSeparate;
+                    devC0951Row.Is_Kp_Used = PublicData.Dev.PID51.Is_Kp_Used;
+                    devC0951Row.Is_Ki_Used = PublicData.Dev.PID51.Is_Ki_Used;
+                    devC0951Row.Is_Kd_Used = PublicData.Dev.PID51.Is_Kd_Used;
+                    devC0951Row.Is_U_Limit = PublicData.Dev.PID51.Is_U_Limit;
+                    devC0951Row.Is_UILimit_Used = PublicData.Dev.PID51.Is_UILimit_Used;
+                    devC0951Row.Is_ISeparate_Used = PublicData.Dev.PID51.Is_ISeparate_Used;
                     C09TableAdapter.Update(C09Table);
                     C09Table.AcceptChanges();
                 }
@@ -1776,69 +1776,69 @@ namespace MQDFJ_MB.DAL
                 if (devC12Row != null)
                 {
                     //气密定级标准值
-                    devC12Row.IsPressFalse = DAL_Dev.IsPressFalse;
-                    devC12Row.气密定级正预加压标准值 = DAL_Dev.PressSet_QMDJ_Std[0][0];
-                    devC12Row.气密定级正压1标准值 = DAL_Dev.PressSet_QMDJ_Std[1][0];
-                    devC12Row.气密定级正压2标准值 = DAL_Dev.PressSet_QMDJ_Std[1][1];
-                    devC12Row.气密定级正压3标准值 = DAL_Dev.PressSet_QMDJ_Std[1][2];
-                    devC12Row.气密定级负预加压标准值 = DAL_Dev.PressSet_QMDJ_Std[2][0];
-                    devC12Row.气密定级负压1标准值 = DAL_Dev.PressSet_QMDJ_Std[3][0];
-                    devC12Row.气密定级负压2标准值 = DAL_Dev.PressSet_QMDJ_Std[3][1];
-                    devC12Row.气密定级负压3标准值 = DAL_Dev.PressSet_QMDJ_Std[3][2];
+                    devC12Row.IsPressFalse = PublicData.Dev.IsPressFalse;
+                    devC12Row.气密定级正预加压标准值 = PublicData.Dev.PressSet_QMDJ_Std[0][0];
+                    devC12Row.气密定级正压1标准值 = PublicData.Dev.PressSet_QMDJ_Std[1][0];
+                    devC12Row.气密定级正压2标准值 = PublicData.Dev.PressSet_QMDJ_Std[1][1];
+                    devC12Row.气密定级正压3标准值 = PublicData.Dev.PressSet_QMDJ_Std[1][2];
+                    devC12Row.气密定级负预加压标准值 = PublicData.Dev.PressSet_QMDJ_Std[2][0];
+                    devC12Row.气密定级负压1标准值 = PublicData.Dev.PressSet_QMDJ_Std[3][0];
+                    devC12Row.气密定级负压2标准值 = PublicData.Dev.PressSet_QMDJ_Std[3][1];
+                    devC12Row.气密定级负压3标准值 = PublicData.Dev.PressSet_QMDJ_Std[3][2];
                     //气密定级实际值
-                    devC12Row.气密定级正预加压实际值 = DAL_Dev.PressSet_QMDJ_False[0][0];
-                    devC12Row.气密定级正压1实际值 = DAL_Dev.PressSet_QMDJ_False[1][0];
-                    devC12Row.气密定级正压2实际值 = DAL_Dev.PressSet_QMDJ_False[1][1];
-                    devC12Row.气密定级正压3实际值 = DAL_Dev.PressSet_QMDJ_False[1][2];
-                    devC12Row.气密定级负预加压实际值 = DAL_Dev.PressSet_QMDJ_False[2][0];
-                    devC12Row.气密定级负压1实际值 = DAL_Dev.PressSet_QMDJ_False[3][0];
-                    devC12Row.气密定级负压2实际值 = DAL_Dev.PressSet_QMDJ_False[3][1];
-                    devC12Row.气密定级负压3实际值 = DAL_Dev.PressSet_QMDJ_False[3][2];
+                    devC12Row.气密定级正预加压实际值 = PublicData.Dev.PressSet_QMDJ_False[0][0];
+                    devC12Row.气密定级正压1实际值 = PublicData.Dev.PressSet_QMDJ_False[1][0];
+                    devC12Row.气密定级正压2实际值 = PublicData.Dev.PressSet_QMDJ_False[1][1];
+                    devC12Row.气密定级正压3实际值 = PublicData.Dev.PressSet_QMDJ_False[1][2];
+                    devC12Row.气密定级负预加压实际值 = PublicData.Dev.PressSet_QMDJ_False[2][0];
+                    devC12Row.气密定级负压1实际值 = PublicData.Dev.PressSet_QMDJ_False[3][0];
+                    devC12Row.气密定级负压2实际值 = PublicData.Dev.PressSet_QMDJ_False[3][1];
+                    devC12Row.气密定级负压3实际值 = PublicData.Dev.PressSet_QMDJ_False[3][2];
                     //气密工程实际值
-                    devC12Row.气密工程正预加压实际值 = DAL_Dev.PressSet_QMGC_False[0][0];
-                    devC12Row.气密工程正检测加压实际值 = DAL_Dev.PressSet_QMGC_False[1][0];
-                    devC12Row.气密工程负预加压实际值 = DAL_Dev.PressSet_QMGC_False[2][0];
-                    devC12Row.气密工程负检测加压实际值 = DAL_Dev.PressSet_QMGC_False[3][0];
+                    devC12Row.气密工程正预加压实际值 = PublicData.Dev.PressSet_QMGC_False[0][0];
+                    devC12Row.气密工程正检测加压实际值 = PublicData.Dev.PressSet_QMGC_False[1][0];
+                    devC12Row.气密工程负预加压实际值 = PublicData.Dev.PressSet_QMGC_False[2][0];
+                    devC12Row.气密工程负检测加压实际值 = PublicData.Dev.PressSet_QMGC_False[3][0];
 
                     //水密
-                    devC12Row.水密预加压标准值 = DAL_Dev.PressSet_SM_YJY_Std[0];
-                    devC12Row.水密预加压实际值 = DAL_Dev.PressSet_SM_YJY_False[0];
-                    devC12Row.水密定级稳定第1级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[0];
-                    devC12Row.水密定级稳定第2级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[1];
-                    devC12Row.水密定级稳定第3级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[2];
-                    devC12Row.水密定级稳定第4级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[3];
-                    devC12Row.水密定级稳定第5级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[4];
-                    devC12Row.水密定级稳定第6级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[5];
-                    devC12Row.水密定级稳定第7级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[6];
-                    devC12Row.水密定级稳定第8级标准值 = DAL_Dev.PressSet_SMDJ_WD_Std[7];
-                    devC12Row.水密定级稳定第1级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[0];
-                    devC12Row.水密定级稳定第2级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[1];
-                    devC12Row.水密定级稳定第3级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[2];
-                    devC12Row.水密定级稳定第4级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[3];
-                    devC12Row.水密定级稳定第5级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[4];
-                    devC12Row.水密定级稳定第6级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[5];
-                    devC12Row.水密定级稳定第7级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[6];
-                    devC12Row.水密定级稳定第8级实际值 = DAL_Dev.PressSet_SMDJ_WD_False[7];
-                    devC12Row.水密定级波动第1级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[0];
-                    devC12Row.水密定级波动第2级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[1];
-                    devC12Row.水密定级波动第3级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[2];
-                    devC12Row.水密定级波动第4级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[3];
-                    devC12Row.水密定级波动第5级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[4];
-                    devC12Row.水密定级波动第6级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[5];
-                    devC12Row.水密定级波动第7级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[6];
-                    devC12Row.水密定级波动第8级标准值 = DAL_Dev.PressSet_SMDJ_BDPJ_Std[7];
-                    devC12Row.水密定级波动第1级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[0];
-                    devC12Row.水密定级波动第2级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[1];
-                    devC12Row.水密定级波动第3级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[2];
-                    devC12Row.水密定级波动第4级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[3];
-                    devC12Row.水密定级波动第5级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[4];
-                    devC12Row.水密定级波动第6级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[5];
-                    devC12Row.水密定级波动第7级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[6];
-                    devC12Row.水密定级波动第8级实际值 = DAL_Dev.PressSet_SMDJ_BDPJ_False[7];
-                    devC12Row.水密工程稳定可开启压力实际值 = DAL_Dev.PressSet_SMGC_WDKKQ_False;
-                    devC12Row.水密工程稳定固定压力实际值 = DAL_Dev.PressSet_SMGC_WDGD_False;
-                    devC12Row.水密工程波动可开启压力实际值 = DAL_Dev.PressSet_SMGC_BDPJKKQ_False;
-                    devC12Row.水密工程波动固定压力实际值 = DAL_Dev.PressSet_SMGC_BDPJGD_False;
+                    devC12Row.水密预加压标准值 = PublicData.Dev.PressSet_SM_YJY_Std[0];
+                    devC12Row.水密预加压实际值 = PublicData.Dev.PressSet_SM_YJY_False[0];
+                    devC12Row.水密定级稳定第1级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[0];
+                    devC12Row.水密定级稳定第2级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[1];
+                    devC12Row.水密定级稳定第3级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[2];
+                    devC12Row.水密定级稳定第4级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[3];
+                    devC12Row.水密定级稳定第5级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[4];
+                    devC12Row.水密定级稳定第6级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[5];
+                    devC12Row.水密定级稳定第7级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[6];
+                    devC12Row.水密定级稳定第8级标准值 = PublicData.Dev.PressSet_SMDJ_WD_Std[7];
+                    devC12Row.水密定级稳定第1级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[0];
+                    devC12Row.水密定级稳定第2级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[1];
+                    devC12Row.水密定级稳定第3级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[2];
+                    devC12Row.水密定级稳定第4级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[3];
+                    devC12Row.水密定级稳定第5级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[4];
+                    devC12Row.水密定级稳定第6级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[5];
+                    devC12Row.水密定级稳定第7级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[6];
+                    devC12Row.水密定级稳定第8级实际值 = PublicData.Dev.PressSet_SMDJ_WD_False[7];
+                    devC12Row.水密定级波动第1级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[0];
+                    devC12Row.水密定级波动第2级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[1];
+                    devC12Row.水密定级波动第3级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[2];
+                    devC12Row.水密定级波动第4级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[3];
+                    devC12Row.水密定级波动第5级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[4];
+                    devC12Row.水密定级波动第6级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[5];
+                    devC12Row.水密定级波动第7级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[6];
+                    devC12Row.水密定级波动第8级标准值 = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[7];
+                    devC12Row.水密定级波动第1级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[0];
+                    devC12Row.水密定级波动第2级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[1];
+                    devC12Row.水密定级波动第3级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[2];
+                    devC12Row.水密定级波动第4级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[3];
+                    devC12Row.水密定级波动第5级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[4];
+                    devC12Row.水密定级波动第6级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[5];
+                    devC12Row.水密定级波动第7级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[6];
+                    devC12Row.水密定级波动第8级实际值 = PublicData.Dev.PressSet_SMDJ_BDPJ_False[7];
+                    devC12Row.水密工程稳定可开启压力实际值 = PublicData.Dev.PressSet_SMGC_WDKKQ_False;
+                    devC12Row.水密工程稳定固定压力实际值 = PublicData.Dev.PressSet_SMGC_WDGD_False;
+                    devC12Row.水密工程波动可开启压力实际值 = PublicData.Dev.PressSet_SMGC_BDPJKKQ_False;
+                    devC12Row.水密工程波动固定压力实际值 = PublicData.Dev.PressSet_SMGC_BDPJGD_False;
                     C12TableAdapter.Update(C12Table);
                     C12Table.AcceptChanges();
                 }
@@ -1877,69 +1877,69 @@ namespace MQDFJ_MB.DAL
                 if (devC13Row != null)
                 {
                     //抗风压
-                    devC13Row.抗风压定级p1压力标准值01 = DAL_Dev.PressSet_KFY_DJBX_Std[1][0];
-                    devC13Row.抗风压定级p1压力标准值02 = DAL_Dev.PressSet_KFY_DJBX_Std[1][1];
-                    devC13Row.抗风压定级p1压力标准值03 = DAL_Dev.PressSet_KFY_DJBX_Std[1][2];
-                    devC13Row.抗风压定级p1压力标准值04 = DAL_Dev.PressSet_KFY_DJBX_Std[1][3];
-                    devC13Row.抗风压定级p1压力标准值05 = DAL_Dev.PressSet_KFY_DJBX_Std[1][4];
-                    devC13Row.抗风压定级p1压力标准值06 = DAL_Dev.PressSet_KFY_DJBX_Std[1][5];
-                    devC13Row.抗风压定级p1压力标准值07 = DAL_Dev.PressSet_KFY_DJBX_Std[1][6];
-                    devC13Row.抗风压定级p1压力标准值08 = DAL_Dev.PressSet_KFY_DJBX_Std[1][7];
-                    devC13Row.抗风压定级p1压力标准值09 = DAL_Dev.PressSet_KFY_DJBX_Std[1][8];
-                    devC13Row.抗风压定级p1压力标准值10 = DAL_Dev.PressSet_KFY_DJBX_Std[1][9];
-                    devC13Row.抗风压定级p1压力标准值11 = DAL_Dev.PressSet_KFY_DJBX_Std[1][10];
-                    devC13Row.抗风压定级p1压力标准值12 = DAL_Dev.PressSet_KFY_DJBX_Std[1][11];
-                    devC13Row.抗风压定级p1压力标准值13 = DAL_Dev.PressSet_KFY_DJBX_Std[1][12];
-                    devC13Row.抗风压定级p1压力标准值14 = DAL_Dev.PressSet_KFY_DJBX_Std[1][13];
-                    devC13Row.抗风压定级p1压力标准值15 = DAL_Dev.PressSet_KFY_DJBX_Std[1][14];
-                    devC13Row.抗风压定级p1压力标准值16 = DAL_Dev.PressSet_KFY_DJBX_Std[1][15];
-                    devC13Row.抗风压定级p1压力标准值17 = DAL_Dev.PressSet_KFY_DJBX_Std[1][16];
-                    devC13Row.抗风压定级p1压力标准值18 = DAL_Dev.PressSet_KFY_DJBX_Std[1][17];
-                    devC13Row.抗风压定级p1压力标准值19 = DAL_Dev.PressSet_KFY_DJBX_Std[1][18];
-                    devC13Row.抗风压定级p1压力标准值20 = DAL_Dev.PressSet_KFY_DJBX_Std[1][19];
-                    devC13Row.抗风压定级p1压力实际值01 = DAL_Dev.PressSet_KFY_DJBX_False[1][0];
-                    devC13Row.抗风压定级p1压力实际值02 = DAL_Dev.PressSet_KFY_DJBX_False[1][1];
-                    devC13Row.抗风压定级p1压力实际值03 = DAL_Dev.PressSet_KFY_DJBX_False[1][2];
-                    devC13Row.抗风压定级p1压力实际值04 = DAL_Dev.PressSet_KFY_DJBX_False[1][3];
-                    devC13Row.抗风压定级p1压力实际值05 = DAL_Dev.PressSet_KFY_DJBX_False[1][4];
-                    devC13Row.抗风压定级p1压力实际值06 = DAL_Dev.PressSet_KFY_DJBX_False[1][5];
-                    devC13Row.抗风压定级p1压力实际值07 = DAL_Dev.PressSet_KFY_DJBX_False[1][6];
-                    devC13Row.抗风压定级p1压力实际值08 = DAL_Dev.PressSet_KFY_DJBX_False[1][7];
-                    devC13Row.抗风压定级p1压力实际值09 = DAL_Dev.PressSet_KFY_DJBX_False[1][8];
-                    devC13Row.抗风压定级p1压力实际值10 = DAL_Dev.PressSet_KFY_DJBX_False[1][9];
-                    devC13Row.抗风压定级p1压力实际值11 = DAL_Dev.PressSet_KFY_DJBX_False[1][10];
-                    devC13Row.抗风压定级p1压力实际值12 = DAL_Dev.PressSet_KFY_DJBX_False[1][11];
-                    devC13Row.抗风压定级p1压力实际值13 = DAL_Dev.PressSet_KFY_DJBX_False[1][12];
-                    devC13Row.抗风压定级p1压力实际值14 = DAL_Dev.PressSet_KFY_DJBX_False[1][13];
-                    devC13Row.抗风压定级p1压力实际值15 = DAL_Dev.PressSet_KFY_DJBX_False[1][14];
-                    devC13Row.抗风压定级p1压力实际值16 = DAL_Dev.PressSet_KFY_DJBX_False[1][15];
-                    devC13Row.抗风压定级p1压力实际值17 = DAL_Dev.PressSet_KFY_DJBX_False[1][16];
-                    devC13Row.抗风压定级p1压力实际值18 = DAL_Dev.PressSet_KFY_DJBX_False[1][17];
-                    devC13Row.抗风压定级p1压力实际值19 = DAL_Dev.PressSet_KFY_DJBX_False[1][18];
-                    devC13Row.抗风压定级p1压力实际值20 = DAL_Dev.PressSet_KFY_DJBX_False[1][19];
-                    devC13Row.抗风压定级p2倍数标准值 = DAL_Dev.PressSet_KFY_DJP2_Raito_Std;
-                    devC13Row.抗风压定级p3倍数标准值 = DAL_Dev.PressSet_KFY_DJP3_Raito_Std;
-                    devC13Row.抗风压定级pmax倍数标准值 = DAL_Dev.PressSet_KFY_DJPmax_Raito_Std;
-                    devC13Row.抗风压定级p2压力实际值 = DAL_Dev.PressSet_KFY_DJP2_False;
-                    devC13Row.抗风压定级p3压力实际值 = DAL_Dev.PressSet_KFY_DJP3_False;
-                    devC13Row.抗风压定级pmax压力实际值 = DAL_Dev.PressSet_KFY_DJPmax_False;
-                    devC13Row.抗风压工程p1压力倍数标准值1 = DAL_Dev.PressSet_KFY_GCP1_Raito_Std[0];
-                    devC13Row.抗风压工程p1压力倍数标准值2 = DAL_Dev.PressSet_KFY_GCP1_Raito_Std[1];
-                    devC13Row.抗风压工程p1压力倍数标准值3 = DAL_Dev.PressSet_KFY_GCP1_Raito_Std[2];
-                    devC13Row.抗风压工程p1压力倍数标准值4 = DAL_Dev.PressSet_KFY_GCP1_Raito_Std[3];
-                    devC13Row.抗风压工程p2压力倍数标准值 = DAL_Dev.PressSet_KFY_GCP2_Raito_Std;
-                    devC13Row.抗风压工程pmax压力倍数标准值 = DAL_Dev.PressSet_KFY_GCPmax_Raito_Std;
-                    devC13Row.抗风压工程p1压力实际值1 = DAL_Dev.PressSet_KFY_GCBX_False[1][0];
-                    devC13Row.抗风压工程p1压力实际值2 = DAL_Dev.PressSet_KFY_GCBX_False[1][1];
-                    devC13Row.抗风压工程p1压力实际值3 = DAL_Dev.PressSet_KFY_GCBX_False[1][2];
-                    devC13Row.抗风压工程p1压力实际值4 = DAL_Dev.PressSet_KFY_GCBX_False[1][3];
-                    devC13Row.抗风压工程p2压力实际值 = DAL_Dev.PressSet_KFY_GCP2_False;
-                    devC13Row.抗风压工程p3压力实际值 = DAL_Dev.PressSet_KFY_GCP3_False;
-                    devC13Row.抗风压工程pmax压力实际值 = DAL_Dev.PressSet_KFY_GCPmax_False;
-                    devC13Row.抗风压定级p1预加压标准值 = DAL_Dev.PressSet_KFY_DJBX_Std[0][0];
-                    devC13Row.抗风压定级p1预加压实际值 = DAL_Dev.PressSet_KFY_DJBX_False[0][0];
-                    devC13Row.抗风压工程p1预加压标准值 = DAL_Dev.PressSet_KFY_GCP1_Y_Std;
-                    devC13Row.抗风压工程p1预加压实际值 = DAL_Dev.PressSet_KFY_GCBX_False[0][0];
+                    devC13Row.抗风压定级p1压力标准值01 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][0];
+                    devC13Row.抗风压定级p1压力标准值02 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][1];
+                    devC13Row.抗风压定级p1压力标准值03 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][2];
+                    devC13Row.抗风压定级p1压力标准值04 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][3];
+                    devC13Row.抗风压定级p1压力标准值05 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][4];
+                    devC13Row.抗风压定级p1压力标准值06 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][5];
+                    devC13Row.抗风压定级p1压力标准值07 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][6];
+                    devC13Row.抗风压定级p1压力标准值08 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][7];
+                    devC13Row.抗风压定级p1压力标准值09 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][8];
+                    devC13Row.抗风压定级p1压力标准值10 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][9];
+                    devC13Row.抗风压定级p1压力标准值11 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][10];
+                    devC13Row.抗风压定级p1压力标准值12 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][11];
+                    devC13Row.抗风压定级p1压力标准值13 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][12];
+                    devC13Row.抗风压定级p1压力标准值14 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][13];
+                    devC13Row.抗风压定级p1压力标准值15 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][14];
+                    devC13Row.抗风压定级p1压力标准值16 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][15];
+                    devC13Row.抗风压定级p1压力标准值17 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][16];
+                    devC13Row.抗风压定级p1压力标准值18 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][17];
+                    devC13Row.抗风压定级p1压力标准值19 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][18];
+                    devC13Row.抗风压定级p1压力标准值20 = PublicData.Dev.PressSet_KFY_DJBX_Std[1][19];
+                    devC13Row.抗风压定级p1压力实际值01 = PublicData.Dev.PressSet_KFY_DJBX_False[1][0];
+                    devC13Row.抗风压定级p1压力实际值02 = PublicData.Dev.PressSet_KFY_DJBX_False[1][1];
+                    devC13Row.抗风压定级p1压力实际值03 = PublicData.Dev.PressSet_KFY_DJBX_False[1][2];
+                    devC13Row.抗风压定级p1压力实际值04 = PublicData.Dev.PressSet_KFY_DJBX_False[1][3];
+                    devC13Row.抗风压定级p1压力实际值05 = PublicData.Dev.PressSet_KFY_DJBX_False[1][4];
+                    devC13Row.抗风压定级p1压力实际值06 = PublicData.Dev.PressSet_KFY_DJBX_False[1][5];
+                    devC13Row.抗风压定级p1压力实际值07 = PublicData.Dev.PressSet_KFY_DJBX_False[1][6];
+                    devC13Row.抗风压定级p1压力实际值08 = PublicData.Dev.PressSet_KFY_DJBX_False[1][7];
+                    devC13Row.抗风压定级p1压力实际值09 = PublicData.Dev.PressSet_KFY_DJBX_False[1][8];
+                    devC13Row.抗风压定级p1压力实际值10 = PublicData.Dev.PressSet_KFY_DJBX_False[1][9];
+                    devC13Row.抗风压定级p1压力实际值11 = PublicData.Dev.PressSet_KFY_DJBX_False[1][10];
+                    devC13Row.抗风压定级p1压力实际值12 = PublicData.Dev.PressSet_KFY_DJBX_False[1][11];
+                    devC13Row.抗风压定级p1压力实际值13 = PublicData.Dev.PressSet_KFY_DJBX_False[1][12];
+                    devC13Row.抗风压定级p1压力实际值14 = PublicData.Dev.PressSet_KFY_DJBX_False[1][13];
+                    devC13Row.抗风压定级p1压力实际值15 = PublicData.Dev.PressSet_KFY_DJBX_False[1][14];
+                    devC13Row.抗风压定级p1压力实际值16 = PublicData.Dev.PressSet_KFY_DJBX_False[1][15];
+                    devC13Row.抗风压定级p1压力实际值17 = PublicData.Dev.PressSet_KFY_DJBX_False[1][16];
+                    devC13Row.抗风压定级p1压力实际值18 = PublicData.Dev.PressSet_KFY_DJBX_False[1][17];
+                    devC13Row.抗风压定级p1压力实际值19 = PublicData.Dev.PressSet_KFY_DJBX_False[1][18];
+                    devC13Row.抗风压定级p1压力实际值20 = PublicData.Dev.PressSet_KFY_DJBX_False[1][19];
+                    devC13Row.抗风压定级p2倍数标准值 = PublicData.Dev.PressSet_KFY_DJP2_Raito_Std;
+                    devC13Row.抗风压定级p3倍数标准值 = PublicData.Dev.PressSet_KFY_DJP3_Raito_Std;
+                    devC13Row.抗风压定级pmax倍数标准值 = PublicData.Dev.PressSet_KFY_DJPmax_Raito_Std;
+                    devC13Row.抗风压定级p2压力实际值 = PublicData.Dev.PressSet_KFY_DJP2_False;
+                    devC13Row.抗风压定级p3压力实际值 = PublicData.Dev.PressSet_KFY_DJP3_False;
+                    devC13Row.抗风压定级pmax压力实际值 = PublicData.Dev.PressSet_KFY_DJPmax_False;
+                    devC13Row.抗风压工程p1压力倍数标准值1 = PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[0];
+                    devC13Row.抗风压工程p1压力倍数标准值2 = PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[1];
+                    devC13Row.抗风压工程p1压力倍数标准值3 = PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[2];
+                    devC13Row.抗风压工程p1压力倍数标准值4 = PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[3];
+                    devC13Row.抗风压工程p2压力倍数标准值 = PublicData.Dev.PressSet_KFY_GCP2_Raito_Std;
+                    devC13Row.抗风压工程pmax压力倍数标准值 = PublicData.Dev.PressSet_KFY_GCPmax_Raito_Std;
+                    devC13Row.抗风压工程p1压力实际值1 = PublicData.Dev.PressSet_KFY_GCBX_False[1][0];
+                    devC13Row.抗风压工程p1压力实际值2 = PublicData.Dev.PressSet_KFY_GCBX_False[1][1];
+                    devC13Row.抗风压工程p1压力实际值3 = PublicData.Dev.PressSet_KFY_GCBX_False[1][2];
+                    devC13Row.抗风压工程p1压力实际值4 = PublicData.Dev.PressSet_KFY_GCBX_False[1][3];
+                    devC13Row.抗风压工程p2压力实际值 = PublicData.Dev.PressSet_KFY_GCP2_False;
+                    devC13Row.抗风压工程p3压力实际值 = PublicData.Dev.PressSet_KFY_GCP3_False;
+                    devC13Row.抗风压工程pmax压力实际值 = PublicData.Dev.PressSet_KFY_GCPmax_False;
+                    devC13Row.抗风压定级p1预加压标准值 = PublicData.Dev.PressSet_KFY_DJBX_Std[0][0];
+                    devC13Row.抗风压定级p1预加压实际值 = PublicData.Dev.PressSet_KFY_DJBX_False[0][0];
+                    devC13Row.抗风压工程p1预加压标准值 = PublicData.Dev.PressSet_KFY_GCP1_Y_Std;
+                    devC13Row.抗风压工程p1预加压实际值 = PublicData.Dev.PressSet_KFY_GCBX_False[0][0];
 
                     C13TableAdapter.Update(C13Table);
                     C13Table.AcceptChanges();
@@ -1987,39 +1987,39 @@ namespace MQDFJ_MB.DAL
                 if (devC14Row != null)
                 {
                     //控制允许偏差
-                    devC14Row.PressErrQM_0_50 = DAL_Dev.AllowablePressErrQM[0];
-                    devC14Row.PressErrQM_50_100 = DAL_Dev.AllowablePressErrQM[1];
-                    devC14Row.PressErrQM_100_500 = DAL_Dev.AllowablePressErrQM[2];
-                    devC14Row.PressErrQM_500 = DAL_Dev.AllowablePressErrQM[3];
-                    devC14Row.PressErrBig_0_1000 = DAL_Dev.AllowablePressErrBigCY[0];
-                    devC14Row.PressErrBig_1000_3000 = DAL_Dev.AllowablePressErrBigCY[1];
-                    devC14Row.PressErrBig_3000_5000 = DAL_Dev.AllowablePressErrBigCY[2];
-                    devC14Row.PressErrBig_5000 = DAL_Dev.AllowablePressErrBigCY[3];
+                    devC14Row.PressErrQM_0_50 = PublicData.Dev.AllowablePressErrQM[0];
+                    devC14Row.PressErrQM_50_100 = PublicData.Dev.AllowablePressErrQM[1];
+                    devC14Row.PressErrQM_100_500 = PublicData.Dev.AllowablePressErrQM[2];
+                    devC14Row.PressErrQM_500 = PublicData.Dev.AllowablePressErrQM[3];
+                    devC14Row.PressErrBig_0_1000 = PublicData.Dev.AllowablePressErrBigCY[0];
+                    devC14Row.PressErrBig_1000_3000 = PublicData.Dev.AllowablePressErrBigCY[1];
+                    devC14Row.PressErrBig_3000_5000 = PublicData.Dev.AllowablePressErrBigCY[2];
+                    devC14Row.PressErrBig_5000 = PublicData.Dev.AllowablePressErrBigCY[3];
                     //一般;
-                    devC14Row.LoadUpDownSpeed = DAL_Dev.LoadUpDownSpeed;
-                    devC14Row.KeepingTime_YJY = DAL_Dev.KeepingTime_YJY;
+                    devC14Row.LoadUpDownSpeed = PublicData.Dev.LoadUpDownSpeed;
+                    devC14Row.KeepingTime_YJY = PublicData.Dev.KeepingTime_YJY;
                     //气密控压;
-                    devC14Row.KeepingTime_QMStep = DAL_Dev.KeepingTime_QMStep;
+                    devC14Row.KeepingTime_QMStep = PublicData.Dev.KeepingTime_QMStep;
                     //水密控压;
-                    devC14Row.KeepingTime_SMPreparePress = DAL_Dev.KeepingTime_SMPreparePress;
-                    devC14Row.PhRatioWaveH = DAL_Dev.PhRatioWaveH;
-                    devC14Row.PhRatioWaveL = DAL_Dev.PhRatioWaveL;
-                    devC14Row.KeepingTime_SMFistStep = DAL_Dev.KeepingTime_SMFistStep;
-                    devC14Row.KeepingTime_SMDJ_StepLeft = DAL_Dev.KeepingTime_SMDJ_StepLeft;
-                    devC14Row.KeepingTime_SMGC_KKQ = DAL_Dev.KeepingTime_SMGC_KKQ;
-                    devC14Row.KeepingTime_SMGC_YKQ = DAL_Dev.KeepingTime_SMGC_YKQ;
-                    devC14Row.KeepingTime_SMGC_WKQ = DAL_Dev.KeepingTime_SMGC_WKQ;
-                    devC14Row.HighRatioSM = DAL_Dev.HighRatioSM;
-                    devC14Row.LowRatioSM = DAL_Dev.LowRatioSM;
-                    devC14Row.PlTime_SMGC_Before = DAL_Dev.PlTime_SMGC_Before;
+                    devC14Row.KeepingTime_SMPreparePress = PublicData.Dev.KeepingTime_SMPreparePress;
+                    devC14Row.PhRatioWaveH = PublicData.Dev.PhRatioWaveH;
+                    devC14Row.PhRatioWaveL = PublicData.Dev.PhRatioWaveL;
+                    devC14Row.KeepingTime_SMFistStep = PublicData.Dev.KeepingTime_SMFistStep;
+                    devC14Row.KeepingTime_SMDJ_StepLeft = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
+                    devC14Row.KeepingTime_SMGC_KKQ = PublicData.Dev.KeepingTime_SMGC_KKQ;
+                    devC14Row.KeepingTime_SMGC_YKQ = PublicData.Dev.KeepingTime_SMGC_YKQ;
+                    devC14Row.KeepingTime_SMGC_WKQ = PublicData.Dev.KeepingTime_SMGC_WKQ;
+                    devC14Row.HighRatioSM = PublicData.Dev.HighRatioSM;
+                    devC14Row.LowRatioSM = PublicData.Dev.LowRatioSM;
+                    devC14Row.PlTime_SMGC_Before = PublicData.Dev.PlTime_SMGC_Before;
 
                     //抗风压控压;
-                    devC14Row.KeepingTime_KFY_BXstep = DAL_Dev.KeepingTime_KFY_BXstep;
-                    devC14Row.KeepingTime_KFY_AQ = DAL_Dev.KeepingTime_KFY_AQ;
-                    devC14Row.WaveNum_KFYFF = DAL_Dev.WaveNum_KFYP2;
-                    devC14Row.LoadUpDowSpeed_KFRAQ = DAL_Dev.LoadUpDownSpeed_KFRAQ;
-                    devC14Row.HighRatioKFY = DAL_Dev.HighRatioKFY;
-                    devC14Row.LowRatioKFY = DAL_Dev.LowRatioKFY;
+                    devC14Row.KeepingTime_KFY_BXstep = PublicData.Dev.KeepingTime_KFY_BXstep;
+                    devC14Row.KeepingTime_KFY_AQ = PublicData.Dev.KeepingTime_KFY_AQ;
+                    devC14Row.WaveNum_KFYFF = PublicData.Dev.WaveNum_KFYP2;
+                    devC14Row.LoadUpDowSpeed_KFRAQ = PublicData.Dev.LoadUpDownSpeed_KFRAQ;
+                    devC14Row.HighRatioKFY = PublicData.Dev.HighRatioKFY;
+                    devC14Row.LowRatioKFY = PublicData.Dev.LowRatioKFY;
 
                     C14TableAdapter.Update(C14Table);
                     C14Table.AcceptChanges();
@@ -2066,21 +2066,21 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C15位移设定参数Row devC15Row = C15Table.FindBy配置编号(tempSettingsNO);
                 if (devC15Row != null)
                 {
-                    devC15Row.X轴第1级最小位移角 = DAL_Dev.WYJ_Ctl_X[0];
-                    devC15Row.X轴第2级最小位移角 = DAL_Dev.WYJ_Ctl_X[1];
-                    devC15Row.X轴第3级最小位移角 = DAL_Dev.WYJ_Ctl_X[2];
-                    devC15Row.X轴第4级最小位移角 = DAL_Dev.WYJ_Ctl_X[3];
-                    devC15Row.X轴第5级最小位移角 = DAL_Dev.WYJ_Ctl_X[4];
-                    devC15Row.Y轴第1级最小位移角 = DAL_Dev.WYJ_Ctl_Y[0];
-                    devC15Row.Y轴第2级最小位移角 = DAL_Dev.WYJ_Ctl_Y[1];
-                    devC15Row.Y轴第3级最小位移角 = DAL_Dev.WYJ_Ctl_Y[2];
-                    devC15Row.Y轴第4级最小位移角 = DAL_Dev.WYJ_Ctl_Y[3];
-                    devC15Row.Y轴第5级最小位移角 = DAL_Dev.WYJ_Ctl_Y[4];
-                    devC15Row.Z轴第1级最小位移量 = DAL_Dev.WY_Ctl_Z[0];
-                    devC15Row.Z轴第2级最小位移量 = DAL_Dev.WY_Ctl_Z[1];
-                    devC15Row.Z轴第3级最小位移量 = DAL_Dev.WY_Ctl_Z[2];
-                    devC15Row.Z轴第4级最小位移量 = DAL_Dev.WY_Ctl_Z[3];
-                    devC15Row.Z轴第5级最小位移量 = DAL_Dev.WY_Ctl_Z[4];
+                    devC15Row.X轴第1级最小位移角 = PublicData.Dev.WYJ_Ctl_X[0];
+                    devC15Row.X轴第2级最小位移角 = PublicData.Dev.WYJ_Ctl_X[1];
+                    devC15Row.X轴第3级最小位移角 = PublicData.Dev.WYJ_Ctl_X[2];
+                    devC15Row.X轴第4级最小位移角 = PublicData.Dev.WYJ_Ctl_X[3];
+                    devC15Row.X轴第5级最小位移角 = PublicData.Dev.WYJ_Ctl_X[4];
+                    devC15Row.Y轴第1级最小位移角 = PublicData.Dev.WYJ_Ctl_Y[0];
+                    devC15Row.Y轴第2级最小位移角 = PublicData.Dev.WYJ_Ctl_Y[1];
+                    devC15Row.Y轴第3级最小位移角 = PublicData.Dev.WYJ_Ctl_Y[2];
+                    devC15Row.Y轴第4级最小位移角 = PublicData.Dev.WYJ_Ctl_Y[3];
+                    devC15Row.Y轴第5级最小位移角 = PublicData.Dev.WYJ_Ctl_Y[4];
+                    devC15Row.Z轴第1级最小位移量 = PublicData.Dev.WY_Ctl_Z[0];
+                    devC15Row.Z轴第2级最小位移量 = PublicData.Dev.WY_Ctl_Z[1];
+                    devC15Row.Z轴第3级最小位移量 = PublicData.Dev.WY_Ctl_Z[2];
+                    devC15Row.Z轴第4级最小位移量 = PublicData.Dev.WY_Ctl_Z[3];
+                    devC15Row.Z轴第5级最小位移量 = PublicData.Dev.WY_Ctl_Z[4];
                     
                     C15TableAdapter.Update(C15Table);
                     C15Table.AcceptChanges();
@@ -2127,20 +2127,20 @@ namespace MQDFJ_MB.DAL
                 MQDFJ_MB.MQZH_DB_DevDataSet.C16位移控制参数Row devC16Row = C16Table.FindBy配置编号(tempSettingsNO);
                 if (devC16Row != null)
                 {
-                    devC16Row.CJBX_XYPeriod = DAL_Dev.CJBX_XYPeriod;
-                    devC16Row.CJBX_ZPeriod = DAL_Dev.CJBX_ZPeriod;
-                    devC16Row.LenthRatio_X = DAL_Dev.LenthRatio_X;
-                    devC16Row.LenthRatio_Y = DAL_Dev.LenthRatio_Y;
-                    devC16Row.LenthRatio_Z = DAL_Dev.LenthRatio_Z;
-                    devC16Row.PermitErrX = DAL_Dev.PermitErrX;
-                    devC16Row.PermitErrY = DAL_Dev.PermitErrY;
-                    devC16Row.PermitErrZ = DAL_Dev.PermitErrZ;
-                    devC16Row.CorrXRight = DAL_Dev.CorrXRight;
-                    devC16Row.CorrXLeft = DAL_Dev.CorrXLeft;
-                    devC16Row.CorrYFront = DAL_Dev.CorrYFront;
-                    devC16Row.CorrYBack = DAL_Dev.CorrYBack;
-                    devC16Row.CorrZUp = DAL_Dev.CorrZUp;
-                    devC16Row.CorrZDown = DAL_Dev.CorrZDown;
+                    devC16Row.CJBX_XYPeriod = PublicData.Dev.CJBX_XYPeriod;
+                    devC16Row.CJBX_ZPeriod = PublicData.Dev.CJBX_ZPeriod;
+                    devC16Row.LenthRatio_X = PublicData.Dev.LenthRatio_X;
+                    devC16Row.LenthRatio_Y = PublicData.Dev.LenthRatio_Y;
+                    devC16Row.LenthRatio_Z = PublicData.Dev.LenthRatio_Z;
+                    devC16Row.PermitErrX = PublicData.Dev.PermitErrX;
+                    devC16Row.PermitErrY = PublicData.Dev.PermitErrY;
+                    devC16Row.PermitErrZ = PublicData.Dev.PermitErrZ;
+                    devC16Row.CorrXRight = PublicData.Dev.CorrXRight;
+                    devC16Row.CorrXLeft = PublicData.Dev.CorrXLeft;
+                    devC16Row.CorrYFront = PublicData.Dev.CorrYFront;
+                    devC16Row.CorrYBack = PublicData.Dev.CorrYBack;
+                    devC16Row.CorrZUp = PublicData.Dev.CorrZUp;
+                    devC16Row.CorrZDown = PublicData.Dev.CorrZDown;
 
                     C16TableAdapter.Update(C16Table);
                     C16Table.AcceptChanges();
@@ -2167,7 +2167,7 @@ namespace MQDFJ_MB.DAL
             try
             {
                 //更新上次试验编号
-                DAL_Dev.ExpNOLast = msg;
+                PublicData.Dev.ExpNOLast = msg;
                 SaveDevBisicParam();
             }
             catch (Exception e)

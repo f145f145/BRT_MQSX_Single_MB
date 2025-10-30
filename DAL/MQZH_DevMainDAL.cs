@@ -12,6 +12,7 @@ using System;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using MQDFJ_MB.Model;
 using MQDFJ_MB.Model.DEV;
 using MQDFJ_MB.MQZH_DB_DevDataSetTableAdapters;
 
@@ -22,38 +23,36 @@ namespace MQDFJ_MB.DAL
     /// </summary>
     public partial class MQZH_DevDAL : ObservableObject
     {
-        public MQZH_DevDAL(MQZH_DevModel_Main dev)
+        public MQZH_DevDAL()
         {
-            DAL_Dev = dev;
-
             //Dataset、DataTable、TableAdapter初始化
             SetTableAdapterInit_Dev();
 
             //装置数据读写消息
             Messenger.Default.Register<string>(this, "DevDataRWMessage", DevDataRWMessage);
-            Messenger.Default.Register<string>(this, "ExpDQChanged", SaveLastExpNOMessage);
+            Messenger.Default.Register<string>(this, "PublicData.ExpDQChanged", SaveLastExpNOMessage);
         }
 
 
-        #region DEV属性
+        #region 公共数据
 
         /// <summary>
-        /// 幕墙装置
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main _dal_Dev;
-
+        private PublicDatas _publicData = PublicDatas.GetInstance();
         /// <summary>
-        /// 幕墙装置
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main DAL_Dev
+        public PublicDatas PublicData
         {
-            get { return _dal_Dev; }
+            get { return _publicData; }
             set
             {
-                _dal_Dev = value;
-                RaisePropertyChanged(() => DAL_Dev);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
+
 
         #endregion
 
@@ -622,7 +621,7 @@ namespace MQDFJ_MB.DAL
             try
             {
                 //装置忙，无法操作
-                if (DAL_Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("装置忙，请关闭正在运行的试验或测试软件", "错误提示");
                     return;

@@ -118,16 +118,16 @@
                 <Label Content="看门狗周期(ms)：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="通讯超时(ms)：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="忙时延迟(ms)：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding Dev.SerialPortNames}" SelectedItem ="{Binding Dev .DVPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.BaudRateList}" SelectedItem="{Binding Dev .DVPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.DataBitsList}" SelectedItem="{Binding Dev .DVPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.ParityList}" SelectedItem="{Binding Dev .DVPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.StopBitsList}" SelectedItem="{Binding Dev .DVPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <TextBox Text="{Binding Dev.DVPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DVPCom.PeriodRW, Mode=TwoWay}" IsEnabled="True" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DVPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="True" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DVPCom.Timeout, Mode=TwoWay}" IsEnabled="True" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DVPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="True" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.SerialPortNames}" SelectedItem ="{Binding PublicData.Dev .DVPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.BaudRateList}" SelectedItem="{Binding PublicData.Dev .DVPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.DataBitsList}" SelectedItem="{Binding PublicData.Dev .DVPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.ParityList}" SelectedItem="{Binding PublicData.Dev .DVPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.StopBitsList}" SelectedItem="{Binding PublicData.Dev .DVPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DVPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DVPCom.PeriodRW, Mode=TwoWay}" IsEnabled="True" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DVPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="True" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DVPCom.Timeout, Mode=TwoWay}" IsEnabled="True" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DVPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="True" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
             </Grid>
         </GroupBox>
 
@@ -159,16 +159,16 @@
                 <Label Content="看门狗周期(ms)：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="通讯超时(ms)：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="忙时延迟(ms)：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding Dev.SerialPortNames}" SelectedItem ="{Binding Dev .THPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.BaudRateList}" SelectedItem="{Binding Dev .THPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.DataBitsList}" SelectedItem="{Binding Dev .THPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.ParityList}" SelectedItem="{Binding Dev .THPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.StopBitsList}" SelectedItem="{Binding Dev .THPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <TextBox Text="{Binding Dev.THPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.THPCom.PeriodRW, Mode=TwoWay}" IsEnabled="False" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.THPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="False" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.THPCom.Timeout, Mode=TwoWay}" IsEnabled="False" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.THPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="False" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.SerialPortNames}" SelectedItem ="{Binding PublicData.Dev .THPCom.PhyPortNO, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.BaudRateList}" SelectedItem="{Binding PublicData.Dev .THPCom.BoundRate , Mode=TwoWay}" IsEnabled="True" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.DataBitsList}" SelectedItem="{Binding PublicData.Dev .THPCom.DataBits , Mode=TwoWay}" IsEnabled="True" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.ParityList}" SelectedItem="{Binding PublicData.Dev .THPCom.Parity, Converter={StaticResource ParityConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.StopBitsList}" SelectedItem="{Binding PublicData.Dev .THPCom.StopBits , Converter={StaticResource StopBitsConverter}, Mode=TwoWay}" IsEnabled="True" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.THPCom.Addr, Mode=TwoWay}" IsEnabled="True" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.THPCom.PeriodRW, Mode=TwoWay}" IsEnabled="False" Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.THPCom.WatchDogPeriod, Mode=TwoWay}" IsEnabled="False" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.THPCom.Timeout, Mode=TwoWay}" IsEnabled="False" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.THPCom.Time_BusyDealy, Mode=TwoWay}" IsEnabled="False" Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
             </Grid>
         </GroupBox>
 

@@ -31,15 +31,10 @@ namespace MQDFJ_MB.BLL
         /// <summary>
         /// 主控类初始化
         /// </summary>
-        public MQZH_ExpBLL(MQZH_DevModel_Main devIn, MQZH_ExpTotallModel expIn)
+        public MQZH_ExpBLL()
         {
-            //装置、试验
-            BllDev = devIn;
-            BllExp = expIn;
-            BllDev.IsDeviceBusy = false;
-
             //通讯、消息用数据
-            BllDev.DeviceRunMode = DevicRunModeType.Wait_Mode;
+            PublicData.Dev.DeviceRunMode = DevicRunModeType.Wait_Mode;
             OnceOrderValuesFrmBLL = Enumerable.Repeat((ushort)0, _onceOrderDataLenFrmBLL).ToArray();
 
             //BLL主定时器、手动气密计算定时器、气密计算定时器
@@ -118,7 +113,7 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                switch (BllDev.DeviceRunMode)
+                switch (PublicData.Dev.DeviceRunMode)
                 {
                     //紧急停机
                     case DevicRunModeType.JJTJ_Mode:
@@ -165,22 +160,22 @@ namespace MQDFJ_MB.BLL
                     //手动气密蝶阀1正压模式
                     case DevicRunModeType.DF1QMZDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -188,32 +183,32 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
                     //手动气密蝶阀1负压模式
                     case DevicRunModeType.DF1QMFDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -221,10 +216,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 6;  //换向阀为负压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -232,22 +227,22 @@ namespace MQDFJ_MB.BLL
                     //手动气密蝶阀2正压模式
                     case DevicRunModeType.DF2QMZDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = true;   //开粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = true;   //开粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -255,32 +250,32 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
                     //手动气密蝶阀2负压模式
                     case DevicRunModeType.DF2QMFDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = true;   //开粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = true;   //开粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -288,10 +283,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 6;  //换向阀为负压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -299,22 +294,22 @@ namespace MQDFJ_MB.BLL
                     //手动气密蝶阀3正压模式
                     case DevicRunModeType.DF3QMZDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = true;   //开细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = true;   //开细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -322,32 +317,32 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
                     //手动气密蝶阀3负压模式
                     case DevicRunModeType.DF3QMFDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = true;   //开细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = true;   //开细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -355,10 +350,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 6;  //换向阀为负压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -366,22 +361,22 @@ namespace MQDFJ_MB.BLL
                     //手动气密蝶阀4正压模式
                     case DevicRunModeType.DF4QMZDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = true;   //开加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = true;   //开加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -389,32 +384,32 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[5].IsOn ? SDQMFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
                     //手动气密蝶阀4负压模式
                     case DevicRunModeType.DF4QMFDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = true;   //开加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = true;   //开加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -422,10 +417,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 6;  //换向阀为负压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[6].IsOn ? SDQMFunc() : (ushort)0;   //负压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -433,22 +428,22 @@ namespace MQDFJ_MB.BLL
                     //手动水密正压模式
                     case DevicRunModeType.SDSMZDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -456,32 +451,32 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[5].IsOn ? SDSMFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[5].IsOn ? SDSMFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
                     //手动水密负压模式
                     case DevicRunModeType.SDSMFDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -489,10 +484,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 6;  //换向阀为负压模式
 
-                            PLCCKCMDFrmBLL[3] = BllDev.Valve.DIList[6].IsOn ? SDSMFunc() : (ushort)0;   //负压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[3] = PublicData.Dev.Valve.DIList[6].IsOn ? SDSMFunc() : (ushort)0;   //负压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -500,24 +495,24 @@ namespace MQDFJ_MB.BLL
                     //手动水流量PID调试模式
                     case DevicRunModeType.SLLPIDDbg_Mode:
                         {
-                            BllDev.IsDeviceBusy = true;
+                            PublicData.Dev.IsDeviceBusy = true;
 
-                            BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = false;   //关KM1
-                            BllDev.DOList[6].IsOn = true;   //开水泵
-                            BllDev.DOList[7].IsOn = false;   //关气泵
-                            BllDev.DOList[8].IsOn = false;   //关风机变频
-                            BllDev.DOList[9].IsOn = true;   //开水泵变频
+                            PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = false;   //关KM1
+                            PublicData.Dev.DOList[6].IsOn = true;   //开水泵
+                            PublicData.Dev.DOList[7].IsOn = false;   //关气泵
+                            PublicData.Dev.DOList[8].IsOn = false;   //关风机变频
+                            PublicData.Dev.DOList[9].IsOn = true;   //开水泵变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -525,10 +520,10 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
 
-                            PLCCKCMDFrmBLL[4] = BllDev.Valve.DIList[5].IsOn ? SLLPIDFunc() : (ushort)0;   //正压模式完成后输出计算频率
+                            PLCCKCMDFrmBLL[4] = PublicData.Dev.Valve.DIList[5].IsOn ? SLLPIDFunc() : (ushort)0;   //正压模式完成后输出计算频率
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
                             break;
                         }
@@ -537,44 +532,44 @@ namespace MQDFJ_MB.BLL
                     case DevicRunModeType.QM_Mode:
                         {
                             //蝶阀选择
-                            switch (BllDev.DFUse)
+                            switch (PublicData.Dev.DFUse)
                             {
                                 case 1:
-                                    BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                                    BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                                    BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                                    BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                                    PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                                    PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                                    PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                                    PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
                                     break;
                                 case 2:
-                                    BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                                    BllDev.DOList[1].IsOn = true;   //开粗管蝶阀2
-                                    BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                                    BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                                    PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                                    PublicData.Dev.DOList[1].IsOn = true;   //开粗管蝶阀2
+                                    PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                                    PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
                                     break;
                                 case 3:
-                                    BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                                    BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                                    BllDev.DOList[2].IsOn = true;   //开细管蝶阀3
-                                    BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                                    PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                                    PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                                    PublicData.Dev.DOList[2].IsOn = true;   //开细管蝶阀3
+                                    PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
                                     break;
                                 case 4:
-                                    BllDev.DOList[0].IsOn = false;   //关主管蝶阀1
-                                    BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                                    BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                                    BllDev.DOList[3].IsOn = true;   //开加粗管蝶阀4
+                                    PublicData.Dev.DOList[0].IsOn = false;   //关主管蝶阀1
+                                    PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                                    PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                                    PublicData.Dev.DOList[3].IsOn = true;   //开加粗管蝶阀4
                                     break;
                             }
 
-                            BllDev.DOList[4].IsOn = true;   //开差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[4].IsOn = true;   //开差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -582,7 +577,7 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                             {
                                 if (PPressTest)
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -604,20 +599,20 @@ namespace MQDFJ_MB.BLL
                     //水密检测模式=========================================================
                     case DevicRunModeType.SM_Mode:
                         {
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -628,7 +623,7 @@ namespace MQDFJ_MB.BLL
 
                             if (ExistSMWDDJExp)
                             {
-                                if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                                if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 {
                                     PPressTest = true;
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -637,7 +632,7 @@ namespace MQDFJ_MB.BLL
                             }
                             else if (ExistSMWDGCExp)
                             {
-                                if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                                if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 {
                                     PPressTest = true;
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -659,20 +654,20 @@ namespace MQDFJ_MB.BLL
                     //抗风压P1检测模式=========================================================
                     case DevicRunModeType.KFYp1_Mode:
                         {
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -680,7 +675,7 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                             {
                                 if (PPressTest)
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -702,20 +697,20 @@ namespace MQDFJ_MB.BLL
                     //抗风压P3检测模式=========================================================
                     case DevicRunModeType.KFYp3_Mode:
                         {
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -723,7 +718,7 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                             {
                                 if (PPressTest)
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -745,22 +740,22 @@ namespace MQDFJ_MB.BLL
                     //抗风压P2检测模式=========================================================
                     case DevicRunModeType.KFYp2_Mode:
                         {
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[6].IsOn = false;   //关水泵
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
-                            BllDev.DOList[9].IsOn = false;   //关水泵变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[6].IsOn = false;   //关水泵
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[9].IsOn = false;   //关水泵变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -783,20 +778,20 @@ namespace MQDFJ_MB.BLL
                     //抗风压Pmax检测模式=========================================================
                     case DevicRunModeType.KFYpmax_Mode:
                         {
-                            BllDev.DOList[0].IsOn = true;   //开主管蝶阀1
-                            BllDev.DOList[1].IsOn = false;   //关粗管蝶阀2
-                            BllDev.DOList[2].IsOn = false;   //关细管蝶阀3
-                            BllDev.DOList[3].IsOn = false;   //关加粗管蝶阀4
-                            BllDev.DOList[4].IsOn = false;   //关差压电磁阀
-                            BllDev.DOList[5].IsOn = true;   //开KM1
-                            BllDev.DOList[7].IsOn = true;   //开气泵
-                            BllDev.DOList[8].IsOn = true;   //开风机变频
+                            PublicData.Dev.DOList[0].IsOn = true;   //开主管蝶阀1
+                            PublicData.Dev.DOList[1].IsOn = false;   //关粗管蝶阀2
+                            PublicData.Dev.DOList[2].IsOn = false;   //关细管蝶阀3
+                            PublicData.Dev.DOList[3].IsOn = false;   //关加粗管蝶阀4
+                            PublicData.Dev.DOList[4].IsOn = false;   //关差压电磁阀
+                            PublicData.Dev.DOList[5].IsOn = true;   //开KM1
+                            PublicData.Dev.DOList[7].IsOn = true;   //开气泵
+                            PublicData.Dev.DOList[8].IsOn = true;   //开风机变频
 
                             bool[] order1 = Enumerable.Repeat(false, 16).ToArray();
                             bool[] order2 = Enumerable.Repeat(false, 16).ToArray();
-                            bool[] tempArry = Enumerable.Repeat(false, BllDev.DOList.Count).ToArray();
-                            for (int i = 0; i < BllDev.DOList.Count; i++)
-                                tempArry[i] = BllDev.DOList[i].IsOn;
+                            bool[] tempArry = Enumerable.Repeat(false, PublicData.Dev.DOList.Count).ToArray();
+                            for (int i = 0; i < PublicData.Dev.DOList.Count; i++)
+                                tempArry[i] = PublicData.Dev.DOList[i].IsOn;
                             Array.Copy(tempArry, 0, order1, 0, 16);
                             Array.Copy(tempArry, 16, order2, 0, 2);
 
@@ -804,7 +799,7 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[1] = MQZH_ValueCvtBLL.Bools2Ushort(order1);
                             PLCCKCMDFrmBLL[2] = MQZH_ValueCvtBLL.Bools2Ushort(order2);
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                             {
                                 if (PPressTest)
                                     PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
@@ -827,7 +822,7 @@ namespace MQDFJ_MB.BLL
                         {
                             PLCCKCMDFrmBLL[0] = 2;  //PLC为位移模式
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 1;  //换向阀为待机模式
 
                             if (OnceOrderSDWYDebug)//单次指令
@@ -845,7 +840,7 @@ namespace MQDFJ_MB.BLL
                         {
                             PLCCKCMDFrmBLL[0] = 2;  //PLC为位移模式
                             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-                            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
+                            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[04].IsOn)   //风阀无故障且自检完成时
                                 PLCCKCMDFrmBLL[5] = 1;  //换向阀为待机模式
                             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
 
@@ -911,7 +906,7 @@ namespace MQDFJ_MB.BLL
             PLCCKCMDFrmBLL = Enumerable.Repeat((ushort)0, DataLengthFrmBLLPLCCK).ToArray();
             PLCCKCMDFrmBLL[0] = 1;  //PLC为程控
             PLCCKCMDFrmBLL[19] = 1;     //看门狗
-            if ((!BllDev.Valve.DIList[00].IsOn) && BllDev.Valve.DIList[4].IsOn)   //风阀无故障且自检完成时
+            if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[4].IsOn)   //风阀无故障且自检完成时
                 PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
             Messenger.Default.Send<ushort[]>(PLCCKCMDFrmBLL, "CKCMDToComMessage");
         }
@@ -942,25 +937,25 @@ namespace MQDFJ_MB.BLL
                 #region 气密目标压力
                 //气密定级
                 case 10:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_QMDJ_False[stageNo][StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_QMDJ_False[stageNo][StepNo];
                     else
-                        tempRet = BllDev.PressSet_QMDJ_Std[stageNo][StepNo];
+                        tempRet = PublicData.Dev.PressSet_QMDJ_Std[stageNo][StepNo];
                     break;
                 //气密工程
                 case 11:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_QMGC_False[stageNo][StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_QMGC_False[stageNo][StepNo];
                     else
                     {
                         if ((stageNo == 0) || (stageNo == 4) || (stageNo == 8))
-                            tempRet = Math.Abs(BllExp.Exp_QM.QM_GCYJYP);
+                            tempRet = Math.Abs(PublicData.ExpDQ.Exp_QM.QM_GCYJYP);
                         else if ((stageNo == 1) || (stageNo == 5) || (stageNo == 9))
-                            tempRet = Math.Abs(BllExp.Exp_QM.QM_GCSJP);
+                            tempRet = Math.Abs(PublicData.ExpDQ.Exp_QM.QM_GCSJP);
                         else if ((stageNo == 2) || (stageNo == 6) || (stageNo == 10))
-                            tempRet = -Math.Abs(BllExp.Exp_QM.QM_GCYJYP);
+                            tempRet = -Math.Abs(PublicData.ExpDQ.Exp_QM.QM_GCYJYP);
                         else if ((stageNo == 3) || (stageNo == 7) || (stageNo == 11))
-                            tempRet = -Math.Abs(BllExp.Exp_QM.QM_GCSJP);
+                            tempRet = -Math.Abs(PublicData.ExpDQ.Exp_QM.QM_GCSJP);
                     }
                     break;
                 #endregion
@@ -968,177 +963,177 @@ namespace MQDFJ_MB.BLL
                 #region 水密目标压力
                 //水密预加压
                 case 20:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_SM_YJY_False[StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_SM_YJY_False[StepNo];
                     else
-                        tempRet = BllDev.PressSet_SM_YJY_Std[StepNo];
+                        tempRet = PublicData.Dev.PressSet_SM_YJY_Std[StepNo];
                     break;
                 //水密定级稳定加压
                 case 21:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_SMDJ_WD_False[StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_SMDJ_WD_False[StepNo];
                     else
-                        tempRet = BllDev.PressSet_SMDJ_WD_Std[StepNo];
+                        tempRet = PublicData.Dev.PressSet_SMDJ_WD_Std[StepNo];
                     break;
                 //水密定级波动加压
                 case 22:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_SMDJ_BDPJ_False[StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_SMDJ_BDPJ_False[StepNo];
                     else
-                        tempRet = BllDev.PressSet_SMDJ_BDPJ_Std[StepNo];
+                        tempRet = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[StepNo];
                     break;
 
                 //水密工程稳定加压2步23
                 case 23:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else
-                            tempRet = BllDev.PressSet_SMGC_WDGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDGD_False;
                     }
                     else
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     break;
                 //水密工程稳定加压3步24
                 case 24:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else if (StepNo == 1)
-                            tempRet = BllDev.PressSet_SMGC_WDKKQ_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDKKQ_False;
                         else
-                            tempRet = BllDev.PressSet_SMGC_WDGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDGD_False;
                     }
                     else
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else if (StepNo == 1)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_KKQ;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
                         else
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     break;
                 //水密工程稳定加压9步25
                 case 25:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 8)
-                            tempRet = BllDev.PressSet_SMGC_WDGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDGD_False;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_False[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_False[StepNo];
                     }
                     else
                     {
                         if (StepNo == 8)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_Std[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_Std[StepNo];
                     }
                     break;
                 //水密工程稳定加压10步26
                 case 26:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 8)
-                            tempRet = BllDev.PressSet_SMGC_WDKKQ_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDKKQ_False;
                         else if (StepNo == 9)
-                            tempRet = BllDev.PressSet_SMGC_WDGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_WDGD_False;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_False[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_False[StepNo];
                     }
                     else
                     {
                         if (StepNo == 8)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_KKQ;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
                         else if (StepNo == 9)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_Std[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_Std[StepNo];
                     }
                     break;
 
                 //水密工程波动加压2步27
                 case 27:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else
-                            tempRet = BllDev.PressSet_SMGC_BDPJGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJGD_False;
                     }
                     else
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     break;
                 //水密工程波动加压3步28
                 case 28:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else if (StepNo == 1)
-                            tempRet = BllDev.PressSet_SMGC_BDPJKKQ_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJKKQ_False;
                         else
-                            tempRet = BllDev.PressSet_SMGC_BDPJGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJGD_False;
                     }
                     else
                     {
                         if (StepNo == 0)
                             tempRet = 0;
                         else if (StepNo == 1)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_KKQ;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
                         else
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     break;
                 //水密工程波动加压9步29
                 case 29:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 8)
-                            tempRet = BllDev.PressSet_SMGC_BDPJGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJGD_False;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_BDPJ_False[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_BDPJ_False[StepNo];
                     }
                     else
                     {
                         if (StepNo == 8)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_Std[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_Std[StepNo];
                     }
                     break;
                 //水密工程波动加压10步30
                 case 30:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNo == 8)
-                            tempRet = BllDev.PressSet_SMGC_BDPJKKQ_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJKKQ_False;
                         else if (StepNo == 9)
-                            tempRet = BllDev.PressSet_SMGC_BDPJGD_False;
+                            tempRet = PublicData.Dev.PressSet_SMGC_BDPJGD_False;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_BDPJ_False[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_BDPJ_False[StepNo];
                     }
                     else
                     {
                         if (StepNo == 8)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_KKQ;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
                         else if (StepNo == 9)
-                            tempRet = BllExp.Exp_SM.SM_GCSJ_GD;
+                            tempRet = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                         else
-                            tempRet = BllDev.PressSet_SMDJ_WD_Std[StepNo];
+                            tempRet = PublicData.Dev.PressSet_SMDJ_WD_Std[StepNo];
                     }
                     break;
                 #endregion
@@ -1146,81 +1141,81 @@ namespace MQDFJ_MB.BLL
                 #region 抗风压目标压力
                 //抗风压定级变形31，抗风压定级反复32，抗风压定级P3 33，抗风压定级Pmax 34
                 case 31:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_KFY_DJBX_False[stageNo][StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_KFY_DJBX_False[stageNo][StepNo];
                     else
-                        tempRet = BllDev.PressSet_KFY_DJBX_Std[stageNo][StepNo];
+                        tempRet = PublicData.Dev.PressSet_KFY_DJBX_Std[stageNo][StepNo];
                     break;
 
                 case 32:
-                    if (BllDev.IsPressFalse)
-                        tempRet = Math.Abs(BllDev.PressSet_KFY_DJP2_False);
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = Math.Abs(PublicData.Dev.PressSet_KFY_DJP2_False);
                     else
-                        tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJP2_Raito_Std;
+                        tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJP2_Raito_Std;
                     break;
 
                 case 33:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_KFY_DJP3_False;
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_KFY_DJP3_False;
                     else
                     {
-                        if (BllExp.Exp_KFY.P3DownPress)
-                            tempRet = BllExp.Exp_KFY.P3Press;
+                        if (PublicData.ExpDQ.Exp_KFY.P3DownPress)
+                            tempRet = PublicData.ExpDQ.Exp_KFY.P3Press;
                         else
-                            tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJP3_Raito_Std;
+                            tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJP3_Raito_Std;
                     }
                     break;
 
                 case 34:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_KFY_DJPmax_False;
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_KFY_DJPmax_False;
                     else
-                        tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJPmax_Raito_Std;
+                        tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJPmax_Raito_Std;
                     break;
 
                 //抗风压工程变形35，工程反复36，工程P3 37，工程Pmax 38
                 case 35:
-                    if (BllDev.IsPressFalse)
-                        tempRet = BllDev.PressSet_KFY_GCBX_False[stageNo][StepNo];
+                    if (PublicData.Dev.IsPressFalse)
+                        tempRet = PublicData.Dev.PressSet_KFY_GCBX_False[stageNo][StepNo];
                     else
                     {
                         if (stageNo == 0)
-                            tempRet = BllDev.PressSet_KFY_GCP1_Y_Std;
+                            tempRet = PublicData.Dev.PressSet_KFY_GCP1_Y_Std;
                         else if (stageNo == 1)
                         {
                             switch (StepNo)
                             {
                                 case 0:
-                                    tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[0];
+                                    tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[0];
                                     break;
                                 case 1:
-                                    tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[1];
+                                    tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[1];
                                     break;
                                 case 2:
-                                    tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[2];
+                                    tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[2];
                                     break;
                                 case 3:
-                                    tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[3];
+                                    tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[3];
                                     break;
                             }
                         }
                         else if (stageNo == 2)
-                            tempRet = -BllDev.PressSet_KFY_GCP1_Y_Std;
+                            tempRet = -PublicData.Dev.PressSet_KFY_GCP1_Y_Std;
                         else if (stageNo == 3)
                         {
                             switch (StepNo)
                             {
                                 case 0:
-                                    tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[0];
+                                    tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[0];
                                     break;
                                 case 1:
-                                    tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[1];
+                                    tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[1];
                                     break;
                                 case 2:
-                                    tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[2];
+                                    tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[2];
                                     break;
                                 case 3:
-                                    tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[3];
+                                    tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[3];
                                     break;
                             }
                         }
@@ -1228,53 +1223,53 @@ namespace MQDFJ_MB.BLL
                     break;
 
                 case 36:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllDev.PressSet_KFY_GCP2_False;
+                            tempRet = PublicData.Dev.PressSet_KFY_GCP2_False;
                         else
-                            tempRet = -BllDev.PressSet_KFY_GCP2_False;
+                            tempRet = -PublicData.Dev.PressSet_KFY_GCP2_False;
                     }
                     else
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP2_Raito_Std;
+                            tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP2_Raito_Std;
                         else
-                            tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP2_Raito_Std;
+                            tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP2_Raito_Std;
                     }
                     break;
 
                 case 37:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllDev.PressSet_KFY_GCP3_False;
+                            tempRet = PublicData.Dev.PressSet_KFY_GCP3_False;
                         else
-                            tempRet = -BllDev.PressSet_KFY_GCP3_False;
+                            tempRet = -PublicData.Dev.PressSet_KFY_GCP3_False;
                     }
                     else
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllExp.Exp_KFY.P3_GCSJ;
+                            tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ;
                         else
-                            tempRet = -BllExp.Exp_KFY.P3_GCSJ;
+                            tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ;
                     }
                     break;
 
                 case 38:
-                    if (BllDev.IsPressFalse)
+                    if (PublicData.Dev.IsPressFalse)
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllDev.PressSet_KFY_GCPmax_False;
+                            tempRet = PublicData.Dev.PressSet_KFY_GCPmax_False;
                         else
-                            tempRet = -BllDev.PressSet_KFY_GCPmax_False;
+                            tempRet = -PublicData.Dev.PressSet_KFY_GCPmax_False;
                     }
                     else
                     {
                         if (StepNOInList == 0)
-                            tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCPmax_Raito_Std;
+                            tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCPmax_Raito_Std;
                         else
-                            tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCPmax_Raito_Std;
+                            tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCPmax_Raito_Std;
                     }
                     break;
 
@@ -1299,101 +1294,101 @@ namespace MQDFJ_MB.BLL
                 case 1:
                     if ((aim >= 0) && (aim < 75))
                     {
-                        tempPIDparam = BllDev.PID11;
+                        tempPIDparam = PublicData.Dev.PID11;
                     }
                     else if ((aim >= 75) && (aim < 125))
                     {
-                        tempPIDparam = BllDev.PID12;
+                        tempPIDparam = PublicData.Dev.PID12;
                     }
                     else if ((aim >= 125) && (aim < 175))
                     {
-                        tempPIDparam = BllDev.PID13;
+                        tempPIDparam = PublicData.Dev.PID13;
                     }
                     else if ((aim >= 175) && (aim < 600))
                     {
-                        tempPIDparam = BllDev.PID14;
+                        tempPIDparam = PublicData.Dev.PID14;
                     }
                     else if (aim >= 600)
                     {
-                        tempPIDparam = BllDev.PID15;
+                        tempPIDparam = PublicData.Dev.PID15;
                     }
                     break;
                 //水密、抗风压 PID
                 case 2:
                     if ((aim >= 0) && (aim < 250))
                     {
-                        tempPIDparam = BllDev.PID21;
+                        tempPIDparam = PublicData.Dev.PID21;
                     }
                     else if ((aim >= 250) && (aim < 500))
                     {
-                        tempPIDparam = BllDev.PID22;
+                        tempPIDparam = PublicData.Dev.PID22;
                     }
                     else if ((aim >= 500) && (aim < 1000))
                     {
-                        tempPIDparam = BllDev.PID23;
+                        tempPIDparam = PublicData.Dev.PID23;
                     }
                     else if ((aim >= 1000) && (aim < 3000))
                     {
-                        tempPIDparam = BllDev.PID24;
+                        tempPIDparam = PublicData.Dev.PID24;
                     }
                     else if ((aim >= 3000) && (aim < 5000))
                     {
-                        tempPIDparam = BllDev.PID25;
+                        tempPIDparam = PublicData.Dev.PID25;
                     }
                     else if (aim >= 5000)
                     {
-                        tempPIDparam = BllDev.PID26;
+                        tempPIDparam = PublicData.Dev.PID26;
                     }
                     break;
                 //气密PID风速管2
                 case 4:
                     if ((aim >= 0) && (aim < 75))
                     {
-                        tempPIDparam = BllDev.PID41;
+                        tempPIDparam = PublicData.Dev.PID41;
                     }
                     else if ((aim >= 75) && (aim < 125))
                     {
-                        tempPIDparam = BllDev.PID42;
+                        tempPIDparam = PublicData.Dev.PID42;
                     }
                     else if ((aim >= 125) && (aim < 175))
                     {
-                        tempPIDparam = BllDev.PID43;
+                        tempPIDparam = PublicData.Dev.PID43;
                     }
                     else if ((aim >= 175) && (aim < 600))
                     {
-                        tempPIDparam = BllDev.PID44;
+                        tempPIDparam = PublicData.Dev.PID44;
                     }
                     else if (aim >= 600)
                     {
-                        tempPIDparam = BllDev.PID45;
+                        tempPIDparam = PublicData.Dev.PID45;
                     }
                     break;
                 //气密PID风速管3
                 case 6:
                     if ((aim >= 0) && (aim < 75))
                     {
-                        tempPIDparam = BllDev.PID61;
+                        tempPIDparam = PublicData.Dev.PID61;
                     }
                     else if ((aim >= 75) && (aim < 125))
                     {
-                        tempPIDparam = BllDev.PID62;
+                        tempPIDparam = PublicData.Dev.PID62;
                     }
                     else if ((aim >= 125) && (aim < 175))
                     {
-                        tempPIDparam = BllDev.PID63;
+                        tempPIDparam = PublicData.Dev.PID63;
                     }
                     else if ((aim >= 175) && (aim < 600))
                     {
-                        tempPIDparam = BllDev.PID64;
+                        tempPIDparam = PublicData.Dev.PID64;
                     }
                     else if (aim >= 600)
                     {
-                        tempPIDparam = BllDev.PID65;
+                        tempPIDparam = PublicData.Dev.PID65;
                     }
                     break;
                 //水流量PID
                 case 5:
-                    tempPIDparam = BllDev.PID51;
+                    tempPIDparam = PublicData.Dev.PID51;
                     break;
             }
             return tempPIDparam;
@@ -1410,19 +1405,19 @@ namespace MQDFJ_MB.BLL
             double aim = Math.Abs(inAim);
             if ((aim >= 0) && (aim < 50))
             {
-                tempRet = BllDev.AllowablePressErrQM[0];
+                tempRet = PublicData.Dev.AllowablePressErrQM[0];
             }
             else if ((aim >= 50) && (aim < 100))
             {
-                tempRet = BllDev.AllowablePressErrQM[1];
+                tempRet = PublicData.Dev.AllowablePressErrQM[1];
             }
             else if ((aim >= 100) && (aim < 500))
             {
-                tempRet = BllDev.AllowablePressErrQM[2];
+                tempRet = PublicData.Dev.AllowablePressErrQM[2];
             }
             else
             {
-                tempRet = BllDev.AllowablePressErrQM[3];
+                tempRet = PublicData.Dev.AllowablePressErrQM[3];
             }
             tempRet = Math.Abs(tempRet);
             return tempRet;
@@ -1439,19 +1434,19 @@ namespace MQDFJ_MB.BLL
             double aim = Math.Abs(inAim);
             if ((aim >= 0) && (aim < 1000))
             {
-                tempRet = BllDev.AllowablePressErrBigCY[0];
+                tempRet = PublicData.Dev.AllowablePressErrBigCY[0];
             }
             else if ((aim >= 1000) && (aim < 3000))
             {
-                tempRet = BllDev.AllowablePressErrBigCY[1];
+                tempRet = PublicData.Dev.AllowablePressErrBigCY[1];
             }
             else if ((aim >= 3000) && (aim < 5000))
             {
-                tempRet = BllDev.AllowablePressErrBigCY[2];
+                tempRet = PublicData.Dev.AllowablePressErrBigCY[2];
             }
             else
             {
-                tempRet = BllDev.AllowablePressErrBigCY[3];
+                tempRet = PublicData.Dev.AllowablePressErrBigCY[3];
             }
             tempRet = Math.Abs(tempRet);
             return tempRet;
@@ -1472,64 +1467,64 @@ namespace MQDFJ_MB.BLL
                 #region 抗风压目标压力
                 //抗风压定级变形31，抗风压定级反复32，抗风压定级P3 33，抗风压定级Pmax 34
                 case 31:
-                    tempRet = BllDev.PressSet_KFY_DJBX_Std[stageNo][StepNo];
+                    tempRet = PublicData.Dev.PressSet_KFY_DJBX_Std[stageNo][StepNo];
                     break;
 
                 case 32:
-                    tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJP2_Raito_Std;
+                    tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJP2_Raito_Std;
                     break;
 
                 case 33:
-                    if (BllExp.Exp_KFY.P3DownPress)
-                        tempRet = Math.Abs(BllExp.Exp_KFY.P3Press);
+                    if (PublicData.ExpDQ.Exp_KFY.P3DownPress)
+                        tempRet = Math.Abs(PublicData.ExpDQ.Exp_KFY.P3Press);
                     else
-                        tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJP3_Raito_Std;
+                        tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJP3_Raito_Std;
                     break;
 
                 case 34:
-                    tempRet = Math.Min(Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(BllExp.ExpData_KFY.PDValue_DJP1_F)) * BllDev.PressSet_KFY_DJPmax_Raito_Std;
+                    tempRet = Math.Min(Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_Z), Math.Abs(PublicData.ExpDQ.ExpData_KFY.PDValue_DJP1_F)) * PublicData.Dev.PressSet_KFY_DJPmax_Raito_Std;
                     break;
 
                 //抗风压工程变形35，工程反复36，工程P3 37，工程Pmax 38
                 case 35:
 
                     if (stageNo == 0)
-                        tempRet = BllDev.PressSet_KFY_GCP1_Y_Std;
+                        tempRet = PublicData.Dev.PressSet_KFY_GCP1_Y_Std;
                     else if (stageNo == 1)
                     {
                         switch (StepNo)
                         {
                             case 0:
-                                tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[0];
+                                tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[0];
                                 break;
                             case 1:
-                                tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[1];
+                                tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[1];
                                 break;
                             case 2:
-                                tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[2];
+                                tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[2];
                                 break;
                             case 3:
-                                tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[3];
+                                tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[3];
                                 break;
                         }
                     }
                     else if (stageNo == 2)
-                        tempRet = -BllDev.PressSet_KFY_GCP1_Y_Std;
+                        tempRet = -PublicData.Dev.PressSet_KFY_GCP1_Y_Std;
                     else if (stageNo == 3)
                     {
                         switch (StepNo)
                         {
                             case 0:
-                                tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[0];
+                                tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[0];
                                 break;
                             case 1:
-                                tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[1];
+                                tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[1];
                                 break;
                             case 2:
-                                tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[2];
+                                tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[2];
                                 break;
                             case 3:
-                                tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP1_Raito_Std[3];
+                                tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP1_Raito_Std[3];
                                 break;
                         }
                     }
@@ -1539,23 +1534,23 @@ namespace MQDFJ_MB.BLL
                 case 36:
 
                     if (StepNOInList == 0)
-                        tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP2_Raito_Std;
+                        tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP2_Raito_Std;
                     else
-                        tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCP2_Raito_Std;
+                        tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCP2_Raito_Std;
                     break;
 
                 case 37:
                     if (StepNOInList == 0)
-                        tempRet = BllExp.Exp_KFY.P3_GCSJ;
+                        tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ;
                     else
-                        tempRet = -BllExp.Exp_KFY.P3_GCSJ;
+                        tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ;
                     break;
 
                 case 38:
                     if (StepNOInList == 0)
-                        tempRet = BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCPmax_Raito_Std;
+                        tempRet = PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCPmax_Raito_Std;
                     else
-                        tempRet = -BllExp.Exp_KFY.P3_GCSJ * BllDev.PressSet_KFY_GCPmax_Raito_Std;
+                        tempRet = -PublicData.ExpDQ.Exp_KFY.P3_GCSJ * PublicData.Dev.PressSet_KFY_GCPmax_Raito_Std;
                     break;
 
                     #endregion
@@ -1574,7 +1569,7 @@ namespace MQDFJ_MB.BLL
         /// <param name="msg"></param>
         private void JJTJMessage(string msg)
         {
-            BllDev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+            PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
             ModeChange(DevicRunModeType.JJTJ_Mode);
 
         }
@@ -1878,39 +1873,23 @@ namespace MQDFJ_MB.BLL
         #endregion
 
 
-        #region 装置、试验属性
+        #region 公共数据属性
+
 
         /// <summary>
-        /// 幕墙四性装置
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main _bllDev;
+        private PublicDatas _publicData = PublicDatas.GetInstance();
         /// <summary>
-        /// 幕墙四性装置
+        /// 公共数据
         /// </summary>
-        public MQZH_DevModel_Main BllDev
+        public PublicDatas PublicData
         {
-            get { return _bllDev; }
+            get { return _publicData; }
             set
             {
-                _bllDev = value;
-                RaisePropertyChanged(() => BllDev);
-            }
-        }
-
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        private MQZH_ExpTotallModel _bllexp;
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        public MQZH_ExpTotallModel BllExp
-        {
-            get { return _bllexp; }
-            set
-            {
-                _bllexp = value;
-                RaisePropertyChanged(() => BllExp);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
 
@@ -1941,43 +1920,43 @@ namespace MQDFJ_MB.BLL
             if (msgWindow.Name == MQZH_WinName.QMWinName)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.QM_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.SMWinName)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.SM_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.KFYp1Name)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.KFYp1_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.KFYp2Name)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.KFYp2_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.KFYp3Name)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.KFYp3_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.KFYpmaxName)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.KFYpmax_Mode);
             }
             else if (msgWindow.Name == MQZH_WinName.CJBXWinName)
             {
                 //装置运行模式设置
-                if (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
+                if (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode)
                     ModeChange(DevicRunModeType.CJBX_Mode);
             }
         }
@@ -2000,12 +1979,12 @@ namespace MQDFJ_MB.BLL
         {
             try
             {
-                if ((newMode != BllDev.DeviceRunMode) && (BllDev.DeviceRunMode != DevicRunModeType.JJTJ_Mode))
+                if ((newMode != PublicData.Dev.DeviceRunMode) && (PublicData.Dev.DeviceRunMode != DevicRunModeType.JJTJ_Mode))
                 {
                     EscStopCompleteExpReset();
 
-                    BllDev.DeviceRunMode = newMode;
-                    foreach (var vDo in BllDev.DOList)
+                    PublicData.Dev.DeviceRunMode = newMode;
+                    foreach (var vDo in PublicData.Dev.DOList)
                         vDo.IsOn = false;
 
                     //输出频率复位
@@ -2032,10 +2011,10 @@ namespace MQDFJ_MB.BLL
             try
             {
                 //当前阶段、步骤复位
-                BllExp.Exp_QM.StageStepDQReset();
-                BllExp.Exp_SM.StageStepDQReset();
-                BllExp.Exp_KFY.StageStepDQReset();
-                //  BllExp.Exp_CJBX.StageStepDQReset();
+                PublicData.ExpDQ.Exp_QM.StageStepDQReset();
+                PublicData.ExpDQ.Exp_SM.StageStepDQReset();
+                PublicData.ExpDQ.Exp_KFY.StageStepDQReset();
+                //  PublicData.ExpDQ.Exp_CJBX.StageStepDQReset();
 
                 //存在试验状态复位
                 ExistExpRest();
@@ -2065,7 +2044,7 @@ namespace MQDFJ_MB.BLL
                 StepCompleteStatusBack = false;
                 StepNOInList = -1;
                 //装置忙复位
-                BllDev.IsDeviceBusy = false;
+                PublicData.Dev.IsDeviceBusy = false;
                 //PID禁止
                 PID_Disable();
                 //波动辅助状态
@@ -2105,13 +2084,13 @@ namespace MQDFJ_MB.BLL
         private void SelectedClear()
         {
             // 气密试验已选阶段数组清零
-            BllExp.Exp_QM.CanBeCheckInit();
+            PublicData.ExpDQ.Exp_QM.CanBeCheckInit();
             //水密试验已选阶段数组清零
-            BllExp.Exp_SM.CanBeCheckInit();
+            PublicData.ExpDQ.Exp_SM.CanBeCheckInit();
             //抗风压
-            BllExp.Exp_KFY.CanBeCheckInit();
+            PublicData.ExpDQ.Exp_KFY.CanBeCheckInit();
             //层间变形被选阶段组清零
-            BllExp.Exp_CJBX.CanBeCheckInit();
+            PublicData.ExpDQ.Exp_CJBX.CanBeCheckInit();
         }
 
         /// <summary>

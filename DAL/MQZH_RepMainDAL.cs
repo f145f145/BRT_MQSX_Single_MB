@@ -12,12 +12,14 @@
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using MQDFJ_MB.Model;
 using MQDFJ_MB.Model.DEV;
 using MQDFJ_MB.Model.Exp;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using System;
 using System.IO;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Windows;
 
@@ -28,54 +30,33 @@ namespace MQDFJ_MB.DAL
     /// </summary>
     public partial class MQZH_RepDAL: ObservableObject
     {
-        public MQZH_RepDAL(MQZH_DevModel_Main dev, MQZH_ExpTotallModel exp)
+        public MQZH_RepDAL()
         {
-            Dev = dev;
-            ExpDQ = exp;
-
             //报告导出指令消息
             Messenger.Default.Register<string>(this, "OutPutRPTMessage", OutPutRPTMessage);
 
             //数据备份指令消息
             Messenger.Default.Register<string>(this, "DataBackUpMessage", DataBackUpMessage);
         }
-        
 
-        #region DEV、Exp属性
 
-        /// <summary>
-        /// 幕墙装置
-        /// </summary>
-        private MQZH_DevModel_Main _dev;
+        #region 公共数据
+
 
         /// <summary>
-        /// 幕墙装置
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main Dev
+        private PublicDatas _publicData = PublicDatas.GetInstance();
+        /// <summary>
+        /// 公共数据
+        /// </summary>
+        public PublicDatas PublicData
         {
-            get { return _dev; }
+            get { return _publicData; }
             set
             {
-                _dev = value;
-                RaisePropertyChanged(() => Dev);
-            }
-        }
-
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        private MQZH_ExpTotallModel _expDQ;
-
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        private MQZH_ExpTotallModel ExpDQ
-        {
-            get { return _expDQ; }
-            set
-            {
-                _expDQ = value;
-                RaisePropertyChanged(() => ExpDQ);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
 
@@ -120,11 +101,35 @@ namespace MQDFJ_MB.DAL
         }
 
         /// <summary>
-        /// 源数据文件名
+        /// 源数据文件名-主数据库
         /// </summary>
-        private string DataSourceFile
+        private string DataSourceFile_Main
         {
-            get { return "MQZH_DB.mdb"; }
+            get { return "MQZH_DB_Test.mdb"; }
+        }
+
+        /// <summary>
+        /// 源数据文件名-装置数据库
+        /// </summary>
+        private string DataSourceFile_Dev
+        {
+            get { return "MQZH_DB_Dev.mdb"; }
+        }
+
+        /// <summary>
+        /// 源数据文件名-主数据库
+        /// </summary>
+        private string DataSourceFile_Main2
+        {
+            get { return "MainDB.db"; }
+        }
+
+        /// <summary>
+        /// 源数据文件名-装置数据库
+        /// </summary>
+        private string DataSourceFile_Dev2
+        {
+            get { return "DevDB.db"; }
         }
 
         /// <summary>
@@ -136,11 +141,32 @@ namespace MQDFJ_MB.DAL
         }
 
         /// <summary>
-        /// 备份数据文件
+        /// 备份数据文件_主数据库
         /// </summary>
-        private string BackUpFile
+        private string BackUpFile_Main
         {
-            get { return "MQZH_DB_Backup" + NowTimeStr + ".mdb"; }
+            get { return "MQZH_DB_Test_Backup" + NowTimeStr + ".mdb"; }
+        }
+        /// <summary>
+        /// 备份数据文件_主数据库
+        /// </summary>
+        private string BackUpFile_Dev
+        {
+            get { return "MQZH_DB_Dev_Backup" + NowTimeStr + ".mdb"; }
+        }
+        /// <summary>
+        /// 备份数据文件_主数据库
+        /// </summary>
+        private string BackUpFile_Main2
+        {
+            get { return "MainDB_Backup" + NowTimeStr + ".db"; }
+        }
+        /// <summary>
+        /// 备份数据文件_主数据库
+        /// </summary>
+        private string BackUpFile_Dev2
+        {
+            get { return "DevDB_Backup" + NowTimeStr + ".db"; }
         }
 
         /// <summary>
@@ -164,8 +190,8 @@ namespace MQDFJ_MB.DAL
         /// </summary>
         private string RptAimPathSX
         {
-            //get { return ProgRootDir + "\\Data\\试验报告\\" + DAL_ExpDQ.ExpSettingParam .ExpNO  + NowTimeStr + "三性检测报告.xls"; }
-            get { return ProgRootDir + "\\Data\\试验报告\\" + ExpDQ.ExpSettingParam.ExpNO + "三性检测报告.xls"; }
+            //get { return ProgRootDir + "\\Data\\试验报告\\" + PublicData.ExpDQ.ExpSettingParam .ExpNO  + NowTimeStr + "三性检测报告.xls"; }
+            get { return ProgRootDir + "\\Data\\试验报告\\" + PublicData.ExpDQ.ExpSettingParam.ExpNO + "三性检测报告.xls"; }
         }
 
         /// <summary>
@@ -173,8 +199,8 @@ namespace MQDFJ_MB.DAL
         /// </summary>
         private string RptAimPathCJBX
         {
-            //get { return ProgRootDir + "\\Data\\试验报告\\" + DAL_ExpDQ.ExpSettingParam.ExpNO + NowTimeStr + "层间变形检测报告.xls"; }
-            get { return ProgRootDir + "\\Data\\试验报告\\" + ExpDQ.ExpSettingParam.ExpNO + "层间变形检测报告.xls"; }
+            //get { return ProgRootDir + "\\Data\\试验报告\\" + PublicData.ExpDQ.ExpSettingParam.ExpNO + NowTimeStr + "层间变形检测报告.xls"; }
+            get { return ProgRootDir + "\\Data\\试验报告\\" + PublicData.ExpDQ.ExpSettingParam.ExpNO + "层间变形检测报告.xls"; }
         }
 
         /// <summary>
@@ -207,8 +233,8 @@ namespace MQDFJ_MB.DAL
                 {
                     System.IO.Directory.CreateDirectory(aimPath);
                 }
-                aimPath = aimPath + ExpDQ.ExpSettingParam.ExpNO;
-                if (ExpDQ.Exp_KFY.IsGC) //定级检测时类型为1，工程检测时类型为2
+                aimPath = aimPath + PublicData.ExpDQ.ExpSettingParam.ExpNO;
+                if (PublicData.ExpDQ.Exp_KFY.IsGC) //定级检测时类型为1，工程检测时类型为2
                     aimPath = aimPath + "2";
                 else
                     aimPath = aimPath + "1";
@@ -247,9 +273,18 @@ namespace MQDFJ_MB.DAL
             if (msg == "All")
             {
                 //文件复制、重命名
-                if (CopyFile(DataSourceFolder, DataSourceFile, BackUpFolder, BackUpFile) != 1)
+                if (CopyFile(DataSourceFolder, DataSourceFile_Main, BackUpFolder, BackUpFile_Main) != 1)
                     return;
-                MessageBox.Show("数据已备份至" + BackUpFolder + BackUpFile);
+                //文件复制、重命名
+                if (CopyFile(DataSourceFolder, DataSourceFile_Dev, BackUpFolder, BackUpFile_Dev) != 1)
+                    return;
+                //文件复制、重命名
+                if (CopyFile(DataSourceFolder, DataSourceFile_Main2, BackUpFolder, BackUpFile_Main2) != 1)
+                    return;
+                //文件复制、重命名
+                if (CopyFile(DataSourceFolder, DataSourceFile_Dev2, BackUpFolder, BackUpFile_Dev2) != 1)
+                    return;
+                MessageBox.Show("数据已备份至" + BackUpFolder);
             }
 
         }

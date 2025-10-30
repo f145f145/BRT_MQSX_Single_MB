@@ -151,11 +151,11 @@
                             <Label Content="1/" Grid.Row="2" Grid.Column ="1" Style="{StaticResource Label1}"/>
                             <Label Content="1/"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource Label1}"/>
                             <Label Content="1/" Grid.Row="4" Grid.Column ="1" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_X [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_X[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_X [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_X[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_X[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_X[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_X[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Y轴位移角" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -182,11 +182,11 @@
                             <Label Content="1/" Grid.Row="2" Grid.Column ="1" Style="{StaticResource Label1}"/>
                             <Label Content="1/"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource Label1}"/>
                             <Label Content="1/" Grid.Row="4" Grid.Column ="1" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WYJ_Ctl_Y[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_Y [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_Y[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_Y[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_Y[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WYJ_Ctl_Y[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="2" Style="{StaticResource TextBox1}" />
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Z轴位移量" Grid.Row ="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -207,11 +207,11 @@
                             <Label Content="第3级最小位移量(mm)：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="第4级最小位移量(mm)："  Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="第5级最小位移量(mm)：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.WY_Ctl_Z [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WY_Ctl_Z[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WY_Ctl_Z[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WY_Ctl_Z[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                            <TextBox Text="{Binding Dev.WY_Ctl_Z[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WY_Ctl_Z [0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WY_Ctl_Z[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WY_Ctl_Z[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WY_Ctl_Z[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                            <TextBox Text="{Binding PublicData.Dev.WY_Ctl_Z[4], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" />
                         </Grid>
                     </GroupBox>
                 </Grid>

@@ -149,10 +149,10 @@
                             <Label Content="偏差2（50～100Pa）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="偏差3（100～500Pa）：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="偏差4（500Pa以上）：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrQM[0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrQM[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrQM[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrQM[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrQM[0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrQM[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrQM[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrQM[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="大差压控制允许偏差（Pa）" Grid.Row ="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black" >
@@ -171,10 +171,10 @@
                             <Label Content="偏差2（1000～3000Pa）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="偏差3（3000～5000Pa）：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="偏差7（5000Pa以上）：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrBigCY[0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrBigCY[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrBigCY[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AllowablePressErrBigCY[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrBigCY[0], Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrBigCY[1], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrBigCY[2], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AllowablePressErrBigCY[3], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="压力控制一般参数" Grid.Row ="0" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black" >
@@ -195,8 +195,8 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="预加压保持时间（s）：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="压力加载速度（Pa/s）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_YJY, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.LoadUpDownSpeed, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_YJY, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.LoadUpDownSpeed, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="气密压力控制参数" Grid.Row ="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -216,7 +216,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="气密检测保压时间（s）：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_QMStep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_QMStep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -254,12 +254,12 @@
                             <Label Content="水密工程检测可开启保压时间：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="水密工程检测固定有开启保压时间："  Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="水密工程检测固定无开启保压时间：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_SMFistStep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_SMDJ_StepLeft, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PlTime_SMGC_Before, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_SMGC_KKQ, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_SMGC_YKQ, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_SMGC_WKQ, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMFistStep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMDJ_StepLeft, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PlTime_SMGC_Before, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMGC_KKQ, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMGC_YKQ, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMGC_WKQ, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="水密波动加压控制参数" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -280,16 +280,16 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="水密波动高压比率：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="水密波动低压比率：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.HighRatioSM, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.LowRatioSM, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.HighRatioSM, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.LowRatioSM, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
 
                             <Label Content="波动压力准备保压时间（s）：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="波动切换高压调频比率：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="波动切换低压调频比率：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
 
-                            <TextBox Text="{Binding Dev.KeepingTime_SMPreparePress, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PhRatioWaveH, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PhRatioWaveL, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_SMPreparePress, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PhRatioWaveH, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PhRatioWaveL, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                 </Grid>
                     </GroupBox>
                 </Grid>
@@ -328,12 +328,12 @@
                             <Label Content="抗风压安全加压泄压速度：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="抗风压高压比率：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="抗风压低压比率：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_KFY_BXstep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.KeepingTime_KFY_AQ, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.WaveNum_KFYP2, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.LoadUpDownSpeed_KFRAQ, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.HighRatioKFY, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.LowRatioKFY, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_KFY_BXstep, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.KeepingTime_KFY_AQ, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.WaveNum_KFYP2, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.LoadUpDownSpeed_KFRAQ, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.HighRatioKFY, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.LowRatioKFY, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                    

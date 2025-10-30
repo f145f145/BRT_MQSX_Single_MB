@@ -25,6 +25,7 @@ using System.Drawing;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using System.Linq;
 using static MQDFJ_MB.Model.MQZH_Enums;
+using System.ComponentModel;
 
 namespace MQDFJ_MB.ViewModel
 {
@@ -35,6 +36,9 @@ namespace MQDFJ_MB.ViewModel
         /// </summary>
         public MQZH_MainViewModel()
         {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
             //有窗口新增或关闭
             Messenger.Default.Register<string>(this, "WindowClosed", WindowClosedMessage);
             Messenger.Default.Register<Window>(this, "NewWindow", WindowAddedMessage);
@@ -46,34 +50,34 @@ namespace MQDFJ_MB.ViewModel
             Messenger.Default.Register<string>(this, "UpdateChart", UpdateChartMessage);
 
             //装置、试验初始化
-            Dev = new MQZH_DevModel_Main();
-            ExpDQ = new MQZH_ExpTotallModel();
+        //    Dev = new MQZH_DevModel_Main();
+            PublicData.ExpDQ = new MQZH_ExpTotallModel();
 
             //DAL初始化及赋值
-            MainViewModel_DevDAL = new MQZH_DevDAL(Dev);
-            MainViewModel_ExpDAL = new MQZH_ExpDAL(ExpDQ);
-            MainViewModel_RepDAL = new MQZH_RepDAL(Dev, ExpDQ);
+            MainViewModel_DevDAL = new MQZH_DevDAL();
+            MainViewModel_ExpDAL = new MQZH_ExpDAL();
+            MainViewModel_RepDAL = new MQZH_RepDAL();
 
             //载入装置参数
             Messenger.Default.Send<string>("LoadDevSettings", "DevDataRWMessage");
             //载入试验参数及数据
-            if (!Dev.IsLoadLastExpPowerOn)
+            if (!PublicData.Dev.IsLoadLastExpPowerOn)
             {
                 Messenger.Default.Send<string>("DefaultExp", "LoadExpByName");
             }
             else
             {
-                Messenger.Default.Send<string>(Dev.ExpNOLast, "LoadExpByName");
+                Messenger.Default.Send<string>(PublicData.Dev.ExpNOLast, "LoadExpByName");
             }
 
             //通讯初始化
-            MainViewModel_Communication = new MQZH_Communication(Dev);
+            MainViewModel_Communication = new MQZH_Communication();
             MainViewModel_Communication.CommunicationInit();
 
             //主控BLL初始化
-            MainViewModel_Bll = new MQZH_ExpBLL(Dev, ExpDQ);
+            MainViewModel_Bll = new MQZH_ExpBLL();
 
-            Dev.PID_SMSLL = MainViewModel_Bll.BllDev.PID_SMSLL;
+            PublicData.Dev.PID_SMSLL = MainViewModel_Bll.PublicData.Dev.PID_SMSLL;
 
             //绘图初始化
             PlotInit();
@@ -92,38 +96,22 @@ namespace MQDFJ_MB.ViewModel
         #region 装置、通讯、试验、数据操作属性
 
         /// <summary>
-        /// 装置参数
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main _dev;
+        private PublicDatas _publicData = PublicDatas.GetInstance();
         /// <summary>
-        /// 装置参数
+        /// 公共数据
         /// </summary>
-        public MQZH_DevModel_Main Dev
+        public PublicDatas PublicData
         {
-            get { return _dev; }
+            get { return _publicData; }
             set
             {
-                _dev = value;
-                RaisePropertyChanged(() => Dev);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
 
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        private MQZH_ExpTotallModel _expDQ;
-        /// <summary>
-        /// 当前试验
-        /// </summary>
-        public MQZH_ExpTotallModel ExpDQ
-        {
-            get { return _expDQ; }
-            set
-            {
-                _expDQ = value;
-                RaisePropertyChanged(() => ExpDQ);
-            }
-        }
 
         /// <summary>
         /// 通讯
@@ -301,9 +289,9 @@ namespace MQDFJ_MB.ViewModel
             //重新计算并保存气密水密抗风压检测数据
             else if (i == 4)
             {
-                ExpDQ.QM_Evaluate();
-                ExpDQ.SM_Evaluate();
-                ExpDQ.KFY_Evaluate();
+                PublicData.ExpDQ.QM_Evaluate();
+                PublicData.ExpDQ.SM_Evaluate();
+                PublicData.ExpDQ.KFY_Evaluate();
                 Messenger.Default.Send<string>("SaveQMStatusAndData", "SaveExpMessage");
                 Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                 Messenger.Default.Send<string>("SaveKFYStatusAndData", "SaveExpMessage");
@@ -314,8 +302,8 @@ namespace MQDFJ_MB.ViewModel
             //重新计算并保存层间变形检测数据
             else if (i == 5)
             {
-                ExpDQ.CJBX_DJEvaluate();
-                ExpDQ.CJBX_GCEvaluate();
+                PublicData.ExpDQ.CJBX_DJEvaluate();
+                PublicData.ExpDQ.CJBX_GCEvaluate();
 
                 Messenger.Default.Send<string>("SaveCJBXStatusAndData", "SaveExpMessage");
             }
@@ -323,13 +311,13 @@ namespace MQDFJ_MB.ViewModel
             //打开水密定级检测渗漏窗口
             else if (i == 21)
             {
-                ExpDQ.ExpData_SM.SLStatusCopy();
+                PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                 Messenger.Default.Send<string>(MQZH_WinName.SMDJDamageWinName, "OpenGivenNameWin");
             }
             //打开水密工程检测渗漏窗口
             else if (i == 22)
             {
-                ExpDQ.ExpData_SM.SLStatusCopy();
+                PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                 Messenger.Default.Send<string>(MQZH_WinName.SMGCDamageWinName, "OpenGivenNameWin");
             }
 
@@ -554,23 +542,23 @@ namespace MQDFJ_MB.ViewModel
             //管理员登录
             else if (i == 8888)
             {
-                if (Dev.PassWord == "brt12345678")
+                if (PublicData.Dev.PassWord == "brt12345678")
                 {
-                    Dev.IsAdmin = true;
+                    PublicData.Dev.IsAdmin = true;
                     MessageBox.Show("管理员登录成功，配置完成后请退出登录或重启软件！");
                 }
                 else
                 {
-                    Dev.IsAdmin = false;
+                    PublicData.Dev.IsAdmin = false;
                     MessageBox.Show("管理员密码错误！");
                 }
             }
             //管理员退出登录
             else if (i == 8889)
             {
-                Dev.PassWord = "";
+                PublicData.Dev.PassWord = "";
                 Messenger.Default.Send<string>("", "PasswordChanged");
-                Dev.IsAdmin = false;
+                PublicData.Dev.IsAdmin = false;
             }
 
             #endregion
@@ -730,7 +718,7 @@ namespace MQDFJ_MB.ViewModel
             else if (i == 3)
             {
                 //装置忙，无法载入
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("装置忙，请先停止正在运行的试验或退出软件后重新打开！", "错误提示");
                 }
@@ -754,7 +742,7 @@ namespace MQDFJ_MB.ViewModel
             else if (i == 4)
             {
                 //装置忙，无法载入
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("装置忙，请先停止正在运行的试验或退出软件后重新打开！", "错误提示");
                 }
@@ -770,7 +758,7 @@ namespace MQDFJ_MB.ViewModel
                 if (msgBoxResult == MessageBoxResult.Yes)
                 {
                     //装置忙
-                    if (Dev.IsDeviceBusy)
+                    if (PublicData.Dev.IsDeviceBusy)
                     {
                         MessageBox.Show("装置忙，请先停止正在运行的试验或退出软件后重新打开！", "错误提示");
                     }
@@ -789,7 +777,7 @@ namespace MQDFJ_MB.ViewModel
             //取消修改试验设置
             else if (i == 12)
             {
-                Messenger.Default.Send<string>(ExpDQ.ExpSettingParam.ExpNO, "LoadExpByName");
+                Messenger.Default.Send<string>(PublicData.ExpDQ.ExpSettingParam.ExpNO, "LoadExpByName");
             }
         }
 
@@ -1044,7 +1032,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
 
@@ -1201,7 +1189,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
 
@@ -1314,7 +1302,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
             //停机
@@ -1342,10 +1330,10 @@ namespace MQDFJ_MB.ViewModel
                 SDQMDoubleOrderArray[5] = QM_kp;//kp
                 SDQMDoubleOrderArray[6] = QM_ki;//ki
                 SDQMDoubleOrderArray[7] = QM_kd;//kd
-                if ((Dev.DeviceRunMode == DevicRunModeType.DF1QMFDbg_Mode) ||
-                    (Dev.DeviceRunMode == DevicRunModeType.DF2QMFDbg_Mode) ||
-                    (Dev.DeviceRunMode == DevicRunModeType.DF3QMFDbg_Mode) ||
-                    (Dev.DeviceRunMode == DevicRunModeType.DF4QMFDbg_Mode))
+                if ((PublicData.Dev.DeviceRunMode == DevicRunModeType.DF1QMFDbg_Mode) ||
+                    (PublicData.Dev.DeviceRunMode == DevicRunModeType.DF2QMFDbg_Mode) ||
+                    (PublicData.Dev.DeviceRunMode == DevicRunModeType.DF3QMFDbg_Mode) ||
+                    (PublicData.Dev.DeviceRunMode == DevicRunModeType.DF4QMFDbg_Mode))
                 {
                     QM_Press = -Math.Abs(QM_Press);
                     SDQMDoubleOrderArray[8] = -Math.Abs(QM_Press); //给定值
@@ -1362,7 +1350,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管1正压模式
             else if (i == 5105)
             {
-                switch (Dev.DFNo_FG1)
+                switch (PublicData.Dev.DFNo_FG1)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMZDbg_Mode, "ModeChangeMessage");
@@ -1384,7 +1372,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管1负压模式
             else if (i == 5106)
             {
-                switch (Dev.DFNo_FG1)
+                switch (PublicData.Dev.DFNo_FG1)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMFDbg_Mode, "ModeChangeMessage");
@@ -1407,7 +1395,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管2正压模式
             else if (i == 5107)
             {
-                switch (Dev.DFNo_FG2)
+                switch (PublicData.Dev.DFNo_FG2)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMZDbg_Mode, "ModeChangeMessage");
@@ -1429,7 +1417,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管2负压模式
             else if (i == 5108)
             {
-                switch (Dev.DFNo_FG2)
+                switch (PublicData.Dev.DFNo_FG2)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMFDbg_Mode, "ModeChangeMessage");
@@ -1453,7 +1441,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管3正压模式
             else if (i == 5109)
             {
-                switch (Dev.DFNo_FG3)
+                switch (PublicData.Dev.DFNo_FG3)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMZDbg_Mode, "ModeChangeMessage");
@@ -1475,7 +1463,7 @@ namespace MQDFJ_MB.ViewModel
             //手动气密风速管3负压模式
             else if (i == 5110)
             {
-                switch (Dev.DFNo_FG3)
+                switch (PublicData.Dev.DFNo_FG3)
                 {
                     case 1:
                         Messenger.Default.Send<DevicRunModeType>(DevicRunModeType.DF1QMFDbg_Mode, "ModeChangeMessage");
@@ -1619,7 +1607,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
             //停机
@@ -1647,7 +1635,7 @@ namespace MQDFJ_MB.ViewModel
                 SDSM1DoubleOrderArray[5] = SM1_kp;//kp
                 SDSM1DoubleOrderArray[6] = SM1_ki;//ki
                 SDSM1DoubleOrderArray[7] = SM1_kd;//kd
-                if (Dev.DeviceRunMode == DevicRunModeType.SDSMFDbg_Mode)
+                if (PublicData.Dev.DeviceRunMode == DevicRunModeType.SDSMFDbg_Mode)
                 {
                     SM1_Press = -Math.Abs(SM1_Press);
                     SDSM1DoubleOrderArray[8] = -Math.Abs(SM1_Press); //给定值
@@ -1796,7 +1784,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
             //水流量PID模式
@@ -2071,7 +2059,7 @@ namespace MQDFJ_MB.ViewModel
             //紧急停机
             if (i == 119)
             {
-                Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
+                PublicData.Dev.DeviceRunMode = DevicRunModeType.JJTJ_Mode;
                 SDWYOrderArray = Enumerable.Repeat((ushort)0, 24).ToArray();
                 Messenger.Default.Send<string>("JJTJ", "JJTJMessage");
             }
@@ -2302,17 +2290,17 @@ namespace MQDFJ_MB.ViewModel
             else if (i == 6516)
             {
                 double distance = 0;
-                if (Math.Abs(YDJL_X) <= Math.Abs(Dev.PermitErrX))
+                if (Math.Abs(YDJL_X) <= Math.Abs(PublicData.Dev.PermitErrX))
                     return;
                 if (YDJL_X == 0)
                     return;
                 //将相对位置换算为目标点位采集值
                 if (YDJL_X > 0)
-                    distance = YDJL_X + Dev.CorrXRight;
+                    distance = YDJL_X + PublicData.Dev.CorrXRight;
                 if (YDJL_X < 0)
-                    distance = YDJL_X - Dev.CorrXLeft;
-                double aimPositionX = Dev.WYValueX + distance;        //目标位置
-                double dataTrans = Dev.AIList[Dev.WYNOList[0] - 1].GetTransDataFromValueFinal_AI(-aimPositionX);       //X轴位移尺对应传输值
+                    distance = YDJL_X - PublicData.Dev.CorrXLeft;
+                double aimPositionX = PublicData.Dev.WYValueX + distance;        //目标位置
+                double dataTrans = PublicData.Dev.AIList[PublicData.Dev.WYNOList[0] - 1].GetTransDataFromValueFinal_AI(-aimPositionX);       //X轴位移尺对应传输值
 
                 if (dataTrans > 4000)
                     dataTrans = 4000;
@@ -2331,26 +2319,26 @@ namespace MQDFJ_MB.ViewModel
                 SDWYOrderArray[1] = 500;    //定点模式
                 SDWYOrderArray[13] = direction;                                      //运动方向，1X右，2X左，3Y前，4Y后，5Z上，6Z下
                 SDWYOrderArray[14] = Convert.ToUInt16(dataTrans);                   //X轴定位位置
-                SDWYOrderArray[17] = Convert.ToUInt16(Dev.WYNOList[0] - 1);      //X位移尺编号
+                SDWYOrderArray[17] = Convert.ToUInt16(PublicData.Dev.WYNOList[0] - 1);      //X位移尺编号
                 Messenger.Default.Send<ushort[]>(SDWYOrderArray, "SDWYMessage");
             }
             //Y轴移动到目标位置
             else if (i == 6517)
             {
                 double distance = 0;
-                if (Math.Abs(YDJL_Y) <= Math.Abs(Dev.PermitErrY))
+                if (Math.Abs(YDJL_Y) <= Math.Abs(PublicData.Dev.PermitErrY))
                     return;
                 if (YDJL_Y == 0)
                     return;
                 //将相对位置换算为目标点位采集值
                 if (YDJL_Y > 0)
-                    distance = YDJL_Y + Dev.CorrYFront;
+                    distance = YDJL_Y + PublicData.Dev.CorrYFront;
                 if (YDJL_Y < 0)
-                    distance = YDJL_Y - Dev.CorrYBack;
-                double aimPositionY = Dev.WYValueY[3] + distance;        //目标位置
-                double dataTrans1 = Dev.AIList[Dev.WYNOList[1] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //左点对应传输值
-                double dataTrans2 = Dev.AIList[Dev.WYNOList[2] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //中间点对应传输值
-                double dataTrans3 = Dev.AIList[Dev.WYNOList[3] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //右点对应传输值
+                    distance = YDJL_Y - PublicData.Dev.CorrYBack;
+                double aimPositionY = PublicData.Dev.WYValueY[3] + distance;        //目标位置
+                double dataTrans1 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[1] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //左点对应传输值
+                double dataTrans2 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[2] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //中间点对应传输值
+                double dataTrans3 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[3] - 1].GetTransDataFromValueFinal_AI(-aimPositionY);       //右点对应传输值
                 double dataTransAverage = (dataTrans1 + dataTrans2 + dataTrans3) / 3;
                 if (dataTransAverage > 4000)
                     dataTransAverage = 4000;
@@ -2369,28 +2357,28 @@ namespace MQDFJ_MB.ViewModel
                 SDWYOrderArray[1] = 500;    //定点模式
                 SDWYOrderArray[13] = direction;                                     //运动方向，1X右，2X左，3Y前，4Y后，5Z上，6Z下
                 SDWYOrderArray[15] = Convert.ToUInt16(dataTransAverage);            //Y轴定位位置
-                SDWYOrderArray[18] = Convert.ToUInt16(Dev.WYNOList[1] - 1);     //Y左位移尺编号
-                SDWYOrderArray[19] = Convert.ToUInt16(Dev.WYNOList[2] - 1);     //Y中位移尺编号
-                SDWYOrderArray[20] = Convert.ToUInt16(Dev.WYNOList[3] - 1);     //Y右位移尺编号
+                SDWYOrderArray[18] = Convert.ToUInt16(PublicData.Dev.WYNOList[1] - 1);     //Y左位移尺编号
+                SDWYOrderArray[19] = Convert.ToUInt16(PublicData.Dev.WYNOList[2] - 1);     //Y中位移尺编号
+                SDWYOrderArray[20] = Convert.ToUInt16(PublicData.Dev.WYNOList[3] - 1);     //Y右位移尺编号
                 Messenger.Default.Send<ushort[]>(SDWYOrderArray, "SDWYMessage");
             }
             //Z轴移动到目标位置
             else if (i == 6518)
             {
                 double distance = 0;
-                if (Math.Abs(YDJL_Z) <= Math.Abs(Dev.PermitErrZ))
+                if (Math.Abs(YDJL_Z) <= Math.Abs(PublicData.Dev.PermitErrZ))
                     return;
                 if (YDJL_Z == 0)
                     return;
                 //将相对位置换算为目标点位采集值
                 if (YDJL_Z > 0)
-                    distance = YDJL_Z + Dev.CorrZUp;
+                    distance = YDJL_Z + PublicData.Dev.CorrZUp;
                 if (YDJL_Z < 0)
-                    distance = YDJL_Z - Dev.CorrZDown;
-                double aimPositionZ = Dev.WYValueZ[3] + distance;        //目标位置
-                double dataTrans1 = Dev.AIList[Dev.WYNOList[4] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //左点对应传输值
-                double dataTrans2 = Dev.AIList[Dev.WYNOList[5] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //中间点对应传输值
-                double dataTrans3 = Dev.AIList[Dev.WYNOList[6] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //右点对应传输值
+                    distance = YDJL_Z - PublicData.Dev.CorrZDown;
+                double aimPositionZ = PublicData.Dev.WYValueZ[3] + distance;        //目标位置
+                double dataTrans1 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[4] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //左点对应传输值
+                double dataTrans2 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[5] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //中间点对应传输值
+                double dataTrans3 = PublicData.Dev.AIList[PublicData.Dev.WYNOList[6] - 1].GetTransDataFromValueFinal_AI(aimPositionZ);       //右点对应传输值
                 double dataTransAverage = (dataTrans1 + dataTrans2 + dataTrans3) / 3;
                 if (dataTransAverage > 4000)
                     dataTransAverage = 4000;
@@ -2409,9 +2397,9 @@ namespace MQDFJ_MB.ViewModel
                 SDWYOrderArray[1] = 500;    //定点模式
                 SDWYOrderArray[13] = direction;                                     //运动方向，1X右，2X左，3Y前，4Y后，5Z上，6Z下
                 SDWYOrderArray[16] = Convert.ToUInt16(dataTransAverage);            //Z轴定位位置
-                SDWYOrderArray[21] = Convert.ToUInt16(Dev.WYNOList[4] - 1);     //Z左位移尺编号
-                SDWYOrderArray[22] = Convert.ToUInt16(Dev.WYNOList[5] - 1);     //Z中位移尺编号
-                SDWYOrderArray[23] = Convert.ToUInt16(Dev.WYNOList[6] - 1);     //Z右位移尺编号
+                SDWYOrderArray[21] = Convert.ToUInt16(PublicData.Dev.WYNOList[4] - 1);     //Z左位移尺编号
+                SDWYOrderArray[22] = Convert.ToUInt16(PublicData.Dev.WYNOList[5] - 1);     //Z中位移尺编号
+                SDWYOrderArray[23] = Convert.ToUInt16(PublicData.Dev.WYNOList[6] - 1);     //Z右位移尺编号
                 Messenger.Default.Send<ushort[]>(SDWYOrderArray, "SDWYMessage");
             }
             //停止移动
@@ -2469,15 +2457,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1101) || (i == 1111))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //气密试验已选阶段数组清零
-                    ExpDQ.Exp_QM.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_QM.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2558,15 +2546,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1102) || (i == 1112))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //水密试验已选阶段数组清零
-                    ExpDQ.Exp_SM.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_SM.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2597,13 +2585,13 @@ namespace MQDFJ_MB.ViewModel
             //定级检测损坏情况窗口
             else if (i == 7112)
             {
-                ExpDQ.ExpData_SM.SLStatusCopy();
+                PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                 Messenger.Default.Send<string>(MQZH_WinName.SMDJDamageWinName, "OpenGivenNameWin");
             }
             //工程检测损坏情况窗口
             else if (i == 7113)
             {
-                ExpDQ.ExpData_SM.SLStatusCopy();
+                PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                 Messenger.Default.Send<string>(MQZH_WinName.SMGCDamageWinName, "OpenGivenNameWin");
             }
             //数据报告窗口
@@ -2629,8 +2617,8 @@ namespace MQDFJ_MB.ViewModel
             //启停水泵
             else if (i == 1722)
             {
-                if (Dev.DeviceRunMode == DevicRunModeType.SM_Mode)
-                    Dev.DOList[6].IsOn = !Dev.DOList[6].IsOn;
+                if (PublicData.Dev.DeviceRunMode == DevicRunModeType.SM_Mode)
+                    PublicData.Dev.DOList[6].IsOn = !PublicData.Dev.DOList[6].IsOn;
             }
 
             #endregion
@@ -2640,7 +2628,7 @@ namespace MQDFJ_MB.ViewModel
             //损坏数据保存
             else if ((i == 2104) || (i == 2204))
             {
-                ExpDQ.ExpData_SM.SLStatusCopyBack();
+                PublicData.ExpDQ.ExpData_SM.SLStatusCopyBack();
                 Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
             }
 
@@ -2695,15 +2683,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1103) || (i == 1113))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //抗风压已选阶段数组清零
-                    ExpDQ.Exp_KFY.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_KFY.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2714,15 +2702,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1104) || (i == 1114))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //抗风压已选阶段数组清零
-                    ExpDQ.Exp_KFY.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_KFY.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2733,15 +2721,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1105) || (i == 1115))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //抗风压已选阶段数组清零
-                    ExpDQ.Exp_KFY.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_KFY.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2752,15 +2740,15 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1106) || (i == 1116))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //抗风压已选阶段数组清零
-                    ExpDQ.Exp_KFY.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_KFY.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
@@ -2926,21 +2914,21 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1107) || (i == 1117))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //已选阶段数组清零
-                    ExpDQ.Exp_CJBX.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_CJBX.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
                 }
 
-                if (Math.Abs(Dev.WYValueX) > 10)
+                if (Math.Abs(PublicData.Dev.WYValueX) > 10)
                 {
                     MessageBoxResult msgBoxResult = MessageBox.Show("X轴位移尺距离零点较远（10mm以上）建议先仔细检查或手动调零。如需继续测试请按“是”，如需返回请按“否”", "调零提示", MessageBoxButton.YesNo);
                     if (msgBoxResult == MessageBoxResult.No)
@@ -2952,20 +2940,20 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 1108) || (i == 1118))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //已选阶段数组清零
-                    ExpDQ.Exp_CJBX.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_CJBX.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                if (Math.Abs(Dev.WYValueY[3]) > 10)
+                if (Math.Abs(PublicData.Dev.WYValueY[3]) > 10)
                 {
                     MessageBoxResult msgBoxResult = MessageBox.Show("Y轴位移尺平均值距离零点较远（10mm以上）建议先仔细检查或手动调零。如需继续测试请按“是”，如需返回请按“否”", "调零提示", MessageBoxButton.YesNo);
                     if (msgBoxResult == MessageBoxResult.No)
@@ -2977,20 +2965,20 @@ namespace MQDFJ_MB.ViewModel
             else if ((i == 11079) || (i == 1119))
             {
                 //如果当前试验是默认试验，选择状态复位。
-                if (ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
+                if (PublicData.ExpDQ.ExpSettingParam.ExpNO == "DefaultExp")
                 {
                     MessageBox.Show("默认试验无法进行试验动作，请新建或载入其他试验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     //已选阶段数组清零
-                    ExpDQ.Exp_CJBX.CanBeCheckInit();
+                    PublicData.ExpDQ.Exp_CJBX.CanBeCheckInit();
                     return;
                 }
                 //正在试验中，不能重新加入试验
-                if (Dev.IsDeviceBusy)
+                if (PublicData.Dev.IsDeviceBusy)
                 {
                     MessageBox.Show("设备占用中，请等待或先终止其他实验！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                if (Math.Abs(Dev.WYValueZ[3]) > 10)
+                if (Math.Abs(PublicData.Dev.WYValueZ[3]) > 10)
                 {
                     MessageBoxResult msgBoxResult = MessageBox.Show("Z轴位移尺平均值距离零点较远（10mm以上）建议先仔细检查或手动调零。如需继续测试请按“是”，如需返回请按“否”", "调零提示", MessageBoxButton.YesNo);
                     if (msgBoxResult == MessageBoxResult.No)
@@ -3235,68 +3223,68 @@ namespace MQDFJ_MB.ViewModel
                 double y = 0;
                 System.Windows.Point newPoint;
 
-                for (int i = 0; i < ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
+                for (int i = 0; i < PublicData.ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
                 {
-                    if (ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
+                    if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
                     {
-                        if (ExpDQ.Exp_KFY.IsGC)
+                        if (PublicData.ExpDQ.Exp_KFY.IsGC)
                         {
                             //工程变形正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[1].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[1].CompleteStatus)
                             //{
                                 for (int j = 0; j < 4; j++)
                                 {
                                     newPoint = new System.Windows.Point
                                     {
-                                        X = ExpDQ.ExpData_KFY.TestPress_GCBX_Z[j],
-                                        Y = ExpDQ.ExpData_KFY.ND_GCBX_Z[j + 1][i]
+                                        X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCBX_Z[j],
+                                        Y = PublicData.ExpDQ.ExpData_KFY.ND_GCBX_Z[j + 1][i]
                                     };
                                     PlotLines_ND_GCZ[i].AddPoint(newPoint);
                                 }
                             //}
                             //工程变形负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[3].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[3].CompleteStatus)
                             //{
                                 for (int j = 0; j < 4; j++)
                                 {
                                     newPoint = new System.Windows.Point
                                     {
-                                        X = ExpDQ.ExpData_KFY.TestPress_GCBX_F[j],
-                                        Y = ExpDQ.ExpData_KFY.ND_GCBX_F[j + 1][i]
+                                        X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCBX_F[j],
+                                        Y = PublicData.ExpDQ.ExpData_KFY.ND_GCBX_F[j + 1][i]
                                     };
                                     PlotLines_ND_GCF[i].AddPoint(newPoint);
                                 }
                             //}
                             ////工程P3正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[6].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[6].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_GCP3_Z;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_GCP3_Z[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCP3_Z;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_GCP3_Z[1][i];
                             //    PlotLines_ND_GCZ[i].AddPoint(newPoint);
                             //}
                             ////工程P3负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[7].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[7].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_GCP3_F;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_GCP3_F[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCP3_F;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_GCP3_F[1][i];
                             //    PlotLines_ND_GCF[i].AddPoint(newPoint);
                             //}
                             ////工程Pmax正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[8].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[8].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_GCPmax_Z;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_GCPmax_Z[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCPmax_Z;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_GCPmax_Z[1][i];
                             //    PlotLines_ND_GCZ[i].AddPoint(newPoint);
                             //}
                             ////工程Pmax负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYGC[9].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYGC[9].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_GCPmax_F;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_GCPmax_F[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_GCPmax_F;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_GCPmax_F[1][i];
                             //    PlotLines_ND_GCF[i].AddPoint(newPoint);
                             //}
                         }
@@ -3304,61 +3292,61 @@ namespace MQDFJ_MB.ViewModel
                         else
                         {
                             //定级变形正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[1].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[1].CompleteStatus)
                             //{
                                 for (int j = 0; j < 20; j++)
                                 {
                                     newPoint = new System.Windows.Point
                                     {
-                                        X = ExpDQ.ExpData_KFY.TestPress_DJBX_Z[j],
-                                        Y = ExpDQ.ExpData_KFY.ND_DJBX_Z[j + 1][i]
+                                        X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJBX_Z[j],
+                                        Y = PublicData.ExpDQ.ExpData_KFY.ND_DJBX_Z[j + 1][i]
                                     };
                                     PlotLines_ND_DJZ[i].AddPoint(newPoint);
                                 }
                             //}
                             //定级变形负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[3].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[3].CompleteStatus)
                             //{
                                 for (int j = 0; j < 20; j++)
                                 {
                                     newPoint = new System.Windows.Point
                                     {
-                                        X = ExpDQ.ExpData_KFY.TestPress_DJBX_F[j],
-                                        Y = ExpDQ.ExpData_KFY.ND_DJBX_F[j + 1][i]
+                                        X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJBX_F[j],
+                                        Y = PublicData.ExpDQ.ExpData_KFY.ND_DJBX_F[j + 1][i]
                                     };
                                     PlotLines_ND_DJF[i].AddPoint(newPoint);
                                 }
                             //}
                             ////定级P3正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[6].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[6].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_DJP3_Z;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_DJP3_Z[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJP3_Z;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_DJP3_Z[1][i];
                             //    PlotLines_ND_DJZ[i].AddPoint(newPoint);
                             //}
                             ////定级P3负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[7].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[7].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_DJP3_F;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_DJP3_F[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJP3_F;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_DJP3_F[1][i];
                             //    PlotLines_ND_DJF[i].AddPoint(newPoint);
                             //}
                             ////定级Pmax正压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[8].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[8].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_DJPmax_Z;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_DJPmax_Z[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJPmax_Z;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_DJPmax_Z[1][i];
                             //    PlotLines_ND_DJZ[i].AddPoint(newPoint);
                             //}
                             ////定级Pmax负压检测
-                            //if (ExpDQ.Exp_KFY.StageList_KFYDJ[9].CompleteStatus)
+                            //if (PublicData.ExpDQ.Exp_KFY.StageList_KFYDJ[9].CompleteStatus)
                             //{
                             //    newPoint = new System.Windows.Point();
-                            //    newPoint.X = ExpDQ.ExpData_KFY.TestPress_DJPmax_F;
-                            //    newPoint.Y = ExpDQ.ExpData_KFY.ND_DJPmax_F[1][i];
+                            //    newPoint.X = PublicData.ExpDQ.ExpData_KFY.TestPress_DJPmax_F;
+                            //    newPoint.Y = PublicData.ExpDQ.ExpData_KFY.ND_DJPmax_F[1][i];
                             //    PlotLines_ND_DJF[i].AddPoint(newPoint);
                             //}
                         }
@@ -3393,8 +3381,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine11.AxisYside = LineModel.AxisUse.Left;
                 newLine11.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine11.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine11.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine11.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine11.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine11.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine11.IsBackStore = false;
                 PlotLines_ND_DJZ.Add(newLine11);
                 //挠度12
@@ -3407,8 +3395,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine12.AxisYside = LineModel.AxisUse.Left;
                 newLine12.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine12.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine12.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine12.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine12.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine12.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine12.IsBackStore = false;
                 PlotLines_ND_DJZ.Add(newLine12);
                 //挠度13
@@ -3421,8 +3409,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine13.AxisYside = LineModel.AxisUse.Left;
                 newLine13.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine13.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine13.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine13.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine13.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine13.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine13.IsBackStore = false;
                 PlotLines_ND_DJZ.Add(newLine13);
 
@@ -3436,8 +3424,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine21.AxisYside = LineModel.AxisUse.Left;
                 newLine21.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine21.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine21.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine21.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine21.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine21.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine21.IsBackStore = false;
                 PlotLines_ND_DJF.Add(newLine21);
                 //挠度22
@@ -3450,8 +3438,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine22.AxisYside = LineModel.AxisUse.Left;
                 newLine22.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine22.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine22.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine22.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine22.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine22.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine22.IsBackStore = false;
                 PlotLines_ND_DJF.Add(newLine22);
                 //挠度23
@@ -3464,8 +3452,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine23.AxisYside = LineModel.AxisUse.Left;
                 newLine23.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine23.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine23.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine23.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine23.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine23.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine23.IsBackStore = false;
                 PlotLines_ND_DJF.Add(newLine23);
 
@@ -3480,8 +3468,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine31.AxisYside = LineModel.AxisUse.Left;
                 newLine31.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine31.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine31.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine31.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine31.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine31.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine31.IsBackStore = false;
                 PlotLines_ND_GCZ.Add(newLine31);
                 //挠度32
@@ -3494,8 +3482,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine32.AxisYside = LineModel.AxisUse.Left;
                 newLine32.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine32.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine32.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine32.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine32.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine32.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine32.IsBackStore = false;
                 PlotLines_ND_GCZ.Add(newLine32);
                 //挠度33
@@ -3508,8 +3496,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine33.AxisYside = LineModel.AxisUse.Left;
                 newLine33.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine33.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine33.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine33.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine33.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine33.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine33.IsBackStore = false;
                 PlotLines_ND_GCZ.Add(newLine33);
 
@@ -3524,8 +3512,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine41.AxisYside = LineModel.AxisUse.Left;
                 newLine41.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine41.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine41.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine41.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine41.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine41.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine41.IsBackStore = false;
                 PlotLines_ND_GCF.Add(newLine41);
                 //挠度42
@@ -3538,8 +3526,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine42.AxisYside = LineModel.AxisUse.Left;
                 newLine42.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine42.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine42.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine42.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine42.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine42.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine42.IsBackStore = false;
                 PlotLines_ND_GCF.Add(newLine42);
                 //挠度43
@@ -3552,8 +3540,8 @@ namespace MQDFJ_MB.ViewModel
                 newLine43.AxisYside = LineModel.AxisUse.Left;
                 newLine43.LineDataSource = new ObservableDataSource<System.Windows.Point>();
                 newLine43.LineBackGroundPointList = new List<System.Windows.Point>();
-                newLine43.MaxPointsQuantity = Dev.PointsPerLine;
-                newLine43.MaxBSPointsQuantity = Dev.PointsPerLine;
+                newLine43.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+                newLine43.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
                 newLine43.IsBackStore = false;
                 PlotLines_ND_GCF.Add(newLine43);
             }
@@ -3620,8 +3608,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //中气压
@@ -3634,8 +3622,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //大气压
@@ -3648,8 +3636,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3663,8 +3651,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Right;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3678,8 +3666,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Right;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3693,8 +3681,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Right;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3708,8 +3696,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Right;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3723,8 +3711,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3739,8 +3727,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Y位移左
@@ -3753,8 +3741,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Y位移中
@@ -3767,8 +3755,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Y轴位移右
@@ -3781,8 +3769,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Y轴位移平均
@@ -3795,8 +3783,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Z位移左
@@ -3809,8 +3797,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Z位移中
@@ -3823,8 +3811,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Z轴位移右
@@ -3837,8 +3825,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //Z轴位移平均
@@ -3851,8 +3839,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3866,8 +3854,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //挠度2
@@ -3880,8 +3868,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //挠度3
@@ -3894,8 +3882,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3909,8 +3897,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //相对挠度2
@@ -3923,8 +3911,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //相对挠度3
@@ -3937,8 +3925,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
 
@@ -3952,8 +3940,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
             //水泵频率输出
@@ -3966,8 +3954,8 @@ namespace MQDFJ_MB.ViewModel
             newLine.AxisYside = LineModel.AxisUse.Left;
             newLine.LineDataSource = new ObservableDataSource<System.Windows.Point>();
             newLine.LineBackGroundPointList = new List<System.Windows.Point>();
-            newLine.MaxPointsQuantity = Dev.PointsPerLine;
-            newLine.MaxBSPointsQuantity = Dev.PointsPerLine;
+            newLine.MaxPointsQuantity = PublicData.Dev.PointsPerLine;
+            newLine.MaxBSPointsQuantity = PublicData.Dev.PointsPerLine;
             newLine.IsBackStore = false;
             PlotLines.Add(newLine);
         }
@@ -3979,136 +3967,136 @@ namespace MQDFJ_MB.ViewModel
         /// <param name="msg"></param>
         private void UpdatePlotLins()
         {
-            TimeSpan span = DateTime.Now - Dev.PowerOnTime;
+            TimeSpan span = DateTime.Now - PublicData.Dev.PowerOnTime;
 
             //小气压
             System.Windows.Point newPoint0 = new System.Windows.Point();
             newPoint0.X = span.TotalSeconds;
-            newPoint0.Y = Dev.AIList[12].ValueFinal;
+            newPoint0.Y = PublicData.Dev.AIList[12].ValueFinal;
             PlotLines[0].AddPoint(newPoint0);
 
             //中气压
-            if (Dev.IsWithCYM)
+            if (PublicData.Dev.IsWithCYM)
             {
                 System.Windows.Point newPoint1 = new System.Windows.Point();
                 newPoint1.X = span.TotalSeconds;
-                newPoint1.Y = Dev.AIList[13].ValueFinal;
+                newPoint1.Y = PublicData.Dev.AIList[13].ValueFinal;
                 PlotLines[1].AddPoint(newPoint1);
             }
 
             //大气压
             System.Windows.Point newPoint2 = new System.Windows.Point();
             newPoint2.X = span.TotalSeconds;
-            newPoint2.Y = Dev.AIList[14].ValueFinal;
+            newPoint2.Y = PublicData.Dev.AIList[14].ValueFinal;
             PlotLines[2].AddPoint(newPoint2);
 
             //风量1
             System.Windows.Point newPoint3 = new System.Windows.Point();
             newPoint3.X = span.TotalSeconds;
-            newPoint3.Y = Dev.FL1;
+            newPoint3.Y = PublicData.Dev.FL1;
             PlotLines[3].AddPoint(newPoint3);
 
             //风量2
             System.Windows.Point newPoint4 = new System.Windows.Point();
             newPoint4.X = span.TotalSeconds;
-            newPoint4.Y = Dev.FL2;
+            newPoint4.Y = PublicData.Dev.FL2;
             PlotLines[4].AddPoint(newPoint4);
 
             //风量3
             System.Windows.Point newPoint5 = new System.Windows.Point();
             newPoint5.X = span.TotalSeconds;
-            newPoint5.Y = Dev.FL3;
+            newPoint5.Y = PublicData.Dev.FL3;
             PlotLines[5].AddPoint(newPoint5);
 
             //气密风量
             System.Windows.Point newPoint6 = new System.Windows.Point();
             newPoint6.X = span.TotalSeconds;
-            switch (Dev.FSGUse)
+            switch (PublicData.Dev.FSGUse)
             {
                 case 1:
-                    newPoint6.Y = Dev.FL1;
+                    newPoint6.Y = PublicData.Dev.FL1;
                     break;
                 case 2:
-                    newPoint6.Y = Dev.FL2;
+                    newPoint6.Y = PublicData.Dev.FL2;
                     break;
                 case 3:
-                    newPoint6.Y = Dev.FL3;
+                    newPoint6.Y = PublicData.Dev.FL3;
                     break;
                 default:
-                    newPoint6.Y = Dev.FL2;
+                    newPoint6.Y = PublicData.Dev.FL2;
                     break;
             }
             PlotLines[6].AddPoint(newPoint6);
 
             //水流量
-            if (Dev.IsWithSLL)
+            if (PublicData.Dev.IsWithSLL)
             {
                 System.Windows.Point newPoint7 = new System.Windows.Point();
                 newPoint7.X = span.TotalSeconds;
-                newPoint7.Y = Dev.SLL;
+                newPoint7.Y = PublicData.Dev.SLL;
                 PlotLines[7].AddPoint(newPoint7);
             }
 
             //X轴位移
             System.Windows.Point newPoint8 = new System.Windows.Point();
             newPoint8.X = span.TotalSeconds;
-            newPoint8.Y = Dev.WYValueX;
+            newPoint8.Y = PublicData.Dev.WYValueX;
             PlotLines[8].AddPoint(newPoint8);
 
             //Y轴位移左
             System.Windows.Point newPoint9 = new System.Windows.Point();
             newPoint9.X = span.TotalSeconds;
-            newPoint9.Y = Dev.WYValueY[0];
+            newPoint9.Y = PublicData.Dev.WYValueY[0];
             PlotLines[9].AddPoint(newPoint9);
             //Y轴位移中
             System.Windows.Point newPoint10 = new System.Windows.Point();
             newPoint10.X = span.TotalSeconds;
-            newPoint10.Y = Dev.WYValueY[1];
+            newPoint10.Y = PublicData.Dev.WYValueY[1];
             PlotLines[10].AddPoint(newPoint10);
             //Y轴位移右
             System.Windows.Point newPoint11 = new System.Windows.Point();
             newPoint11.X = span.TotalSeconds;
-            newPoint11.Y = Dev.WYValueY[2];
+            newPoint11.Y = PublicData.Dev.WYValueY[2];
             PlotLines[11].AddPoint(newPoint11);
             //Y轴位移平均
             System.Windows.Point newPoint12 = new System.Windows.Point();
             newPoint12.X = span.TotalSeconds;
-            newPoint12.Y = Dev.WYValueY[3];
+            newPoint12.Y = PublicData.Dev.WYValueY[3];
             PlotLines[12].AddPoint(newPoint12);
 
             //Z轴位移左
             System.Windows.Point newPoint13 = new System.Windows.Point();
             newPoint13.X = span.TotalSeconds;
-            newPoint13.Y = Dev.WYValueZ[0];
+            newPoint13.Y = PublicData.Dev.WYValueZ[0];
             PlotLines[13].AddPoint(newPoint13);
             //Z轴位移中
             System.Windows.Point newPoint14 = new System.Windows.Point();
             newPoint14.X = span.TotalSeconds;
-            newPoint14.Y = Dev.WYValueZ[1];
+            newPoint14.Y = PublicData.Dev.WYValueZ[1];
             PlotLines[14].AddPoint(newPoint14);
             //Z轴位移右
             System.Windows.Point newPoint15 = new System.Windows.Point();
             newPoint15.X = span.TotalSeconds;
-            newPoint15.Y = Dev.WYValueZ[2];
+            newPoint15.Y = PublicData.Dev.WYValueZ[2];
             PlotLines[15].AddPoint(newPoint15);
             //Z轴位移平均
             System.Windows.Point newPoint16 = new System.Windows.Point();
             newPoint16.X = span.TotalSeconds;
-            newPoint16.Y = Dev.WYValueZ[3];
+            newPoint16.Y = PublicData.Dev.WYValueZ[3];
             PlotLines[16].AddPoint(newPoint16);
 
             //风机频率
             System.Windows.Point newPoint23 = new System.Windows.Point();
             newPoint23.X = span.TotalSeconds;
-            newPoint23.Y = Dev.AIList[22].ValueFinal;
+            newPoint23.Y = PublicData.Dev.AIList[22].ValueFinal;
             PlotLines[23].AddPoint(newPoint23);
 
             //水泵频率
-            if (Dev.IsWithSLL)
+            if (PublicData.Dev.IsWithSLL)
             {
                 System.Windows.Point newPoint24 = new System.Windows.Point();
                 newPoint24.X = span.TotalSeconds;
-                newPoint24.Y = Dev.AIList[23].ValueFinal;
+                newPoint24.Y = PublicData.Dev.AIList[23].ValueFinal;
                 PlotLines[24].AddPoint(newPoint24);
             }
 
@@ -4117,47 +4105,47 @@ namespace MQDFJ_MB.ViewModel
                 //测点组数据更新
                 try
                 {
-                    if (Dev.IsWYKFYF)
+                    if (PublicData.Dev.IsWYKFYF)
                     {
-                        for (int i = 0; i < ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
+                        for (int i = 0; i < PublicData.ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
                         {
-                            if (ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
+                            if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
                             {
-                                for (int j = 0; j < ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ.Count; j++)
+                                for (int j = 0; j < PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ.Count; j++)
                                 {
-                                    int k = ExpDQ.Exp_KFY.DisplaceGroups[i].WYC_No[j];
-                                    ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = Dev.WyWPL[k - 1];
+                                    int k = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WYC_No[j];
+                                    PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = PublicData.Dev.WyWPL[k - 1];
                                     if (j == 3)
                                     {
-                                        if ((i == 0) && ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use && ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX && ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB)
-                                            ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = Dev.WyWPL[k - 1];
+                                        if ((i == 0) && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB)
+                                            PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = PublicData.Dev.WyWPL[k - 1];
                                         else
-                                            ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = 0;
+                                            PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = 0;
                                     }
                                 }
-                                ExpDQ.Exp_KFY.DisplaceGroups[i].NDJS();
+                                PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].NDJS();
                             }
                         }
                     }
                     else
                     {
-                        for (int i = 0; i < ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
+                        for (int i = 0; i < PublicData.ExpDQ.Exp_KFY.DisplaceGroups.Count; i++)
                         {
-                            if (ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
+                            if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].Is_Use)
                             {
-                                for (int j = 0; j < ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ.Count; j++)
+                                for (int j = 0; j < PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ.Count; j++)
                                 {
-                                    int k = ExpDQ.Exp_KFY.DisplaceGroups[i].WYC_No[j];
-                                    ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = Dev.AIList[k - 1].ValueFinal;
+                                    int k = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WYC_No[j];
+                                    PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = PublicData.Dev.AIList[k - 1].ValueFinal;
                                     if (j == 3)
                                     {
-                                        if ((i == 0) && ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use && ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX && ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB)
-                                            ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = Dev.AIList[k - 1].ValueFinal;
+                                        if ((i == 0) && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX && PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB)
+                                            PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = PublicData.Dev.AIList[k - 1].ValueFinal;
                                         else
-                                            ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = 0;
+                                            PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].WY_DQ[j] = 0;
                                     }
                                 }
-                                ExpDQ.Exp_KFY.DisplaceGroups[i].NDJS();
+                                PublicData.ExpDQ.Exp_KFY.DisplaceGroups[i].NDJS();
                             }
                         }
                     }
@@ -4168,43 +4156,43 @@ namespace MQDFJ_MB.ViewModel
                 }
 
 
-                if (ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use)
+                if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use)
                 {
                     //挠度1
                     System.Windows.Point newPoint17 = new System.Windows.Point();
                     newPoint17.X = span.TotalSeconds;
-                    newPoint17.Y = ExpDQ.Exp_KFY.DisplaceGroups[0].ND;
+                    newPoint17.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].ND;
                     PlotLines[17].AddPoint(newPoint17);
                     //相对挠度1
                     System.Windows.Point newPoint20 = new System.Windows.Point();
                     newPoint20.X = span.TotalSeconds;
-                    newPoint20.Y = ExpDQ.Exp_KFY.DisplaceGroups[0].ND_XD;
+                    newPoint20.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].ND_XD;
                     PlotLines[20].AddPoint(newPoint20);
                 }
-                if (ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use)
+                if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use)
                 {
                     //挠度2
                     System.Windows.Point newPoint18 = new System.Windows.Point();
                     newPoint18.X = span.TotalSeconds;
-                    newPoint18.Y = ExpDQ.Exp_KFY.DisplaceGroups[1].ND;
+                    newPoint18.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].ND;
                     PlotLines[18].AddPoint(newPoint18);
                     //相对挠度2
                     System.Windows.Point newPoint21 = new System.Windows.Point();
                     newPoint21.X = span.TotalSeconds;
-                    newPoint21.Y = ExpDQ.Exp_KFY.DisplaceGroups[1].ND_XD;
+                    newPoint21.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].ND_XD;
                     PlotLines[21].AddPoint(newPoint21);
                 }
-                if (ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use)
+                if (PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use)
                 {
                     //挠度3
                     System.Windows.Point newPoint19 = new System.Windows.Point();
                     newPoint19.X = span.TotalSeconds;
-                    newPoint19.Y = ExpDQ.Exp_KFY.DisplaceGroups[2].ND;
+                    newPoint19.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].ND;
                     PlotLines[19].AddPoint(newPoint19);
                     //相对挠度3
                     System.Windows.Point newPoint22 = new System.Windows.Point();
                     newPoint22.X = span.TotalSeconds;
-                    newPoint22.Y = ExpDQ.Exp_KFY.DisplaceGroups[2].ND_XD;
+                    newPoint22.Y = PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].ND_XD;
                     PlotLines[22].AddPoint(newPoint22);
                 }
             }
@@ -4836,14 +4824,14 @@ namespace MQDFJ_MB.ViewModel
         /// <param name="msg"></param>
         private void AdminLogginMessage(string msg)
         {
-            if (Dev.PassWord == "brt12345678")
+            if (PublicData.Dev.PassWord == "brt12345678")
             {
-                Dev.IsAdmin = true;
+                PublicData.Dev.IsAdmin = true;
                 MessageBox.Show("管理员登录成功，配置完成后请退出登录或重启软件！");
             }
             else
             {
-                Dev.IsAdmin = false;
+                PublicData.Dev.IsAdmin = false;
                 MessageBox.Show("管理员密码错误！");
             }
         }

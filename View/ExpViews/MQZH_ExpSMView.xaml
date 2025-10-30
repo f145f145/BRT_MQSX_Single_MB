@@ -319,46 +319,46 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="压力中：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="压力大：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
-                    <Label Content="水流量：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="压力中：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="压力大：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
+                    <Label Content="水流量：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
                     <Label Content="风机频率：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="0"/>
-                    <Label Content="水泵频率：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="0" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.AIList[13].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.AIList[14].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
-                    <Label Content="{Binding Dev.SLL,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="{Binding Dev.AIList[22].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="3" Grid.Column ="1"/>
-                    <Label Content="{Binding Dev.AIList[23].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="1" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="2" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
-                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
-                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="2" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="水泵频率：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="0" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[13].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[14].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.SLL,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="3" Grid.Column ="1"/>
+                    <Label Content="{Binding PublicData.Dev.AIList[23].ValueFinal,Mode=OneWay}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="1" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="2" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVNotConverter}}"/>
+                    <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="2" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
                     <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="3" Grid.Column ="2"/>
-                    <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="4" Grid.Column ="2" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
+                    <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="4" Grid.Column ="2" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}"/>
 
                     <Label Content="主管蝶阀：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="3" />
                     <Label Content="KM1状态：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="3" />
                     <Label Content="风机变频器：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="3" />
                     <Label Content="水泵状态：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="3" />
                     <Label Content="气泵状态：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="3" />
-                    <Ellipse Fill="{Binding Dev.DIList[0].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[8].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
-                    <Ellipse Fill="{Binding Dev.DIList[7].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="4"/>
-                    <Label Content="{Binding Dev.DIList[0].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[8].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[6].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="5"/>
-                    <Label Content="{Binding Dev.DIList[7].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="5"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[0].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[8].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.DIList[7].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="4"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[0].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[8].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[6].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="5"/>
+                    <Label Content="{Binding PublicData.Dev.DIList[7].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="5"/>
 
                     <Label Content="风阀模式：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="6" />
                     <Label Content="风阀正压：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="6" />
                     <Label Content="风阀负压：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="6" />
-                    <Ellipse Fill="{Binding Dev.Valve.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
-                    <Ellipse Fill="{Binding Dev.Valve.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
-                    <Label Content="{Binding Dev.Valve.FFMode,Mode=OneWay, Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="8"/>
-                    <Label Content="{Binding Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="8"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[5].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
+                    <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[6].IsOn,Mode=OneWay, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.FFMode,Mode=OneWay, Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="8"/>
+                    <Label Content="{Binding PublicData.Dev.Valve.DIList[5].WZ,Mode=OneWay}" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="8"/>
 
                     <Button Grid.Row="0" Grid.Column="7" Height="40" Width="40" Padding="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                             BorderBrush="{x:Null}"  ToolTip ="阀门详细状态" Click="FFStatusButtonClick">
@@ -398,8 +398,8 @@
             </TabControl>
 
             <!--左屏底端，提醒、警告信息栏-->
-            <Label Content="{Binding Dev.PIDInfo }"  FontSize="18" FontWeight="Bold" Foreground="#FFFF7400"
-                   Grid.Row="3" Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding Dev.IsPIDInfoShow ,Converter={StaticResource BVConverter}}"/>
+            <Label Content="{Binding PublicData.Dev.PIDInfo }"  FontSize="18" FontWeight="Bold" Foreground="#FFFF7400"
+                   Grid.Row="3" Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding PublicData.Dev.IsPIDInfoShow ,Converter={StaticResource BVConverter}}"/>
         </Grid>
 
         <!--=========================================左右屏纵向分割线==========================================================-->
@@ -428,20 +428,20 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top">
                         <Label Content="试验编号" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.ExpSettingParam.ExpNO,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="检测模式" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.IsGC,Mode=OneWay, Converter={StaticResource ExpTypeConverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.IsGC,Mode=OneWay, Converter={StaticResource ExpTypeConverter}}" Style="{StaticResource Label4}"/>
                         <Label Content="当前项目" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.Stage_DQ.Stage_Name,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_Name,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="加压方式" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.WaveType_SM,Mode=OneWay, Converter={StaticResource BCWaveonverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.WaveType_SM,Mode=OneWay, Converter={StaticResource BCWaveonverter}}" Style="{StaticResource Label4}"/>
                         <Label Content="当前步骤" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.Step_DQ.StepName,Mode=OneWay}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.Step_DQ.StepName,Mode=OneWay}" Style="{StaticResource Label4}"/>
                         <Label Content="已稳定/波动时间（S）" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.Step_DQ.WaveTimePased,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased,Mode=OneWay}" ContentStringFormat="{}{0:0}" Style="{StaticResource Label4}"/>
                         <Label Content="设备状态" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Left"/>
-                        <Label Content="{Binding Dev.DeviceRunMode,Mode=OneWay, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label4}"/>
-                        <Label Content="{Binding ExpDQ.Exp_SM.WaveInfo,Mode=OneWay}" Visibility ="{Binding ExpDQ.Exp_SM.WaveType_SM, Converter={StaticResource BVConverter}}"  Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.Dev.DeviceRunMode,Mode=OneWay, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label4}"/>
+                        <Label Content="{Binding PublicData.ExpDQ.Exp_SM.WaveInfo,Mode=OneWay}" Visibility ="{Binding PublicData.ExpDQ.Exp_SM.WaveType_SM, Converter={StaticResource BVConverter}}"  Style="{StaticResource Label4}"/>
                     </StackPanel>
                     <Button Content="紧急停机" Command="{Binding SMCommand}" CommandParameter="119" Template="{StaticResource EmStpButton}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
@@ -450,7 +450,7 @@
             <!--试验阶段状态及选择-->
             <Border Grid.Row="1" Grid.Column="1" Margin="5" HorizontalAlignment="stretch" VerticalAlignment="stretch" CornerRadius="5" Background="LightGray">
                 <TabControl HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="0"  >
-                    <TabItem Header="【水密定级检测】" FontSize="15" Padding="5" IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}" >
+                    <TabItem Header="【水密定级检测】" FontSize="15" Padding="5" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}" >
                         <Grid Background="LightGray">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
@@ -468,17 +468,17 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="步骤选择" Grid.Row="0" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             <Label Content="完成&#xA;情况" Grid.Row="0" Grid.Column="1" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin ="5"/>
-                            <CheckBox Content="定级检测 预备加压" IsChecked ="{Binding ExpDQ.Exp_SM.BeenCheckedDJ[0],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}" Grid.Row="1" Grid.Column="0" />
-                            <CheckBox Content="定级检测 逐级加压" IsChecked ="{Binding ExpDQ.Exp_SM.BeenCheckedDJ[1],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}" Grid.Row="2" Grid.Column="0" />
-                            <Label Content="{Binding ExpDQ.Exp_SM. StageList_SMDJ[0].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_SM. StageList_SMDJ[1].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <CheckBox Content="定级检测 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[0],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}" Grid.Row="1" Grid.Column="0" />
+                            <CheckBox Content="定级检测 逐级加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[1],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}" Grid.Row="2" Grid.Column="0" />
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_SM. StageList_SMDJ[0].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_SM. StageList_SMDJ[1].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
                             <!--开始、终止测试控制按钮栏-->
-                            <Button Content="严重渗漏停机" Command="{Binding SMCommand}" CommandParameter="1302"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}" ToolTip="当可开启部分和固定部分均出现严重渗漏时，可提前结束实验。" Template="{StaticResource Button2}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="150" Height ="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Button Content="开始测试" Command="{Binding SMCommand}" CommandParameter="1102"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin ="5"/>
-                            <Button Content="停止测试" Command="{Binding SMCommand}" CommandParameter="1202"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsDJcanbeChecked}"  Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin ="5"/>
+                            <Button Content="严重渗漏停机" Command="{Binding SMCommand}" CommandParameter="1302"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}" ToolTip="当可开启部分和固定部分均出现严重渗漏时，可提前结束实验。" Template="{StaticResource Button2}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="150" Height ="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Button Content="开始测试" Command="{Binding SMCommand}" CommandParameter="1102"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin ="5"/>
+                            <Button Content="停止测试" Command="{Binding SMCommand}" CommandParameter="1202"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsDJcanbeChecked}"  Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin ="5"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="【水密工程检测】"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}" FontSize="15" Padding="5">
+                    <TabItem Header="【水密工程检测】"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}" FontSize="15" Padding="5">
                         <Grid  Background="LightGray">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
@@ -498,14 +498,14 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="步骤选择" Grid.Row="0" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             <Label Content="完成&#xA;情况" Grid.Row="0" Grid.Column="1" Style="{StaticResource Label1}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin ="5"/>
-                            <CheckBox Content="工程检测 预备加压" IsChecked ="{Binding ExpDQ.Exp_SM.BeenCheckedGC[0],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}" Grid.Row="1" Grid.Column="0" />
-                            <CheckBox Content="工程检测 检测加压" IsChecked ="{Binding ExpDQ.Exp_SM.BeenCheckedGC[1],Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}" Grid.Row="2" Grid.Column="0" />
-                            <Label Content="{Binding ExpDQ.Exp_SM. StageList_SMGC[0].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
-                            <Label Content="{Binding ExpDQ.Exp_SM. StageList_SMGC[1].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <CheckBox Content="工程检测 预备加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.BeenCheckedGC[0],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}" Grid.Row="1" Grid.Column="0" />
+                            <CheckBox Content="工程检测 检测加压" IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.BeenCheckedGC[1],Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}" Grid.Row="2" Grid.Column="0" />
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_SM. StageList_SMGC[0].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Label5}"/>
+                            <Label Content="{Binding PublicData.ExpDQ.Exp_SM. StageList_SMGC[1].CompleteStatus,Mode=OneWay, Converter={StaticResource ExpCompleteConverter}}" Grid.Row="2" Grid.Column="1" Style="{StaticResource Label5}"/>
                             <!--开始、终止测试控制按钮栏-->
-                            <Button Content="严重渗漏停机" Command="{Binding SMCommand}" CommandParameter="1312"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}" ToolTip="当可开启部分和固定部分均出现严重渗漏时，可提前结束实验。" Template="{StaticResource Button2}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="150" Height ="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Button Content="开始测试" Command="{Binding SMCommand}" CommandParameter="1112"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin ="5"/>
-                            <Button Content="停止测试" Command="{Binding SMCommand}" CommandParameter="1212"  IsEnabled ="{Binding ExpDQ.Exp_SM.IsGCcanbeChecked}"  Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin ="5"/>
+                            <Button Content="严重渗漏停机" Command="{Binding SMCommand}" CommandParameter="1312"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}" ToolTip="当可开启部分和固定部分均出现严重渗漏时，可提前结束实验。" Template="{StaticResource Button2}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="150" Height ="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Button Content="开始测试" Command="{Binding SMCommand}" CommandParameter="1112"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin ="5"/>
+                            <Button Content="停止测试" Command="{Binding SMCommand}" CommandParameter="1212"  IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGCcanbeChecked}"  Template="{StaticResource Button1}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin ="5"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

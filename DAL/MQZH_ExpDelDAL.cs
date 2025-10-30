@@ -42,7 +42,7 @@ namespace MQDFJ_MB.DAL
                 return false;
             }
             //当前试验、工厂试验、默认试验不允许删除
-            if (delExpNo == DAL_ExpDQ.ExpSettingParam.ExpNO)
+            if (delExpNo == PublicData.ExpDQ.ExpSettingParam.ExpNO)
             {
                 MessageBox.Show("当前试验无法删除，如需删除请先关闭实验！", "错误提示");
                 return false;

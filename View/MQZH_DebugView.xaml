@@ -406,34 +406,34 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Content="压差小：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0"/>
-                <Label Content="压差中：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="3" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                <Label Content="压差中：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="3" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
                 <Label Content="压差大：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="6"/>
-                <Label Content="{Binding Dev.AIList[12].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1"/>
-                <Label Content="{Binding Dev.AIList[13].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="4" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
-                <Label Content="{Binding Dev.AIList[14].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="7"/>
+                <Label Content="{Binding PublicData.Dev.AIList[12].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="1"/>
+                <Label Content="{Binding PublicData.Dev.AIList[13].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="4" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                <Label Content="{Binding PublicData.Dev.AIList[14].ValueFinal}" ContentStringFormat="{}{0:0 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="7"/>
                 <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="2"/>
-                <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="5" Visibility ="{Binding Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
+                <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.IsWithCYM, Converter={StaticResource BVConverter}}"/>
                 <Label Content="Pa" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="8"/>
 
-                <Label Content="风量1：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                <Label Content="风量2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="3" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                <Label Content="风量3：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="6" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
-                <Label Content="{Binding Dev.FL1}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                <Label Content="{Binding Dev.FL2}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="4" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                <Label Content="{Binding Dev.FL3}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="7" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
-                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="8" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                <Label Content="风量1：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                <Label Content="风量2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="3" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                <Label Content="风量3：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="6" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                <Label Content="{Binding PublicData.Dev.FL1}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="1" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                <Label Content="{Binding PublicData.Dev.FL2}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="4" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                <Label Content="{Binding PublicData.Dev.FL3}" ContentStringFormat="{}{0:0.00}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="7" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="2" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="8" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
 
                 <Label Content="风频率：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0"/>
-                <Label Content="水频率：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="3" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
-                <Label Content="水流量：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="6" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
-                <Label Content="{Binding Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.0 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1"/>
-                <Label Content="{Binding Dev.AIList[23].ValueFinal}" ContentStringFormat="{}{0:0.0 }" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="4"/>
-                <Label Content="{Binding Dev.SLL}" ContentStringFormat="{}{0:0.00}" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="7"/>
+                <Label Content="水频率：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="3" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
+                <Label Content="水流量：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="6" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
+                <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.0 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="1"/>
+                <Label Content="{Binding PublicData.Dev.AIList[23].ValueFinal}" ContentStringFormat="{}{0:0.0 }" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="4"/>
+                <Label Content="{Binding PublicData.Dev.SLL}" ContentStringFormat="{}{0:0.00}" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="7"/>
                 <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="2"/>
-                <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="5" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
-                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="8" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
+                <Label Content="Hz" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="5" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
+                <Label Content="m³/h" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="8" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}"/>
 
                 <Label Content="位移1：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="9"/>
                 <Label Content="位移2：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="9"/>
@@ -444,21 +444,21 @@
                 <Label Content="位移7：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="15"/>
                 <Label Content="位移8：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="15"/>
                 <Label Content="位移9：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="15"/>
-                <Label Content="位移10：" Style="{StaticResource Label1}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="0" Grid.Column ="18"/>
-                <Label Content="位移11：" Style="{StaticResource Label1}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="1" Grid.Column ="18"/>
-                <Label Content="位移12：" Style="{StaticResource Label1}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="2" Grid.Column ="18"/>
-                <Label Content="{Binding Dev.AIList[0].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="10"/>
-                <Label Content="{Binding Dev.AIList[1].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="10"/>
-                <Label Content="{Binding Dev.AIList[2].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="10"/>
-                <Label Content="{Binding Dev.AIList[3].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="13"/>
-                <Label Content="{Binding Dev.AIList[4].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="13"/>
-                <Label Content="{Binding Dev.AIList[5].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="13"/>
-                <Label Content="{Binding Dev.AIList[6].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="16"/>
-                <Label Content="{Binding Dev.AIList[7].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="16"/>
-                <Label Content="{Binding Dev.AIList[8].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="16"/>
-                <Label Content="{Binding Dev.AIList[9].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="19"/>
-                <Label Content="{Binding Dev.AIList[10].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="19"/>
-                <Label Content="{Binding Dev.AIList[11].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="19"/>
+                <Label Content="位移10：" Style="{StaticResource Label1}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="0" Grid.Column ="18"/>
+                <Label Content="位移11：" Style="{StaticResource Label1}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="1" Grid.Column ="18"/>
+                <Label Content="位移12：" Style="{StaticResource Label1}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="2" Grid.Column ="18"/>
+                <Label Content="{Binding PublicData.Dev.AIList[0].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="10"/>
+                <Label Content="{Binding PublicData.Dev.AIList[1].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="10"/>
+                <Label Content="{Binding PublicData.Dev.AIList[2].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="10"/>
+                <Label Content="{Binding PublicData.Dev.AIList[3].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="13"/>
+                <Label Content="{Binding PublicData.Dev.AIList[4].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="13"/>
+                <Label Content="{Binding PublicData.Dev.AIList[5].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="13"/>
+                <Label Content="{Binding PublicData.Dev.AIList[6].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="16"/>
+                <Label Content="{Binding PublicData.Dev.AIList[7].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="16"/>
+                <Label Content="{Binding PublicData.Dev.AIList[8].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="16"/>
+                <Label Content="{Binding PublicData.Dev.AIList[9].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="0" Grid.Column ="19"/>
+                <Label Content="{Binding PublicData.Dev.AIList[10].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="1" Grid.Column ="19"/>
+                <Label Content="{Binding PublicData.Dev.AIList[11].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Style="{StaticResource Label2}" Grid.Row="2" Grid.Column ="19"/>
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="11"/>
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="11"/>
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="11"/>
@@ -468,9 +468,9 @@
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="0" Grid.Column ="17"/>
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="1" Grid.Column ="17"/>
                 <Label Content="mm" Style="{StaticResource Label3}" Grid.Row="2" Grid.Column ="17"/>
-                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="0" Grid.Column ="20"/>
-                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="1" Grid.Column ="20"/>
-                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="2" Grid.Column ="20"/>
+                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="0" Grid.Column ="20"/>
+                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="1" Grid.Column ="20"/>
+                <Label Content="mm" Style="{StaticResource Label3}" Visibility="{Binding PublicData.Dev.Is12WY ,Converter={StaticResource BVConverter}}" Grid.Row="2" Grid.Column ="20"/>
             </Grid>
         </Border>
 
@@ -525,20 +525,20 @@
                         <Button Content="风阀重新自检" Command="{Binding ButtonDDCommand}"  CommandParameter="6120" Template="{StaticResource Button1}" Grid.Row="6" Grid.Column ="0"/>
                         <Button Content="风阀故障复位" Command="{Binding ButtonDDCommand}"  CommandParameter="6121" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column ="0"/>
                         <!--输出状态列1-->
-                        <Ellipse Fill="{Binding Dev.DIList[5].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[10].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[6].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[7].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[8].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.Valve.DIList[4].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.Valve.DIList[0].IsOn , Converter={StaticResource BRConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="1"/>
-                        <Label Content="{Binding Dev.DIList[5].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[10].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[6].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[7].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[8].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.Valve.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.Valve.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="2"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[5].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[10].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[6].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[7].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[8].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[4].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[0].IsOn , Converter={StaticResource BRConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="1"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[5].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[10].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[6].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[7].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[8].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="2"/>
 
                         <!--控制按钮列2-->
                         <Button Content="主管蝶阀1开关" Command="{Binding ButtonDDCommand}" CommandParameter="6100" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="3"/>
@@ -550,20 +550,20 @@
                         <Button Content="风阀换负压" Command="{Binding ButtonDDCommand}" CommandParameter="6119" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column ="3"/>
 
                         <!--输出状态列2-->
-                        <Ellipse Fill="{Binding Dev.DIList[0].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.DIList[1].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.DIList[3].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.DIList[4].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="4"/>
-                        <Label Content="{Binding Dev.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.DIList[1].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="5"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[0].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[1].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[3].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[4].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="4"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[1].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="5"/>
 
                         <!--控制按钮列3-->
                         <Button Content="液压总开关" Command="{Binding ButtonDDCommand}" CommandParameter="6111" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="6"/>
@@ -574,20 +574,20 @@
                         <Button Content="Z轴上开关" Command="{Binding ButtonDDCommand}" CommandParameter="6116" Template="{StaticResource Button1}" Grid.Row="6" Grid.Column ="6"/>
                         <Button Content="Z轴下开关" Command="{Binding ButtonDDCommand}" CommandParameter="6117" Template="{StaticResource Button1}" Grid.Row="7" Grid.Column ="6"/>
                         <!--输出状态列3-->
-                        <Ellipse Fill="{Binding Dev.DIList[11].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[14].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[15].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[16].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[17].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="7"/>
-                        <Label Content="{Binding Dev.DIList[11].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="8"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[11].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[14].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[15].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[16].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[17].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="7" Grid.Column ="7"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[11].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="7" Grid.Column ="8"/>
 
                         <!--状态反馈名称列2-->
                         <Label Content="相序保护器状态：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="9"/>
@@ -595,12 +595,12 @@
                         <Label Content="风阀自检完成：" Style="{StaticResource Label1}" Grid.Row="3" Grid.Column ="9"/>
                         <Label Content="风阀模式：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="9"/>
                         <!--反馈状态列2-->
-                        <Ellipse Fill="{Binding Dev.DIList[30].IsOn, Converter={StaticResource BNotOConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="10"/>
-                        <Ellipse Fill="{Binding Dev.DvpComStatus.StatusCollor, Converter={StaticResource ComCollorConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="10"/>
-                        <Ellipse Fill="{Binding Dev.Valve.DIList[4].IsOn, Converter={StaticResource BNotOConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="10"/>
-                        <Label Content="{Binding Dev.DIList[30].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="11"/>
-                        <Label Content="{Binding Dev.Valve.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="11"/>
-                        <Label Content="{Binding Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" FontSize="16" Grid.Row="4" Grid.Column ="10" Grid.ColumnSpan="2"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[30].IsOn, Converter={StaticResource BNotOConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="10"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DvpComStatus.StatusCollor, Converter={StaticResource ComCollorConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="10"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[4].IsOn, Converter={StaticResource BNotOConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="10"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[30].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="11"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.DIList[4].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="11"/>
+                        <Label Content="{Binding PublicData.Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" FontSize="16" Grid.Row="4" Grid.Column ="10" Grid.ColumnSpan="2"/>
 
                         <Button Grid.Row="4" Grid.Column="9" Height="40" Width="40" Padding="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                 BorderBrush="{x:Null}" Background="White" ToolTip ="阀门详细状态" Click="FFStatusButtonClick1">
@@ -663,7 +663,7 @@
                             <Button Content="发送" Command="{Binding SDTSCommand}" CommandParameter="6201" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="4"/>
                             <Button Content="风机停机" Command="{Binding SDTSCommand}" CommandParameter="6288" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="4"/>
 
-                            <Label Content="{Binding Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" FontSize="16" Grid.Row="0" Grid.Column ="1" HorizontalAlignment="Center"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" FontSize="16" Grid.Row="0" Grid.Column ="1" HorizontalAlignment="Center"/>
                             <Button Grid.Row="0" Grid.Column="1" Height="40" Width="40" Padding="0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                     BorderBrush="{x:Null}" Background="White" ToolTip ="阀门详细状态" Click="FFStatusButtonClick4">
                                 <Button.Content>
@@ -683,7 +683,7 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Padding ="10" Background="White" Visibility ="{Binding Dev.IsWithSLL, Converter={StaticResource BVConverter}}">
+                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Padding ="10" Background="White" Visibility ="{Binding PublicData.Dev.IsWithSLL, Converter={StaticResource BVConverter}}">
                         <Grid Background ="WhiteSmoke">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -748,20 +748,20 @@
                             <Label Content="风阀正压状态：" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="0" />
                             <Label Content="风阀负压状态：" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="0" />
 
-                            <Ellipse Fill="{Binding Dev.DIList[0].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.DIList[1].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
-                            <Label Content="{Binding Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
-                            <Ellipse Fill="{Binding Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[0].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[1].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
 
-                            <Label Content="{Binding Dev.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.DIList[1].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[0].WZ}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[1].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
 
                             <Button Grid.Row="4" Grid.Column="1" Height="40" Width="40" Padding="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                     BorderBrush="{x:Null}" Background="White" ToolTip ="阀门详细状态" Click="FFStatusButtonClick2">
@@ -814,20 +814,20 @@
                             <Button Content="停机" Command="{Binding SDQMCommand}" CommandParameter="6388" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="4"/>
                             <Button Content="数据曲线"  Command="{Binding SDQMCommand}" CommandParameter="7119" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="4"/>
                             <Button Content="紧急停机" Command="{Binding SDQMCommand}" CommandParameter="119" Template="{StaticResource EmStpButton}" Grid.Row="5" Grid.Column ="4"/>
-                            <Button Content="风速管1正压模式" Command="{Binding SDQMCommand}" CommandParameter="5105" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                            <Button Content="风速管1负压模式" Command="{Binding SDQMCommand}" CommandParameter="5106" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                            <Button Content="风速管2正压模式" Command="{Binding SDQMCommand}" CommandParameter="5107" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                            <Button Content="风速管2负压模式" Command="{Binding SDQMCommand}" CommandParameter="5108" Template="{StaticResource Button1}" Grid.Row="4" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                            <Button Content="风速管3正压模式" Command="{Binding SDQMCommand}" CommandParameter="5109" Template="{StaticResource Button1}" Grid.Row="5" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
-                            <Button Content="风速管3负压模式" Command="{Binding SDQMCommand}" CommandParameter="5110" Template="{StaticResource Button1}" Grid.Row="6" Grid.Column ="5" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管1正压模式" Command="{Binding SDQMCommand}" CommandParameter="5105" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管1负压模式" Command="{Binding SDQMCommand}" CommandParameter="5106" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管2正压模式" Command="{Binding SDQMCommand}" CommandParameter="5107" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管2负压模式" Command="{Binding SDQMCommand}" CommandParameter="5108" Template="{StaticResource Button1}" Grid.Row="4" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管3正压模式" Command="{Binding SDQMCommand}" CommandParameter="5109" Template="{StaticResource Button1}" Grid.Row="5" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                            <Button Content="风速管3负压模式" Command="{Binding SDQMCommand}" CommandParameter="5110" Template="{StaticResource Button1}" Grid.Row="6" Grid.Column ="5" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
 
                             <Label Content="蝶阀编号" Style="{StaticResource Label4}" Grid.Row="0" Grid.Column ="6" Height ="30"/>
-                            <Label Content="{Binding Dev.DFNo_FG1}" Style="{StaticResource Label4}" Grid.Row="1" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="{Binding Dev.DFNo_FG1}" Style="{StaticResource Label4}" Grid.Row="2" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="{Binding Dev.DFNo_FG2}" Style="{StaticResource Label4}" Grid.Row="3" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="{Binding Dev.DFNo_FG2}" Style="{StaticResource Label4}" Grid.Row="4" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="{Binding Dev.DFNo_FG3}" Style="{StaticResource Label4}" Grid.Row="5" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="{Binding Dev.DFNo_FG3}" Style="{StaticResource Label4}" Grid.Row="6" Grid.Column ="6" Height ="30" Visibility ="{Binding Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG1}" Style="{StaticResource Label4}" Grid.Row="1" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG1}" Style="{StaticResource Label4}" Grid.Row="2" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG1, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG2}" Style="{StaticResource Label4}" Grid.Row="3" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG2}" Style="{StaticResource Label4}" Grid.Row="4" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG2, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG3}" Style="{StaticResource Label4}" Grid.Row="5" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="{Binding PublicData.Dev.DFNo_FG3}" Style="{StaticResource Label4}" Grid.Row="6" Grid.Column ="6" Height ="30" Visibility ="{Binding PublicData.Dev.WithCSFG3, Converter={StaticResource BVConverter}}"/>
                         </Grid>
                     </Border>
                     <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Padding ="10" Background="White">
@@ -875,11 +875,11 @@
                             <Label Content="风阀正压状态：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" />
                             <Label Content="风阀负压状态：" Style="{StaticResource Label1}" Grid.Row="2" Grid.Column ="0" />
 
-                            <Label Content="{Binding Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
-                            <Ellipse Fill="{Binding Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
-                            <Label Content="{Binding Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.FFMode , Converter={StaticResource FFModeConverter}}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[2].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.Valve.DIList[3].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.DIList[2].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.Valve.DIList[3].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
                            
                             <Button Grid.Row="0" Grid.Column="1" Height="40" Width="40" Padding="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                     BorderBrush="{x:Null}" Background="White" ToolTip ="阀门详细状态" Click="FFStatusButtonClick3">
@@ -965,10 +965,10 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="水泵启停状态（水泵交流接触器）：" Style="{StaticResource Label1}" Grid.Row="0" Grid.Column ="0" />
                             <Label Content="水泵变频器启停状态：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="0" />
-                            <Ellipse Fill="{Binding Dev.DIList[6].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="1"/>
-                            <Ellipse Fill="{Binding Dev.DIList[9].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
-                            <Label Content="{Binding Dev.DIList[6].WZ}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
-                            <Label Content="{Binding Dev.DIList[9].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[6].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="0" Grid.Column ="1"/>
+                            <Ellipse Fill="{Binding PublicData.Dev.DIList[9].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[6].WZ}" Style="{StaticResource Label5}" Grid.Row="0" Grid.Column ="2"/>
+                            <Label Content="{Binding PublicData.Dev.DIList[9].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
                         </Grid>
                     </Border>
                     <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Background="White">
@@ -1085,18 +1085,18 @@
                         <Button Content="Z轴点动向下" Command="{Binding SDWYCommand}" CommandParameter="6506" Template="{StaticResource Button1}" Grid.Row="6" Grid.Column ="0"/>
 
                         <!--输出状态列1，点动-->
-                        <Ellipse Fill="{Binding Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[14].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[15].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[16].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
-                        <Ellipse Fill="{Binding Dev.DIList[17].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
-                        <Label Content="{Binding Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
-                        <Label Content="{Binding Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="2" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[14].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[15].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[16].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="5" Grid.Column ="1"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[17].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="1"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="2" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="5" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="2"/>
 
                         <!--点动时间设定-->
                         <Label Content="X点动时间(ms)：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="3" Margin ="10,5,5,5"/>
@@ -1111,10 +1111,10 @@
                         <Button Content="X轴停止" Command="{Binding SDWYCommand}" CommandParameter="6508" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="3"/>
                         <Button Content="X轴持续向左" Command="{Binding SDWYCommand}" CommandParameter="6509" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="3"/>
                        <!--输出状态列2，持续-->
-                        <Ellipse Fill="{Binding Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
-                        <Ellipse Fill="{Binding Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
-                        <Label Content="{Binding Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="5"/>
-                        <Label Content="{Binding Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="5"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[12].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="4"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[13].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="4"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[12].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="5"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[13].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="5"/>
 
 
                         <!--控制按钮列3，持续-->
@@ -1125,14 +1125,14 @@
                         <Button Content="Z轴停止" Command="{Binding SDWYCommand}" CommandParameter="6514" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="6"/>
                         <Button Content="Z轴持续向下" Command="{Binding SDWYCommand}" CommandParameter="6515" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="6"/>
                         <!--输出状态列3，持续-->
-                        <Ellipse Fill="{Binding Dev.DIList[14].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[15].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[16].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
-                        <Ellipse Fill="{Binding Dev.DIList[17].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
-                        <Label Content="{Binding Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="8"/>
-                        <Label Content="{Binding Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="8"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[14].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="4" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[15].IsOn, Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="6" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[16].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="1" Grid.Column ="7"/>
+                        <Ellipse Fill="{Binding PublicData.Dev.DIList[17].IsOn , Converter={StaticResource BGConverter}}" Style="{StaticResource Ellipse2}" Grid.Row="3" Grid.Column ="7"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[14].WZ}" Style="{StaticResource Label5}" Grid.Row="4" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[15].WZ}" Style="{StaticResource Label5}" Grid.Row="6" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[16].WZ}" Style="{StaticResource Label5}" Grid.Row="1" Grid.Column ="8"/>
+                        <Label Content="{Binding PublicData.Dev.DIList[17].WZ}" Style="{StaticResource Label5}" Grid.Row="3" Grid.Column ="8"/>
 
                         <!--指定点距离-->
                         <Label Content="X轴相对位置(mm)：" Style="{StaticResource Label1}" Grid.Row="1" Grid.Column ="9" Margin ="10,5,5,5"/>
@@ -1146,9 +1146,9 @@
                         <Label Content="X当前位移(mm)：" Style="{StaticResource Label1}" Grid.Row="4" Grid.Column ="9" Margin ="10,5,5,5"/>
                         <Label Content="Y平均位移(mm)：" Style="{StaticResource Label1}" Grid.Row="5" Grid.Column ="9" Margin ="10,5,5,5"/>
                         <Label Content="Z平均位移(mm)：" Style="{StaticResource Label1}" Grid.Row="6" Grid.Column ="9" Margin ="10,5,5,5"/>
-                        <Label Content="{Binding Dev.WYValueX}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="10" Width="120"/>
-                        <Label Content="{Binding Dev.WYValueY[3]}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="5" Grid.Column ="10" Width="120"/>
-                        <Label Content="{Binding Dev.WYValueZ[3]}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="6" Grid.Column ="10" Width="120"/>
+                        <Label Content="{Binding PublicData.Dev.WYValueX}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="4" Grid.Column ="10" Width="120"/>
+                        <Label Content="{Binding PublicData.Dev.WYValueY[3]}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="5" Grid.Column ="10" Width="120"/>
+                        <Label Content="{Binding PublicData.Dev.WYValueZ[3]}" ContentStringFormat="{}{0:0.0}" Style="{StaticResource Label2}" Grid.Row="6" Grid.Column ="10" Width="120"/>
 
                         <!--定点按钮-->
                         <Button Content="X轴移动位置" Command="{Binding SDWYCommand}" CommandParameter="6516" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="11"/>

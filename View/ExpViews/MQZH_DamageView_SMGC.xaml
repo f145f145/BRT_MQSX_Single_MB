@@ -76,7 +76,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="0"  BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Visibility ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}">
+        <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="0"  BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Visibility ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Converter={StaticResource BVConverter}}">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -89,8 +89,8 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="水密工程检测 可开启部分损坏情况" Margin ="5"  Grid.Row="0" Grid.Column ="0" FontSize ="20" FontWeight="Bold"  Grid.ColumnSpan ="3" Style="{StaticResource Label2}" HorizontalAlignment ="Center" Foreground="Black"/>
                 <Label Content="损坏情况：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding ExpDQ.ExpData_SM.SLTypeListSM}" SelectedValuePath ="TypeID"  DisplayMemberPath="Sign" SelectedIndex="{Binding ExpDQ .ExpData_SM.SLStatus_GC_KKQ_temp[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" FontSize ="20" HorizontalContentAlignment ="Center" VerticalContentAlignment ="Center" Height ="40"  Margin ="5"/>
-                <TextBox Text="{Binding ExpDQ .ExpData_SM.SLPS_GC_KKQ_temp[0], Mode=TwoWay}"  Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" Width="330"/>
+                <ComboBox ItemsSource="{Binding PublicData.ExpDQ.ExpData_SM.SLTypeListSM}" SelectedValuePath ="TypeID"  DisplayMemberPath="Sign" SelectedIndex="{Binding PublicData.ExpDQ .ExpData_SM.SLStatus_GC_KKQ_temp[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" FontSize ="20" HorizontalContentAlignment ="Center" VerticalContentAlignment ="Center" Height ="40"  Margin ="5"/>
+                <TextBox Text="{Binding PublicData.ExpDQ .ExpData_SM.SLPS_GC_KKQ_temp[0], Mode=TwoWay}"  Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" Width="330"/>
                 </Grid>
         </Border>
         <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="1"  BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10">
@@ -106,8 +106,8 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="水密工程检测 固定部分损坏情况" Margin ="5"  Grid.Row="0" Grid.Column ="0" FontSize ="20" FontWeight="Bold"  Grid.ColumnSpan ="3" Style="{StaticResource Label2}" HorizontalAlignment ="Center" Foreground="Black"/>
                 <Label Content="损坏情况：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-               <ComboBox ItemsSource="{Binding ExpDQ.ExpData_SM.SLTypeListSM}" SelectedValuePath ="TypeID"  DisplayMemberPath="Sign" SelectedIndex="{Binding ExpDQ .ExpData_SM.SLStatus_GC_GD_temp[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" FontSize ="20" HorizontalContentAlignment ="Center" VerticalContentAlignment ="Center" Height ="40"  Margin ="5"/>
-                <TextBox Text="{Binding ExpDQ .ExpData_SM.SLPS_GC_GD_temp[0], Mode=TwoWay}"  Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" Width="330"/>
+               <ComboBox ItemsSource="{Binding PublicData.ExpDQ.ExpData_SM.SLTypeListSM}" SelectedValuePath ="TypeID"  DisplayMemberPath="Sign" SelectedIndex="{Binding PublicData.ExpDQ .ExpData_SM.SLStatus_GC_GD_temp[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" FontSize ="20" HorizontalContentAlignment ="Center" VerticalContentAlignment ="Center" Height ="40"  Margin ="5"/>
+                <TextBox Text="{Binding PublicData.ExpDQ .ExpData_SM.SLPS_GC_GD_temp[0], Mode=TwoWay}"  Grid.Row="1" Grid.Column ="2" Style="{StaticResource TextBox1}" Width="330"/>
                </Grid>
         </Border>
 

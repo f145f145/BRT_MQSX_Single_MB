@@ -17,6 +17,7 @@ using System.Data;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using MQDFJ_MB.Model;
 using MQDFJ_MB.Model.Exp;
 using MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters;
 using MQDFJ_MB.MQZH_DB_TestDataSetTableAdapters;
@@ -28,10 +29,8 @@ namespace MQDFJ_MB.DAL
     /// </summary>
     public partial class MQZH_ExpDAL : ObservableObject
     {
-        public MQZH_ExpDAL(MQZH_ExpTotallModel exp)
+        public MQZH_ExpDAL()
         {
-            DAL_ExpDQ = exp;
-
             //Dataset、DataTable、TableAdapter初始化
             SetTableAdapterInit_Exp();
             Messenger.Default.Send<MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable>(A00Table, "ExpTableChanged");
@@ -48,23 +47,23 @@ namespace MQDFJ_MB.DAL
         }
 
 
-        #region EXP属性
+        #region 公共数据
+
 
         /// <summary>
-        /// 当前试验
+        /// 公共数据
         /// </summary>
-        private MQZH_ExpTotallModel _dal_ExpDQ;
-
+        private PublicDatas _publicData = PublicDatas.GetInstance();
         /// <summary>
-        /// 当前试验
+        /// 公共数据
         /// </summary>
-        public MQZH_ExpTotallModel DAL_ExpDQ
+        public PublicDatas PublicData
         {
-            get { return _dal_ExpDQ; }
+            get { return _publicData; }
             set
             {
-                _dal_ExpDQ = value;
-                RaisePropertyChanged(() => DAL_ExpDQ);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
 

@@ -150,7 +150,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="位移尺数量：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
+                <Label Content="位移尺数量：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}" Visibility="{Binding PublicData.Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
                 <Label Content="X轴位移尺编号：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Y轴左位移尺编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Y轴中位移尺编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
@@ -158,18 +158,18 @@
                 <Label Content="Z轴左位移尺编号：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴中位移尺编号：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴右位移尺编号：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYQtyList}" SelectedItem ="{Binding Dev .WYQty, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[1], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[2], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[3], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[4], Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[5], Mode=TwoWay}" Grid.Row="6" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
-                <ComboBox ItemsSource="{Binding Dev.WYNumTypeList}" SelectedItem ="{Binding Dev .WYNOList[6], Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYQtyList}" SelectedItem ="{Binding PublicData.Dev .WYQty, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource ComboBox1}" Visibility="{Binding PublicData.Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[0], Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[1], Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[2], Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[3], Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[4], Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[5], Mode=TwoWay}" Grid.Row="6" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.WYNumTypeList}" SelectedItem ="{Binding PublicData.Dev .WYNOList[6], Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource ComboBox1}"/>
             </Grid>
         </Border>
 
-        <Border Grid.Row="2" Grid.Column ="0" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Visibility="{Binding Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}">
+        <Border Grid.Row="2" Grid.Column ="0" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Visibility="{Binding PublicData.Dev.IsAdmin,Mode=OneWay,Converter={StaticResource BVConverter}}">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -194,25 +194,25 @@
                 <Label Content="三合一传感器类型：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" />
                 <Label Content="有中等量程差压传感器：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="有加电子水流量计：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.PlotPeriod , Mode=TwoWay}" ToolTip ="纯数字，默认100"   Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.PointsPerLine , Mode=TwoWay}" ToolTip ="纯数字，默认10000"   Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <CheckBox Content="使用" IsChecked ="{Binding Dev.IsUseTHP,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
-                <ComboBox ItemsSource="{Binding Dev.THPTypeList}" SelectedItem ="{Binding Dev .THPType, Mode=TwoWay}" IsEnabled ="{Binding Dev.IsUseTHP}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" Style="{StaticResource ComboBox1}"/>
-                <CheckBox Content="有" IsChecked ="{Binding Dev.IsWithCYM,Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
-                <CheckBox Content="有" IsChecked ="{Binding Dev.IsWithSLL,Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <TextBox Text="{Binding PublicData.Dev.PlotPeriod , Mode=TwoWay}" ToolTip ="纯数字，默认100"   Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.PointsPerLine , Mode=TwoWay}" ToolTip ="纯数字，默认10000"   Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <CheckBox Content="使用" IsChecked ="{Binding PublicData.Dev.IsUseTHP,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <ComboBox ItemsSource="{Binding PublicData.Dev.THPTypeList}" SelectedItem ="{Binding PublicData.Dev .THPType, Mode=TwoWay}" IsEnabled ="{Binding PublicData.Dev.IsUseTHP}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" Style="{StaticResource ComboBox1}"/>
+                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithCYM,Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
+                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithSLL,Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
                 <Label Content="抗风压位移取反：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="取反" IsChecked ="{Binding Dev.IsWYKFYF,Mode =TwoWay}" Grid.Row="6" Grid.Column="1" />
+                <CheckBox Content="取反" IsChecked ="{Binding PublicData.Dev.IsWYKFYF,Mode =TwoWay}" Grid.Row="6" Grid.Column="1" />
 
                 <Label Content="波动低压准备频率：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.PhBDZB , Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.PhBDZB , Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
 
                 <Label Content="层间变形类别：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding Dev.CJBXTypeList}" SelectedIndex ="{Binding Dev.CJBXType, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Width="220" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ComboBox1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.CJBXTypeList}" SelectedIndex ="{Binding PublicData.Dev.CJBXType, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Width="220" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ComboBox1}"/>
 
                 <Label Content="外框高度：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="X轴液压轴到外框顶轴的高度"/>
                 <Label Content="外框宽度：" Grid.Row="10" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="外框两侧立柱的中心距"/>
-                <TextBox Text="{Binding Dev.H_HDK , Mode=TwoWay}" ToolTip ="X轴液压轴到外框顶轴的高度"   Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.W_HDK , Mode=TwoWay}" ToolTip ="外框两侧立柱的中心距"   Grid.Row="10" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.H_HDK , Mode=TwoWay}" ToolTip ="X轴液压轴到外框顶轴的高度"   Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.W_HDK , Mode=TwoWay}" ToolTip ="外框两侧立柱的中心距"   Grid.Row="10" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
             </Grid>
         </Border>
 
@@ -230,11 +230,11 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="是否载入上次试验：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="显示PID控制输出数据：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="启动时载入上次试验" IsChecked ="{Binding Dev.IsLoadLastExpPowerOn,Mode =TwoWay}" ToolTip ="软件启动时自动载入上次退出前的试验，否则载入默认试验"  Grid.Row="0" Grid.Column="1" />
-                <CheckBox Content="显示" IsChecked ="{Binding Dev.IsPIDInfoShow,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="启动时载入上次试验" IsChecked ="{Binding PublicData.Dev.IsLoadLastExpPowerOn,Mode =TwoWay}" ToolTip ="软件启动时自动载入上次退出前的试验，否则载入默认试验"  Grid.Row="0" Grid.Column="1" />
+                <CheckBox Content="显示" IsChecked ="{Binding PublicData.Dev.IsPIDInfoShow,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
 
                 <Label Content="允许修改数据：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="允许修改" IsChecked ="{Binding Dev.PermitChangeData,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <CheckBox Content="允许修改" IsChecked ="{Binding PublicData.Dev.PermitChangeData,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
             </Grid>
         </Border>
 
@@ -255,10 +255,10 @@
                 <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
 
-                <CheckBox Content="有测速风管1" IsChecked ="{Binding Dev.WithCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.GJ_FG1 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.DFNo_FG1, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.FSNo_FG1, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <CheckBox Content="有测速风管1" IsChecked ="{Binding PublicData.Dev.WithCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.GJ_FG1 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.DFNo_FG1, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.FSNo_FG1, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
             </Grid>
         </Border>
 
@@ -279,10 +279,10 @@
                 <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
 
-                <CheckBox Content="有测速风管2" IsChecked ="{Binding Dev.WithCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.GJ_FG2 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.DFNo_FG2, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.FSNo_FG2, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <CheckBox Content="有测速风管2" IsChecked ="{Binding PublicData.Dev.WithCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.GJ_FG2 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.DFNo_FG2, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.FSNo_FG2, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
             </Grid>
         </Border>
 
@@ -303,10 +303,10 @@
                 <Label Content="对应蝶阀编号：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="对应风速仪编号：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
 
-                <CheckBox Content="有测速风管3" IsChecked ="{Binding Dev.WithCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.GJ_FG3 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.DFNo_FG3, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
-                <TextBox Text="{Binding Dev.FSNo_FG3, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding Dev.IsAdmin,Mode=OneWay}"/>
+                <CheckBox Content="有测速风管3" IsChecked ="{Binding PublicData.Dev.WithCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.GJ_FG3 , Mode=TwoWay}" ToolTip ="纯数字，默认60"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.DFNo_FG3, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
+                <TextBox Text="{Binding PublicData.Dev.FSNo_FG3, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" IsEnabled="{Binding PublicData.Dev.IsAdmin,Mode=OneWay}"/>
             </Grid>
         </Border>
 
@@ -321,9 +321,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Content="测速风管选择：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
-            <CheckBox Content="测速管1" IsChecked ="{Binding Dev.UseCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" Visibility="{Binding Dev.WithCSFG1 ,Converter={StaticResource BVConverter}}"/>
-            <CheckBox Content="测速管2" IsChecked ="{Binding Dev.UseCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="2" Visibility="{Binding Dev.WithCSFG2 ,Converter={StaticResource BVConverter}}"/>
-            <CheckBox Content="测速管3" IsChecked ="{Binding Dev.UseCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="3" Visibility="{Binding Dev.WithCSFG3 ,Converter={StaticResource BVConverter}}"/>
+            <CheckBox Content="测速管1" IsChecked ="{Binding PublicData.Dev.UseCSFG1,Mode =TwoWay}" Grid.Row="0" Grid.Column="1" Visibility="{Binding PublicData.Dev.WithCSFG1 ,Converter={StaticResource BVConverter}}"/>
+            <CheckBox Content="测速管2" IsChecked ="{Binding PublicData.Dev.UseCSFG2,Mode =TwoWay}" Grid.Row="0" Grid.Column="2" Visibility="{Binding PublicData.Dev.WithCSFG2 ,Converter={StaticResource BVConverter}}"/>
+            <CheckBox Content="测速管3" IsChecked ="{Binding PublicData.Dev.UseCSFG3,Mode =TwoWay}" Grid.Row="0" Grid.Column="3" Visibility="{Binding PublicData.Dev.WithCSFG3 ,Converter={StaticResource BVConverter}}"/>
         </Grid>
 
         <StackPanel  Grid.Row="5" Grid.Column ="0" Grid.ColumnSpan="2" Orientation="Horizontal">
@@ -331,7 +331,7 @@
             <PasswordBox  Name="AdminPasswordBox" Width="200" Height="40"  Margin="5 0 5 0" FontSize="20" PasswordChar="*" Background="White" Foreground="Blue"
                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   vm:LoginPasswordBoxHelper.IsPasswordBindingEnable="True"
-                  vm:LoginPasswordBoxHelper.Password="{Binding Dev.PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  vm:LoginPasswordBoxHelper.Password="{Binding PublicData.Dev.PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   KeyDown="AdminPasswordBox_OnKeyDown"/>
             <Button Content="管理员登录" Command="{Binding DevSetCommand}" CommandParameter="8888" Template="{StaticResource Button1}" HorizontalAlignment="Left" Width="120" Margin="5 0 5 0" Foreground="Blue"/>
             <Button Content="退出登录" Command="{Binding DevSetCommand}" CommandParameter="8889" Template="{StaticResource Button1}" HorizontalAlignment="Right" Width="120" Margin="5 0 5 0" Foreground="Blue"/>

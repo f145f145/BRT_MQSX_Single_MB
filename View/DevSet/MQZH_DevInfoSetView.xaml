@@ -97,13 +97,13 @@
                 <Label Content="水密试验方法标准：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="抗风压试验方法标准：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="层间位移变形试验方法标准：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.DeviceName, Mode=TwoWay}"  Grid.Row="0" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceTypeNO, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceSerialNO, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceQMStd, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceSMStd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceKFYStd, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.DeviceCJBXStd, Mode=TwoWay}"  Grid.Row="6" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceName, Mode=TwoWay}"  Grid.Row="0" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceTypeNO, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceSerialNO, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceQMStd, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceSMStd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceKFYStd, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DeviceCJBXStd, Mode=TwoWay}"  Grid.Row="6" Grid.Column ="1" Width="560" Style="{StaticResource TextBox1}"/>
             </Grid>
         </Border>
         <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="1" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>

@@ -208,18 +208,18 @@
                             <Label Content="检测日期：" Grid.Row ="1" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="委托单位：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="生产单位：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpNO,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" IsReadOnly ="True" Background="Gray" Style="{StaticResource TextBox2}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpDate,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpWTDW,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpSCDW,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" IsReadOnly ="True" Background="Gray" Style="{StaticResource TextBox2}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpDate,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpWTDW,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpSCDW,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox1}"/>
                             <Label Content="报告编号："  Grid.Row ="0" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="委托日期："  Grid.Row ="1" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="施工单位："  Grid.Row ="2" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="工程名称："  Grid.Row ="3" Grid.Column="2" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.RepSXNO,Mode =TwoWay}" Grid.Row ="0" Grid.Column="3" Background="White" Style="{StaticResource TextBox2}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpWTDate,Mode =TwoWay}" Grid.Row ="1" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpSGDW,Mode =TwoWay}" Grid.Row ="2" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.ExpGCMC,Mode =TwoWay}" Grid.Row ="3" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.RepSXNO,Mode =TwoWay}" Grid.Row ="0" Grid.Column="3" Background="White" Style="{StaticResource TextBox2}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpWTDate,Mode =TwoWay}" Grid.Row ="1" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpSGDW,Mode =TwoWay}" Grid.Row ="2" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.ExpGCMC,Mode =TwoWay}" Grid.Row ="3" Grid.Column="3" Background="White" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="试验环境" Grid.Row ="1" Grid.Column="0"  HorizontalAlignment="Stretch " VerticalAlignment="Stretch " Margin="10" BorderBrush="Black">
@@ -238,15 +238,15 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="实验室温度(K)：" Grid.Row ="0" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="实验室大气压力(kPa)：" Grid.Row ="1" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpRoomT,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Background="White" Width="200" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpRoomPress,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Width="200" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpRoomT,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Background="White" Width="200" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpRoomPress,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Width="200" Style="{StaticResource TextBox1}"/>
 
-                            <Label Content="参考温度(℃)：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="参考湿度(%)：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
-                            <Label Content="参考大气压力(Pa)：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
-                            <TextBox Text="{Binding Dev.AIList[16].ValueFinal,Mode =OneWay}" Grid.Row ="2" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
-                            <TextBox Text="{Binding Dev.AIList[17].ValueFinal,Mode =OneWay}" Grid.Row ="3" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
-                            <TextBox Text="{Binding Dev.AIList[18].ValueFinal,Mode =OneWay}" Grid.Row ="4" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="参考温度(℃)：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="参考湿度(%)：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="参考大气压力(Pa)：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AIList[16].ValueFinal,Mode =OneWay}" Grid.Row ="2" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AIList[17].ValueFinal,Mode =OneWay}" Grid.Row ="3" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AIList[18].ValueFinal,Mode =OneWay}" Grid.Row ="4" Grid.Column="1" Background="White" Width="200" IsEnabled="False" Style="{StaticResource TextBox1}" Visibility ="{Binding PublicData.Dev.IsUseTHP, Converter={StaticResource BVConverter}}"/>
                             <Button Content="刷新" Click="Fresh_Click" Grid.Row ="3" Grid.Column="2" Grid.RowSpan="3" Width="70" Height="40" Margin="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" IsDefault="True"/>
 
 
@@ -293,45 +293,45 @@
                             <Label Content="试件系列：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="试件型号：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="样品编号：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Name,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Series,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Type ,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Model,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_YPNO,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Name,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Series,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Type ,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Model,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_YPNO,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
                             <Label Content="型材品种："  Grid.Row ="5" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="型材牌号："  Grid.Row ="6" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="型材规格："  Grid.Row ="7" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XCPZ,Mode =TwoWay}" Grid.Row ="5" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XCPH,Mode =TwoWay}" Grid.Row ="6" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XCGG,Mode =TwoWay}" Grid.Row ="7" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XCPZ,Mode =TwoWay}" Grid.Row ="5" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XCPH,Mode =TwoWay}" Grid.Row ="6" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XCGG,Mode =TwoWay}" Grid.Row ="7" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
                             <Label Content="附件品种："  Grid.Row ="8" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="附件材质："  Grid.Row ="9" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_FJPZ,Mode =TwoWay}" Grid.Row ="8" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_FJCZ,Mode =TwoWay}" Grid.Row ="9" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_FJPZ,Mode =TwoWay}" Grid.Row ="8" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_FJCZ,Mode =TwoWay}" Grid.Row ="9" Grid.Column="1" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
 
                             <Label Content="面板品种：" Grid.Row ="0" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="面板材质：" Grid.Row ="1" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="面板最大尺寸：" Grid.Row ="2" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="面板安装方法：" Grid.Row ="3" Grid.Column="2" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MBPZ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MBCZ,Mode =TwoWay}" Grid.Row ="1" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MBZDCC,Mode =TwoWay}" Grid.Row ="2" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MBAZFF,Mode =TwoWay}" Grid.Row ="3" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MBPZ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MBCZ,Mode =TwoWay}" Grid.Row ="1" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MBZDCC,Mode =TwoWay}" Grid.Row ="2" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MBAZFF,Mode =TwoWay}" Grid.Row ="3" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
 
                             <Label Content="密封材料材质："  Grid.Row ="4" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="密封材料牌号："  Grid.Row ="5" Grid.Column="2" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MFCLCZ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_MFCLPH,Mode =TwoWay}" Grid.Row ="5" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MFCLCZ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_MFCLPH,Mode =TwoWay}" Grid.Row ="5" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
                             <Label Content="镶嵌材料品种："  Grid.Row ="6" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="镶嵌材料材质："  Grid.Row ="7" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="镶嵌尺寸："  Grid.Row ="8" Grid.Column="2" Style="{StaticResource Label1}"/>
                             <Label Content="镶嵌方法："  Grid.Row ="9" Grid.Column="2" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XQCLPZ,Mode =TwoWay}" Grid.Row ="6" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XQCLCZ,Mode =TwoWay}" Grid.Row ="7" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XQCC,Mode =TwoWay}" Grid.Row ="8" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_XQFF,Mode =TwoWay}" Grid.Row ="9" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XQCLPZ,Mode =TwoWay}" Grid.Row ="6" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XQCLCZ,Mode =TwoWay}" Grid.Row ="7" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XQCC,Mode =TwoWay}" Grid.Row ="8" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_XQFF,Mode =TwoWay}" Grid.Row ="9" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
                             <Label Content="最大分格尺寸：" Grid.Row ="10" Grid.Column="2" Style="{StaticResource Label1}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_ZDFGCC,Mode =TwoWay}" Grid.Row ="10" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_ZDFGCC,Mode =TwoWay}" Grid.Row ="10" Grid.Column="3" Width="200" Background="White" Style="{StaticResource TextBox3}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="试件参数" Grid.Row ="0" Grid.Column="2" Grid.RowSpan="2" Background ="LightCyan" HorizontalAlignment="Stretch " VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -361,13 +361,13 @@
                             <Label Content="有可开启部分：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label3}"/>
                             <Label Content="开启缝长度(m)：" Grid.Row ="5" Grid.Column="0" Style="{StaticResource Label3}"/>
                             <Label Content="可开启部分面积(㎡)：" Grid.Row ="6" Grid.Column="0" Style="{StaticResource Label3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Width,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Heigth,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_Aria,Mode =TwoWay}" ToolTip ="自动计算，无需填写" Grid.Row ="2" Grid.Column="1" Width="90" Background="Gray" Style="{StaticResource TextBox3}" IsEnabled ="False"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.SJ_CG,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Mode =TwoWay}" Content="有" Grid.Row ="4" Grid.Column="1" Width="90" HorizontalAlignment="Left" FontSize="15"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_KQFLenth,Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ}" Background="White" Width="90" Grid.Row ="5" Grid.Column="1" Style="{StaticResource TextBox3}"/>
-                            <TextBox Text="{Binding ExpDQ.ExpSettingParam.Exp_SJ_KKQAria,Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ}" Background="White" Width="90" Grid.Row ="6" Grid.Column="1" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Width,Mode =TwoWay}" Grid.Row ="0" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Heigth,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_Aria,Mode =TwoWay}" ToolTip ="自动计算，无需填写" Grid.Row ="2" Grid.Column="1" Width="90" Background="Gray" Style="{StaticResource TextBox3}" IsEnabled ="False"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.SJ_CG,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Width="90" Background="White" Style="{StaticResource TextBox3}"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ, Mode =TwoWay}" Content="有" Grid.Row ="4" Grid.Column="1" Width="90" HorizontalAlignment="Left" FontSize="15"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_KQFLenth,Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ}" Background="White" Width="90" Grid.Row ="5" Grid.Column="1" Style="{StaticResource TextBox3}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.ExpSettingParam.Exp_SJ_KKQAria,Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ}" Background="White" Width="90" Grid.Row ="6" Grid.Column="1" Style="{StaticResource TextBox3}"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -402,11 +402,11 @@
                             <Label Content="气密检测压力设计值[Pa]：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="单位开启缝长渗透量设计指标q1'[m³/(m·h)]：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="单位面积渗透量设计指标qA'[m³/(㎡·h)]："  Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_QM.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_QM.QM_GCYJYP,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGC}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_QM.QM_GCSJP,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGC}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_QM.QM_SJSTL_DWKQFC,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGC}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_QM.QM_SJSTL_DWMJ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_QM.IsGC}"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_QM.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_QM.QM_GCYJYP,Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGC}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_QM.QM_GCSJP,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGC}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_QM.QM_SJSTL_DWKQFC,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGC}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_QM.QM_SJSTL_DWMJ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_QM.IsGC}"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="水密性能检测项目设定" Grid.Row ="0" Grid.Column="1" Margin="10" Background ="LightCyan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding ="0" BorderBrush="Black">
@@ -433,14 +433,14 @@
                             <Label Content="箱口高度（m）："  Grid.Row ="5" Grid.Column="0" Style="{StaticResource Label1}" Margin="5 0 0 0" ToolTip="安装试件的箱口总高度（喷淋的总高度）"/>
                             <Label Content="单位面积淋水量（L/㎡·min）："  Grid.Row ="6" Grid.Column="0" Style="{StaticResource Label1}" Margin="5 0 0 0"/>
                             <Label Content="总淋水流量（m³/h）："  Grid.Row ="7" Grid.Column="0" Style="{StaticResource Label1}" Margin="5 0 0 0" ToolTip="水泵的出水量"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_SM.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_SM.WaveType_SM, Mode =TwoWay}" Content="波动加压" Grid.Row ="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.SM_GCSJ_KKQ  ,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsGC}" Height="25"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.SM_GCSJ_GD ,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_SM.IsGC}" Height="25"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.Width_XK ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.Height_XK ,Mode =TwoWay}" Grid.Row ="5" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.SM_SLL_Per_m2 ,Mode =TwoWay}" Grid.Row ="6" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_SM.SM_SLL ,Mode =OneWay}" IsReadOnly="True" Grid.Row ="7" Grid.Column="1" Background="Gray" Style="{StaticResource TextBox3}" Height="25"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_SM.WaveType_SM, Mode =TwoWay}" Content="波动加压" Grid.Row ="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ  ,Mode =TwoWay}" Grid.Row ="2" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGC}" Height="25"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD ,Mode =TwoWay}" Grid.Row ="3" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_SM.IsGC}" Height="25"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.Width_XK ,Mode =TwoWay}" Grid.Row ="4" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.Height_XK ,Mode =TwoWay}" Grid.Row ="5" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.SM_SLL_Per_m2 ,Mode =TwoWay}" Grid.Row ="6" Grid.Column="1" Background="White" Style="{StaticResource TextBox3}" Height="25"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_SM.SM_SLL ,Mode =OneWay}" IsReadOnly="True" Grid.Row ="7" Grid.Column="1" Background="Gray" Style="{StaticResource TextBox3}" Height="25"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="抗风压性能检测项目设定" Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan ="2"  Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background ="LightCyan" Padding ="5" BorderBrush="Black">
@@ -466,14 +466,14 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="检测类型：" Grid.Row ="0" Grid.Column="0" Style="{StaticResource Label1}" Margin="5 0 0 0"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Bottom"/>
-                            <Label Content="工程检测风荷载标准值p3'（Pa）：" Grid.Row ="0" Grid.Column="2" Grid.ColumnSpan ="2"  Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVConverter}}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.P3_GCSJ ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="4" Width="90" Background="White" Style="{StaticResource TextBox3}"  Visibility ="{Binding ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVConverter}}" Margin="5 0 0 0"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Bottom"/>
+                            <Label Content="工程检测风荷载标准值p3'（Pa）：" Grid.Row ="0" Grid.Column="2" Grid.ColumnSpan ="2"  Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVConverter}}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.P3_GCSJ ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="4" Width="90" Background="White" Style="{StaticResource TextBox3}"  Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVConverter}}" Margin="5 0 0 0"/>
 
-                            <Label Content="定级P3降低压力：" Grid.Row ="0" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVNotConverter}}"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.P3DownPress, Mode =TwoWay}" Content="降低" Grid.Row ="0" Grid.Column="6" HorizontalAlignment="Right" FontSize="15" VerticalAlignment="Bottom" Visibility ="{Binding ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVNotConverter}}"/>
-                            <Label Content="测试压力：" Grid.Row ="0" Grid.Column="7" Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding ExpDQ.Exp_KFY.P3DownPress, Converter={StaticResource BVConverter}}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.P3Press ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="8" Grid.ColumnSpan="2" Width="90" Background="White" Style="{StaticResource TextBox3}" Margin="5 0 0 0" HorizontalAlignment="Left" Visibility ="{Binding ExpDQ.Exp_KFY.P3DownPress, Converter={StaticResource BVConverter}}"/>
+                            <Label Content="定级P3降低压力：" Grid.Row ="0" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVNotConverter}}"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.P3DownPress, Mode =TwoWay}" Content="降低" Grid.Row ="0" Grid.Column="6" HorizontalAlignment="Right" FontSize="15" VerticalAlignment="Bottom" Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.IsGC, Converter={StaticResource BVNotConverter}}"/>
+                            <Label Content="测试压力：" Grid.Row ="0" Grid.Column="7" Style="{StaticResource Label1}" Margin="5 0 0 0" Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.P3DownPress, Converter={StaticResource BVConverter}}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.P3Press ,Mode =TwoWay}" Grid.Row ="0" Grid.Column="8" Grid.ColumnSpan="2" Width="90" Background="White" Style="{StaticResource TextBox3}" Margin="5 0 0 0" HorizontalAlignment="Left" Visibility ="{Binding PublicData.ExpDQ.Exp_KFY.P3DownPress, Converter={StaticResource BVConverter}}"/>
 
                             <Label Content="测点组别" Grid.Row ="1" Grid.Column="0" Style="{StaticResource Label1}" HorizontalAlignment="Center" Margin="0 0 0 0"/>
                             <Label Content="位移组1：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center"/>
@@ -481,44 +481,44 @@
                             <Label Content="位移组3：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}" VerticalAlignment="Center"/>
 
                             <Label Content="选用" Grid.Row ="1" Grid.Column="1" Style="{StaticResource Label1}" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use, Mode =TwoWay}" Content="使用组1" Grid.Row ="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use, Mode =TwoWay}" Content="使用组2" Grid.Row ="3" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use, Mode =TwoWay}" Content="使用组3" Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use, Mode =TwoWay}" Content="使用组1" Grid.Row ="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use, Mode =TwoWay}" Content="使用组2" Grid.Row ="3" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use, Mode =TwoWay}" Content="使用组3" Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
 
                             <Label Content="间距（mm）" Grid.Row ="1" Grid.Column="2" Style="{StaticResource Label1}" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].L, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="2" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
 
                             <Label Content="允许相对面法线&#x000A; 挠度f0（分母）" Grid.Row ="1" Grid.Column="3" Style="{StaticResource Label1}" HorizontalAlignment="Center" HorizontalContentAlignment ="Center" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].ND_XD_YXFM, Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="3" Style="{StaticResource TextBox3}" Width="120" Height="30"/>
 
                             <Label Content="   允许绝对&#x000A; 挠度（mm）" Grid.Row ="1" Grid.Column="4" Style="{StaticResource Label1}" HorizontalAlignment="Center" HorizontalContentAlignment ="Center" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="2" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="3" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="4" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="2" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="3" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].ND_YX, StringFormat={}{0:F2}, Mode =OneWay}" Background="White" IsEnabled ="False" Grid.Row ="4" Grid.Column="4" Style="{StaticResource TextBox3}" Width="90" Height="30"/>
 
                             <Label Content="是否测面板" Grid.Row ="1" Grid.Column="5" Style="{StaticResource Label1}" Margin="5 0 0 0"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX , Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="2" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_TestMBBX, Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="3" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_TestMBBX, Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="4" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_TestMBBX , Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="2" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_TestMBBX, Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="3" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_TestMBBX, Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="测面板" Grid.Row ="4" Grid.Column="5" HorizontalAlignment="Center" FontSize="15"/>
 
                             <Label Content="是否边支承&#x000A; 三角面板" Grid.Row ="1" Grid.Column="6" Style="{StaticResource Label1}" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB, Mode =TwoWay}" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="是" Grid.Row ="2" Grid.Column="6" HorizontalAlignment="Center" FontSize="15"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB, Mode =TwoWay}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Content="是" Grid.Row ="2" Grid.Column="6" HorizontalAlignment="Center" FontSize="15"/>
 
                             <Label Content="对应位移尺编号" Grid.Row ="1" Grid.Column="7" Style="{StaticResource Label1}" Grid.ColumnSpan ="4"  HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[3], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB}" Grid.Row ="2" Grid.Column="10" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].Is_Use}" Grid.Row ="2" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].WYC_No[3], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[0].IsBZCSJMB}" Grid.Row ="2" Grid.Column="10" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[1].Is_Use}" Grid.Row ="3" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[0], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="7" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[1], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="8" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].WYC_No[2], Mode =TwoWay}" Background="White" IsEnabled ="{Binding PublicData.ExpDQ.Exp_KFY.DisplaceGroups[2].Is_Use}" Grid.Row ="4" Grid.Column="9" Style="{StaticResource TextBox3}" Width ="60" Height="30"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -553,10 +553,10 @@
                             <Label Content="X轴位移角(平面内)：" Grid.Row ="2" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="Y轴位移角(平面外)：" Grid.Row ="3" Grid.Column="0" Style="{StaticResource Label1}"/>
                             <Label Content="Z轴位移绝对值(垂直方向)：" Grid.Row ="4" Grid.Column="0" Style="{StaticResource Label1}"/>
-                            <CheckBox IsChecked ="{Binding ExpDQ.Exp_CJBX.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_CJBX .CJBX_SJZBX,Mode =TwoWay}" ToolTip="位移角的分母" Background="White" Grid.Row ="2" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_CJBX.IsGC}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_CJBX .CJBX_SJZBY,Mode =TwoWay}" ToolTip="位移角的分母" Background="White" Grid.Row ="3" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_CJBX.IsGC}"/>
-                            <TextBox Text="{Binding ExpDQ.Exp_CJBX .CJBX_SJZBZ,Mode =TwoWay}" ToolTip="绝对位移，单位mm" Background="White" Grid.Row ="4" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding ExpDQ.Exp_CJBX.IsGC}"/>
+                            <CheckBox IsChecked ="{Binding PublicData.ExpDQ.Exp_CJBX.IsGC, Mode =TwoWay}" Content="工程检测" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="15"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_CJBX .CJBX_SJZBX,Mode =TwoWay}" ToolTip="位移角的分母" Background="White" Grid.Row ="2" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_CJBX.IsGC}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_CJBX .CJBX_SJZBY,Mode =TwoWay}" ToolTip="位移角的分母" Background="White" Grid.Row ="3" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_CJBX.IsGC}"/>
+                            <TextBox Text="{Binding PublicData.ExpDQ.Exp_CJBX .CJBX_SJZBZ,Mode =TwoWay}" ToolTip="绝对位移，单位mm" Background="White" Grid.Row ="4" Grid.Column="1" Style="{StaticResource TextBox3}" IsEnabled ="{Binding PublicData.ExpDQ.Exp_CJBX.IsGC}"/>
                         </Grid>
                     </GroupBox>
                 </Grid>

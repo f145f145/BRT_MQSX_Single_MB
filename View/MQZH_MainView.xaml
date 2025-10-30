@@ -157,7 +157,7 @@
         <Button Content="层间位移变形性能" IsEnabled ="{Binding IsCJBXViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7111" Template="{StaticResource Button1}" Grid.Row ="3" Grid.Column ="3"/>
         <Button Content="退  出" Click ="Button_Quit_Click" Template="{StaticResource Button1}" Grid.Row ="3" Grid.Column ="4"/>
         <Button Content="紧急停机" Command="{Binding MainViewCommand}" CommandParameter="119" Template="{StaticResource EmStpButton}" Grid.Row ="4" Grid.Column ="2" Grid.ColumnSpan="2"/>
-        <Label Content="{Binding Dev.ErrorInfo}" 
+        <Label Content="{Binding PublicData.Dev.ErrorInfo}" 
                Grid.Row="5" Grid.Column ="0" Grid.ColumnSpan="4" Height ="50" Width ="800"
                Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                FontSize ="24" FontWeight="Bold" Foreground ="Crimson"/>
@@ -177,9 +177,9 @@
                 <Label Content="当前试验" FontSize="20" FontWeight="Bold" Grid.Row="0" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <StackPanel Grid.Row="1" Margin="0,0,5,0" HorizontalAlignment="stretch" VerticalAlignment="Stretch" >
                     <Label Content="试验编号" FontSize="18" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                    <Label Content="{Binding ExpDQ.ExpSettingParam.ExpNO}" Style="{StaticResource Label1}"/>
+                    <Label Content="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO}" Style="{StaticResource Label1}"/>
                     <Label Content="当前项目" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                    <Label Content="{Binding Dev.DeviceRunMode, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label1}"/>
+                    <Label Content="{Binding PublicData.Dev.DeviceRunMode, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label1}"/>
                 </StackPanel>
             </Grid>
         </Border>

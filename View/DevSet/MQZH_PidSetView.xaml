@@ -114,10 +114,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="0 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID11.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID11.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID11.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID11.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID11.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID11.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID11.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID11.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -142,10 +142,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="0" Grid.Column ="1"  IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID12.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID12.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID12.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID12.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID12.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID12.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID12.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID12.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="2" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -170,10 +170,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID13.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID13.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID13.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID13.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID13.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID13.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID13.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID13.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="0" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -198,10 +198,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID14.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID14.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID14.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID14.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID14.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID14.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID14.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID14.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -226,10 +226,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="~ Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID15.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID15.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID15.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID15.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID15.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID15.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID15.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID15.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -269,10 +269,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="0 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID41.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID41.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID41.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID41.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID41.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID41.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID41.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID41.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -297,10 +297,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="0" Grid.Column ="1"  IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID42.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID42.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID42.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID42.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID42.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID42.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID42.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID42.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="2" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -325,10 +325,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID43.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID43.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID43.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID43.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID43.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID43.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID43.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID43.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="0" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -353,10 +353,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID44.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID44.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID44.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID44.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID44.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID44.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID44.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID44.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -381,10 +381,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="~ Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID45.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID45.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID45.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID45.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID45.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID45.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID45.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID45.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -424,10 +424,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="0 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID61.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID61.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID61.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID61.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID61.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID61.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID61.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID61.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -452,10 +452,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="75 Pa"  Grid.Row="0" Grid.Column ="1"  IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID62.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID62.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID62.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID62.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID62.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID62.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID62.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID62.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="2" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -480,10 +480,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="125 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID63.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID63.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID63.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID63.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID63.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID63.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID63.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID63.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="0" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -508,10 +508,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="175 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID64.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID64.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID64.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID64.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID64.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID64.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID64.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID64.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -536,10 +536,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="600 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="~ Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID65.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID65.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID65.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID65.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID65.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID65.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID65.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID65.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -579,10 +579,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="0 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="250 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID21.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID21.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID21.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID21.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID21.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID21.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID21.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID21.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -607,10 +607,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="250Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="500 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID22.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID22.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID22.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID22.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID22.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID22.Ki, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID22.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID22.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="0" Grid.Column ="2" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -635,10 +635,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="500 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="1000 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID23.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID23.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID23.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID23.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID23.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID23.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID23.Kd, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID23.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="0" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -663,10 +663,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="1000 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="3000 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID24.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID24.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID24.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID24.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID24.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID24.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID24.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID24.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="1" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -691,10 +691,10 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="3000 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="5000 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID25.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID25.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID25.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID25.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID25.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID25.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID25.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID25.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" Grid.Row="1" Grid.Column ="2" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
@@ -719,17 +719,17 @@
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="5000 Pa"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
                             <TextBox Text="12000 Pa"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID26.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID26.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID26.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID26.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID26.Kp, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID26.Ki, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID26.Kd, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID26.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                 </Grid>
             </TabItem>
 
             <!--水密喷淋PID参数-->
-            <TabItem Header="水泵流量PID" FontSize="15" Visibility="{Binding Dev.IsWithSLL ,Converter={StaticResource BVConverter}}">
+            <TabItem Header="水泵流量PID" FontSize="15" Visibility="{Binding PublicData.Dev.IsWithSLL ,Converter={StaticResource BVConverter}}">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -761,11 +761,11 @@
                             <Label Content="微分系数kd："  Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <Label Content="积分限幅：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                             <TextBox Text="0 m³/h"  Grid.Row="0" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.AIList[18].SingalUpperRange, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID51.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID51.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID51.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                            <TextBox Text="{Binding Dev.PID51.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.AIList[18].SingalUpperRange, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" IsEnabled="False" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID51.Kp, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID51.Ki, Mode=TwoWay}"   Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID51.Kd, Mode=TwoWay}"   Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                            <TextBox Text="{Binding PublicData.Dev.PID51.U_IMax_Limit, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                         </Grid>
                     </Border>
                   </Grid>

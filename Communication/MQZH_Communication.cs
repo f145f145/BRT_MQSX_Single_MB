@@ -26,10 +26,8 @@ namespace MQDFJ_MB.Communication
 {
     public class MQZH_Communication : ObservableObject
     {
-        public MQZH_Communication(MQZH_DevModel_Main dev)
+        public MQZH_Communication()
         {
-            Dev = dev;
-
             //订阅定时发送指令数据消息
             Messenger.Default.Register<ushort[]>(this, "CKCMDToComMessage", CKCMDToComMessage);
 
@@ -44,20 +42,21 @@ namespace MQDFJ_MB.Communication
 
         #region 通讯配置属性
 
+
         /// <summary>
-        /// 装置参数
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main _dev;
+        private PublicDatas _publicData = PublicDatas.GetInstance();
         /// <summary>
-        /// 装置参数
+        /// 公共数据
         /// </summary>
-        private MQZH_DevModel_Main Dev
+        public PublicDatas PublicData
         {
-            get { return _dev; }
+            get { return _publicData; }
             set
             {
-                _dev = value;
-                RaisePropertyChanged(() => Dev);
+                _publicData = value;
+                RaisePropertyChanged(() => _publicData);
             }
         }
 
@@ -286,17 +285,17 @@ namespace MQDFJ_MB.Communication
             bool exist = false;
             foreach (string str in Portname)
             {
-                if (str == Dev.THPCom.PhyPortNO)
+                if (str == PublicData.Dev.THPCom.PhyPortNO)
                     exist = true;
             }
             if (exist)
             {
-                SerialPort1.PortName = Dev.THPCom.PhyPortNO;
-                SerialPort1.BaudRate = Dev.THPCom.BoundRate;
-                SerialPort1.DataBits = Dev.THPCom.DataBits;
-                SerialPort1.Parity = Dev.THPCom.Parity;
-                SerialPort1.StopBits = Dev.THPCom.StopBits;
-                SerialPort1.ReadTimeout = Dev.THPCom.Timeout;
+                SerialPort1.PortName = PublicData.Dev.THPCom.PhyPortNO;
+                SerialPort1.BaudRate = PublicData.Dev.THPCom.BoundRate;
+                SerialPort1.DataBits = PublicData.Dev.THPCom.DataBits;
+                SerialPort1.Parity = PublicData.Dev.THPCom.Parity;
+                SerialPort1.StopBits = PublicData.Dev.THPCom.StopBits;
+                SerialPort1.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 try
                 {
                     if (SerialPort1.IsOpen)
@@ -304,7 +303,7 @@ namespace MQDFJ_MB.Communication
                     SerialPort1.Open();
                     SerialPort1.Close();
 
-                    switch (Dev.THPType)
+                    switch (PublicData.Dev.THPType)
                     {
                         //赛诺三合一
                         case 1:
@@ -338,11 +337,11 @@ namespace MQDFJ_MB.Communication
             else
             {
                 isSuccess = false;
-                MessageBox.Show("三合一通讯" + Dev.THPCom.PhyPortNO + "不可用！");
+                MessageBox.Show("三合一通讯" + PublicData.Dev.THPCom.PhyPortNO + "不可用！");
                 Messenger.Default.Send<string>("三合一通讯端口不可用", "ComError1");
             }
             if (!isSuccess)
-                Dev.THPComStatus.IsFailure = true;
+                PublicData.Dev.THPComStatus.IsFailure = true;
             return isSuccess;
         }
 
@@ -352,12 +351,12 @@ namespace MQDFJ_MB.Communication
         private void SetTHPPort()
         {
             SerialPort1.Close();
-            SerialPort1.PortName = Dev.THPCom.PhyPortNO;
-            SerialPort1.BaudRate = Dev.THPCom.BoundRate;
-            SerialPort1.DataBits = Dev.THPCom.DataBits;
-            SerialPort1.Parity = Dev.THPCom.Parity;
-            SerialPort1.StopBits = Dev.THPCom.StopBits;
-            SerialPort1.ReadTimeout = Dev.THPCom.Timeout;
+            SerialPort1.PortName = PublicData.Dev.THPCom.PhyPortNO;
+            SerialPort1.BaudRate = PublicData.Dev.THPCom.BoundRate;
+            SerialPort1.DataBits = PublicData.Dev.THPCom.DataBits;
+            SerialPort1.Parity = PublicData.Dev.THPCom.Parity;
+            SerialPort1.StopBits = PublicData.Dev.THPCom.StopBits;
+            SerialPort1.ReadTimeout = PublicData.Dev.THPCom.Timeout;
         }
 
 
@@ -366,7 +365,7 @@ namespace MQDFJ_MB.Communication
         /// </summary>
         private bool GetTHP1Data()
         {
-            Dev.THPComStatus.IsBusy = true;
+            PublicData.Dev.THPComStatus.IsBusy = true;
             bool isRWSuccess = true;
 
             //读取温度、湿度
@@ -375,9 +374,9 @@ namespace MQDFJ_MB.Communication
             {
                 SetTHPPort();
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP1RegAddr.TH);
                 ushort numRegisters = Convert.ToUInt16(THP1DataQty.TH);
                 if (!SerialPort1.IsOpen)
@@ -396,9 +395,9 @@ namespace MQDFJ_MB.Communication
             try
             {
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP1RegAddr.P);
                 ushort numRegisters = Convert.ToUInt16(THP1DataQty.P);
                 if (!SerialPort1.IsOpen)
@@ -421,14 +420,14 @@ namespace MQDFJ_MB.Communication
                 DataTHP[1] = statusTransDataTH[0];      //湿度
                 DataTHP[2] = statusTransDataP[0];       //大气压力
                 Messenger.Default.Send<ushort[]>(DataTHP, "THPDataUpdated");
-                Dev.THPComStatus.IsFailure = false;
+                PublicData.Dev.THPComStatus.IsFailure = false;
             }
             else
-                Dev.THPComStatus.IsFailure = true;
+                PublicData.Dev.THPComStatus.IsFailure = true;
 
             SerialPort1.Close();
-            Dev.THPComStatus.IsBusy = false;
-            //   Dev.NeedTHP = false;
+            PublicData.Dev.THPComStatus.IsBusy = false;
+            //   PublicData.Dev.NeedTHP = false;
 
             return isRWSuccess;
         }
@@ -438,7 +437,7 @@ namespace MQDFJ_MB.Communication
         /// </summary>
         private bool GetTHP2Data()
         {
-            Dev.THPComStatus.IsBusy = true;
+            PublicData.Dev.THPComStatus.IsBusy = true;
             bool isRWSuccess = true;
 
             //读取温度、湿度
@@ -447,9 +446,9 @@ namespace MQDFJ_MB.Communication
             {
                 SetTHPPort();
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP2RegAddr.TH);
                 ushort numRegisters = Convert.ToUInt16(THP2DataQty.TH);
                 if (!SerialPort1.IsOpen)
@@ -468,9 +467,9 @@ namespace MQDFJ_MB.Communication
             try
             {
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP2RegAddr.P);
                 ushort numRegisters = Convert.ToUInt16(THP2DataQty.P);
                 if (!SerialPort1.IsOpen)
@@ -493,14 +492,14 @@ namespace MQDFJ_MB.Communication
                 DataTHP[1] = statusTransDataTH[1];      //湿度
                 DataTHP[2] = statusTransDataP[0];       //大气压力
                 Messenger.Default.Send<ushort[]>(DataTHP, "THPDatasUpdated");
-                Dev.THPComStatus.IsFailure = false;
+                PublicData.Dev.THPComStatus.IsFailure = false;
             }
             else
-                Dev.THPComStatus.IsFailure = true;
+                PublicData.Dev.THPComStatus.IsFailure = true;
 
             SerialPort1.Close();
-            Dev.THPComStatus.IsBusy = false;
-            //   Dev.NeedTHP = false;
+            PublicData.Dev.THPComStatus.IsBusy = false;
+            //   PublicData.Dev.NeedTHP = false;
 
             return isRWSuccess;
         }
@@ -510,7 +509,7 @@ namespace MQDFJ_MB.Communication
         /// </summary>
         private bool GetTHP3Data()
         {
-            Dev.THPComStatus.IsBusy = true;
+            PublicData.Dev.THPComStatus.IsBusy = true;
             bool isRWSuccess = true;
 
             //读取温度、湿度
@@ -519,9 +518,9 @@ namespace MQDFJ_MB.Communication
             {
                 SetTHPPort();
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP3RegAddr.TH);
                 ushort numRegisters = Convert.ToUInt16(THP3DataQty.TH);
                 if (!SerialPort1.IsOpen)
@@ -540,9 +539,9 @@ namespace MQDFJ_MB.Communication
             try
             {
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.THPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.THPCom.Timeout;
                 //命令数据处理
-                byte slaveId = Convert.ToByte(Dev.THPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.THPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(THP3RegAddr.P);
                 ushort numRegisters = Convert.ToUInt16(THP3DataQty.P);
                 if (!SerialPort1.IsOpen)
@@ -565,14 +564,14 @@ namespace MQDFJ_MB.Communication
                 DataTHP[1] = statusTransDataTH[0];      //湿度
                 DataTHP[2] = statusTransDataP[0];       //大气压力
                 Messenger.Default.Send<ushort[]>(DataTHP, "THPDataUpdated");
-                Dev.THPComStatus.IsFailure = false;
+                PublicData.Dev.THPComStatus.IsFailure = false;
             }
             else
-                Dev.THPComStatus.IsFailure = true;
+                PublicData.Dev.THPComStatus.IsFailure = true;
 
             SerialPort1.Close();
-            Dev.THPComStatus.IsBusy = false;
-            //   Dev.NeedTHP = false;
+            PublicData.Dev.THPComStatus.IsBusy = false;
+            //   PublicData.Dev.NeedTHP = false;
 
             return isRWSuccess;
         }
@@ -613,13 +612,13 @@ namespace MQDFJ_MB.Communication
                         if (!SerialPort1.IsOpen)
                             SerialPort1.Open();
                         IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                        master.Transport.ReadTimeout = Dev.DVPCom.Timeout;
+                        master.Transport.ReadTimeout = PublicData.Dev.DVPCom.Timeout;
 
                         PLCCKCK = Enumerable.Repeat((ushort)0, DataLenCKWrite).ToArray();
                         PLCCKCK[0] = 1;  //PLC为程控模式
-                        if ((!Dev.Valve.DIList[00].IsOn) && Dev.Valve.DIList[14].IsOn)   //风阀无故障且自检完成时
+                        if ((!PublicData.Dev.Valve.DIList[00].IsOn) && PublicData.Dev.Valve.DIList[14].IsOn)   //风阀无故障且自检完成时
                             PLCCKCK[5] = 5;  //换向阀为正压模式
-                        byte slaveId = Convert.ToByte(Dev.DVPCom.Addr);
+                        byte slaveId = Convert.ToByte(PublicData.Dev.DVPCom.Addr);
                         ushort startAddress = Convert.ToUInt16(CommuRegAddr.CKCMD); //定时指令发送至8000
                         ushort[] registerValues = PLCCKCK;
                         master.WriteMultipleRegisters(slaveId, startAddress, registerValues);
@@ -634,9 +633,9 @@ namespace MQDFJ_MB.Communication
 
 
                 //读三合一数据
-                if (ExistTHPOrder&&Dev.IsUseTHP)
+                if (ExistTHPOrder&&PublicData.Dev.IsUseTHP)
                 {
-                    switch (Dev.THPType)
+                    switch (PublicData.Dev.THPType)
                     {
                         //赛通
                         case 1:
@@ -670,15 +669,15 @@ namespace MQDFJ_MB.Communication
                     try
                     {
                         IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                        master.Transport.ReadTimeout = Dev.DVPCom.Timeout;
-                        master.Transport.WriteTimeout = Dev.DVPCom.Timeout;
+                        master.Transport.ReadTimeout = PublicData.Dev.DVPCom.Timeout;
+                        master.Transport.WriteTimeout = PublicData.Dev.DVPCom.Timeout;
                         master.Transport.Retries = 0;
                         master.Transport.RetryOnOldResponseThreshold = 0;
                         master.Transport.SlaveBusyUsesRetryCount = false;
                         master.Transport.WaitToRetryMilliseconds = 0;
 
                         //命令数据处理
-                        byte slaveId = Convert.ToByte(Dev.DVPCom.Addr);
+                        byte slaveId = Convert.ToByte(PublicData.Dev.DVPCom.Addr);
                         ushort startAddress = Convert.ToUInt16(_onceOrderStartAddr); //单次指令发送至8100
                         ushort[] registerValues = OnceOrderUshortValues;
                         master.WriteMultipleRegisters(slaveId, startAddress, registerValues);
@@ -695,10 +694,10 @@ namespace MQDFJ_MB.Communication
                     if (isRWSuccess)
                     {
                         ExistOnceOrder = false;
-                        Dev.DvpComStatus.IsFailure = false;
+                        PublicData.Dev.DvpComStatus.IsFailure = false;
                     }
                     else
-                        Dev.DvpComStatus.IsFailure = true;
+                        PublicData.Dev.DvpComStatus.IsFailure = true;
                 }
 
                 //上次写，此次读
@@ -707,15 +706,15 @@ namespace MQDFJ_MB.Communication
                     try
                     {
                         IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                        master.Transport.ReadTimeout = Dev.DVPCom.Timeout;
-                        master.Transport.WriteTimeout = Dev.DVPCom.Timeout;
+                        master.Transport.ReadTimeout = PublicData.Dev.DVPCom.Timeout;
+                        master.Transport.WriteTimeout = PublicData.Dev.DVPCom.Timeout;
                         master.Transport.Retries = 0;
                         master.Transport.RetryOnOldResponseThreshold = 0;
                         master.Transport.SlaveBusyUsesRetryCount = false;
                         master.Transport.WaitToRetryMilliseconds = 0;
 
                         //命令准备
-                        byte slaveId = Convert.ToByte(Dev.DVPCom.Addr);
+                        byte slaveId = Convert.ToByte(PublicData.Dev.DVPCom.Addr);
                         ushort startAddress = Convert.ToUInt16(CommuRegAddr.YXZT);
                         ushort numRegisters = Convert.ToUInt16(DataLenNeedRead);
                         statusTransData = master.ReadHoldingRegisters(slaveId, startAddress, numRegisters);
@@ -737,10 +736,10 @@ namespace MQDFJ_MB.Communication
                     {
                         //发送状态数据更新消息
                         Messenger.Default.Send<ushort[]>(statusTransData, "PLCDataUpdated");
-                        Dev.DvpComStatus.IsFailure = false;
+                        PublicData.Dev.DvpComStatus.IsFailure = false;
                     }
                     else
-                        Dev.DvpComStatus.IsFailure = true;
+                        PublicData.Dev.DvpComStatus.IsFailure = true;
 
                     //修改上次读写状态为“上次读”
                     IsWModeBefore = false;
@@ -754,26 +753,26 @@ namespace MQDFJ_MB.Communication
                     try
                     {
                         IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                        master.Transport.ReadTimeout = Dev.DVPCom.Timeout;
-                        master.Transport.WriteTimeout = Dev.DVPCom.Timeout;
+                        master.Transport.ReadTimeout = PublicData.Dev.DVPCom.Timeout;
+                        master.Transport.WriteTimeout = PublicData.Dev.DVPCom.Timeout;
                         master.Transport.Retries = 0;
                         master.Transport.RetryOnOldResponseThreshold = 0;
                         master.Transport.SlaveBusyUsesRetryCount = false;
                         master.Transport.WaitToRetryMilliseconds = 0;
 
                         //命令准备
-                        byte slaveId = Convert.ToByte(Dev.DVPCom.Addr);
+                        byte slaveId = Convert.ToByte(PublicData.Dev.DVPCom.Addr);
                         ushort startAddress = Convert.ToUInt16(CommuRegAddr.CKCMD); //定时指令发送至8000
                         ushort[] registerValues = PLCCKCK;
 
                       //  Trace.Write(registerValues[0] + ",  " + registerValues[1] + ",  " + registerValues[2] + ",  " + registerValues[3] + "\r\n");
                         master.WriteMultipleRegisters(slaveId, startAddress, registerValues);
-                        Dev.DvpComStatus.IsFailure = false;
+                        PublicData.Dev.DvpComStatus.IsFailure = false;
                     }
                     catch (Exception)
                     {
                         Messenger.Default.Send<string>("定时写数据异常！", "ComError1");
-                        Dev.DvpComStatus.IsFailure = true;
+                        PublicData.Dev.DvpComStatus.IsFailure = true;
                     }
 
                     //修改上次读写状态为“上次写”
@@ -881,7 +880,7 @@ namespace MQDFJ_MB.Communication
                 if (TestOK)
                 {
                     ComRW_Timer.Tick += new EventHandler(ComRW_Timer_Tick);
-                    ComRW_Timer.Interval = TimeSpan.FromTicks(Dev.DVPCom.PeriodRW);
+                    ComRW_Timer.Interval = TimeSpan.FromTicks(PublicData.Dev.DVPCom.PeriodRW);
                     ComRW_Timer.Start();
                 }
                 else
@@ -906,12 +905,12 @@ namespace MQDFJ_MB.Communication
             {
                 IsBusy = false;
                 //创建串口并配置参数
-                SerialPort1 = new SerialPort(Dev.DVPCom.PhyPortNO)
+                SerialPort1 = new SerialPort(PublicData.Dev.DVPCom.PhyPortNO)
                 {
-                    BaudRate = Dev.DVPCom.BoundRate,
-                    DataBits = Dev.DVPCom.DataBits,
-                    Parity = Dev.DVPCom.Parity,
-                    StopBits = Dev.DVPCom.StopBits
+                    BaudRate = PublicData.Dev.DVPCom.BoundRate,
+                    DataBits = PublicData.Dev.DVPCom.DataBits,
+                    Parity = PublicData.Dev.DVPCom.Parity,
+                    StopBits = PublicData.Dev.DVPCom.StopBits
                 };
                 //打开端口、创建RTU连接
                 try
@@ -940,15 +939,15 @@ namespace MQDFJ_MB.Communication
             try
             {
                 IModbusSerialMaster master = ModbusSerialMaster.CreateRtu(SerialPort1);
-                master.Transport.ReadTimeout = Dev.DVPCom.Timeout;
-                master.Transport.WriteTimeout = Dev.DVPCom.Timeout;
+                master.Transport.ReadTimeout = PublicData.Dev.DVPCom.Timeout;
+                master.Transport.WriteTimeout = PublicData.Dev.DVPCom.Timeout;
                 master.Transport.Retries = 0;
                 master.Transport.RetryOnOldResponseThreshold = 0;
                 master.Transport.SlaveBusyUsesRetryCount = false;
                 master.Transport.WaitToRetryMilliseconds = 0;
 
                 //命令准备
-                byte slaveId = Convert.ToByte(Dev.DVPCom.Addr);
+                byte slaveId = Convert.ToByte(PublicData.Dev.DVPCom.Addr);
                 ushort startAddress = Convert.ToUInt16(CommuRegAddr.YXZT);
                 ushort numRegisters = Convert.ToUInt16(DataLenNeedRead);
                 master.ReadHoldingRegisters(slaveId, startAddress, numRegisters);

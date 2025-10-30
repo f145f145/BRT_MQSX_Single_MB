@@ -1,16 +1,38 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|d:\\code\\brt\\brt_mqsx_single_mb\\model\\exp_mb\\sm_dtfy_cali_presspoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|solutionrelative:model\\exp_mb\\sm_dtfy_cali_presspoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|d:\\code\\brt\\brt_mqsx_single_mb\\model\\exp_mb\\sm_dtfy_cali.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|solutionrelative:model\\exp_mb\\sm_dtfy_cali.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 101,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 135,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SM_DTFY_Cali_PressPoint.cs",
+              "DocumentMoniker": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\Model\\Exp_MB\\SM_DTFY_Cali_PressPoint.cs",
+              "RelativeDocumentMoniker": "Model\\Exp_MB\\SM_DTFY_Cali_PressPoint.cs",
+              "ToolTip": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\Model\\Exp_MB\\SM_DTFY_Cali_PressPoint.cs",
+              "RelativeToolTip": "Model\\Exp_MB\\SM_DTFY_Cali_PressPoint.cs",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAmwGUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T15:43:00.745Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -26,6 +48,25 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 67,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SM_DTFY_Cali.cs",
+              "DocumentMoniker": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\Model\\Exp_MB\\SM_DTFY_Cali.cs",
+              "RelativeDocumentMoniker": "Model\\Exp_MB\\SM_DTFY_Cali.cs",
+              "ToolTip": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\Model\\Exp_MB\\SM_DTFY_Cali.cs",
+              "RelativeToolTip": "Model\\Exp_MB\\SM_DTFY_Cali.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAiwJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T15:41:11.217Z",
+              "EditorCaption": ""
             }
           ]
         },

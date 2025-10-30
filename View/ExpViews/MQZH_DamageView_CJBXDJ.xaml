@@ -119,11 +119,11 @@
                 <Label Content="第3级：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第4级："  Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第5级："  Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_X[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_X[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_X[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_X[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_X[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_X[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_X[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_X[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_X[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_X[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
             </Grid>
         </Border>
 
@@ -147,11 +147,11 @@
                 <Label Content="第3级：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第4级："  Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第5级："  Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Y[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
             </Grid>
         </Border>
 
@@ -175,11 +175,11 @@
                 <Label Content="第3级：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第4级："  Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="第5级："  Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[1],Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[2],Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[3],Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[4],Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_DJ_Z[5],Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
             </Grid>
         </Border>
 

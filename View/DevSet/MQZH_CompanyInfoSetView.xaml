@@ -99,14 +99,14 @@
                 <Label Content="实验室地址：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="实验室邮编：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="实验室电话：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.MQZH_CompanyShortName, Mode=TwoWay}"  Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_CompanyName, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_CompanyAddr, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_ComPostNO, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_CompanyTel, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_LabAddr, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_LabPostNO, Mode=TwoWay}"  Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding Dev.MQZH_LabTel, Mode=TwoWay}"  Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_CompanyShortName, Mode=TwoWay}"  Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_CompanyName, Mode=TwoWay}"  Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_CompanyAddr, Mode=TwoWay}"  Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_ComPostNO, Mode=TwoWay}"  Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_CompanyTel, Mode=TwoWay}"  Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_LabAddr, Mode=TwoWay}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_LabPostNO, Mode=TwoWay}"  Grid.Row="6" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.MQZH_LabTel, Mode=TwoWay}"  Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
             </Grid>
         </Border>
         <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="3" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>

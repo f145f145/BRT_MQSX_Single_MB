@@ -188,11 +188,11 @@ namespace MQDFJ_MB.View
                 MessageBox.Show("文件'" + testDataDir + "' 不存在，请检查文件是否丢失！");
                 tempRet = false;
             }
-            if (!File.Exists(initialDataDir))
-            {
-                MessageBox.Show("文件'" + initialDataDir + "' 不存在，请检查文件是否丢失！");
-                tempRet = false;
-            }
+            //if (!File.Exists(initialDataDir))
+            //{
+            //    MessageBox.Show("文件'" + initialDataDir + "' 不存在，请检查文件是否丢失！");
+            //    tempRet = false;
+            //}
             if (!File.Exists(cjbxRepFrmDir))
             {
                 MessageBox.Show("文件'" + cjbxRepFrmDir + "' 不存在，请检查文件是否丢失！");

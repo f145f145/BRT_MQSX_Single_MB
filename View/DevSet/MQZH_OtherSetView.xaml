@@ -134,7 +134,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="是否载入上次试验：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="启动时载入上次试验" IsChecked ="{Binding Dev.IsLoadLastExpPowerOn,Mode =TwoWay}" ToolTip ="软件启动时自动载入上次退出前的试验，否则载入默认试验"  Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="启动时载入上次试验" IsChecked ="{Binding PublicData.Dev.IsLoadLastExpPowerOn,Mode =TwoWay}" ToolTip ="软件启动时自动载入上次退出前的试验，否则载入默认试验"  Grid.Row="1" Grid.Column="1" />
             </Grid>
         </Border>
         <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="7" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>

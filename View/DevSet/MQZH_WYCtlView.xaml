@@ -135,11 +135,11 @@
                 <Label Content="X轴位移长度系数：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Y轴位移长度系数：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴位移长度系数：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.CJBX_XYPeriod, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.CJBX_ZPeriod, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.LenthRatio_X, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.LenthRatio_Y, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.LenthRatio_Z, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.CJBX_XYPeriod, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.CJBX_ZPeriod, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.LenthRatio_X, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.LenthRatio_Y, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.LenthRatio_Z, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" />
             </Grid>
         </GroupBox>
         <GroupBox Header="位移控制允许偏差" Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -159,9 +159,9 @@
                 <Label Content="X轴定位允许偏差（mm）：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Y轴定位允许偏差（mm）：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴定位允许偏差（mm）：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.PermitErrX, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.PermitErrY, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
-                <TextBox Text="{Binding Dev.PermitErrZ, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.PermitErrX, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.PermitErrY, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" />
+                <TextBox Text="{Binding PublicData.Dev.PermitErrZ, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" />
             </Grid>
         </GroupBox>
         <GroupBox Header="位移控制修正" Grid.Row ="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" BorderBrush="Black">
@@ -184,12 +184,12 @@
                 <Label Content="Y轴向后定位修正（mm）：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴向上定位修正（mm）：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="Z轴向下定位修正（mm）：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding Dev.CorrXRight, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
-                <TextBox Text="{Binding Dev.CorrXLeft, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
-                <TextBox Text="{Binding Dev.CorrYFront, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
-                <TextBox Text="{Binding Dev.CorrYBack, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
-                <TextBox Text="{Binding Dev.CorrZUp, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
-                <TextBox Text="{Binding Dev.CorrZDown, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrXRight, Mode=TwoWay}" Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrXLeft, Mode=TwoWay}" Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrYFront, Mode=TwoWay}" Grid.Row="2" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrYBack, Mode=TwoWay}" Grid.Row="3" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrZUp, Mode=TwoWay}" Grid.Row="4" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
+                <TextBox Text="{Binding PublicData.Dev.CorrZDown, Mode=TwoWay}" Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}" ToolTip="移动距离的修正。正表示移动距离增长，负表示移动距离缩短"/>
             </Grid>
         </GroupBox>
 

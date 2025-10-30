@@ -1,5 +1,6 @@
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.csproj.AssemblyReference.cache
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.csproj.SuggestedBindingRedirects.cache
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.exe.config
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\Authorize\SN_InputView.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DebugPlot\MQZH_SDWYPlotView.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DebugPlot\MQZH_SLLPIDPlotView.g.cs
@@ -39,7 +40,10 @@ D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\Prompt.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\RepAndData\MQZH_CurrentDataView.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\FFStatusView.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\App.g.cs
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_Content.g.cs
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_MarkupCompile.cache
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_MarkupCompile.lref
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\MQDFJ_MB.exe.config
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\MQDFJ_MB.exe
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\MQDFJ_MB.pdb
@@ -188,10 +192,6 @@ D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Memory.xml
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Numerics.Vectors.xml
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Threading.Tasks.Extensions.xml
-D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.exe.config
-D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_Content.g.cs
-D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_MarkupCompile.cache
-D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB_MarkupCompile.lref
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\App.baml
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\Authorize\SN_InputView.baml
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DebugPlot\MQZH_SDWYPlotView.baml

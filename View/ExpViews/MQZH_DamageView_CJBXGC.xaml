@@ -112,7 +112,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="工程X轴检测损坏情况" Margin ="5"  Grid.Row="0" Grid.Column ="0" Grid.ColumnSpan ="2" Style="{StaticResource Label2}" HorizontalAlignment ="Center" Foreground="Black"/>
                 <Label Content="工程检测：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_GC_X,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_GC_X,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
         </Grid>
         </Border>
 
@@ -129,7 +129,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="工程Y轴检测损坏情况" Margin ="5"  Grid.Row="0" Grid.Column ="0" Grid.ColumnSpan ="2" Style="{StaticResource Label2}" HorizontalAlignment ="Center" Foreground="Black"/>
                 <Label Content="工程检测：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_GC_Y,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_GC_Y,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
                 </Grid>
         </Border>
 
@@ -146,7 +146,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="工程Z轴检测损坏情况" Margin ="5"  Grid.Row="0" Grid.Column ="0" Grid.ColumnSpan ="2" Style="{StaticResource Label2}" HorizontalAlignment ="Center" Foreground="Black"/>
                 <Label Content="工程检测：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="有损坏" IsChecked ="{Binding ExpDQ.ExpData_CJBX.IsDamage_GC_Z,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
+                <CheckBox Content="有损坏" IsChecked ="{Binding PublicData.ExpDQ.ExpData_CJBX.IsDamage_GC_Z,Mode =TwoWay}" Grid.Row="1" Grid.Column="1" />
                 </Grid>
         </Border>
 

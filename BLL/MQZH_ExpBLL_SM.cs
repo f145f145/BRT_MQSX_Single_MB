@@ -83,33 +83,33 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                BllDev.IsDeviceBusy = true;
+                PublicData.Dev.IsDeviceBusy = true;
                 //如果当前阶段是默认阶段，则复位状态
-                if ((BllExp.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
+                if ((PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
                 {
                     MessageBox.Show("默认阶段不能做实验");
                     EscStopCompleteExpReset();
                     return;
                 }
                 //等待换向阀状态到位
-                if (PPressTest && (!BllDev.Valve.DIList[5].IsOn))
+                if (PPressTest && (!PublicData.Dev.Valve.DIList[5].IsOn))
                 {
                     PLCCKCMDFrmBLL[3] = 0;
                     return;
                 }
 
                 //开始前提醒
-                if (BllExp.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
-                    (!BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
+                    (!PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
                 {
-                    MessageBox.Show(BllExp.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                    BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
+                    MessageBox.Show(PublicData.ExpDQ.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
                 }
 
                 //自动开启喷淋
-                if (BllDev.IsWithSLL && (StageNOInList != 0) && BllDev.DOList[6].IsOn)
+                if (PublicData.Dev.IsWithSLL && (StageNOInList != 0) && PublicData.Dev.DOList[6].IsOn)
                 {
-                    BllDev.DOList[9].IsOn = true;   //开水泵变频
+                    PublicData.Dev.DOList[9].IsOn = true;   //开水泵变频
                     //喷淋流量计算稳定
                     SMPLFunc();
                     //控制输出
@@ -126,25 +126,25 @@ namespace MQDFJ_MB.BLL
                 }
                 else
                 {
-                    BllDev.DOList[9].IsOn = false;   //关水泵变频
+                    PublicData.Dev.DOList[9].IsOn = false;   //关水泵变频
                     PLCCKCMDFrmBLL[4] = 0;
                 }
 
                 //逐个步骤计算给定值
-                int stepsCount = BllExp.Exp_SM.Stage_DQ.StepList.Count;
+                int stepsCount = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count;
                 for (int i = 0; i < stepsCount; i++)
                 {
                     //数据准备--------------------------------
                     StepNOInList = i;
                     //步骤压力稳定时间
                     if (StageNOInList == 0)
-                        tempStepPressKeepTime = BllDev.KeepingTime_YJY;
+                        tempStepPressKeepTime = PublicData.Dev.KeepingTime_YJY;
                     else if (StageNOInList == 1)
                     {
                         if (StepNOInList == 0)
-                            tempStepPressKeepTime = BllDev.KeepingTime_SMFistStep;
+                            tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMFistStep;
                         else
-                            tempStepPressKeepTime = BllDev.KeepingTime_SMDJ_StepLeft;
+                            tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
                     }
                     //步骤稳压目标值
                     if (StageNOInList == 0)
@@ -153,33 +153,33 @@ namespace MQDFJ_MB.BLL
                         tempType = 21;
                     tempAim = GetAimPress(tempType, StageNOInList, StepNOInList);
                     tempAim = Math.Abs(tempAim);
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].SteadyLoadAimValue = tempAim;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].SteadyLoadAimValue = tempAim;
                     //获取偏差允许范围
                     tempPermitErr = GetErrBig(tempAim);
                     //根据目标压力选择实测值，有中压差，且目标压力小于中压差量程上限的90%时用中压差
-                    if ((BllDev.IsWithCYM) && (tempAim < Math.Abs(BllDev.AIList[13].SingalUpperRange) * 0.9))
-                        tempValueNow = Math.Abs(BllDev.AIList[13].ValueFinal);
+                    if ((PublicData.Dev.IsWithCYM) && (tempAim < Math.Abs(PublicData.Dev.AIList[13].SingalUpperRange) * 0.9))
+                        tempValueNow = Math.Abs(PublicData.Dev.AIList[13].ValueFinal);
                     else
-                        tempValueNow = Math.Abs(BllDev.AIList[14].ValueFinal);
+                        tempValueNow = Math.Abs(PublicData.Dev.AIList[14].ValueFinal);
                     tempGiven = tempValueNow;
 
-                    if (!BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
+                    if (!PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
                     {
                         tempStageComplete = false;
-                        BllExp.Exp_SM.Step_DQ = BllExp.Exp_SM.Stage_DQ.StepList[i];
+                        PublicData.ExpDQ.Exp_SM.Step_DQ = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i];
 
                         //步骤开始前等待
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaitStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaitStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted = true;
                             }
-                            TimeSpan tempSpanWait = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaitStartTime;
-                            if (tempSpanWait.TotalSeconds >= BllExp.Exp_SM.Step_DQ.TimeWaitBefor)
+                            TimeSpan tempSpanWait = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime;
+                            if (tempSpanWait.TotalSeconds >= PublicData.ExpDQ.Exp_SM.Step_DQ.TimeWaitBefor)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
                                 break;
                             }
                             //等待未完成或切换瞬间，保持PID输出
@@ -191,46 +191,46 @@ namespace MQDFJ_MB.BLL
                         }
 
                         //压力加载
-                        if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted = true;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue = tempValueNow;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue = tempValueNow;
                             }
-                            TimeSpan tempSpanUp = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime;
-                            tempGiven = BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue +
-                                        Math.Abs(BllDev.LoadUpDownSpeed) * tempSpanUp.TotalSeconds;
+                            TimeSpan tempSpanUp = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime;
+                            tempGiven = PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue +
+                                        Math.Abs(PublicData.Dev.LoadUpDownSpeed) * tempSpanUp.TotalSeconds;
                             //判断压力给定值增加是否结束
                             if (tempGiven >= tempAim)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted = true;
                                 tempGiven = tempAim;
                             }
                             break;
                         }
 
                         //压力保持
-                        if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted)
                         {
                             tempGiven = tempAim;
                             //判断是否进入压力保持范围
                             if ((tempValueNow >= (tempAim - tempPermitErr)) && (tempValueNow <= (tempAim + tempPermitErr)))
                             {
-                                if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted)
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime = DateTime.Now;
                                 }
-                                TimeSpan tempSpanKeep = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.PressKeeppingTimes = tempSpanKeep.TotalSeconds;
-                                BllExp.Exp_SM.Step_DQ.WaveTimePased = tempSpanKeep.TotalSeconds;
+                                TimeSpan tempSpanKeep = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.PressKeeppingTimes = tempSpanKeep.TotalSeconds;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased = tempSpanKeep.TotalSeconds;
                                 //判定是否完成压力保持
                                 if (tempSpanKeep.TotalSeconds >= tempStepPressKeepTime)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted = true;
-                                    BllExp.Exp_SM.Step_DQ.IsStepCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.IsStepCompleted = true;
                                 }
                             }
                             break;
@@ -248,7 +248,7 @@ namespace MQDFJ_MB.BLL
                 //如果所有步骤均完成，则阶段完成
                 if (tempStageComplete)
                 {
-                    BllExp.Exp_SM.Stage_DQ.CompleteStatus = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus = true;
                     PID_SM1.PID_Param.ControllerEnable = false;
                     PID_SM1.CalculatePID(0);
                 }
@@ -262,7 +262,7 @@ namespace MQDFJ_MB.BLL
                     PID_SM1.CalculatePID(tempErr);
 
                     //准备阶段
-                    if ((StageNOInList == 0) && (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted))
+                    if ((StageNOInList == 0) && (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted))
                     {
                         PID_SM1.PID_Param.ControllerEnable = false;
                         PID_SM1.CalculatePID(0);
@@ -290,36 +290,36 @@ namespace MQDFJ_MB.BLL
                 //Messenger.Default.Send<string>(kpidStr + "  Given:" + aimStr + "  ,U:" + ukStr + "  ,Up:" + ukpStr + "  ,Ui:" + ukiStr + "  ,Ud:" + ukdStr, "PIDinfoMessage");
 
                 //判断是否完成
-                if (BllExp.Exp_SM.Stage_DQ.CompleteStatus)
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus)
                 {
                     //分析是否所有阶段都完成
                     bool tempAllStageComplete = true;
-                    for (int i = 0; i < BllExp.Exp_SM.StageList_SMDJ.Count; i++)
+                    for (int i = 0; i < PublicData.ExpDQ.Exp_SM.StageList_SMDJ.Count; i++)
                     {
-                        if (!BllExp.Exp_SM.StageList_SMDJ[i].CompleteStatus)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMDJ[i].CompleteStatus)
                             tempAllStageComplete = false;
                     }
                     if (tempAllStageComplete)
-                        BllExp.Exp_SM.CompleteStatus = true;
+                        PublicData.ExpDQ.Exp_SM.CompleteStatus = true;
                     //保存进度和数据
-                    for (int i = 0; i < BllExp.Exp_SM.Stage_DQ.StepList.Count; i++)
+                    for (int i = 0; i < PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count; i++)
                     {
-                        BllExp.ExpData_SM.Press_DJ[i] = BllDev.PressSet_SMDJ_WD_Std[i];
+                        PublicData.ExpDQ.ExpData_SM.Press_DJ[i] = PublicData.Dev.PressSet_SMDJ_WD_Std[i];
                     }
                     Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                     App.Current.Dispatcher.Invoke((Action)(() =>
                     {
-                        Messenger.Default.Send<string>(BllExp.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
+                        Messenger.Default.Send<string>(PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
                     }));
                     //非预加压时，打开渗漏水确认窗口
                     if (StageNOInList > 0)
                     {
-                        BllExp.ExpData_SM.SLStatusCopy();
+                        PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                         OpenSMSLDJWin();
                     }
                     Thread.Sleep(2000);
-                    BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                    BllExp.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
                     EscStopCompleteExpReset();
                 }
             }
@@ -346,32 +346,32 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                BllDev.IsDeviceBusy = true;
+                PublicData.Dev.IsDeviceBusy = true;
                 //如果当前阶段是默认阶段，则复位状态
-                if ((BllExp.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
+                if ((PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
                 {
                     MessageBox.Show("默认阶段不能做实验");
                     EscStopCompleteExpReset();
                 }
                 //等待换向阀状态到位
-                if (PPressTest && (!BllDev.Valve.DIList[5].IsOn))
+                if (PPressTest && (!PublicData.Dev.Valve.DIList[5].IsOn))
                 {
                     PLCCKCMDFrmBLL[3] = 0;
                     return;
                 }
 
                 //开始前提醒
-                if (BllExp.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
-                    (!BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
+                    (!PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
                 {
-                    MessageBox.Show(BllExp.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                    BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
+                    MessageBox.Show(PublicData.ExpDQ.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
                 }
 
                 //自动开启喷淋
-                if (BllDev.IsWithSLL && (StageNOInList != 0) && BllDev.DOList[6].IsOn)
+                if (PublicData.Dev.IsWithSLL && (StageNOInList != 0) && PublicData.Dev.DOList[6].IsOn)
                 {
-                    BllDev.DOList[9].IsOn = true;   //开水泵变频
+                    PublicData.Dev.DOList[9].IsOn = true;   //开水泵变频
                     //喷淋流量计算稳定
                     SMPLFunc();
                     //控制输出
@@ -388,17 +388,17 @@ namespace MQDFJ_MB.BLL
                 }
                 else
                 {
-                    BllDev.DOList[9].IsOn = false;   //关水泵变频
+                    PublicData.Dev.DOList[9].IsOn = false;   //关水泵变频
                     PLCCKCMDFrmBLL[4] = 0;
                 }
 
                 //逐个步骤计算给定值
-                int stepsCount = BllExp.Exp_SM.Stage_DQ.StepList.Count;
+                int stepsCount = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count;
                 int startStep = 0;
-                if ((BllDev.PlTime_SMGC_Before < 1) && (StageNOInList != 0))
+                if ((PublicData.Dev.PlTime_SMGC_Before < 1) && (StageNOInList != 0))
                 {
                     startStep = 1;
-                    BllExp.Exp_SM.Stage_DQ.StepList[0].IsStepCompleted = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[0].IsStepCompleted = true;
                 }
                 for (int i = startStep; i < stepsCount; i++)
                 {
@@ -406,46 +406,46 @@ namespace MQDFJ_MB.BLL
                     StepNOInList = i;
                     //步骤压力稳定时间
                     if (StageNOInList == 0)
-                        tempStepPressKeepTime = BllDev.KeepingTime_YJY;
+                        tempStepPressKeepTime = PublicData.Dev.KeepingTime_YJY;
 
                     else if (StageNOInList == 1)
                     {
-                        if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 2)     //无可开启部分，设计压力小于2000
+                        if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 2)     //无可开启部分，设计压力小于2000
                         {
                             if (StepNOInList == 0)
-                                tempStepPressKeepTime = BllDev.PlTime_SMGC_Before;
+                                tempStepPressKeepTime = PublicData.Dev.PlTime_SMGC_Before;
                             else
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_WKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_WKQ;
                         }
-                        else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 3)    //有可开启部分，设计压力均小于2000
+                        else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 3)    //有可开启部分，设计压力均小于2000
                         {
                             if (StepNOInList == 0)
-                                tempStepPressKeepTime = BllDev.PlTime_SMGC_Before;
+                                tempStepPressKeepTime = PublicData.Dev.PlTime_SMGC_Before;
                             else if (StepNOInList == 1)
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_KKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_KKQ;
                             else
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_YKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_YKQ;
                         }
-                        else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 9)        //固定部分设计压力大于2000
+                        else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 9)        //固定部分设计压力大于2000
                         {
                             if (StepNOInList == 0)
-                                tempStepPressKeepTime = BllDev.PlTime_SMGC_Before;
+                                tempStepPressKeepTime = PublicData.Dev.PlTime_SMGC_Before;
                             else if (StepNOInList == 8)
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_YKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_YKQ;
                             else
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMDJ_StepLeft;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
                         }
                         //有可开启部分，且两部分设计压力均大于2000
                         else
                         {
                             if (StepNOInList == 0)
-                                tempStepPressKeepTime = BllDev.PlTime_SMGC_Before;
+                                tempStepPressKeepTime = PublicData.Dev.PlTime_SMGC_Before;
                             else if (StepNOInList == 8)
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_KKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_KKQ;
                             else if (StepNOInList == 9)
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMGC_YKQ;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMGC_YKQ;
                             else
-                                tempStepPressKeepTime = BllDev.KeepingTime_SMDJ_StepLeft;
+                                tempStepPressKeepTime = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
                         }
                     }
                     //步骤稳压目标值
@@ -457,23 +457,23 @@ namespace MQDFJ_MB.BLL
                     else if (StageNOInList == 1)
                     {
                         //水密工程稳定2步23，水密工程稳定3步24，水密工程稳定9步25，水密工程稳定10步26；
-                        if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 2)
+                        if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 2)
                         {
                             tempType = 23;
                             tempAim = GetAimPress(tempType, StageNOInList, StepNOInList);
                         }
                         else if
-                            (BllExp.Exp_SM.Stage_DQ.StepList.Count == 3)
+                            (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 3)
                         {
                             tempType = 24;
                             tempAim = GetAimPress(tempType, StageNOInList, StepNOInList);
                         }
-                        else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 9)
+                        else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 9)
                         {
                             tempType = 25;
                             tempAim = GetAimPress(tempType, StageNOInList, StepNOInList);
                         }
-                        else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 10)
+                        else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 10)
                         {
                             tempType = 26;
                             tempAim = GetAimPress(tempType, StageNOInList, StepNOInList);
@@ -484,30 +484,30 @@ namespace MQDFJ_MB.BLL
                     //获取偏差允许范围
                     tempPermitErr = GetErrBig(tempAim);
                     //根据目标压力选择实测值，有中压差，且目标压力小于中压差量程上限的90%时用中压差
-                    if (BllDev.IsWithCYM && (tempAim < Math.Abs(BllDev.AIList[13].SingalUpperRange) * 0.9))
-                        tempValueNow = Math.Abs(BllDev.AIList[13].ValueFinal);
+                    if (PublicData.Dev.IsWithCYM && (tempAim < Math.Abs(PublicData.Dev.AIList[13].SingalUpperRange) * 0.9))
+                        tempValueNow = Math.Abs(PublicData.Dev.AIList[13].ValueFinal);
                     else
-                        tempValueNow = Math.Abs(BllDev.AIList[14].ValueFinal);
+                        tempValueNow = Math.Abs(PublicData.Dev.AIList[14].ValueFinal);
                     tempGiven = tempValueNow;
 
-                    if (!BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
+                    if (!PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
                     {
                         tempStageComplete = false;
-                        BllExp.Exp_SM.Step_DQ = BllExp.Exp_SM.Stage_DQ.StepList[i];
+                        PublicData.ExpDQ.Exp_SM.Step_DQ = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i];
                  
                         
                         //步骤开始前等待
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaitStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaitStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted = true;
                             }
-                            TimeSpan tempSpanWait = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaitStartTime;
-                            if (tempSpanWait.TotalSeconds >= BllExp.Exp_SM.Step_DQ.TimeWaitBefor)
+                            TimeSpan tempSpanWait = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime;
+                            if (tempSpanWait.TotalSeconds >= PublicData.ExpDQ.Exp_SM.Step_DQ.TimeWaitBefor)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
                                 break;
                             }
                             //等待未完成或切换瞬间，保持PID输出
@@ -519,49 +519,49 @@ namespace MQDFJ_MB.BLL
                         }
 
                         //压力加载
-                        if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted = true;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue = tempValueNow;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue = tempValueNow;
                             }
-                            TimeSpan tempSpanUp = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime;
-                            tempGiven = BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue +
-                                        Math.Abs(BllDev.LoadUpDownSpeed) * tempSpanUp.TotalSeconds;
+                            TimeSpan tempSpanUp = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.UpStartTime;
+                            tempGiven = PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.LoadUpStartValue +
+                                        Math.Abs(PublicData.Dev.LoadUpDownSpeed) * tempSpanUp.TotalSeconds;
                             //判断压力给定值增加是否结束
                             if (tempGiven >= tempAim)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsUpCompleted = true;
                                 tempGiven = tempAim;
                             }
                             break;
                         }
 
                         //压力保持
-                        if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted)
                         {
                             tempGiven = tempAim;
                             //判断是否进入压力保持范围
                             if ((tempValueNow >= (tempAim - tempPermitErr)) && (tempValueNow <= (tempAim + tempPermitErr)))
                             {
-                                if (!BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted)
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime = DateTime.Now;
                                 }
-                                TimeSpan tempSpanKeep = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime;
-                                BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.PressKeeppingTimes = tempSpanKeep.TotalSeconds;
-                                BllExp.Exp_SM.Step_DQ.WaveTimePased = tempSpanKeep.TotalSeconds;
+                                TimeSpan tempSpanKeep = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.KeepPressStartTime;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.PressKeeppingTimes = tempSpanKeep.TotalSeconds;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased = tempSpanKeep.TotalSeconds;
 
-                                Trace.Write("稳定目标" + tempStepPressKeepTime + "当前" + BllExp.Exp_SM.Step_DQ.WaveTimePased + "\r\n");
+                                Trace.Write("稳定目标" + tempStepPressKeepTime + "当前" + PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased + "\r\n");
 
                                 //判定是否完成压力保持
                                 if (tempSpanKeep.TotalSeconds >= tempStepPressKeepTime)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted = true;
-                                    BllExp.Exp_SM.Step_DQ.IsStepCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepSteadyPStatus.IsKeepPressCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.IsStepCompleted = true;
                                 }
                             }
                             break;
@@ -579,7 +579,7 @@ namespace MQDFJ_MB.BLL
                 //如果所有步骤均完成，则阶段完成
                 if (tempStageComplete)
                 {
-                    BllExp.Exp_SM.Stage_DQ.CompleteStatus = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus = true;
                     PID_SM1.PID_Param.ControllerEnable = false;
                     PID_SM1.CalculatePID(0);
                 }
@@ -593,7 +593,7 @@ namespace MQDFJ_MB.BLL
                     PID_SM1.CalculatePID(tempErr);
 
                     //准备阶段
-                    if ((StageNOInList == 0) && (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted))
+                    if ((StageNOInList == 0) && (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted))
                     {
                         PID_SM1.PID_Param.ControllerEnable = false;
                         PID_SM1.CalculatePID(0);
@@ -622,37 +622,37 @@ namespace MQDFJ_MB.BLL
                 //Messenger.Default.Send<string>(kpidStr + "  Given:" + aimStr + "  ,U:" + ukStr + "  ,Up:" + ukpStr + "  ,Ui:" + ukiStr + "  ,Ud:" + ukdStr, "PIDinfoMessage");
 
                 //判断是否完成
-                if (BllExp.Exp_SM.Stage_DQ.CompleteStatus)
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus)
                 {
                     //分析是否所有阶段都完成
                     bool tempAllStageComplete = true;
-                    for (int i = 0; i < BllExp.Exp_SM.StageList_SMGC.Count; i++)
+                    for (int i = 0; i < PublicData.ExpDQ.Exp_SM.StageList_SMGC.Count; i++)
                     {
-                        if (!BllExp.Exp_SM.StageList_SMGC[i].CompleteStatus)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMGC[i].CompleteStatus)
                             tempAllStageComplete = false;
                     }
                     if (tempAllStageComplete)
-                        BllExp.Exp_SM.CompleteStatus = true;
+                        PublicData.ExpDQ.Exp_SM.CompleteStatus = true;
                     //保存进度和数据
-                    if (BllExp.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_GC_J.ToString())
+                    if (PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_GC_J.ToString())
                     {
-                        BllExp.ExpData_SM.Press_GC[0] = BllExp.Exp_SM.SM_GCSJ_KKQ;
-                        BllExp.ExpData_SM.Press_GC[1] = BllExp.Exp_SM.SM_GCSJ_GD;
+                        PublicData.ExpDQ.ExpData_SM.Press_GC[0] = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
+                        PublicData.ExpDQ.ExpData_SM.Press_GC[1] = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                     App.Current.Dispatcher.Invoke((Action)(() =>
                     {
-                        Messenger.Default.Send<string>(BllExp.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
+                        Messenger.Default.Send<string>(PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
                     }));
                     //非预加压时，打开渗漏水确认窗口
                     if (StageNOInList > 0)
                     {
-                        BllExp.ExpData_SM.SLStatusCopy();
+                        PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                         OpenSMSLGCWin();
                     }
                     Thread.Sleep(2000);
-                    BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                    BllExp.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
                     EscStopCompleteExpReset();
                 }
             }
@@ -686,9 +686,9 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                BllDev.IsDeviceBusy = true;
+                PublicData.Dev.IsDeviceBusy = true;
                 //如果当前阶段是默认阶段，则复位状态
-                if ((BllExp.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
+                if ((PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
                 {
                     MessageBox.Show("默认阶段不能做实验");
                     EscStopCompleteExpReset();
@@ -706,18 +706,18 @@ namespace MQDFJ_MB.BLL
                 }
 
                 //阶段开始前提醒
-                if (BllExp.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
-                        (!BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
+                        (!PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
                 {
-                    BllExp.Exp_SM.WaveInfo = "阶段开始前提醒";
-                    MessageBox.Show(BllExp.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                    BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
+                    PublicData.ExpDQ.Exp_SM.WaveInfo = "阶段开始前提醒";
+                    MessageBox.Show(PublicData.ExpDQ.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
                 }
 
                 //自动开启喷淋
-                if (BllDev.IsWithSLL && (StageNOInList != 0) && BllDev.DOList[6].IsOn)
+                if (PublicData.Dev.IsWithSLL && (StageNOInList != 0) && PublicData.Dev.DOList[6].IsOn)
                 {
-                    BllDev.DOList[9].IsOn = true;   //开水泵变频
+                    PublicData.Dev.DOList[9].IsOn = true;   //开水泵变频
                     //喷淋流量计算稳定
                     SMPLFunc();
                     //控制输出
@@ -734,12 +734,12 @@ namespace MQDFJ_MB.BLL
                 }
                 else
                 {
-                    BllDev.DOList[9].IsOn = false;   //关水泵变频
+                    PublicData.Dev.DOList[9].IsOn = false;   //关水泵变频
                     PLCCKCMDFrmBLL[4] = 0;
                 }
 
                 //逐个步骤计算
-                int stepsCount = BllExp.Exp_SM.Stage_DQ.StepList.Count;
+                int stepsCount = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count;
                 for (int i = 0; i < stepsCount; i++)
                 {
                     //-------数据准备-------
@@ -747,48 +747,48 @@ namespace MQDFJ_MB.BLL
                     //步骤稳压目标值
                     tempType = 22;
                     tempAimAvg = GetAimPress(tempType, StageNOInList, StepNOInList);
-                    tempAimL = tempAimAvg * BllDev.LowRatioSM;
-                    tempAimH = tempAimAvg * BllDev.HighRatioSM;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimAverageValue = tempAimAvg;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimHBound = tempAimH;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimLBound = tempAimL;
+                    tempAimL = tempAimAvg * PublicData.Dev.LowRatioSM;
+                    tempAimH = tempAimAvg * PublicData.Dev.HighRatioSM;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimAverageValue = tempAimAvg;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimHBound = tempAimH;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimLBound = tempAimL;
                     //压力准备保持时间
-                    tempTimePreparePressKeep = BllDev.KeepingTime_SMPreparePress;
+                    tempTimePreparePressKeep = PublicData.Dev.KeepingTime_SMPreparePress;
                     //步骤波动持续总时间
                     if (i == 0)
-                        tempTimeWaveDur = BllDev.KeepingTime_SMFistStep;
+                        tempTimeWaveDur = PublicData.Dev.KeepingTime_SMFistStep;
                     else
-                        tempTimeWaveDur = BllDev.KeepingTime_SMDJ_StepLeft;
+                        tempTimeWaveDur = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
 
                     //蝶阀2开阀时间、切换时风机2升速延时占比、切换时风机降频比率
-                    tempPhraseRatioH = BllDev.PhRatioWaveH;
-                    tempPhraseRatioL = BllDev.PhRatioWaveL;
+                    tempPhraseRatioH = PublicData.Dev.PhRatioWaveH;
+                    tempPhraseRatioL = PublicData.Dev.PhRatioWaveL;
                     //获取偏差允许范围
                     tempPermitErrH = GetErrBig(tempAimH);
                     //当前压力
-                    if (BllDev.IsWithCYM)
-                        tempValueNow = BllDev.AIList[13].ValueFinal;
+                    if (PublicData.Dev.IsWithCYM)
+                        tempValueNow = PublicData.Dev.AIList[13].ValueFinal;
                     else
-                        tempValueNow = BllDev.AIList[14].ValueFinal;
+                        tempValueNow = PublicData.Dev.AIList[14].ValueFinal;
 
-                    if (!BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
+                    if (!PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
                     {
                         tempStageComplete = false;
-                        BllExp.Exp_SM.Step_DQ = BllExp.Exp_SM.Stage_DQ.StepList[i];
+                        PublicData.ExpDQ.Exp_SM.Step_DQ = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i];
 
                         //-----步骤开始前等待-----
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "步骤开始前等待";
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaitStarted)
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "步骤开始前等待";
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaitStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted = true;
                             }
-                            TimeSpan tempSpanWait = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaitStartTime;
-                            if (tempSpanWait.TotalSeconds >= BllExp.Exp_SM.Step_DQ.TimeWaitBefor)
+                            TimeSpan tempSpanWait = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime;
+                            if (tempSpanWait.TotalSeconds >= PublicData.ExpDQ.Exp_SM.Step_DQ.TimeWaitBefor)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
                             }
                             //等待未完成或切换瞬间，输出保持不变
                             else
@@ -800,22 +800,22 @@ namespace MQDFJ_MB.BLL
                         //第一级喷水不加压
                         if (StepNOInList == 0)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaveCompleted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted)
                             {
-                                BllExp.Exp_SM.WaveInfo = "第1级喷水";
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "第1级喷水";
 
-                                if (!BllExp.Exp_SM.Step_DQ.IsWaveStarted)
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.IsWaveStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
                                 }
                                 else
                                 {
-                                    double timePased = (DateTime.Now - BllExp.Exp_SM.Step_DQ.WaveStartTime).TotalSeconds;
+                                    double timePased = (DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime).TotalSeconds;
                                     if (timePased >= tempTimeWaveDur)
                                     {
-                                        BllExp.Exp_SM.Step_DQ.IsWaveCompleted = true;
-                                        BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
+                                        PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted = true;
+                                        PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
                                     }
                                 }
                             }
@@ -824,50 +824,50 @@ namespace MQDFJ_MB.BLL
                         }
 
                         #region -----高压压力准备----------
-                        if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted)
                         {
                             //阀门工作模式
                             PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
                             //等待换向阀状态到位
-                            if (PPressTest && (!BllDev.Valve.DIList[5].IsOn))
+                            if (PPressTest && (!PublicData.Dev.Valve.DIList[5].IsOn))
                                 break;
 
                             //高压力加载
-                            if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted)
                             {
-                                BllExp.Exp_SM.WaveInfo = "高压压力上升加载";
-                                if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted)
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力上升加载";
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime = DateTime.Now;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue = tempValueNow;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue = tempValueNow;
                                 }
-                                TimeSpan tempSpanUpH = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime;
-                                tempGivenH = BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue +
-                                            Math.Abs(BllDev.LoadUpDownSpeed) * tempSpanUpH.TotalSeconds;
+                                TimeSpan tempSpanUpH = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime;
+                                tempGivenH = PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue +
+                                            Math.Abs(PublicData.Dev.LoadUpDownSpeed) * tempSpanUpH.TotalSeconds;
                                 //判断压力给定值增加是否结束
                                 if (tempGivenH >= tempAimH)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted = true;
                                     tempGivenH = tempAimH;
                                 }
                             }
                             //高压压力保持
                             else if ((tempValueNow >= (tempAimH - tempPermitErrH)) && (tempValueNow <= (tempAimH + tempPermitErrH)))
                             {
-                                BllExp.Exp_SM.WaveInfo = "高压压力保持";
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力保持";
                                 tempGivenH = tempAimH;
-                                if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted)
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
                                 }
-                                TimeSpan tempSpanKeepH = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.PressKeeppingTimes = tempSpanKeepH.TotalSeconds;
+                                TimeSpan tempSpanKeepH = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.PressKeeppingTimes = tempSpanKeepH.TotalSeconds;
                                 //判定是否完成压力保持
                                 if (tempSpanKeepH.TotalSeconds >= tempTimePreparePressKeep)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted = true;
                                     Trace.Write("第" + i + "级高压目标" + tempAimH + "    高压保持" + tempValueNow + "\r\n");
                                     break;
                                 }
@@ -875,9 +875,9 @@ namespace MQDFJ_MB.BLL
                             else
                             {
                                 tempGivenH = tempAimH;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = false;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
-                                BllExp.Exp_SM.WaveInfo = "高压压力控制";
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = false;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力控制";
                             }
 
                             //高压按PID计算
@@ -909,9 +909,9 @@ namespace MQDFJ_MB.BLL
 
                         #region -----低压压力准备----------
 
-                        if (!BllExp.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "低压压力准备";
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "低压压力准备";
 
                             PLCCKCMDFrmBLL[5] = 7; //换向阀为正压低压准备模式
                             PLCCKCMDFrmBLL[6] = 500; //6、7准备脉冲频率
@@ -920,24 +920,24 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[9] = 0; //0持续旋转
                             //计算设定压力的传输值
                             int pressID;
-                            if (BllDev.IsWithCYM)
+                            if (PublicData.Dev.IsWithCYM)
                                 pressID = 13;
                             else
                                 pressID = 14;
-                            double setDataDouble = BllDev.AIList[pressID].GetY(BllDev.AIList[pressID].SingalLowerRange,
-                                BllDev.AIList[pressID].SingalUpperRange, 0, 4000, tempAimL);
+                            double setDataDouble = PublicData.Dev.AIList[pressID].GetY(PublicData.Dev.AIList[pressID].SingalLowerRange,
+                                PublicData.Dev.AIList[pressID].SingalUpperRange, 0, 4000, tempAimL);
                             PLCCKCMDFrmBLL[10] = Convert.ToUInt16(setDataDouble); //设定压力
 
-                            if (BllDev.IsWithCYM) //压力通道(2大3中)
+                            if (PublicData.Dev.IsWithCYM) //压力通道(2大3中)
                                 PLCCKCMDFrmBLL[11] = 3;
                             else
                                 PLCCKCMDFrmBLL[11] = 2;
 
                             //等待换向阀低压准备到位
-                            if (BllDev.Valve.DIList[7].IsOn)
+                            if (PublicData.Dev.Valve.DIList[7].IsOn)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted = true;
-                                BllExp.Exp_SM.WaveInfo = "低压压力准备完毕";
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "低压压力准备完毕";
                             }
                             else
                                 break;
@@ -948,25 +948,25 @@ namespace MQDFJ_MB.BLL
 
                         #region-----压力切换----------
 
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaveCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "压力波动切换";
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "压力波动切换";
 
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaveStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaveStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted = true;
                             }
 
                             //判断是否达到本步骤波动总时长
-                            TimeSpan tempSpanWaveContinue = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaveStartTime;
-                            BllExp.Exp_SM.Step_DQ.WaveTimePased = tempSpanWaveContinue.TotalSeconds;
+                            TimeSpan tempSpanWaveContinue = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime;
+                            PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased = tempSpanWaveContinue.TotalSeconds;
                             if (tempSpanWaveContinue.TotalSeconds >= tempTimeWaveDur)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaveCompleted = true;
-                                BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
                                 PLCCKCMDFrmBLL[5] = 5; //换向阀为正压模式
-                                BllExp.Exp_SM.WaveInfo = "波动完成";
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "波动完成";
                             }
                             else
                             {
@@ -994,7 +994,7 @@ namespace MQDFJ_MB.BLL
                     tempStageComplete = true;
                 if (tempStageComplete)
                 {
-                    BllExp.Exp_SM.Stage_DQ.CompleteStatus = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus = true;
                     PID_SM1.PID_Param.ControllerEnable = false;
                     PID_SM1.CalculatePID(0);
                     WavePhOut = PID_SM1.UK;
@@ -1016,40 +1016,40 @@ namespace MQDFJ_MB.BLL
                 //Messenger.Default.Send<string>(kpidStr + "  GivenL:" + aimStr + "  ,U:" + ukStr + "  ,Up:" + ukpStr + "  ,Ui:" + ukiStr + "  ,Ud:" + ukdStr, "PIDinfoMessage");
 
                 //判断是否完成
-                if (BllExp.Exp_SM.Stage_DQ.CompleteStatus)
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus)
                 {
                     //分析是否所有阶段都完成
                     bool tempAllStageComplete = true;
-                    for (int i = 0; i < BllExp.Exp_SM.StageList_SMDJ.Count; i++)
+                    for (int i = 0; i < PublicData.ExpDQ.Exp_SM.StageList_SMDJ.Count; i++)
                     {
-                        if (!BllExp.Exp_SM.StageList_SMDJ[i].CompleteStatus)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMDJ[i].CompleteStatus)
                             tempAllStageComplete = false;
                     }
                     if (tempAllStageComplete)
-                        BllExp.Exp_SM.CompleteStatus = true;
+                        PublicData.ExpDQ.Exp_SM.CompleteStatus = true;
                     //保存进度和数据
-                    if (BllExp.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_DJ_J.ToString())
+                    if (PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_DJ_J.ToString())
                     {
-                        for (int i = 0; i < BllExp.Exp_SM.Stage_DQ.StepList.Count; i++)
+                        for (int i = 0; i < PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count; i++)
                         {
-                            BllExp.ExpData_SM.Press_DJ[i] = BllDev.PressSet_SMDJ_BDPJ_Std[i];
+                            PublicData.ExpDQ.ExpData_SM.Press_DJ[i] = PublicData.Dev.PressSet_SMDJ_BDPJ_Std[i];
                         }
                     }
                     Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                     App.Current.Dispatcher.Invoke((Action)(() =>
                     {
-                        Messenger.Default.Send<string>(BllExp.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
+                        Messenger.Default.Send<string>(PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
                     }));
 
                     //非预加压时，打开渗漏水确认窗口
                     if (StageNOInList > 0)
                     {
-                        BllExp.ExpData_SM.SLStatusCopy();
+                        PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                         OpenSMSLDJWin();
                     }
                     Thread.Sleep(2000);
-                    BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                    BllExp.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
                     EscStopCompleteExpReset();
                 }
             }
@@ -1083,9 +1083,9 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                BllDev.IsDeviceBusy = true;
+                PublicData.Dev.IsDeviceBusy = true;
                 //如果当前阶段是默认阶段，则复位状态
-                if ((BllExp.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
+                if ((PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == "99") || (StageNOInList == -1))
                 {
                     MessageBox.Show("默认阶段不能做实验");
                     EscStopCompleteExpReset();
@@ -1103,18 +1103,18 @@ namespace MQDFJ_MB.BLL
                 }
 
                 //阶段开始前提醒
-                if (BllExp.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
-                        (!BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.IsNeedTipsBefore &&
+                        (!PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete))
                 {
-                    BllExp.Exp_SM.WaveInfo = "阶段开始前提醒";
-                    MessageBox.Show(BllExp.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                    BllExp.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
+                    PublicData.ExpDQ.Exp_SM.WaveInfo = "阶段开始前提醒";
+                    MessageBox.Show(PublicData.ExpDQ.Exp_SM.Stage_DQ.StringTipsBefore, "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.IsTipsBeforeComplete = true;
                 }
 
                 //自动开启喷淋
-                if (BllDev.IsWithSLL && (StageNOInList != 0) && BllDev.DOList[6].IsOn)
+                if (PublicData.Dev.IsWithSLL && (StageNOInList != 0) && PublicData.Dev.DOList[6].IsOn)
                 {
-                    BllDev.DOList[9].IsOn = true;   //开水泵变频
+                    PublicData.Dev.DOList[9].IsOn = true;   //开水泵变频
                     //喷淋流量计算稳定
                     SMPLFunc();
                     //控制输出
@@ -1131,17 +1131,17 @@ namespace MQDFJ_MB.BLL
                 }
                 else
                 {
-                    BllDev.DOList[9].IsOn = false;   //关水泵变频
+                    PublicData.Dev.DOList[9].IsOn = false;   //关水泵变频
                     PLCCKCMDFrmBLL[4] = 0;
                 }
 
                 //逐个步骤计算
-                int stepsCount = BllExp.Exp_SM.Stage_DQ.StepList.Count;
+                int stepsCount = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count;
                 int startStep = 0;
-                if ((BllDev.PlTime_SMGC_Before < 1) && (StageNOInList != 0))
+                if ((PublicData.Dev.PlTime_SMGC_Before < 1) && (StageNOInList != 0))
                 {
                     startStep = 1;
-                    BllExp.Exp_SM.Stage_DQ.StepList[0].IsStepCompleted = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[0].IsStepCompleted = true;
                 }
                 for (int i = startStep; i < stepsCount; i++)
                 {
@@ -1149,102 +1149,102 @@ namespace MQDFJ_MB.BLL
                     StepNOInList = i;
                     //步骤稳压目标值
                     //水密工程波动2步27，水密工程波动3步28，水密工程波动9步29，水密工程波动10步30；
-                    if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 2)
+                    if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 2)
                     {
                         tempType = 27;
                         tempAimAvg = GetAimPress(tempType, StageNOInList, StepNOInList);
                     }
                     else if
-                        (BllExp.Exp_SM.Stage_DQ.StepList.Count == 3)
+                        (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 3)
                     {
                         tempType = 28;
                         tempAimAvg = GetAimPress(tempType, StageNOInList, StepNOInList);
                     }
-                    else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 9)
+                    else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 9)
                     {
                         tempType = 29;
                         tempAimAvg = GetAimPress(tempType, StageNOInList, StepNOInList);
                     }
-                    else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 10)
+                    else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 10)
                     {
                         tempType = 30;
                         tempAimAvg = GetAimPress(tempType, StageNOInList, StepNOInList);
                     }
-                    tempAimL = tempAimAvg * BllDev.LowRatioSM;
-                    tempAimH = tempAimAvg * BllDev.HighRatioSM;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimAverageValue = tempAimAvg;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimHBound = tempAimH;
-                    BllExp.Exp_SM.Stage_DQ.StepList[i].WaveAimLBound = tempAimL;
+                    tempAimL = tempAimAvg * PublicData.Dev.LowRatioSM;
+                    tempAimH = tempAimAvg * PublicData.Dev.HighRatioSM;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimAverageValue = tempAimAvg;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimHBound = tempAimH;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].WaveAimLBound = tempAimL;
                     //压力准备保持时间
-                    tempTimePreparePressKeep = BllDev.KeepingTime_SMPreparePress;
+                    tempTimePreparePressKeep = PublicData.Dev.KeepingTime_SMPreparePress;
                     //步骤波动持续总时间
-                    if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 2)     //无可开启部分，设计压力小于2000
+                    if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 2)     //无可开启部分，设计压力小于2000
                     {
                         if (StepNOInList == 0)
-                            tempTimeWaveDur = BllDev.PlTime_SMGC_Before;
+                            tempTimeWaveDur = PublicData.Dev.PlTime_SMGC_Before;
                         else
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_WKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_WKQ;
                     }
-                    else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 3)    //有可开启部分，设计压力均小于2000
+                    else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 3)    //有可开启部分，设计压力均小于2000
                     {
                         if (StepNOInList == 0)
-                            tempTimeWaveDur = BllDev.PlTime_SMGC_Before;
+                            tempTimeWaveDur = PublicData.Dev.PlTime_SMGC_Before;
                         else if (StepNOInList == 1)
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_KKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_KKQ;
                         else
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_YKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_YKQ;
                     }
-                    else if (BllExp.Exp_SM.Stage_DQ.StepList.Count == 9)        //固定部分设计压力大于2000
+                    else if (PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList.Count == 9)        //固定部分设计压力大于2000
                     {
                         if (StepNOInList == 0)
-                            tempTimeWaveDur = BllDev.PlTime_SMGC_Before;
+                            tempTimeWaveDur = PublicData.Dev.PlTime_SMGC_Before;
                         else if (StepNOInList == 8)
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_YKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_YKQ;
                         else
-                            tempTimeWaveDur = BllDev.KeepingTime_SMDJ_StepLeft;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
                     }
                     //有可开启部分，且两部分设计压力均大于2000
                     else
                     {
                         if (StepNOInList == 0)
-                            tempTimeWaveDur = BllDev.PlTime_SMGC_Before;
+                            tempTimeWaveDur = PublicData.Dev.PlTime_SMGC_Before;
                         else if (StepNOInList == 8)
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_KKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_KKQ;
                         else if (StepNOInList == 9)
-                            tempTimeWaveDur = BllDev.KeepingTime_SMGC_YKQ;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMGC_YKQ;
                         else
-                            tempTimeWaveDur = BllDev.KeepingTime_SMDJ_StepLeft;
+                            tempTimeWaveDur = PublicData.Dev.KeepingTime_SMDJ_StepLeft;
                     }
 
                     //切换时风机调频比率
-                    tempPhraseRatioH = BllDev.PhRatioWaveH;
-                    tempPhraseRatioL = BllDev.PhRatioWaveL;
+                    tempPhraseRatioH = PublicData.Dev.PhRatioWaveH;
+                    tempPhraseRatioL = PublicData.Dev.PhRatioWaveL;
                     //获取偏差允许范围
                     tempPermitErrH = GetErrBig(tempAimH);
                     //当前压力
-                    if (BllDev.IsWithCYM)
-                        tempValueNow = BllDev.AIList[13].ValueFinal;
+                    if (PublicData.Dev.IsWithCYM)
+                        tempValueNow = PublicData.Dev.AIList[13].ValueFinal;
                     else
-                        tempValueNow = BllDev.AIList[14].ValueFinal;
+                        tempValueNow = PublicData.Dev.AIList[14].ValueFinal;
 
-                    if (!BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
+                    if (!PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted)
                     {
                         tempStageComplete = false;
-                        BllExp.Exp_SM.Step_DQ = BllExp.Exp_SM.Stage_DQ.StepList[i];
+                        PublicData.ExpDQ.Exp_SM.Step_DQ = PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i];
 
                         //-----步骤开始前等待-----
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "步骤开始前等待";
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaitStarted)
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "步骤开始前等待";
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaitStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitStarted = true;
                             }
-                            TimeSpan tempSpanWait = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaitStartTime;
-                            if (tempSpanWait.TotalSeconds >= BllExp.Exp_SM.Step_DQ.TimeWaitBefor)
+                            TimeSpan tempSpanWait = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaitStartTime;
+                            if (tempSpanWait.TotalSeconds >= PublicData.ExpDQ.Exp_SM.Step_DQ.TimeWaitBefor)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaitBeforCompleted = true;
                             }
                             //等待未完成或切换瞬间，输出保持不变
                             else
@@ -1256,21 +1256,21 @@ namespace MQDFJ_MB.BLL
                         //第一级喷水不加压
                         if (StepNOInList == 0)
                         {
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaveCompleted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted)
                             {
-                                BllExp.Exp_SM.WaveInfo = "第一阶段喷水";
-                                if (!BllExp.Exp_SM.Step_DQ.IsWaveStarted)
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "第一阶段喷水";
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.IsWaveStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
                                 }
                                 else
                                 {
-                                    double timePased = (DateTime.Now - BllExp.Exp_SM.Step_DQ.WaveStartTime).TotalSeconds;
+                                    double timePased = (DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime).TotalSeconds;
                                     if (timePased >= tempTimeWaveDur)
                                     {
-                                        BllExp.Exp_SM.Step_DQ.IsWaveCompleted = true;
-                                        BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
+                                        PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted = true;
+                                        PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
                                     }
                                 }
                             }
@@ -1279,50 +1279,50 @@ namespace MQDFJ_MB.BLL
                         }
 
                         #region -----高压压力准备----------
-                        if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted)
                         {
                             //阀门工作模式
                             PLCCKCMDFrmBLL[5] = 5;  //换向阀为正压模式
                             //等待换向阀状态到位
-                            if (PPressTest && (!BllDev.Valve.DIList[5].IsOn))
+                            if (PPressTest && (!PublicData.Dev.Valve.DIList[5].IsOn))
                                 break;
 
                             //高压力加载
-                            if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted)
                             {
-                                BllExp.Exp_SM.WaveInfo = "高压压力上升加载";
-                                if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted)
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力上升加载";
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime = DateTime.Now;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue = tempValueNow;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue = tempValueNow;
                                 }
-                                TimeSpan tempSpanUpH = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime;
-                                tempGivenH = BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue +
-                                            Math.Abs(BllDev.LoadUpDownSpeed) * tempSpanUpH.TotalSeconds;
+                                TimeSpan tempSpanUpH = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.UpStartTime;
+                                tempGivenH = PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.LoadUpStartValue +
+                                            Math.Abs(PublicData.Dev.LoadUpDownSpeed) * tempSpanUpH.TotalSeconds;
                                 //判断压力给定值增加是否结束
                                 if (tempGivenH >= tempAimH)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsUpCompleted = true;
                                     tempGivenH = tempAimH;
                                 }
                             }
                             //高压压力保持
                             else if ((tempValueNow >= (tempAimH - tempPermitErrH)) && (tempValueNow <= (tempAimH + tempPermitErrH)))
                             {
-                                BllExp.Exp_SM.WaveInfo = "高压压力保持";
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力保持";
                                 tempGivenH = tempAimH;
-                                if (!BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted)
+                                if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = true;
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
                                 }
-                                TimeSpan tempSpanKeepH = DateTime.Now - BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.PressKeeppingTimes = tempSpanKeepH.TotalSeconds;
+                                TimeSpan tempSpanKeepH = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.PressKeeppingTimes = tempSpanKeepH.TotalSeconds;
                                 //判定是否完成压力保持
                                 if (tempSpanKeepH.TotalSeconds >= tempTimePreparePressKeep)
                                 {
-                                    BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted = true;
+                                    PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressCompleted = true;
                                     Trace.Write("第" + i + "级高压目标" + tempAimH + "    高压保持" + tempValueNow + "\r\n");
                                     break;
                                 }
@@ -1330,9 +1330,9 @@ namespace MQDFJ_MB.BLL
                             else
                             {
                                 tempGivenH = tempAimH;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = false;
-                                BllExp.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
-                                BllExp.Exp_SM.WaveInfo = "高压压力控制";
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.IsKeepPressStarted = false;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePUpStatus.KeepPressStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "高压压力控制";
                             }
 
                             //高压按PID计算
@@ -1364,9 +1364,9 @@ namespace MQDFJ_MB.BLL
 
                         #region -----低压压力准备----------
 
-                        if (!BllExp.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "低压压力准备";
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "低压压力准备";
 
                             //阀门工作模式
                             PLCCKCMDFrmBLL[5] = 7; //换向阀为正压模式
@@ -1376,24 +1376,24 @@ namespace MQDFJ_MB.BLL
                             PLCCKCMDFrmBLL[9] = 0; //0持续旋转
                             //计算设定压力的传输值
                             int pressID;
-                            if (BllDev.IsWithCYM)
+                            if (PublicData.Dev.IsWithCYM)
                                 pressID = 13;
                             else
                                 pressID = 14;
-                            double setDataDouble = BllDev.AIList[pressID].GetY(BllDev.AIList[pressID].SingalLowerRange,
-                                BllDev.AIList[pressID].SingalUpperRange, 0, 4000, tempAimL);
+                            double setDataDouble = PublicData.Dev.AIList[pressID].GetY(PublicData.Dev.AIList[pressID].SingalLowerRange,
+                                PublicData.Dev.AIList[pressID].SingalUpperRange, 0, 4000, tempAimL);
                             PLCCKCMDFrmBLL[10] = Convert.ToUInt16(setDataDouble); //设定压力
 
-                            if (BllDev.IsWithCYM) //压力通道(2大3中)
+                            if (PublicData.Dev.IsWithCYM) //压力通道(2大3中)
                                 PLCCKCMDFrmBLL[11] = 3;
                             else
                                 PLCCKCMDFrmBLL[11] = 2;
 
                             //等待换向阀低压准备到位
-                            if (BllDev.Valve.DIList[7].IsOn)
+                            if (PublicData.Dev.Valve.DIList[7].IsOn)
                             {
-                                BllExp.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted = true;
-                                BllExp.Exp_SM.WaveInfo = "低压压力准备完毕";
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.StepWavePLowStatus.IsKeepPressCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "低压压力准备完毕";
                             }
                             else
                                 break;
@@ -1404,25 +1404,25 @@ namespace MQDFJ_MB.BLL
 
                         #region-----压力切换----------
 
-                        if (!BllExp.Exp_SM.Step_DQ.IsWaveCompleted)
+                        if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted)
                         {
-                            BllExp.Exp_SM.WaveInfo = "压力波动切换";
+                            PublicData.ExpDQ.Exp_SM.WaveInfo = "压力波动切换";
 
-                            if (!BllExp.Exp_SM.Step_DQ.IsWaveStarted)
+                            if (!PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted)
                             {
-                                BllExp.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
-                                BllExp.Exp_SM.Step_DQ.IsWaveStarted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime = DateTime.Now;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveStarted = true;
                             }
 
                             //判断是否达到本步骤波动总时长
-                            TimeSpan tempSpanWaveContinue = DateTime.Now - BllExp.Exp_SM.Step_DQ.WaveStartTime;
-                            BllExp.Exp_SM.Step_DQ.WaveTimePased = tempSpanWaveContinue.TotalSeconds;
+                            TimeSpan tempSpanWaveContinue = DateTime.Now - PublicData.ExpDQ.Exp_SM.Step_DQ.WaveStartTime;
+                            PublicData.ExpDQ.Exp_SM.Step_DQ.WaveTimePased = tempSpanWaveContinue.TotalSeconds;
                             if (tempSpanWaveContinue.TotalSeconds >= tempTimeWaveDur)
                             {
-                                BllExp.Exp_SM.Step_DQ.IsWaveCompleted = true;
-                                BllExp.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Step_DQ.IsWaveCompleted = true;
+                                PublicData.ExpDQ.Exp_SM.Stage_DQ.StepList[i].IsStepCompleted = true;
                                 PLCCKCMDFrmBLL[5] = 5; //换向阀为正压模式
-                                BllExp.Exp_SM.WaveInfo = "波动完成";
+                                PublicData.ExpDQ.Exp_SM.WaveInfo = "波动完成";
                             }
                             else
                             {
@@ -1450,7 +1450,7 @@ namespace MQDFJ_MB.BLL
                     tempStageComplete = true;
                 if (tempStageComplete)
                 {
-                    BllExp.Exp_SM.Stage_DQ.CompleteStatus = true;
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus = true;
                     PID_SM1.PID_Param.ControllerEnable = false;
                     PID_SM1.CalculatePID(0);
                     WavePhOut= PID_SM1.UK;
@@ -1472,38 +1472,38 @@ namespace MQDFJ_MB.BLL
                 //Messenger.Default.Send<string>(kpidStr + "  GivenL:" + aimStr + "  ,U:" + ukStr + "  ,Up:" + ukpStr + "  ,Ui:" + ukiStr + "  ,Ud:" + ukdStr, "PIDinfoMessage");
 
                 //判断是否完成
-                if (BllExp.Exp_SM.Stage_DQ.CompleteStatus)
+                if (PublicData.ExpDQ.Exp_SM.Stage_DQ.CompleteStatus)
                 {
                     //分析是否所有阶段都完成
                     bool tempAllStageComplete = true;
-                    for (int i = 0; i < BllExp.Exp_SM.StageList_SMGC.Count; i++)
+                    for (int i = 0; i < PublicData.ExpDQ.Exp_SM.StageList_SMGC.Count; i++)
                     {
-                        if (!BllExp.Exp_SM.StageList_SMGC[i].CompleteStatus)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMGC[i].CompleteStatus)
                             tempAllStageComplete = false;
                     }
                     if (tempAllStageComplete)
-                        BllExp.Exp_SM.CompleteStatus = true;
+                        PublicData.ExpDQ.Exp_SM.CompleteStatus = true;
                     //保存进度和数据
-                    if (BllExp.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_GC_J.ToString())
+                    if (PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_NO == TestStageType.SM_GC_J.ToString())
                     {
-                        BllExp.ExpData_SM.Press_GC[0] = BllExp.Exp_SM.SM_GCSJ_KKQ;
-                        BllExp.ExpData_SM.Press_GC[1] = BllExp.Exp_SM.SM_GCSJ_GD;
+                        PublicData.ExpDQ.ExpData_SM.Press_GC[0] = PublicData.ExpDQ.Exp_SM.SM_GCSJ_KKQ;
+                        PublicData.ExpDQ.ExpData_SM.Press_GC[1] = PublicData.ExpDQ.Exp_SM.SM_GCSJ_GD;
                     }
                     Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                     App.Current.Dispatcher.Invoke((Action)(() =>
                     {
-                        Messenger.Default.Send<string>(BllExp.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
+                        Messenger.Default.Send<string>(PublicData.ExpDQ.Exp_SM.Stage_DQ.Stage_Name + "已完成！", "OpenPrompt");
                     }));
 
                     //非预加压时，打开渗漏水确认窗口
                     if (StageNOInList > 0)
                     {
-                        BllExp.ExpData_SM.SLStatusCopy();
+                        PublicData.ExpDQ.ExpData_SM.SLStatusCopy();
                         OpenSMSLGCWin();
                     }
                     Thread.Sleep(2000);
-                    BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                    BllExp.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                    PublicData.ExpDQ.Exp_SM.Step_DQ = new MQZH_StepModel_QSM();
                     EscStopCompleteExpReset();
                 }
             }
@@ -1526,8 +1526,8 @@ namespace MQDFJ_MB.BLL
 
             try
             {
-                tempValueNow = BllDev.SLL;          //当前值为当前水流量
-                tempGiven = BllExp.Exp_SM.SM_SLL;   //给定值为水密喷淋设定值
+                tempValueNow = PublicData.Dev.SLL;          //当前值为当前水流量
+                tempGiven = PublicData.ExpDQ.Exp_SM.SM_SLL;   //给定值为水密喷淋设定值
                 //逐个步骤计算给定值
                 tempErr = tempGiven - tempValueNow;
                 PID_ParamModel tempPIDParam = GePIDParam(5, tempGiven);
@@ -1568,26 +1568,26 @@ namespace MQDFJ_MB.BLL
                 if (msg == 1102)
                 {
                     //预加压
-                    if (BllExp.Exp_SM.BeenCheckedDJ[0])
+                    if (PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[0])
                     {
-                        if (!BllExp.Exp_SM.StageList_SMDJ[0].NeedTest)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMDJ[0].NeedTest)
                         {
-                            MessageBox.Show(BllExp.Exp_SM.StageList_SMDJ[0].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                            BllExp.Exp_SM.BeenCheckedDJ[0] = false;
+                            MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMDJ[0].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                            PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[0] = false;
                             return;
                         }
-                        if (BllExp.Exp_SM.StageList_SMDJ[0].CompleteStatus)
+                        if (PublicData.ExpDQ.Exp_SM.StageList_SMDJ[0].CompleteStatus)
                         {
-                            MessageBoxResult msgBoxResult = MessageBox.Show(BllExp.Exp_SM.StageList_SMDJ[0].Stage_Name + "已完成检测，是否重新检测？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
+                            MessageBoxResult msgBoxResult = MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMDJ[0].Stage_Name + "已完成检测，是否重新检测？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
                             if (msgBoxResult == MessageBoxResult.Yes)
                             {
                                 ExistSMWDDJExp = true;
                                 StageNOInList = 0;
-                                BllExp.Exp_SM.SMDJ_YStageInit();
+                                PublicData.ExpDQ.Exp_SM.SMDJ_YStageInit();
                             }
                             if (msgBoxResult == MessageBoxResult.No)
                             {
-                                BllExp.Exp_SM.BeenCheckedDJ[0] = false;
+                                PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[0] = false;
                             }
                         }
                         else
@@ -1597,35 +1597,35 @@ namespace MQDFJ_MB.BLL
                         }
                         if (ExistSMWDDJExp)
                         {
-                            BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                            BllExp.Exp_SM.Stage_DQ = BllExp.Exp_SM.StageList_SMDJ[StageNOInList];
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = PublicData.ExpDQ.Exp_SM.StageList_SMDJ[StageNOInList];
                             Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                             return;
                         }
                     }
 
                     //检测加压
-                    if (BllExp.Exp_SM.BeenCheckedDJ[1])
+                    if (PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[1])
                     {
                         bool tempExist = false;
-                        if (!BllExp.Exp_SM.StageList_SMDJ[1].NeedTest)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMDJ[1].NeedTest)
                         {
-                            MessageBox.Show(BllExp.Exp_SM.StageList_SMDJ[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                            BllExp.Exp_SM.BeenCheckedDJ[1] = false;
+                            MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMDJ[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                            PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[1] = false;
                             return;
                         }
-                        if (BllExp.Exp_SM.StageList_SMDJ[1].CompleteStatus)
+                        if (PublicData.ExpDQ.Exp_SM.StageList_SMDJ[1].CompleteStatus)
                         {
-                            MessageBoxResult msgBoxResult = MessageBox.Show(BllExp.Exp_SM.StageList_SMDJ[1].Stage_Name + "，将覆盖已完成的数据，是否覆盖？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
+                            MessageBoxResult msgBoxResult = MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMDJ[1].Stage_Name + "，将覆盖已完成的数据，是否覆盖？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
                             if (msgBoxResult == MessageBoxResult.Yes)
                             {
-                                BllExp.Exp_SM.SMDJ_JStageInit();
+                                PublicData.ExpDQ.Exp_SM.SMDJ_JStageInit();
                                 StageNOInList = 1;
                                 tempExist = true;
                             }
                             if (msgBoxResult == MessageBoxResult.No)
                             {
-                                BllExp.Exp_SM.BeenCheckedDJ[1] = false;
+                                PublicData.ExpDQ.Exp_SM.BeenCheckedDJ[1] = false;
                             }
                         }
                         else
@@ -1635,10 +1635,10 @@ namespace MQDFJ_MB.BLL
                         }
                         if (tempExist)
                         {
-                            BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                            BllExp.Exp_SM.Stage_DQ = BllExp.Exp_SM.StageList_SMDJ[StageNOInList];
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = PublicData.ExpDQ.Exp_SM.StageList_SMDJ[StageNOInList];
                             //分析是稳定或波动
-                            if (BllExp.Exp_SM.WaveType_SM)
+                            if (PublicData.ExpDQ.Exp_SM.WaveType_SM)
                             {
                                 ExistSMWDDJExp = false;
                                 ExistSMBDDJExp = true;
@@ -1657,87 +1657,87 @@ namespace MQDFJ_MB.BLL
                 else if (msg == 1112)
                 {
                     //预加压
-                    if (BllExp.Exp_SM.BeenCheckedGC[0])
+                    if (PublicData.ExpDQ.Exp_SM.BeenCheckedGC[0])
                     {
-                        if (!BllExp.Exp_SM.StageList_SMGC[0].NeedTest)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMGC[0].NeedTest)
                         {
-                            MessageBox.Show(BllExp.Exp_SM.StageList_SMGC[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                            BllExp.Exp_SM.BeenCheckedGC[0] = false;
+                            MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMGC[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                            PublicData.ExpDQ.Exp_SM.BeenCheckedGC[0] = false;
                             return;
                         }
-                        if (BllExp.Exp_SM.StageList_SMGC[0].CompleteStatus)
+                        if (PublicData.ExpDQ.Exp_SM.StageList_SMGC[0].CompleteStatus)
                         {
-                            MessageBoxResult msgBoxResult = MessageBox.Show(BllExp.Exp_SM.StageList_SMGC[0].Stage_Name + "已完成检测，是否重新检测？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
+                            MessageBoxResult msgBoxResult = MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMGC[0].Stage_Name + "已完成检测，是否重新检测？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
                             if (msgBoxResult == MessageBoxResult.Yes)
                             {
                                 ExistSMWDGCExp = true;
                                 StageNOInList = 0;
-                                BllExp.Exp_SM.SMGC_YStageInit();
+                                PublicData.ExpDQ.Exp_SM.SMGC_YStageInit();
                             }
                             if (msgBoxResult == MessageBoxResult.No)
                             {
-                                BllExp.Exp_SM.BeenCheckedGC[0] = false;
+                                PublicData.ExpDQ.Exp_SM.BeenCheckedGC[0] = false;
                             }
                         }
                         else
                         {
                             ExistSMWDGCExp = true;
                             StageNOInList = 0;
-                            BllExp.Exp_SM.SMGC_YStageInit();
+                            PublicData.ExpDQ.Exp_SM.SMGC_YStageInit();
                         }
                         if (ExistSMWDGCExp)
                         {
-                            BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                            BllExp.Exp_SM.Stage_DQ = BllExp.Exp_SM.StageList_SMGC[StageNOInList];
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = PublicData.ExpDQ.Exp_SM.StageList_SMGC[StageNOInList];
                         }
                         Messenger.Default.Send<string>("SaveSMStatusAndData", "SaveExpMessage");
                     }
 
                     //检测加压
-                    if (BllExp.Exp_SM.BeenCheckedGC[1])
+                    if (PublicData.ExpDQ.Exp_SM.BeenCheckedGC[1])
                     {
                         bool tempExist = false;
-                        if (!BllExp.Exp_SM.StageList_SMGC[1].NeedTest)
+                        if (!PublicData.ExpDQ.Exp_SM.StageList_SMGC[1].NeedTest)
                         {
-                            MessageBox.Show(BllExp.Exp_SM.StageList_SMGC[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
-                            BllExp.Exp_SM.BeenCheckedGC[1] = false;
+                            MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMGC[1].Stage_Name + "无需检测！", "提示", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
+                            PublicData.ExpDQ.Exp_SM.BeenCheckedGC[1] = false;
                             return;
                         }
-                        if (BllExp.Exp_SM.StageList_SMGC[1].CompleteStatus)
+                        if (PublicData.ExpDQ.Exp_SM.StageList_SMGC[1].CompleteStatus)
                         {
-                            MessageBoxResult msgBoxResult = MessageBox.Show(BllExp.Exp_SM.StageList_SMGC[1].Stage_Name + "，将覆盖已完成的数据，是否覆盖？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
+                            MessageBoxResult msgBoxResult = MessageBox.Show(PublicData.ExpDQ.Exp_SM.StageList_SMGC[1].Stage_Name + "，将覆盖已完成的数据，是否覆盖？", "数据覆盖提示", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No, MessageBoxOptions.ServiceNotification);
                             if (msgBoxResult == MessageBoxResult.Yes)
                             {
-                                BllExp.Exp_SM.SMGC_JStageInit();
+                                PublicData.ExpDQ.Exp_SM.SMGC_JStageInit();
                                 StageNOInList = 1;
                                 tempExist = true;
                             }
                             if (msgBoxResult == MessageBoxResult.No)
                             {
-                                BllExp.Exp_SM.BeenCheckedGC[1] = false;
+                                PublicData.ExpDQ.Exp_SM.BeenCheckedGC[1] = false;
                             }
                         }
                         else
                         {
-                            BllExp.Exp_SM.SMGC_JStageInit();
+                            PublicData.ExpDQ.Exp_SM.SMGC_JStageInit();
                             StageNOInList = 1;
                             tempExist = true;
                         }
                         if (tempExist)
                         {
                             //根据有没有可开启部分，分别选择工程检测阶段
-                            if (BllExp.ExpSettingParam.Isexp_SJ_WithKKQ)
+                            if (PublicData.ExpDQ.ExpSettingParam.Isexp_SJ_WithKKQ)
                             {
-                                BllExp.Exp_SM.SMGC_JStageSelect();
+                                PublicData.ExpDQ.Exp_SM.SMGC_JStageSelect();
                             }
                             else
                             {
-                                BllExp.Exp_SM.SMGC_JStageSelect2();
+                                PublicData.ExpDQ.Exp_SM.SMGC_JStageSelect2();
                             }
-                            BllExp.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
-                            BllExp.Exp_SM.Stage_DQ = BllExp.Exp_SM.StageList_SMGC[StageNOInList];
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = new MQZH_StageModel_QSM();
+                            PublicData.ExpDQ.Exp_SM.Stage_DQ = PublicData.ExpDQ.Exp_SM.StageList_SMGC[StageNOInList];
                             //分析是稳定或波动
-                            if (BllExp.Exp_SM.WaveType_SM)
+                            if (PublicData.ExpDQ.Exp_SM.WaveType_SM)
                             {
                                 ExistSMWDGCExp = false;
                                 ExistSMBDGCExp = true;
