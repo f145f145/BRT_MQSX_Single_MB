@@ -1,9 +1,11 @@
-﻿
+﻿D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\GeneratedInternalTypeHelper.g.cs
 FD:\Code\BRT\BRT_MQSX_Single_MB\App.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\Authorize\SN_InputView.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\DebugPlot\MQZH_SDWYPlotView.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\DebugPlot\MQZH_SLLPIDPlotView.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\DebugPlot\MQZH_SDSMPlotView.xaml;;
+FD:\Code\BRT\BRT_MQSX_Single_MB\View\DevSet\MQZH_DTFYParamView.xaml;;
+FD:\Code\BRT\BRT_MQSX_Single_MB\View\DTFY\MQZH_DTFYView.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\ExpViews\MQZH_ExpCJBXView.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\ExpViews\MQZH_DamageView_KFYGC.xaml;;
 FD:\Code\BRT\BRT_MQSX_Single_MB\View\ExpViews\MQZH_DamageView_KFYDJ.xaml;;

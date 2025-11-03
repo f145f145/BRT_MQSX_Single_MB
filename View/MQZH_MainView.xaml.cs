@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using MQDFJ_MB.Model;
 using MQDFJ_MB.View.DebugPlot;
+using MQDFJ_MB.View.DTFY;
 
 
 namespace MQDFJ_MB.View
@@ -60,6 +61,8 @@ namespace MQDFJ_MB.View
         public MQZH_ExpKFYp3View MQZH_KFYp3Win;
         public MQZH_ExpKFYpmaxView MQZH_KFYpmaxWin;
         public MQZH_ExpCJBXView MQZH_CJBXWin;
+        public MQZH_DTFYView MQZH_DTFYCaliWin;
+        public MQZH_DTFYView MQZH_DTFYWin;
         //试验管理、设定
         public MQZH_ExpManagerView MQZH_ExpManWin;
         public MQZH_ExpSettingView MQZH_ExpSetWin;
@@ -83,6 +86,7 @@ namespace MQDFJ_MB.View
         public MQZH_SenssorSetView MQZH_SessorSetWin;
         public MQZH_WYSetView MQZH_WYSetWin;
         public MQZH_WYCtlView MQZH_WYCtlWin;
+        public MQZH_DTFYParamView MQZH_DTFYParamWin;
         //传感器调零校正
         public MQZH_CorrectView MQZH_CorrWin;
         //调试
@@ -126,84 +130,88 @@ namespace MQDFJ_MB.View
             if (msg == MQZH_WinName.PromptWinName)
                 PromptWin = WindowsManager<Prompt>.Show(new object(), MQZH_WinName.PromptWinName, this);
             //调试数据曲线窗口
-            if (msg == MQZH_WinName.SDQMPlotWinName)
+            else if (msg == MQZH_WinName.SDQMPlotWinName)
                 MQZH_SDQMPlotWin = WindowsManager<MQZH_SDQMPlotView>.Show(new object(), MQZH_WinName.SDQMPlotWinName, this);
-            if (msg == MQZH_WinName.SDSMPlotWinName)
+            else if (msg == MQZH_WinName.SDSMPlotWinName)
                 MQZH_SDSMPlotWin = WindowsManager<MQZH_SDSMPlotView>.Show(new object(), MQZH_WinName.SDSMPlotWinName, this);
-            if (msg == MQZH_WinName.SDWYPlotWinName)
+            else if (msg == MQZH_WinName.SDWYPlotWinName)
                 MQZH_SDWYPlotWin = WindowsManager<MQZH_SDWYPlotView>.Show(new object(), MQZH_WinName.SDSMPlotWinName, this);
-            if (msg == MQZH_WinName.SLLPIDPlotWinName)
+            else if (msg == MQZH_WinName.SLLPIDPlotWinName)
                 MQZH_SLLPIDPlotWin = WindowsManager<MQZH_SLLPIDPlotView>.Show(new object(), MQZH_WinName.SLLPIDPlotWinName, this);
             //调试窗口
-            if (msg == MQZH_WinName.DbgWinName)
+            else if (msg == MQZH_WinName.DbgWinName)
                 MQZH_DbgWin = WindowsManager<MQZH_DebugView>.Show(new object(), MQZH_WinName.DbgWinName, this);
 
             //试验窗口
-            if (msg == MQZH_WinName.QMWinName)
+            else if (msg == MQZH_WinName.QMWinName)
                 MQZH_QMWin = WindowsManager<MQZH_ExpQMView>.Show(new object(), MQZH_WinName.QMWinName, this);
-            if (msg == MQZH_WinName.SMWinName)
+            else if (msg == MQZH_WinName.SMWinName)
                 MQZH_SMWin = WindowsManager<MQZH_ExpSMView>.Show(new object(), MQZH_WinName.SMWinName, this);
-            if (msg == MQZH_WinName.KFYp1Name)
+            else if (msg == MQZH_WinName.KFYp1Name)
                 MQZH_KFYp1Win = WindowsManager<MQZH_ExpKFYp1View>.Show(new object(), MQZH_WinName.KFYp1Name, this);
-            if (msg == MQZH_WinName.KFYp2Name)
+            else if (msg == MQZH_WinName.KFYp2Name)
                 MQZH_KFYp2Win = WindowsManager<MQZH_ExpKFYp2View>.Show(new object(), MQZH_WinName.KFYp2Name, this);
-            if (msg == MQZH_WinName.KFYp3Name)
+            else if (msg == MQZH_WinName.KFYp3Name)
                 MQZH_KFYp3Win = WindowsManager<MQZH_ExpKFYp3View>.Show(new object(), MQZH_WinName.KFYp3Name, this);
-            if (msg == MQZH_WinName.KFYpmaxName)
+            else if (msg == MQZH_WinName.KFYpmaxName)
                 MQZH_KFYpmaxWin = WindowsManager<MQZH_ExpKFYpmaxView>.Show(new object(), MQZH_WinName.KFYpmaxName, this);
-            if (msg == MQZH_WinName.CJBXWinName)
+            else if (msg == MQZH_WinName.CJBXWinName)
                 MQZH_CJBXWin = WindowsManager<MQZH_ExpCJBXView>.Show(new object(), MQZH_WinName.CJBXWinName, this);
+            else if (msg == MQZH_WinName.DTFYWinName)
+                MQZH_DTFYWin = WindowsManager<MQZH_DTFYView>.Show(new object(), MQZH_WinName.DTFYWinName, this);
 
             //试验管理、设定
-            if (msg == MQZH_WinName.ExpManWinName)
+            else if (msg == MQZH_WinName.ExpManWinName)
                 MQZH_ExpManWin = WindowsManager<MQZH_ExpManagerView>.Show(new object(), MQZH_WinName.ExpManWinName, this);
-            if (msg == MQZH_WinName.ExpSetWinName)
+            else if (msg == MQZH_WinName.ExpSetWinName)
                 MQZH_ExpSetWin = WindowsManager<MQZH_ExpSettingView>.Show(new object(), MQZH_WinName.ExpSetWinName, this);
 
             //试验数据、评定
-            if (msg == MQZH_WinName.CurrentDataWinName)
+            else if (msg == MQZH_WinName.CurrentDataWinName)
                 MQZH_CurDataWin = WindowsManager<MQZH_CurrentDataView>.Show(new object(), MQZH_WinName.CurrentDataWinName, this);
-            if (msg == MQZH_WinName.SMDJDamageWinName)
+            else if (msg == MQZH_WinName.SMDJDamageWinName)
                 MQZH_SM_DJDamageWin =
                     WindowsManager<MQZH_DamageView_SMDJ>.Show(new object(), MQZH_WinName.SMDJDamageWinName, this);
-            if (msg == MQZH_WinName.SMGCDamageWinName)
+            else if (msg == MQZH_WinName.SMGCDamageWinName)
                 MQZH_SM_GCDamageWin =
                     WindowsManager<MQZH_DamageView_SMGC>.Show(new object(), MQZH_WinName.SMGCDamageWinName, this);
-            if (msg == MQZH_WinName.KFYDJDamageWinName)
+            else if (msg == MQZH_WinName.KFYDJDamageWinName)
                 MQZH_KFY_DJDamageWin =
                     WindowsManager<MQZH_DamageView_KFYDJ>.Show(new object(), MQZH_WinName.KFYDJDamageWinName, this);
-            if (msg == MQZH_WinName.KFYGCDamageWinName)
+            else if (msg == MQZH_WinName.KFYGCDamageWinName)
                 MQZH_KFY_GCDamageWin = WindowsManager<MQZH_DamageView_KFYGC>.Show(new object(), MQZH_WinName.KFYGCDamageWinName, this);
-            if (msg == MQZH_WinName.CJBXDJDamageWinName)
+            else if (msg == MQZH_WinName.CJBXDJDamageWinName)
                 MQZH_CJBX_DJDamWin = WindowsManager<MQZH_DamageView_CJBXDJ>.Show(new object(), MQZH_WinName.CJBXDJDamageWinName, this);
-            if (msg == MQZH_WinName.CJBXGCDamageWinName)
+            else if (msg == MQZH_WinName.CJBXGCDamageWinName)
                 MQZH_CJBX_GCDamWin = WindowsManager<MQZH_DamageView_CJBXGC>.Show(new object(), MQZH_WinName.CJBXGCDamageWinName, this);
 
             //装置设定
-            if (msg == MQZH_WinName.CoInfoSetWinName)
+            else if (msg == MQZH_WinName.CoInfoSetWinName)
                 MQZH_CoInfoSetWin = WindowsManager<MQZH_CompanyInfoSetView>.Show(new object(), MQZH_WinName.CoInfoSetWinName, this);
-            if (msg == MQZH_WinName.ComSetWinName)
+            else if (msg == MQZH_WinName.ComSetWinName)
                 MQZH_ComSetWin = WindowsManager<MQZH_ComSetting>.Show(new object(), MQZH_WinName.ComSetWinName, this);
-            if (msg == MQZH_WinName.DevInfoSetWinName)
+            else if (msg == MQZH_WinName.DevInfoSetWinName)
                 MQZH_DevInfoSetWin = WindowsManager<MQZH_DevInfoSetView>.Show(new object(), MQZH_WinName.DevInfoSetWinName, this);
-            if (msg == MQZH_WinName.DevParamSetWinName)
+            else if (msg == MQZH_WinName.DevParamSetWinName)
                 MQZH_DevParamSetWin = WindowsManager<MQZH_DevParamSetView>.Show(new object(), MQZH_WinName.DevParamSetWinName, this);
-            if (msg == MQZH_WinName.OtherSetWinName)
+            else if (msg == MQZH_WinName.OtherSetWinName)
                 MQZH_OtherSetWin = WindowsManager<MQZH_OtherSetView>.Show(new object(), MQZH_WinName.OtherSetWinName, this);
-            if (msg == MQZH_WinName.PidSetWinName)
+            else if (msg == MQZH_WinName.PidSetWinName)
                 MQZH_PidSetWin = WindowsManager<MQZH_PidSetView>.Show(new object(), MQZH_WinName.PidSetWinName, this);
-            if (msg == MQZH_WinName.PressSetWinName)
+            else if (msg == MQZH_WinName.PressSetWinName)
                 MQZH_PressSetWin = WindowsManager<MQZH_PressSetView>.Show(new object(), MQZH_WinName.PressSetWinName, this);
-            if (msg == MQZH_WinName.PressCtlWinName)
+            else if (msg == MQZH_WinName.PressCtlWinName)
                 MQZH_PressCtlWin = WindowsManager<MQZH_PressCtrlView>.Show(new object(), MQZH_WinName.PressCtlWinName, this);
             if (msg == MQZH_WinName.SenssorSetWinName)
                 MQZH_SessorSetWin = WindowsManager<MQZH_SenssorSetView>.Show(new object(), MQZH_WinName.SenssorSetWinName, this);
-            if (msg == MQZH_WinName.WYSetWinName)
+            else if (msg == MQZH_WinName.WYSetWinName)
                 MQZH_WYSetWin = WindowsManager<MQZH_WYSetView>.Show(new object(), MQZH_WinName.WYSetWinName, this);
-            if (msg == MQZH_WinName.WYCtlWinName)
+            else if (msg == MQZH_WinName.WYCtlWinName)
                 MQZH_WYCtlWin = WindowsManager<MQZH_WYCtlView>.Show(new object(), MQZH_WinName.WYCtlWinName, this);
+            else if (msg == MQZH_WinName.DTFYParamWinName)
+                MQZH_DTFYParamWin = WindowsManager<MQZH_DTFYParamView>.Show(new object(), MQZH_WinName.DTFYParamWinName, this);
             //调零标定
-            if (msg == MQZH_WinName.CorrWinName)
+            else if (msg == MQZH_WinName.CorrWinName)
                 MQZH_CorrWin = WindowsManager<MQZH_CorrectView>.Show(new object(), MQZH_WinName.CorrWinName, this);
 
         }
@@ -321,6 +329,22 @@ namespace MQDFJ_MB.View
                 {
                     MQZH_CJBXWin.Close();
                     MQZH_CJBXWin = null;
+                }
+            }
+            if (msg == MQZH_WinName.DTFYWinName)
+            {
+                if (MQZH_DTFYWin != null)
+                {
+                    MQZH_DTFYWin.Close();
+                    MQZH_DTFYWin = null;
+                }
+            }
+            if (msg == MQZH_WinName.DTFYCaliWinName)
+            {
+                if (MQZH_DTFYCaliWin != null)
+                {
+                    MQZH_DTFYCaliWin.Close();
+                    MQZH_DTFYCaliWin = null;
                 }
             }
 
@@ -494,6 +518,14 @@ namespace MQDFJ_MB.View
                 {
                     MQZH_WYCtlWin.Close();
                     MQZH_WYCtlWin = null;
+                }
+            }
+            if (msg == MQZH_WinName.DTFYParamWinName)
+            {
+                if (MQZH_DTFYParamWin != null)
+                {
+                    MQZH_DTFYParamWin.Close();
+                    MQZH_DTFYParamWin = null;
                 }
             }
         }
@@ -680,6 +712,21 @@ namespace MQDFJ_MB.View
             {
                 MQZH_SDWYPlotWin.Close();
                 MQZH_SDWYPlotWin = null;
+            }
+            if (MQZH_DTFYParamWin != null)
+            {
+                MQZH_DTFYParamWin.Close();
+                MQZH_DTFYParamWin = null;
+            }
+            if (MQZH_DTFYCaliWin != null)
+            {
+                MQZH_DTFYCaliWin.Close();
+                MQZH_DTFYCaliWin = null;
+            }
+            if (MQZH_DTFYWin != null)
+            {
+                MQZH_DTFYWin.Close();
+                MQZH_DTFYWin = null;
             }
         }
 

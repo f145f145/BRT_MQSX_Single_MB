@@ -43,6 +43,9 @@ namespace MQDFJ_MB.Model
         public static string KFYp3Name = "MQZH_KFYp3Win";
         public static string KFYpmaxName = "MQZH_KFYpmaxWin";
         public static string CJBXWinName = "MQZH_CJBXWin";
+        public static string DTFYParamWinName = "MQZH_DTFYParamWin";
+        public static string DTFYCaliWinName = "MQZH_DTFYCaliWin";
+        public static string DTFYWinName = "MQZH_DTFYWin";
         //试验管理、试验设定
         public static string ExpManWinName = "MQZH_ExpManWin";
         public static string ExpSetWinName = "MQZH_ExpSetWin";

@@ -1,0 +1,442 @@
+﻿<Window x:Class="MQDFJ_MB.View.DTFY.MQZH_DTFYView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MQDFJ_MB.View.DTFY"
+        xmlns:converterPath="clr-namespace:MQDFJ_MB.UICtl.Converter"
+        mc:Ignorable="d"
+        Title="动态风压下水密性能检测" 
+        Width="1600" Height="900" 
+        WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
+        Closing="Window_Closing" WindowState="Normal"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main_ViewModel}">
+
+    <Window.Resources>
+        <!--Slider模板-->
+        <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#59ccfc"/>
+            <GradientStop Offset="0.5" Color="#00b3fe"/>
+            <GradientStop Offset="1" Color="#59ccfc"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderThumb"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#FFD9D3E8"/>
+            <!--<GradientStop Offset="1" Color="#dfdfdf"/>-->
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderText"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#7cce45"/>
+            <GradientStop Offset="1" Color="#4ea017"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SliderBackground2"  StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="Gray"/>
+            <GradientStop Offset="0.5" Color="Gray"/>
+            <GradientStop Offset="1" Color="#59ccfc"/>
+        </LinearGradientBrush>
+        <Style x:Key="Slider_RepeatButton" TargetType="RepeatButton">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border Background="{StaticResource SliderBackground}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Slider_RepeatButton1" TargetType="RepeatButton">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border Background="Gray" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Slider_Thumb" TargetType="Thumb">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Grid MinHeight="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="{StaticResource SliderBackground}"/>
+                            <Border Grid.ColumnSpan="2" CornerRadius="4"  Background="{StaticResource SliderThumb}" Width="18">
+                                <!--<TextBlock Text="||" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Slider_CustomStyle" TargetType="Slider">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid>
+                            <!--<Grid.ColumnDefinitions>  
+                                <ColumnDefinition Width="80"/>  
+                                <ColumnDefinition/>  
+                                <ColumnDefinition Width="40"/>  
+                            </Grid.ColumnDefinitions>-->
+                            <Grid.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="1" />
+                            </Grid.Effect>
+                            <!--<Border HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="1,1,0,1" Background="{StaticResource SliderText}" Width="80" CornerRadius="8,0,0,8"/>
+                            <Border Grid.Column="2" HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="{StaticResource SliderText}" Width="40" CornerRadius="0,8,8,0"/>
+                            <TextBlock Grid.Column="2" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Tag}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+                            <TextBlock Grid.Column="0" Text="{Binding ElementName=PART_Track,Path=Value,StringFormat=\{0:N0\}}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" DataContext="{Binding}" />-->
+
+                            <Border Grid.Column="1" BorderBrush="Red" BorderThickness="0" CornerRadius="0,0,0,0">
+                                <Track Grid.Column="1" Name="PART_Track">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton}"  
+                                Command="Slider.DecreaseLarge"/>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Style="{StaticResource Slider_RepeatButton1}"  
+                                Command="Slider.IncreaseLarge"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb Style="{StaticResource Slider_Thumb}"/>
+                                    </Track.Thumb>
+                                </Track>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--默认CheckBox样式-->
+        <Style TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Tag">
+                    <Setter.Value>
+                        <SolidColorBrush Color="Black"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <StackPanel Orientation="Horizontal">
+                                <Border x:Name="bd" BorderBrush="Black" 
+                                        BorderThickness="2" Margin="5,2">
+                                    <Path x:Name="cp" Width="15" Height="15"  
+                                          Stroke="Blue"  
+                                          StrokeThickness="3"/>
+                                </Border>
+                                <ContentPresenter/>
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="cp" Property="Data"  
+                                            Value="M 0,6 L 6,12 12,0"/>
+                                    <Setter TargetName="bd" 
+                                            Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="Blue"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+        <!--紧急按钮模板-->
+        <ControlTemplate TargetType="Button" x:Key="EmStpButton">
+            <Border Background="Yellow" Name="back" BorderBrush="Red" BorderThickness="1"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Red" TextBlock.FontSize="18" TextBlock.FontWeight="Bold"
+                    Width="120" Height ="50">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="Aqua"/>
+                    <Setter Property="TextElement.Foreground" TargetName="back" Value="Red"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="BlueViolet"/>
+                    <Setter Property="TextElement.Foreground" TargetName="back" Value="White"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!--普通按钮模板-->
+        <ControlTemplate TargetType="Button" x:Key="Button1">
+            <Border Background="LightGray" Name="back" BorderBrush="Black" BorderThickness="0.8"
+                    CornerRadius="3" Padding="5"
+                    TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="150" Height ="50">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="back"  Property="Background" Value="snow"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!--Label模板1，参数名-->
+        <Style x:Key="Label1" TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--Label模板2，参数值-->
+        <Style x:Key="Label2" TargetType="Label">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="95"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{DynamicResource DigifaceWide}"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--Label模板3，参数单位-->
+        <Style x:Key="Label3" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--Label模板4，状态标题-->
+        <Style x:Key="Label4" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <!--Label模板5，输出状态文字-->
+        <Style x:Key="Label5" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <!--圆圈模版1，绿色-->
+        <Style x:Key="Ellipse1" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Fill" Value="Chartreuse"/>
+        </Style>
+        <!--圆圈模版2，无色-->
+        <Style x:Key="Ellipse2" TargetType="Ellipse">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Fill" Value="DarkGray"/>
+        </Style>
+        <!--TextBox模板2-->
+        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="5,5,5,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        </Style>
+        <!--DataGrid-->
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle}"></Setter>
+            <Setter Property="CellStyle" Value="{DynamicResource CellStyle}"></Setter>
+            <Setter Property="RowStyle" Value="{DynamicResource RowStyle}"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="EnableRowVirtualization" Value="False"></Setter>
+            <Setter Property="GridLinesVisibility" Value="None"></Setter>
+            <Setter Property="CanUserAddRows" Value="False"></Setter>
+            <!--禁止在尾行手动添加数据-->
+            <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+            <Setter Property="IsEnabled" Value="True"></Setter>
+        </Style>
+        <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="35"></Setter>
+            <Setter Property="Background" Value="#F2F2F2"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#CBCBCB"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <!--水平居中-->
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <!--垂直居中-->
+        </Style>
+        <Style x:Key="RowStyle" TargetType="DataGridRow">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#F2F2F2"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background"  Value="#CBCBCB" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellStyle" TargetType="DataGridCell">
+            <Setter Property="Height" Value="35"></Setter>
+            <Setter Property="FontSize" Value="13"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border x:Name="Bg" Background="Transparent" BorderThickness="1" UseLayoutRounding="True" BorderBrush="#FFCBCBCB">
+                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background"  Value="#CBCBCB" />
+                    <Setter Property="Foreground" Value="#000000" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--值转换器-->
+        <converterPath:BoolToVisibilityConverter x:Key="BVConverter"/>
+        <converterPath:BoolToVisibilityNotConverter x:Key="BVNotConverter"/>
+        <converterPath:BoolToCollorGConverter x:Key="BGConverter"/>
+        <converterPath:BoolToCollorOConverter x:Key="BOConverter"/>
+        <converterPath:BoolToCollorNotOConverter x:Key="BNotOConverter"/>
+        <converterPath:BoolToCollorRConverter x:Key="BRConverter"/>
+        <converterPath:IntToCollorOConverter x:Key="ComCollorConverter"/>
+        <converterPath:StrToCollorOConverter x:Key="SGBOConverter"/>
+
+        <converterPath:IntToFFModeConverter x:Key="FFModeConverter"/>
+        <converterPath:IntToFFErrConverter x:Key="FFErrConverter"/>
+        <converterPath:IntToFFSTConverter x:Key="FFSTConverter"/>
+        <converterPath:IntToFFSDConverter x:Key="FFSDConverter"/>
+        <converterPath:IntToFFZDZBConverter x:Key="FFZDZBConverter"/>
+        <converterPath:IntToFFFDZBConverter x:Key="FFFDZBConverter"/>
+        <converterPath:IntToFFZBConverter x:Key="FFZBConverter"/>
+        <converterPath:IntToFFFBConverter x:Key="FFFBConverter"/>
+        <converterPath:IntToFFActionConverter x:Key="FFActionConverter"/>
+    </Window.Resources>
+
+    <TabControl  Grid.Row="0" Grid.Column="2" Grid.RowSpan="6" Margin="2,2,2,2">
+        <!--记录列表-->
+        <TabItem Header="记录列表" Background="LightGray">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                <Grid Background="#fafafa">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" MinWidth="600"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--试验列表-->
+                    <Border Grid.Row="0" Grid.Column ="0"  Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="记录数据列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                            <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
+                            <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
+
+                            <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                   Background="#80a5c7" Opacity="1" RowHeight="25" ColumnHeaderHeight="30"
+                   IsReadOnly="False"
+                   AutoGenerateColumns="False" 
+                   CanUserSortColumns="True"
+                   CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
+                   CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
+                   ItemsSource="{Binding PublicData.TestList}"
+                   SelectedItem="{Binding PublicData.TestSeclected}">
+                                <DataGrid.Resources>
+                                    <Style TargetType="ScrollBar">
+                                        <Style.Triggers>
+                                            <Trigger Property="Orientation" Value="Vertical">
+                                                <Setter Property="Width" Value="30"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="记录编号" Width="auto" MinWidth="100" Binding="{Binding TestNO,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="记录数量" Width="Auto" MinWidth="50" Binding="{Binding LogQty,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="俯仰最大角" Width="Auto" MinWidth="50" Binding="{Binding AngleMaxPitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="俯仰最小角" Width="Auto" MinWidth="50" Binding="{Binding AngleMinPitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="横滚最大角" Width="Auto" MinWidth="50" Binding="{Binding AngleMaxRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="横滚最小角" Width="Auto" MinWidth="50" Binding="{Binding AngleMinRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+
+                    <Border Grid.Row="0" Grid.Column ="1" Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="0" Background="#44617b" >
+                        <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0 0 0 5" Background="#7c90a3" IsReadOnly="False" AutoGenerateColumns="False" 
+                CanUserSortColumns="True" CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single" ColumnHeaderHeight="30"
+                CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" RowHeight="25"
+                ItemsSource="{Binding PublicData.TestSeclected.LogList}">
+                            <DataGrid.Resources>
+                                <Style TargetType="ScrollBar">
+                                    <Style.Triggers>
+                                        <Trigger Property="Orientation" Value="Vertical">
+                                            <Setter Property="Width" Value="30"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="序号" Width="Auto" MinWidth="40" Binding="{Binding LogNo,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="记录时间" Width="Auto" MinWidth="50" Binding="{Binding RecTime,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="横滚角°" Width="*" MinWidth="50" Binding="{Binding AngleRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="俯仰角°" Width="*" MinWidth="50" Binding="{Binding AnglePitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="船体横滚角°" Width="*" MinWidth="50" Binding="{Binding AngleRollShip,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="船体俯仰角°" Width="*" MinWidth="50" Binding="{Binding AnglePitchShip,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                </Grid>
+            </Border>
+
+        </TabItem>
+
+    </TabControl>
+</Window>

@@ -26,6 +26,7 @@ using Microsoft.Research.DynamicDataDisplay.DataSources;
 using System.Linq;
 using static MQDFJ_MB.Model.MQZH_Enums;
 using System.ComponentModel;
+using MQDFJ_MB.Model.Exp_MB;
 
 namespace MQDFJ_MB.ViewModel
 {
@@ -45,6 +46,7 @@ namespace MQDFJ_MB.ViewModel
 
             //试验列表已更新
             Messenger.Default.Register<MQDFJ_MB.MQZH_DB_TestDataSet.A00试验参数DataTable>(this, "ExpTableChanged", ExpTableChangedMessage);
+            Messenger.Default.Register<List<SM_DTFY_Cali>> (this, "ExpTableChanged_DTFYCali", ExpTableChanged_DTFYCali);
 
             //订阅绘图数据更新消息
             Messenger.Default.Register<string>(this, "UpdateChart", UpdateChartMessage);
@@ -677,7 +679,7 @@ namespace MQDFJ_MB.ViewModel
         #endregion
 
         /// <summary>
-        /// 试验增、删、载入按钮指令
+        ///试验增、删、载入按钮指令
         /// </summary>
         private RelayCommand<String> _expManCommand;
         /// <summary>
@@ -992,6 +994,24 @@ namespace MQDFJ_MB.ViewModel
             else if (i == 7133)
             {
                 Messenger.Default.Send<string>(MQZH_WinName.WYCtlWinName, "OpenGivenNameWin");
+            }
+
+            //动态风压装置参数窗口
+            else if (i == 7135)
+            {
+                Messenger.Default.Send<string>(MQZH_WinName.DTFYParamWinName, "OpenGivenNameWin");
+            }
+
+            //动态风压校准窗口
+            else if (i == 7136)
+            {
+                Messenger.Default.Send<string>(MQZH_WinName.DTFYCaliWinName, "OpenGivenNameWin");
+            }
+
+            //动态风压试验窗口
+            else if (i == 7137)
+            {
+                Messenger.Default.Send<string>(MQZH_WinName.DTFYWinName, "OpenGivenNameWin");
             }
         }
 
@@ -4381,6 +4401,12 @@ namespace MQDFJ_MB.ViewModel
                 foreach (var line in PlotLines)
                     line.LineDataSource.Collection.Clear();
             }
+            else if (msg == MQZH_WinName.DTFYWinName)
+            {
+                IsDTFYWinOpened = false;
+                foreach (var line in PlotLines)
+                    line.LineDataSource.Collection.Clear();
+            }
         }
 
         /// <summary>
@@ -4401,6 +4427,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsDbgWinOpened = true;
             }
@@ -4417,6 +4444,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
             }
 
             else if (msgWindow.Name == MQZH_WinName.ExpManWinName)
@@ -4431,6 +4459,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
             }
 
             else if (msgWindow.Name == MQZH_WinName.QMWinName)
@@ -4445,7 +4474,8 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
-                
+                IsDTFYViewCanBeOpened = false;
+
                 IsQMWinOpened = true;
             }
 
@@ -4461,6 +4491,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsSMWinOpened = true;
             }
@@ -4477,6 +4508,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsKFYWinOpened = true;
             }
@@ -4493,6 +4525,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsKFYWinOpened = true;
             }
@@ -4509,6 +4542,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = true;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsKFYWinOpened = true;
             }
@@ -4525,6 +4559,7 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = true;
                 IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = false;
 
                 IsKFYWinOpened = true;
             }
@@ -4541,8 +4576,26 @@ namespace MQDFJ_MB.ViewModel
                 IsKFYp3ViewCanBeOpened = false;
                 IsKFYpmaxViewCanBeOpened = false;
                 IsCJBXViewCanBeOpened = true;
+                IsDTFYViewCanBeOpened = false;
 
                 IsCJBXWinOpened = true;
+            }
+
+            else if (msgWindow.Name == MQZH_WinName.DTFYWinName)
+            {
+                IsDbgViewCanBeOpened = false;
+                IsExpSetViewCanBeOpened = false;
+                IsExpManagerViewCanBeOpened = false;
+                IsQMViewCanBeOpened = false;
+                IsSMViewCanBeOpened = false;
+                IsKFYp1ViewCanBeOpened = false;
+                IsKFYp2ViewCanBeOpened = false;
+                IsKFYp3ViewCanBeOpened = false;
+                IsKFYpmaxViewCanBeOpened = false;
+                IsCJBXViewCanBeOpened = false;
+                IsDTFYViewCanBeOpened = true;
+
+                IsDTFYWinOpened = true;
             }
             else if (msgWindow.Name == MQZH_WinName.CurrentDataWinName)
                 NDPlotUpdate();
@@ -4636,6 +4689,22 @@ namespace MQDFJ_MB.ViewModel
             }
         }
 
+        /// <summary>
+        /// 动态风压测试窗口
+        /// </summary>
+        private bool _isDTFYWinOpened = false;
+        /// <summary>
+        /// 动态风压测试窗口
+        /// </summary>
+        public bool IsDTFYWinOpened
+        {
+            get { return _isDTFYWinOpened; }
+            set
+            {
+                _isDTFYWinOpened = value;
+                RaisePropertyChanged(() => IsDTFYWinOpened);
+            }
+        }
         #endregion
 
 
@@ -4811,6 +4880,22 @@ namespace MQDFJ_MB.ViewModel
             }
         }
 
+        /// <summary>
+        /// dtfyView可以打开状态
+        /// </summary>
+        private bool _isDTFYViewCanBeOpened = true;
+        /// <summary>
+        /// dtfyView可以打开状态
+        /// </summary>
+        public bool IsDTFYViewCanBeOpened
+        {
+            get { return _isDTFYViewCanBeOpened; }
+            set
+            {
+                _isDTFYViewCanBeOpened = value;
+                RaisePropertyChanged(() => IsDTFYViewCanBeOpened);
+            }
+        }
         #endregion
 
         #endregion

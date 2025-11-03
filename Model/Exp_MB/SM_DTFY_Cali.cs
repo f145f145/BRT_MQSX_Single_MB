@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using SqlSugar;
 
@@ -104,72 +100,6 @@ namespace MQDFJ_MB.Model.Exp_MB
 
 
         /// <summary>
-        /// 测试起始频率值，HZ
-        /// </summary>
-        private double _frequencyStart = 0;
-        /// <summary>
-        /// 测试起始频率值，HZ
-        ///</summary>
-        [SugarColumn(ColumnName = "FrequencyStart")]
-        public double FrequencyStart
-        {
-            get
-            {
-                return _frequencyStart;
-            }
-            set
-            {
-                _frequencyStart = value;
-                RaisePropertyChanged(() => FrequencyStart);
-            }
-        }
-
-
-        /// <summary>
-        /// 测试总时长设定值，秒
-        /// </summary>
-        private int _timeLongSet = 60;
-        /// <summary>
-        /// 测试总时长设定值，秒
-        ///</summary>
-        [SugarColumn(ColumnName = "TimeLongSet")]
-        public int TimeLongSet
-        {
-            get
-            {
-                return _timeLongSet;
-            }
-            set
-            {
-                _timeLongSet = value;
-                RaisePropertyChanged(() => TimeLongSet);
-            }
-        }
-
-
-        /// <summary>
-        /// 记录间隔时长，秒
-        /// </summary>
-        private int _timeInterval = 5;
-        /// <summary>
-        /// 记录间隔时长，秒
-        ///</summary>
-        [SugarColumn(ColumnName = "TimeInterval")]
-        public int TimeInterval
-        {
-            get
-            {
-                return _timeInterval;
-            }
-            set
-            {
-                _timeInterval = value;
-                RaisePropertyChanged(() => TimeInterval);
-            }
-        }
-
-
-        /// <summary>
         /// 当前压力测试点
         /// </summary>
         private SM_DTFY_Cali_PressPoint _pointDQ = new SM_DTFY_Cali_PressPoint();
@@ -177,14 +107,89 @@ namespace MQDFJ_MB.Model.Exp_MB
         /// 当前压力测试点
         /// </summary>
         [SugarColumn(IsIgnore = true)]
-        public SM_DTFY_Cali_PressPoint PpointDQ
+        public SM_DTFY_Cali_PressPoint PointDQ
         {
             get { return _pointDQ; }
             set
             {
                 _pointDQ = value;
-                RaisePropertyChanged(() => PpointDQ);
+                RaisePropertyChanged(() => PointDQ);
             }
         }
+
+
+        /// <summary>
+        /// 完成标志
+        /// </summary>
+        private bool _commpleted = false;
+        /// <summary>
+        /// 完成标志
+        /// </summary>
+        [SugarColumn(ColumnName = "Commpleted")]
+        public bool Commpleted
+        {
+            get { return _commpleted; }
+            set
+            {
+                _commpleted = value;
+                RaisePropertyChanged(() => Commpleted);
+            }
+        }
+
+
+        /// <summary>
+        /// 可用标志（所有点都完成，切风速频率大于零）
+        /// </summary>
+        private bool _usefull = false;
+        /// <summary>
+        /// 可用标志（所有点都完成，切风速频率大于零）
+        /// </summary>
+        [SugarColumn(ColumnName = "Usefull")]
+        public bool Usefull
+        {
+            get { return _usefull; }
+            set
+            {
+                _usefull = value;
+                RaisePropertyChanged(() => Usefull);
+            }
+        }
+
+
+        /// <summary>
+        /// 在用标志
+        /// </summary>
+        private bool _flag_Using = false;
+        /// <summary>
+        /// 在用标志
+        /// </summary>
+        [SugarColumn(ColumnName = "Flag_Using")]
+        public bool Flag_Using
+        {
+            get { return _flag_Using; }
+            set
+            {
+                _flag_Using = value;
+                RaisePropertyChanged(() => Flag_Using);
+            }
+        }
+
+
+        /// <summary>
+        /// 数据复位
+        /// </summary>
+        public void Reset()
+        {
+            TestTime = DateTime.MinValue;
+            foreach (var point in PointList)
+            {
+                point.Reset();
+            }
+            PointDQ = PointList[0];
+            Commpleted = false;
+            Usefull = false;
+            Flag_Using = false;
+        }
+
     }
 }

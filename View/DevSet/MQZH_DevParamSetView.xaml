@@ -183,6 +183,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -190,29 +191,33 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="绘图更新周期（ms）：" Grid.Row="0" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <Label Content="单曲线总点数：" Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <Label Content="是否使用三合一传感器：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <Label Content="三合一传感器类型：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" />
-                <Label Content="有中等量程差压传感器：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <Label Content="有加电子水流量计：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="有动态风压水密测试：" Grid.Row="2" Grid.Column ="0" Style="{StaticResource Label1}"/>
                 <TextBox Text="{Binding PublicData.Dev.PlotPeriod , Mode=TwoWay}" ToolTip ="纯数字，默认100"   Grid.Row="0" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                 <TextBox Text="{Binding PublicData.Dev.PointsPerLine , Mode=TwoWay}" ToolTip ="纯数字，默认10000"   Grid.Row="1" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <CheckBox Content="使用" IsChecked ="{Binding PublicData.Dev.IsUseTHP,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
-                <ComboBox ItemsSource="{Binding PublicData.Dev.THPTypeList}" SelectedItem ="{Binding PublicData.Dev .THPType, Mode=TwoWay}" IsEnabled ="{Binding PublicData.Dev.IsUseTHP}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" Style="{StaticResource ComboBox1}"/>
-                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithCYM,Mode =TwoWay}" Grid.Row="4" Grid.Column="1" />
-                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithSLL,Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
-                <Label Content="抗风压位移取反：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <CheckBox Content="取反" IsChecked ="{Binding PublicData.Dev.IsWYKFYF,Mode =TwoWay}" Grid.Row="6" Grid.Column="1" />
+                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode =TwoWay}" Grid.Row="2" Grid.Column="1" />
 
-                <Label Content="波动低压准备频率：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <TextBox Text="{Binding PublicData.Dev.PhBDZB , Mode=TwoWay}" Grid.Row="7" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <Label Content="是否使用三合一传感器：" Grid.Row="3" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="三合一传感器类型：" Grid.Row="4" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" />
+                <Label Content="有中等量程差压传感器：" Grid.Row="5" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <Label Content="有加电子水流量计：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <CheckBox Content="使用" IsChecked ="{Binding PublicData.Dev.IsUseTHP,Mode =TwoWay}" Grid.Row="3" Grid.Column="1" />
+                <ComboBox ItemsSource="{Binding PublicData.Dev.THPTypeList}" SelectedItem ="{Binding PublicData.Dev .THPType, Mode=TwoWay}" IsEnabled ="{Binding PublicData.Dev.IsUseTHP}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" ToolTip="1为旧型号（赛通），2为中森诺物联（中天），3为建大仁科" Style="{StaticResource ComboBox1}"/>
+                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithCYM,Mode =TwoWay}" Grid.Row="5" Grid.Column="1" />
+                <CheckBox Content="有" IsChecked ="{Binding PublicData.Dev.IsWithSLL,Mode =TwoWay}" Grid.Row="6" Grid.Column="1" />
+                
+                <Label Content="抗风压位移取反：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <CheckBox Content="取反" IsChecked ="{Binding PublicData.Dev.IsWYKFYF,Mode =TwoWay}" Grid.Row="7" Grid.Column="1" />
 
-                <Label Content="层间变形类别：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
-                <ComboBox ItemsSource="{Binding PublicData.Dev.CJBXTypeList}" SelectedIndex ="{Binding PublicData.Dev.CJBXType, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Width="220" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ComboBox1}"/>
+                <Label Content="波动低压准备频率：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding PublicData.Dev.PhBDZB , Mode=TwoWay}" Grid.Row="8" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
 
-                <Label Content="外框高度：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="X轴液压轴到外框顶轴的高度"/>
-                <Label Content="外框宽度：" Grid.Row="10" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="外框两侧立柱的中心距"/>
-                <TextBox Text="{Binding PublicData.Dev.H_HDK , Mode=TwoWay}" ToolTip ="X轴液压轴到外框顶轴的高度"   Grid.Row="9" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
-                <TextBox Text="{Binding PublicData.Dev.W_HDK , Mode=TwoWay}" ToolTip ="外框两侧立柱的中心距"   Grid.Row="10" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <Label Content="层间变形类别：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <ComboBox ItemsSource="{Binding PublicData.Dev.CJBXTypeList}" SelectedIndex ="{Binding PublicData.Dev.CJBXType, Mode=TwoWay}" Grid.Row="9" Grid.Column="1" Width="220" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Style="{StaticResource ComboBox1}"/>
+
+                <Label Content="外框高度：" Grid.Row="10" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="X轴液压轴到外框顶轴的高度"/>
+                <Label Content="外框宽度：" Grid.Row="11" Grid.Column ="0" Style="{StaticResource Label1}" ToolTip="外框两侧立柱的中心距"/>
+                <TextBox Text="{Binding PublicData.Dev.H_HDK , Mode=TwoWay}" ToolTip ="X轴液压轴到外框顶轴的高度"   Grid.Row="10" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
+                <TextBox Text="{Binding PublicData.Dev.W_HDK , Mode=TwoWay}" ToolTip ="外框两侧立柱的中心距"   Grid.Row="11" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
             </Grid>
         </Border>
 

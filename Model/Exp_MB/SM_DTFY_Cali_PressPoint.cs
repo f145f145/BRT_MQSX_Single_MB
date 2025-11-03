@@ -237,11 +237,11 @@ namespace MQDFJ_MB.Model.Exp_MB
 
 
         /// <summary>
-        /// 风机频率控制值，HZ
+        /// 风机频率控制测定值，HZ
         /// </summary>
         private double _frequencyCtl = 0;
         /// <summary>
-        /// 风机频率控制值，HZ
+        /// 风机频率控制测定值，HZ
         ///</summary>
         [SugarColumn(ColumnName = "FrequencyCtl")]
         public double FrequencyCtl
@@ -254,6 +254,50 @@ namespace MQDFJ_MB.Model.Exp_MB
             {
                 _frequencyCtl = value;
                 RaisePropertyChanged(() => FrequencyCtl);
+            }
+        }
+
+
+        /// <summary>
+        /// 测试起始频率值，HZ
+        /// </summary>
+        private double _frequencyStart = 0;
+        /// <summary>
+        /// 测试起始频率值，HZ
+        ///</summary>
+        [SugarColumn(ColumnName = "FrequencyStart")]
+        public double FrequencyStart
+        {
+            get
+            {
+                return _frequencyStart;
+            }
+            set
+            {
+                _frequencyStart = value;
+                RaisePropertyChanged(() => FrequencyStart);
+            }
+        }
+
+
+        /// <summary>
+        /// 频率调整初始步长，HZ。
+        /// </summary>
+        private double _frequencyChangeStep = 0;
+        /// <summary>
+        /// 频率调整初始步长，HZ
+        ///</summary>
+        [SugarColumn(ColumnName = "FrequencyChangeStep")]
+        public double FrequencyChangeStep
+        {
+            get
+            {
+                return _frequencyChangeStep;
+            }
+            set
+            {
+                _frequencyChangeStep = value;
+                RaisePropertyChanged(() => FrequencyChangeStep);
             }
         }
 
@@ -274,6 +318,197 @@ namespace MQDFJ_MB.Model.Exp_MB
                 _logList = value;
                 RaisePropertyChanged(() => LogList);
             }
+        }
+
+
+        /// <summary>
+        /// 测试开始时间
+        /// </summary>
+        private DateTime _testTimeStart = DateTime.MinValue;
+        /// <summary>
+        /// 测试开始时间
+        /// </summary>
+        [SugarColumn(ColumnName = "TestTimeStart")]
+        public DateTime TestTimeStart
+        {
+            get { return _testTimeStart; }
+            set
+            {
+                _testTimeStart = value;
+                RaisePropertyChanged(() => TestTimeStart);
+            }
+        }
+
+
+        /// <summary>
+        /// 测试时间
+        /// </summary>
+        private Time _testTime = new Time();
+        /// <summary>
+        /// 测试时间
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public Time TestTime
+        {
+            get
+            {
+                return _testTime;
+            }
+            set
+            {
+                _testTime = value;
+                RaisePropertyChanged(() => TestTime);
+            }
+        }
+
+
+        /// <summary>
+        /// 测试等待时间
+        /// </summary>
+        private Time _timeWaitForStd = new Time();
+        /// <summary>
+        /// 测试等待时间
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public Time TimeWaitForStd
+        {
+            get
+            {
+                return _timeWaitForStd;
+            }
+            set
+            {
+                _timeWaitForStd = value;
+                RaisePropertyChanged(() => TimeWaitForStd);
+            }
+        }
+
+
+        /// <summary>
+        /// 测试记录时间
+        /// </summary>
+        private Time _timeRec = new Time();
+        /// <summary>
+        /// 测试记录时间
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public Time TimeRec
+        {
+            get
+            {
+                return _timeRec;
+            }
+            set
+            {
+                _timeRec = value;
+                RaisePropertyChanged(() => TimeRec);
+            }
+        }
+
+
+        /// <summary>
+        /// 当前频率控制值，HZ。
+        /// </summary>
+        private double _frequencySetDq = 0;
+        /// <summary>
+        /// 当前频率控制值，HZ
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public double FrequencySetDq
+        {
+            get
+            {
+                return _frequencySetDq;
+            }
+            set
+            {
+                _frequencySetDq = value;
+                RaisePropertyChanged(() => FrequencySetDq);
+            }
+        }
+        
+
+        /// <summary>
+        /// 频率调整当前步长，HZ。
+        /// </summary>
+        private double _frequencyChangeStepDq = 0;
+        /// <summary>
+        /// 频率调整当前步长，HZ
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public double FrequencyChangeStepDq
+        {
+            get
+            {
+                return _frequencyChangeStepDq;
+            }
+            set
+            {
+                _frequencyChangeStepDq = value;
+                RaisePropertyChanged(() => FrequencyChangeStepDq);
+            }
+        }
+
+
+        /// <summary>
+        /// 频率调整当前方向，1上升，-1下降，HZ。
+        /// </summary>
+        private int _frequencyChangeDir = 1;
+        /// <summary>
+        /// 频率调整当前步长，HZ
+        ///</summary>
+        [SugarColumn(IsIgnore = true)]
+        public int FrequencyChangeDir
+        {
+            get
+            {
+                return _frequencyChangeDir;
+            }
+            set
+            {
+                _frequencyChangeDir = value;
+                RaisePropertyChanged(() => FrequencyChangeDir);
+            }
+        }
+
+
+        /// <summary>
+        /// 完成标志
+        /// </summary>
+        private bool _commpleted = false;
+        /// <summary>
+        /// 完成标志
+        /// </summary>
+        [SugarColumn(ColumnName = "Commpleted")]
+        public bool Commpleted
+        {
+            get { return _commpleted; }
+            set
+            {
+                _commpleted = value;
+                RaisePropertyChanged(() => Commpleted);
+            }
+        }
+
+
+        /// <summary>
+        /// 数据复位
+        /// </summary>
+        public void Reset()
+        {
+            SpeedMaxUR = 0;
+            SpeedMaxUL = 0;
+            SpeedMaxDR = 0;
+            SpeedMaxDL = 0;
+            LogList.Clear();
+            TestTimeStart= DateTime.Now;
+            TestTime.Reset();
+            TimeWaitForStd.Reset();
+            TimeRec.Reset();
+            FrequencySetDq = 0;
+            FrequencyChangeStepDq = FrequencyChangeStep;
+            FrequencyChangeDir = 1;
+            Commpleted = false;
         }
     }
 }

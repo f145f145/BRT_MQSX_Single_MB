@@ -238,3 +238,12 @@ D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.csproj.CoreCompileInputs.cache
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.csproj.Up2Date
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.exe
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.pdb
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.batteries_v2.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.core.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SqlSugar.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Data.SQLite.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DTFY\MQZH_DTFYView.g.cs
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DTFY\MQZH_DTFYView.baml
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DevSet\MQZH_DTFYParamView.g.cs
+D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\DevSet\MQZH_DTFYParamView.baml

@@ -211,6 +211,7 @@
     <Compile Include="Model\DEV\AnalogModel.cs" />
     <Compile Include="Model\DEV\CommStatusModel.cs" />
     <Compile Include="Model\DEV\ComSetParaModel.cs" />
+    <Compile Include="Model\DEV\MQZH_DevModel_DTFYSMParam.cs" />
     <Compile Include="Model\DEV\MQZH_DevModel_FF.cs" />
     <Compile Include="Model\DEV\MQZH_DevModel_CoInfo.cs" />
     <Compile Include="Model\DEV\MQZH_DevModel_PressCtl.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Model\DEV\MQZH_DevModel_BisicInfo.cs" />
     <Compile Include="Model\DEV\MQZH_DevModel_BisicParam.cs" />
     <Compile Include="Model\PublicDatas.cs" />
+    <Compile Include="Model\Time.cs" />
     <Compile Include="Model\ValueCvt.cs" />
     <Compile Include="MQZH_DB_DevDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +262,7 @@
       <DependentUpon>MQZH_DB_TestDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LoginPasswordBoxHelper.cs" />
+    <Compile Include="ViewModel\MainViewModel_DTFY.cs" />
     <Compile Include="ViewModel\MQZH_LoadingViewModel.cs" />
     <Compile Include="View\Authorize\SN_InputView.xaml.cs">
       <DependentUpon>SN_InputView.xaml</DependentUpon>
@@ -275,6 +278,12 @@
     </Compile>
     <Compile Include="View\DebugPlot\MQZH_SDSMPlotView.xaml.cs">
       <DependentUpon>MQZH_SDSMPlotView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DevSet\MQZH_DTFYParamView.xaml.cs">
+      <DependentUpon>MQZH_DTFYParamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DTFY\MQZH_DTFYView.xaml.cs">
+      <DependentUpon>MQZH_DTFYView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExpViews\MQZH_ExpCJBXView.xaml.cs">
       <DependentUpon>MQZH_ExpCJBXView.xaml</DependentUpon>
@@ -389,6 +398,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DebugPlot\MQZH_SDSMPlotView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DevSet\MQZH_DTFYParamView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DTFY\MQZH_DTFYView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

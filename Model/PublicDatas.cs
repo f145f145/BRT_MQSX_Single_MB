@@ -16,12 +16,14 @@
 **************************************************************************************/
 #endregion 
 
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 using MQDFJ_MB.BLL;
 using MQDFJ_MB.Communication;
 using MQDFJ_MB.DAL;
 using MQDFJ_MB.Model.DEV;
 using MQDFJ_MB.Model.Exp;
+using MQDFJ_MB.Model.Exp_MB;
 
 namespace MQDFJ_MB.Model
 {
@@ -98,6 +100,42 @@ namespace MQDFJ_MB.Model
 
 
         /// <summary>
+        /// 当前动态风压校准试验
+        /// </summary>
+        private SM_DTFY_Cali _sM_DTFY_CaliDQ = new SM_DTFY_Cali();
+        /// <summary>
+        /// 当前试验
+        /// </summary>
+        public SM_DTFY_Cali SM_DTFY_CaliDQ
+        {
+            get { return _sM_DTFY_CaliDQ; }
+            set
+            {
+                _sM_DTFY_CaliDQ = value;
+                RaisePropertyChanged(() => SM_DTFY_CaliDQ);
+            }
+        }
+
+
+        /// <summary>
+        /// 在用动态风压校准试验
+        /// </summary>
+        private SM_DTFY_Cali _sM_DTFY_CaliUsing = new SM_DTFY_Cali();
+        /// <summary>
+        /// 在用动态风压校准试验
+        /// </summary>
+        public SM_DTFY_Cali SM_DTFY_CaliUsing
+        {
+            get { return _sM_DTFY_CaliUsing; }
+            set
+            {
+                _sM_DTFY_CaliUsing = value;
+                RaisePropertyChanged(() => SM_DTFY_CaliUsing);
+            }
+        }
+
+
+        /// <summary>
         /// 通讯
         /// </summary>
         private MQZH_Communication _communication;
@@ -116,6 +154,82 @@ namespace MQDFJ_MB.Model
 
         #endregion
 
+
+
+        #region 动态风压校准试验管理相关属性
+
+        /// <summary>
+        /// 动态风压校准试验列表
+        /// </summary>
+        private List<SM_DTFY_Cali> _testTable_DTFYCali = new List<SM_DTFY_Cali>() { };
+        /// <summary>
+        /// 动态风压校准试验列表
+        /// </summary>
+        public List<SM_DTFY_Cali> TestTable_DTFYCali
+        {
+            get { return _testTable_DTFYCali; }
+            set
+            {
+                _testTable_DTFYCali = value;
+                RaisePropertyChanged(() => TestTable_DTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 列表中选中的动态风压校准试验编号
+        /// </summary>
+        private string _selectedTestNO_DTFYCali = "";
+        /// <summary>
+        /// 列表中选中的动态风压校准试验编号
+        /// </summary>
+        public string SelectedTestNO_DTFYCali
+        {
+            get { return _selectedTestNO_DTFYCali; }
+            set
+            {
+                _selectedTestNO_DTFYCali = value;
+                RaisePropertyChanged(() => SelectedTestNO_DTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 将要复制的动态风压校准试验编号
+        /// </summary>
+        private string _expNOCopyNew_DTFYCali = "";
+        /// <summary>
+        /// 将要复制的动态风压校准试验编号
+        /// </summary>
+        public string ExpNOCopyNew_DTFYCali
+        {
+            get { return _expNOCopyNew_DTFYCali; }
+            set
+            {
+                _expNOCopyNew_DTFYCali = value;
+                RaisePropertyChanged(() => ExpNOCopyNew_DTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 将要新增的动态风压校准试验编号
+        /// </summary>
+        private string _expNONew_DTFYCali = "";
+        /// <summary>
+        /// 将要新增的动态风压校准试验编号
+        /// </summary>
+        public string ExpNONew_DTFYCali
+        {
+            get { return _expNONew_DTFYCali; }
+            set
+            {
+                _expNONew_DTFYCali = value;
+                RaisePropertyChanged(() => ExpNONew_DTFYCali);
+            }
+        }
+
+        #endregion
 
     }
 }

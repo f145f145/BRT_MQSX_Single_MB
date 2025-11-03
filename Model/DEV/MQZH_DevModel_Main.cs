@@ -64,6 +64,26 @@ namespace MQDFJ_MB.Model.DEV
             }
         }
 
+
+        /// <summary>
+        /// 动态风压水密测试参数
+        /// </summary>
+        private MQZH_DevModel_DTFYSMParam _dtfysmParam = new MQZH_DevModel_DTFYSMParam();
+        /// <summary>
+        /// 动态风压水密测试参数
+        /// </summary>
+        public MQZH_DevModel_DTFYSMParam DtfysmParam
+        {
+            get { return _dtfysmParam; }
+            set
+            {
+                _dtfysmParam = value;
+                RaisePropertyChanged(() => DtfysmParam);
+            }
+        }
+
+
+
         #region 故障信息及复位定时器
 
         /// <summary>
