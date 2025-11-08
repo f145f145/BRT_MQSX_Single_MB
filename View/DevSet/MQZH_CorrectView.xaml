@@ -12,143 +12,6 @@
         DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
 
     <Window.Resources>
-        <!--普通按钮模板-->
-        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button1">
-            <Border Margin ="10,5,10,5" Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
-                    CornerRadius="3" Padding="5"
-                    TextBlock.Foreground="Black" TextBlock.FontSize="16" Width="100" Height ="40">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="snow"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <!--普通按钮模板2-->
-        <ControlTemplate TargetType="{x:Type Button}" x:Key="Button2">
-            <Border Background="LightGray" x:Name="back" BorderBrush="Black" BorderThickness="0.8"
-                    CornerRadius="3" Padding="0"
-                    TextBlock.Foreground="Black" TextBlock.FontSize="16" Width="90" Height ="30">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="snow"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <!--Label模板1，参数名-->
-        <Style x:Key="Label1" TargetType="{x:Type Label}">
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <!--Label模板2，提示信息-->
-        <Style x:Key="Label2" TargetType="{x:Type Label}">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="Coral"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <!--TextBox模板1-->
-        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
-            <Setter Property="Height" Value="25"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Margin" Value="5,5,5,5"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Background" Value="GhostWhite"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        </Style>
-        <!--TextBox模板2-->
-        <Style x:Key="TextBox2" TargetType="{x:Type TextBox}">
-            <Setter Property="Height" Value="25"/>
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="Margin" Value="5,5,5,5"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Background" Value="GhostWhite"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        </Style>
-        <!--ComboBox模板1-->
-        <Style x:Key="ComboBox1" TargetType="{x:Type ComboBox}">
-            <Setter Property="Width" Value="120" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5,5,10,5"/>
-        </Style>
-        <!--默认CheckBox样式-->
-        <Style TargetType="CheckBox">
-            <Style.Setters>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Tag">
-                    <Setter.Value>
-                        <SolidColorBrush Color="Black"/>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="CheckBox">
-                            <StackPanel Orientation="Horizontal">
-                                <Border x:Name="bd" BorderBrush="Black" 
-                                        BorderThickness="2" Margin="5,2">
-                                    <Path x:Name="cp" Width="15" Height="15"  
-                                          Stroke="Blue"  
-                                          StrokeThickness="3"/>
-                                </Border>
-                                <ContentPresenter/>
-                            </StackPanel>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="cp" Property="Data"  
-                                            Value="M 0,6 L 6,12 12,0"/>
-                                    <Setter TargetName="bd" 
-                                            Property="BorderBrush">
-                                        <Setter.Value>
-                                            <SolidColorBrush Color="Blue"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
-        </Style>
-
         <converterPath:BoolToVisibilityConverter  x:Key="BVConverter"/>
         <converterPath:BoolToTickConverter  x:Key="BTConverter"/>
     </Window.Resources>
@@ -2266,8 +2129,9 @@
             </TabItem>
 
         </TabControl>
-        <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="12" Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True"/>
-        <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99"  Grid.Row="1" Grid.Column ="1" Template="{StaticResource Button1}" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True"/>
+        <Button Content="保存设置" Command="{Binding DevSetCommand}" CommandParameter="12" Grid.Row="1" Grid.Column ="1" HorizontalAlignment="Left" VerticalAlignment="Center" IsDefault="True" Width="120" Height="40"/>
+
+        <Button Content="取消修改" Command="{Binding DevSetCommand}" CommandParameter="99"  Grid.Row="1" Grid.Column ="1" HorizontalAlignment="Right" VerticalAlignment="Center" IsCancel="True" Width="120" Height="40"/>
         <Label Content="修改后请先保存再关闭窗口！" Margin ="10"  Grid.Row="1" Grid.Column ="0" Style="{StaticResource Label2}"/>
     </Grid>
 </Window>

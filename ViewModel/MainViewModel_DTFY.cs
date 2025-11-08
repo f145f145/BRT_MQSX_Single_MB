@@ -10,6 +10,7 @@ using NPOI.SS.Formula.Functions;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using MQDFJ_MB.Model.Exp_MB;
+using System.Collections.ObjectModel;
 
 namespace MQDFJ_MB.ViewModel
 {
@@ -121,9 +122,9 @@ namespace MQDFJ_MB.ViewModel
         {
             try
             {
-                List<SM_DTFY_Cali> a01List = null;
-                a01List = msg.ToList();
-                PublicData.TestTable_DTFYCali = a01List;
+                ObservableCollection<SM_DTFY_Cali> a01List = null;
+                a01List = new ObservableCollection<SM_DTFY_Cali>(msg);
+                PublicData.TestList_DTFYCali = a01List;
             }
             catch (Exception ex)
             {

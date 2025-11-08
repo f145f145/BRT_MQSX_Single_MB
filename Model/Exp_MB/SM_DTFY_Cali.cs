@@ -133,7 +133,13 @@ namespace MQDFJ_MB.Model.Exp_MB
             {
                 _commpleted = value;
                 RaisePropertyChanged(() => Commpleted);
+                RaisePropertyChanged(() => CommpletedStr);
             }
+        }
+        [SugarColumn(IsIgnore =true)]
+        public string CommpletedStr
+        {
+            get { return _commpleted?"√":"×"; }
         }
 
 
@@ -152,7 +158,13 @@ namespace MQDFJ_MB.Model.Exp_MB
             {
                 _usefull = value;
                 RaisePropertyChanged(() => Usefull);
+                RaisePropertyChanged(() => UsefullStr);
             }
+        }
+        [SugarColumn(IsIgnore = true)]
+        public string UsefullStr
+        {
+            get { return _usefull ? "√" : "×"; }
         }
 
 
@@ -171,7 +183,13 @@ namespace MQDFJ_MB.Model.Exp_MB
             {
                 _flag_Using = value;
                 RaisePropertyChanged(() => Flag_Using);
+                RaisePropertyChanged(() => UsingStr);
             }
+        }
+        [SugarColumn(IsIgnore = true)]
+        public string UsingStr
+        {
+            get { return _flag_Using ? "√" : "×"; }
         }
 
 

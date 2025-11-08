@@ -104,6 +104,9 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="HandyControl, Version=3.5.1.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
+      <HintPath>packages\HandyControl.3.5.1\lib\net47\HandyControl.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.4.2.13, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>packages\SharpZipLib.1.4.2\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -384,6 +387,9 @@
     <Compile Include="View\FFStatusView.xaml.cs">
       <DependentUpon>FFStatusView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UICtl.xaml.cs">
+      <DependentUpon>UICtl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WindowsManager.cs" />
     <Page Include="View\Authorize\SN_InputView.xaml">
       <SubType>Designer</SubType>
@@ -553,6 +559,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ScrollViewDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UICtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -575,6 +589,8 @@
     </EmbeddedResource>
     <Resource Include="Data\Resources\Fonts\DigifaceWide.ttf" />
     <Resource Include="Data\Resources\Fonts\HeiTi.ttf" />
+    <Resource Include="Data\Resources\Fonts\iconfont.ttf" />
+    <Resource Include="Data\Resources\Fonts\AlimamaFangYuan.ttf" />
     <None Include="MQZHWL_TemporaryKey.pfx" />
     <None Include="MQZH_DB_DevDataSet.xsc">
       <DependentUpon>MQZH_DB_DevDataSet.xsd</DependentUpon>

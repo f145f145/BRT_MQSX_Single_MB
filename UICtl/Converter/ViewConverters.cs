@@ -892,4 +892,615 @@ namespace MQDFJ_MB.UICtl.Converter
             throw new NotImplementedException();
         }
     }
+
+    /// <summary>
+    /// Bool到visibility的反向转换器
+    /// </summary>
+    public class BoolNotToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((Visibility)value == Visibility.Visible) ? false : true;
+        }
+    }
+
+    /// <summary>
+    /// INT到方向的转换器
+    /// </summary>
+    public class IntToDirConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value == 1) ? "↑" : "↓";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((string)value == "↑") ? 1 : -1;
+        }
+    }
+
+
+    /// <summary>
+    /// Bool到有无的转换器
+    /// </summary>
+    public class BoolToYWConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? "有" : "无";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((string)value == "有") ? true : false;
+        }
+    }
+
+    /// <summary>
+    /// Bool到正负压的转换器
+    /// </summary>
+    public class BoolToNegativeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? "负压" : "正压";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((string)value == "负压") ? true : false;
+        }
+    }
+
+    /// <summary>
+    /// 时间字符串的转换器
+    /// </summary>
+    public class TimeToStrConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string str = "";
+            DateTime time = (DateTime)value;
+            str = time.ToShortTimeString();
+            return str;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// int到分秒字符串的转换器
+    /// </summary>
+    public class IntToMMSSStrConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string str = "";
+            int time = (int)value;
+            if (time >= 3600)
+            {
+                int hh = time / 3600;
+                int mm = (time - hh * 3600) / 60;
+                int ss = time % 60;
+                str = hh + "时 " + mm.ToString() + "分 " + ss.ToString() + "秒";
+                return str;
+            }
+            else if (time >= 60)
+            {
+                int mm = time / 60;
+                int ss = time % 60;
+                str = mm.ToString() + "分 " + ss.ToString() + "秒";
+                return str;
+            }
+            else
+                str = time.ToString() + "秒";
+            return str;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Double
+    /// </summary>
+    public class DoubleToMMSSStrConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string str = "";
+            int time = (int)(double)value;
+            if (time >= 3600)
+            {
+                int hh = time / 3600;
+                int mm = (time - hh * 3600) / 60;
+                int ss = time % 60;
+                str = hh + "时 " + mm.ToString() + "分 " + ss.ToString() + "秒";
+                return str;
+            }
+            else if (time >= 60)
+            {
+                int mm = time / 60;
+                int ss = time % 60;
+                str = mm.ToString() + "分 " + ss.ToString() + "秒";
+                return str;
+            }
+            else
+                str = time.ToString() + "秒";
+            return str;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 风速仪类型的文字转换器
+    /// </summary>
+    public class FSYTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 2)
+                return "微压计式";
+            return "数字热线式";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((string)value == "微压计式")
+                return 2;
+            return 1;
+        }
+    }
+
+
+    /// <summary>
+    /// 机组类别的文字转换器
+    /// </summary>
+    public class UnitTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 1)
+                return "蒸气压缩";
+            if ((int)value == 2)
+                return "燃气溴化锂";
+            if ((int)value == 3)
+                return "燃油溴化锂";
+            return "未知";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((string)value == "蒸气压缩")
+                return 1;
+            if ((string)value == "燃气溴化锂")
+                return 2;
+            if ((string)value == "燃油溴化锂")
+                return 3;
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// 圆管方管类型的文字转换器
+    /// </summary>
+    public class IsRoundnessConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((bool)value)
+                return "圆形风管";
+            return "矩形风管";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((string)value == "圆形风管")
+                return true;
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 热线风速仪的显示转换器
+    /// </summary>
+    public class IsRXConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 1)
+                return Visibility.Visible;
+            return Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 微压差风速仪的显示转换器
+    /// </summary>
+    public class IsWYCConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 2)
+                return Visibility.Visible;
+            return Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// Bool到collor的普通状态转换器（白绿）
+    /// </summary>
+    public class BoolToCollorGGConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? "Chartreuse" : "Snow";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
+    /// <summary>
+    /// Bool到collor的普通状态转换器（白橙）
+    /// </summary>
+    public class BoolToCollorWConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? "DarkOrange" : "Snow";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// 测试阶段文字
+    /// </summary>
+    public class TestStageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            //if ((TestStage)value == TestStage.TCtl_Stage)
+            //    return "温度准备";
+            //if ((TestStage)value == TestStage.Test_Stage)
+            //    return "30min测试";
+            //if ((TestStage)value == TestStage.TestEnd_Stage)
+            //    return "测试完成";
+
+            return "待机阶段";
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            //if ((string)value == "温度准备")
+            //    return TestStage.TCtl_Stage;
+            //if ((string)value == "30min测试")
+            //    return TestStage.Test_Stage;
+            //if ((string)value == "测试完成")
+            //    return TestStage.TestEnd_Stage;
+
+            //return TestStage.Wait_Stage;
+            return 1;
+        }
+    }
+
+
+
+    /// <summary>
+    /// 检测方法转换器
+    /// </summary>
+    public class TestMethodConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 0)
+                return "正压检测(加压)";
+            if ((int)value == 1)
+                return "负压检测(减压)";
+            if ((int)value == 2)
+                return "正负压全测";
+
+            return "正负压全测";
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((string)value == "正压检测(加压)")
+                return 0;
+            if ((string)value == "负压检测(减压)")
+                return 1;
+            if ((string)value == "正负压全测")
+                return 2;
+
+            return 2;
+        }
+    }
+
+
+    /// <summary>
+    /// 室外风速类型转换器
+    /// </summary>
+    public class AirSpeedTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((int)value == 0)
+                return "地面风速";
+            if ((int)value == 1)
+                return "气象风速";
+            if ((int)value == 2)
+                return "蒲福风力";
+
+            return "地面风速";
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((string)value == "地面风速")
+                return 0;
+            if ((string)value == "气象风速")
+                return 1;
+            if ((string)value == "蒲福风力")
+                return 2;
+
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器2
+    /// </summary>
+    public class FanQtyToVisibilityConverter2 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 2) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器3
+    /// </summary>
+    public class FanQtyToVisibilityConverter3 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 3) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器4
+    /// </summary>
+    public class FanQtyToVisibilityConverter4 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 4) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器5
+    /// </summary>
+    public class FanQtyToVisibilityConverter5 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 5) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器6
+    /// </summary>
+    public class FanQtyToVisibilityConverter6 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 6) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器7
+    /// </summary>
+    public class FanQtyToVisibilityConverter7 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 7) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// FanQty到visibility的转换器8
+    /// </summary>
+    public class FanQtyToVisibilityConverter8 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value >= 8) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 风速visibility的转换器0-地面风速
+    /// </summary>
+    public class AirSpeedVisibilityConverter0 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value == 0) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 风速visibility的转换器1-气象风速
+    /// </summary>
+    public class AirSpeedVisibilityConverter1 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value == 1) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 风速visibility的转换器2-蒲福风力
+    /// </summary>
+    public class AirSpeedVisibilityConverter2 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((int)value == 2) ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// 炉壁校准高度
+    /// </summary>
+    public class WallCalHeithtConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            switch ((int)value)
+            {
+                case 1:
+                    return "a:30 mm";
+                case 2:
+                    return "b:0 mm";
+                case 3:
+                    return "c:-30 mm";
+                default:
+                    return "0 mm";
+
+            }
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// 时间段到天、小时的转换
+    /// </summary>
+    public class TimeSpanToStrConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            TimeSpan span = (TimeSpan)value;
+            int day = span.Days;
+            double hour = (span.Seconds - day * 86400) / 3600;
+            return day.ToString() + "天" + hour.ToString("F1") + "时";
+        }
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// bool到绑定单双向的转换
+    /// </summary>
+    public class BoolToBinddingModeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? BindingMode.TwoWay : BindingMode.OneWay;
+        }
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

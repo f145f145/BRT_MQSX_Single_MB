@@ -6,11 +6,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d1p1:Ignorable="d" 
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
-  <Application.Resources>
-    <ResourceDictionary>
-      <vm:MQZH_ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MQDFJ_MB.ViewModel" />
-      <FontFamily x:Key="DigifaceWide">Data/Resources/Fonts/#DigifaceWide</FontFamily>
-      <FontFamily x:Key="HeiTi">Data\Resources\Fonts\HeiTi</FontFamily>
-    </ResourceDictionary>
-  </Application.Resources>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:MQZH_ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MQDFJ_MB.ViewModel" />
+            <FontFamily x:Key="HeiTi">Data/Resources/Fonts/#HeiTi</FontFamily>
+            <FontFamily x:Key="AliFY">Data/Resources/Fonts/#Alimama FangYuanTi VF Thin</FontFamily>
+            <FontFamily x:Key="iconfont">Data/Resources/Fonts/#iconfont</FontFamily>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+
+                <ResourceDictionary Source="View/UICtl.xaml"/>
+                <ResourceDictionary Source="View/ScrollViewDictionary.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

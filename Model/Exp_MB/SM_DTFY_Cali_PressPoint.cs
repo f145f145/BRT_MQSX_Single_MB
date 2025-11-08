@@ -206,6 +206,7 @@ namespace MQDFJ_MB.Model.Exp_MB
                 RaisePropertyChanged(() => SpeedMaxDL);
                 RaisePropertyChanged(() => SpeedAvg);
                 RaisePropertyChanged(() => IsFit);
+                RaisePropertyChanged(() => IsFitStr);
             }
         }
 
@@ -233,6 +234,11 @@ namespace MQDFJ_MB.Model.Exp_MB
             {
                 return ((SpeedAvg !=0)&&(Math.Abs(SpeedAvg-SpeedSet)<=1.1))?true:false ;
             }
+        }
+        [SugarColumn(IsIgnore = true)]
+        public string IsFitStr
+        {
+            get { return _commpleted ? "√" : "×"; }
         }
 
 
@@ -488,6 +494,11 @@ namespace MQDFJ_MB.Model.Exp_MB
                 _commpleted = value;
                 RaisePropertyChanged(() => Commpleted);
             }
+        }
+        [SugarColumn(IsIgnore = true)]
+        public string CommpletedStr
+        {
+            get { return _commpleted ? "√" : "×"; }
         }
 
 

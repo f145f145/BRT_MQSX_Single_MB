@@ -353,27 +353,27 @@
     </Window.Resources>
 
     <TabControl  Grid.Row="0" Grid.Column="2" Grid.RowSpan="6" Margin="2,2,2,2">
-        <!--记录列表-->
-        <TabItem Header="记录列表" Background="LightGray">
+        <!--校准-->
+        <TabItem Header="【校准】" Background="LightGray">
             <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
                 <Grid Background="#fafafa">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="300"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" MinWidth="600"/>
+                        <ColumnDefinition Width="auto" MinWidth="550"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <!--试验列表-->
-                    <Border Grid.Row="0" Grid.Column ="0"  Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                    <Border Grid.Row="0" Grid.Column ="0"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="记录数据列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                            <TextBlock Text="校准试验列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
                             <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
                             <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
 
@@ -384,8 +384,8 @@
                    CanUserSortColumns="True"
                    CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
                    CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
-                   ItemsSource="{Binding PublicData.TestList}"
-                   SelectedItem="{Binding PublicData.TestSeclected}">
+                   ItemsSource="{Binding PublicData.TestList_DTFYCali}"
+                   SelectedItem="{Binding PublicData.SelectedTest_DTFYCali}">
                                 <DataGrid.Resources>
                                     <Style TargetType="ScrollBar">
                                         <Style.Triggers>
@@ -396,23 +396,69 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="记录编号" Width="auto" MinWidth="100" Binding="{Binding TestNO,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="记录数量" Width="Auto" MinWidth="50" Binding="{Binding LogQty,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="俯仰最大角" Width="Auto" MinWidth="50" Binding="{Binding AngleMaxPitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="俯仰最小角" Width="Auto" MinWidth="50" Binding="{Binding AngleMinPitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="横滚最大角" Width="Auto" MinWidth="50" Binding="{Binding AngleMaxRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="横滚最小角" Width="Auto" MinWidth="50" Binding="{Binding AngleMinRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="试验编号" Width="*" MinWidth="200" Binding="{Binding TestNO,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测试时间" Width="Auto" MinWidth="100" Binding="{Binding TestTime,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测试距离" Width="Auto" MinWidth="60" Binding="{Binding DistanceSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="60" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="是否可用" Width="Auto" MinWidth="60" Binding="{Binding UsefullStr,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="在用标志" Width="Auto" MinWidth="60" Binding="{Binding UsingStr,Mode=OneWay}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <!--测试点列表-->
+                    <Border Grid.Row="0" Grid.Column ="1"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="压力测试点" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                            <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                                        Background="#80a5c7" Opacity="1" RowHeight="25" ColumnHeaderHeight="40"
+                                        IsReadOnly="False"
+                                        AutoGenerateColumns="False" 
+                                        CanUserSortColumns="True"
+                                        CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
+                                        CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
+                                        ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}"
+                                        SelectedItem="{Binding PublicData.SelectedTest_DTFYCali.PointDQ}">
+                                <DataGrid.Resources>
+                                    <Style TargetType="ScrollBar">
+                                        <Style.Triggers>
+                                            <Trigger Property="Orientation" Value="Vertical">
+                                                <Setter Property="Width" Value="30"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="压力点序号" Width="Auto" MinWidth="70" Binding="{Binding PointNo,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测试时间" Width="Auto" MinWidth="100" Binding="{Binding TestTimeStart,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="设定压力&#x0A;Pa" Width="Auto" MinWidth="60" Binding="{Binding PressSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="设定风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="平均风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedAvg,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="左上风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxUL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="右上风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxUR,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="左下风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxDL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="右下风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxDR,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="60" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="是否合格" Width="Auto" MinWidth="60" Binding="{Binding IsFitStr,Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="测定频率" Width="Auto" MinWidth="60" Binding="{Binding FrequencyCtl,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="起始频率" Width="Auto" MinWidth="60" Binding="{Binding FrequencyStart,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="调整步长" Width="Auto" MinWidth="60" Binding="{Binding FrequencyChangeStep,StringFormat=\{0:F2\},Mode=OneWay}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                     </Border>
 
 
-                    <Border Grid.Row="0" Grid.Column ="1" Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="0" Background="#44617b" >
+                    <Border Grid.Row="1" Grid.Column ="1" Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="0" Background="#44617b" >
                         <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0 0 0 5" Background="#7c90a3" IsReadOnly="False" AutoGenerateColumns="False" 
                 CanUserSortColumns="True" CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single" ColumnHeaderHeight="30"
                 CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" RowHeight="25"
-                ItemsSource="{Binding PublicData.TestSeclected.LogList}">
+                ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}">
                             <DataGrid.Resources>
                                 <Style TargetType="ScrollBar">
                                     <Style.Triggers>

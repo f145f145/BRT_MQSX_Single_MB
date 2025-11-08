@@ -96,9 +96,13 @@ namespace MQDFJ_MB.Communication
             {
                 _testOK = value;
                 RaisePropertyChanged(() => TestOK);
+                RaisePropertyChanged(() => TestOKNot);
             }
         }
-
+        public bool TestOKNot
+        {
+            get { return !_testOK; }
+        }
 
         /// <summary>
         /// 串口通讯占用中状态标志

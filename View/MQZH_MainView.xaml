@@ -14,52 +14,6 @@
         DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
 
     <Window.Resources>
-        <!--紧急按钮模板-->
-        <ControlTemplate TargetType="Button" x:Key="EmStpButton">
-            <Border Background="Yellow" Name="back" BorderBrush="Red" BorderThickness="1"
-                    CornerRadius="3" Padding="5"
-                    TextBlock.Foreground="Red" TextBlock.FontSize="24" TextBlock.FontWeight="Bold"
-                    Width="220" Height ="60">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back"  Property="Background" Value="Aqua"/>
-                    <Setter Property="TextElement.Foreground" TargetName="back" Value="Red"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="BlueViolet"/>
-                    <Setter Property="TextElement.Foreground" TargetName="back" Value="White"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <!--普通按钮模板-->
-        <ControlTemplate TargetType="Button" x:Key="Button1">
-            <Border Background="AliceBlue"  Name="back" BorderBrush="Black" BorderThickness="0.8"
-                    CornerRadius="3" Padding="5"
-                    TextBlock.Foreground="Black" TextBlock.FontSize="20" Width="250" Height ="60">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back"  Property="Background" Value="DeepSkyBlue"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="MidnightBlue"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <!--Label模板1，信息内容-->
-        <Style x:Key="Label1" TargetType="Label">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="240"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
         <!--值转换器-->
         <converterPath:BoolToExpTypeConverter x:Key="ExpTypeConverter"/>
         <converterPath:BoolToDevStatusWZConverter x:Key="DevStatusWzConverter"/>
@@ -141,8 +95,8 @@
                 <MenuItem Header="PID参数" FontSize="16" Command="{Binding WinManCommand}" CommandParameter="7129" Height ="40" VerticalAlignment="Center"/>
                 <Separator Background ="Red "/>
                 <MenuItem Header="装置基本参数" FontSize="16" Command="{Binding WinManCommand}" CommandParameter="7125" Height ="40" VerticalAlignment="Center"/>
-                <Separator Background ="Red " Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
-                <MenuItem Header="动态风压水密装置参数" FontSize="16" Command="{Binding WinManCommand}" CommandParameter="7135" Height ="40" VerticalAlignment="Center" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
+                <Separator Background ="Red " Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+                <MenuItem Header="动态风压水密装置参数" FontSize="16" Command="{Binding WinManCommand}" CommandParameter="7135" Height ="40" VerticalAlignment="Center" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
             </MenuItem>
 
             <MenuItem Header="退出系统"  FontSize="16" VerticalAlignment="Stretch" Height ="40">
@@ -151,26 +105,30 @@
         </Menu>
 
         <!--操作按钮===================================================================================菜单栏-->
-        <Button Content="气密性能检测" IsEnabled ="{Binding IsQMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7105" Template="{StaticResource Button1}" Grid.Row ="2" Grid.Column ="1"/>
-        <Button Content="抗风压变形p1" IsEnabled ="{Binding IsKFYp1ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7106" Template="{StaticResource Button1}" Grid.Row ="2" Grid.Column ="2"/>
-        <Button Content="水密性能检测" IsEnabled ="{Binding IsSMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7107" Template="{StaticResource Button1}" Grid.Row ="2" Grid.Column ="3"/>
-        <Button Content="抗风压反复加压p2" IsEnabled ="{Binding IsKFYp2ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7108" Template="{StaticResource Button1}" Grid.Row ="2" Grid.Column ="4"/>
-      
-        <Button Content="抗风压风荷载标准值p3" IsEnabled ="{Binding IsKFYp3ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7109" Template="{StaticResource Button1}" Grid.Row ="3" Grid.Column ="1" Grid.ColumnSpan="2"/>
-        <Button Content="抗风压风荷载设计值pmax" IsEnabled ="{Binding IsKFYpmaxViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7110" Template="{StaticResource Button1}" Grid.Row ="3" Grid.Column ="2" Grid.ColumnSpan="2"/>
-        <Button Content="层间位移变形性能" IsEnabled ="{Binding IsCJBXViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7111" Template="{StaticResource Button1}" Grid.Row ="3" Grid.Column ="3" Grid.ColumnSpan="2"/>
+        <Button Content="气密性能检测" IsEnabled ="{Binding IsQMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7105" Grid.Row ="2" Grid.Column ="1" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
+        <Button Content="抗风压变形p1" IsEnabled ="{Binding IsKFYp1ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7106" Grid.Row ="2" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
+        <Button Content="水密性能检测" IsEnabled ="{Binding IsSMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7107" Grid.Row ="2" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
+        <Button Content="抗风压反复加压p2" IsEnabled ="{Binding IsKFYp2ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7108" Grid.Row ="2" Grid.Column ="4" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
 
-        <Button Content="动态风压下水密性能校准" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7136" Template="{StaticResource Button1}" Grid.Row ="4" Grid.Column ="2" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
-        <Button Content="动态风压下水密性能测试" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7137" Template="{StaticResource Button1}" Grid.Row ="4" Grid.Column ="3" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource BVConverter}}"/>
-       
-        <Button Content="紧急停机" Command="{Binding MainViewCommand}" CommandParameter="119" Template="{StaticResource EmStpButton}" Grid.Row ="5" Grid.Column ="2"/>
-        <Button Content="退  出" Click ="Button_Quit_Click" Template="{StaticResource Button1}" Grid.Row ="5" Grid.Column ="3"/>
+        <Button Content="抗风压风荷载标准值p3" IsEnabled ="{Binding IsKFYp3ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7109" Grid.Row ="3" Grid.Column ="1" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
+        <Button Content="抗风压风荷载设计值pmax" IsEnabled ="{Binding IsKFYpmaxViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7110" Grid.Row ="3" Grid.Column ="2" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
+        <Button Content="层间位移变形性能" IsEnabled ="{Binding IsCJBXViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7111" Grid.Row ="3" Grid.Column ="3" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
+
+        <Button Content="动态风压下水密性能校准" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7136" Grid.Row ="4" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="220" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+        <Button Content="动态风压下水密性能测试" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7137" Grid.Row ="4" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="220" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+
+        <Button Content="紧急停机" Command="{Binding MainViewCommand}" CommandParameter="119" BorderBrush="Red" Foreground="OrangeRed" Grid.Row ="5" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="120" Height="50" />
+        <Button Content="退  出" Click ="Button_Quit_Click" Grid.Row ="5" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="120" Height="50" />
         <Label Content="{Binding PublicData.Dev.ErrorInfo}" 
-               Grid.Row="6" Grid.Column ="0" Grid.ColumnSpan="4" Height ="50" Width ="800"
-               Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
-               FontSize ="24" FontWeight="Bold" Foreground ="Crimson"/>
+               Grid.Row="6" Grid.Column ="0" Grid.ColumnSpan="4" Height ="50" Width ="1000"
+                FontSize="30" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" Foreground="Red" Background="Transparent"
+               Margin="5" Padding="0" BorderThickness="0" VerticalContentAlignment="Center" 
+               FontWeight="Bold"/>
 
-        <Label Content="通讯测试失败！" Visibility="{Binding MainViewModel_Communication.TestOK, Converter={StaticResource BVNConverter}}" FontSize="30" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" Foreground="Red" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Label Content="通讯测试失败！" Visibility="{Binding MainViewModel_Communication.TestOKNot, Converter={StaticResource Boolean2VisibilityConverter}}" 
+               FontSize="30" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" Foreground="Red" Background="Transparent"
+               Margin="5" Padding="0" BorderThickness="0" Height="50" VerticalContentAlignment="Center" 
+               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
 
         
         <!--试验信息===================================================================================菜单栏-->
@@ -182,12 +140,12 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="当前试验" FontSize="20" FontWeight="Bold" Grid.Row="0" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="当前试验" FontSize="20" FontWeight="Bold" Grid.Row="0" Margin="10" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
                 <StackPanel Grid.Row="1" Margin="0,0,5,0" HorizontalAlignment="stretch" VerticalAlignment="Stretch" >
-                    <Label Content="试验编号" FontSize="18" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                    <Label Content="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO}" Style="{StaticResource Label1}"/>
-                    <Label Content="当前项目" FontSize="20" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-                    <Label Content="{Binding PublicData.Dev.DeviceRunMode, Converter={StaticResource DevStatusWzConverter}}" Style="{StaticResource Label1}"/>
+                    <Label Content="试验编号" FontSize="18" Margin="5" Padding="0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0"/>
+                    <Label Content="{Binding PublicData.ExpDQ.ExpSettingParam.ExpNO}" Background="Black" HorizontalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center"/>
+                    <Label Content="当前项目" FontSize="18" Margin="5" Padding="0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0"/>
+                    <Label Content="{Binding PublicData.Dev.DeviceRunMode, Converter={StaticResource DevStatusWzConverter}}" Background="Black" HorizontalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center"/>
                 </StackPanel>
             </Grid>
         </Border>

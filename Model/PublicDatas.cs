@@ -17,6 +17,7 @@
 #endregion 
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using MQDFJ_MB.BLL;
 using MQDFJ_MB.Communication;
@@ -161,17 +162,35 @@ namespace MQDFJ_MB.Model
         /// <summary>
         /// 动态风压校准试验列表
         /// </summary>
-        private List<SM_DTFY_Cali> _testTable_DTFYCali = new List<SM_DTFY_Cali>() { };
+        private ObservableCollection<SM_DTFY_Cali> _testList_DTFYCali = new ObservableCollection<SM_DTFY_Cali>() { };
         /// <summary>
         /// 动态风压校准试验列表
         /// </summary>
-        public List<SM_DTFY_Cali> TestTable_DTFYCali
+        public ObservableCollection<SM_DTFY_Cali> TestList_DTFYCali
         {
-            get { return _testTable_DTFYCali; }
+            get { return _testList_DTFYCali; }
             set
             {
-                _testTable_DTFYCali = value;
-                RaisePropertyChanged(() => TestTable_DTFYCali);
+                _testList_DTFYCali = value;
+                RaisePropertyChanged(() => TestList_DTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 动态风压校准试验列表
+        /// </summary>
+        private SM_DTFY_Cali _selectedTest_DTFYCali = new SM_DTFY_Cali() { };
+        /// <summary>
+        /// 动态风压校准试验列表
+        /// </summary>
+        public SM_DTFY_Cali SelectedTest_DTFYCali
+    {
+            get { return _selectedTest_DTFYCali; }
+            set
+            {
+            _selectedTest_DTFYCali = value;
+                RaisePropertyChanged(() => SelectedTest_DTFYCali);
             }
         }
 

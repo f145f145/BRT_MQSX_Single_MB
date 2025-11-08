@@ -517,7 +517,7 @@
                         <Label Content="反馈参数名称" Style="{StaticResource Label4}" Grid.Row="0" Grid.Column ="9"/>
                         <Label Content="反馈状态" Style="{StaticResource Label4}" Grid.Row="0" Grid.Column ="10"  Grid.ColumnSpan ="2"/>
                         <!--控制按钮列1-->
-                        <Button Content="KM1通断" Command="{Binding ButtonDDCommand}" CommandParameter="6105" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="0"/>
+                        <Button Content="KM1通断" Command="{Binding ButtonDDCommand}" CommandParameter="6105" Template="{StaticResource Button1}" Grid.Row="1" Grid.Column ="0" Margin="5" Padding="0" Width="200"/>
                         <Button Content="液压站启停" Command="{Binding ButtonDDCommand}" CommandParameter="6110" Template="{StaticResource Button1}" Grid.Row="2" Grid.Column ="0"/>
                         <Button Content="水泵启停" Command="{Binding ButtonDDCommand}" CommandParameter="6106" Template="{StaticResource Button1}" Grid.Row="3" Grid.Column ="0"/>
                         <Button Content="气泵启停" Command="{Binding ButtonDDCommand}" CommandParameter="6107" Template="{StaticResource Button1}" Grid.Row="4" Grid.Column ="0"/>
