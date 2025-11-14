@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight;
-using NPOI.SS.Formula.Functions;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using MQDFJ_MB.Model.Exp_MB;
@@ -14,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace MQDFJ_MB.ViewModel
 {
-    public partial class MQZH_MainViewModel : ViewModelBase
+    public partial class MainViewModel : ViewModelBase
     {
         #region 试验管理指令回调
 

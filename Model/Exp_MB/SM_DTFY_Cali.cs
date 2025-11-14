@@ -8,12 +8,14 @@ namespace MQDFJ_MB.Model.Exp_MB
     /// <summary>
     /// 动态风压下水密测试——校准试验
     /// </summary>
+    [Serializable]
+    [SugarTable("B01_SM_DTFY_Cali", IsDisabledDelete = true)]
     public class SM_DTFY_Cali : ObservableObject
     {
         /// <summary>
         /// 试验编号
         /// </summary>
-        private string _testNO = "DefaultExp";
+        private string _testNO = "None";
         /// <summary>
         ///  试验编号
         ///</summary>

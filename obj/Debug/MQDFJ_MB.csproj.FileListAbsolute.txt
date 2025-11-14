@@ -160,9 +160,6 @@ D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\NPOI.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\NPOI.OOXML.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\NPOI.OpenXml4Net.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\NPOI.OpenXmlFormats.dll
-D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.batteries_v2.dll
-D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.core.dll
-D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SQLitePCLRaw.provider.dynamic_cdecl.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\SqlSugar.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Buffers.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Data.SqlClient.dll
@@ -251,3 +248,12 @@ D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\MQDFJ_MB.pdb
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\HandyControl.dll
 D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\HandyControl.xml
 D:\Code\BRT\BRT_MQSX_Single_MB\obj\Debug\View\UICtl.baml
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Data.SQLite.Linq.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\System.Data.SQLite.xml
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\log4net.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\log4net.pdb
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\log4net.xml
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\Newtonsoft.Json.dll
+D:\Code\BRT\BRT_MQSX_Single_MB\bin\Release\Newtonsoft.Json.xml

@@ -9,7 +9,7 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <vm:MQZH_ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MQDFJ_MB.ViewModel" />
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:MQDFJ_MB.ViewModel" />
             <FontFamily x:Key="HeiTi">Data/Resources/Fonts/#HeiTi</FontFamily>
             <FontFamily x:Key="AliFY">Data/Resources/Fonts/#Alimama FangYuanTi VF Thin</FontFamily>
             <FontFamily x:Key="iconfont">Data/Resources/Fonts/#iconfont</FontFamily>

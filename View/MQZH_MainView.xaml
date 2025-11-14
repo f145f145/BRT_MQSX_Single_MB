@@ -105,20 +105,20 @@
         </Menu>
 
         <!--操作按钮===================================================================================菜单栏-->
-        <Button Content="气密性能检测" IsEnabled ="{Binding IsQMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7105" Grid.Row ="2" Grid.Column ="1" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
-        <Button Content="抗风压变形p1" IsEnabled ="{Binding IsKFYp1ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7106" Grid.Row ="2" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
-        <Button Content="水密性能检测" IsEnabled ="{Binding IsSMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7107" Grid.Row ="2" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
-        <Button Content="抗风压反复加压p2" IsEnabled ="{Binding IsKFYp2ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7108" Grid.Row ="2" Grid.Column ="4" FontSize="16" FontWeight="Bold" Width="160" Height="50"/>
+        <Button Content="气密性能检测" IsEnabled ="{Binding IsQMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7105" Grid.Row ="2" Grid.Column ="1" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
+        <Button Content="抗风压变形p1" IsEnabled ="{Binding IsKFYp1ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7106" Grid.Row ="2" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
+        <Button Content="水密性能检测" IsEnabled ="{Binding IsSMViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7107" Grid.Row ="2" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
+        <Button Content="抗风压反复加压p2" IsEnabled ="{Binding IsKFYp2ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7108" Grid.Row ="2" Grid.Column ="4" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
 
-        <Button Content="抗风压风荷载标准值p3" IsEnabled ="{Binding IsKFYp3ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7109" Grid.Row ="3" Grid.Column ="1" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
-        <Button Content="抗风压风荷载设计值pmax" IsEnabled ="{Binding IsKFYpmaxViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7110" Grid.Row ="3" Grid.Column ="2" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
-        <Button Content="层间位移变形性能" IsEnabled ="{Binding IsCJBXViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7111" Grid.Row ="3" Grid.Column ="3" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="220" Height="50"/>
+        <Button Content="抗风压风荷载标准值p3" IsEnabled ="{Binding IsKFYp3ViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7109" Grid.Row ="3" Grid.Column ="1" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
+        <Button Content="抗风压风荷载设计值pmax" IsEnabled ="{Binding IsKFYpmaxViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7110" Grid.Row ="3" Grid.Column ="2" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
+        <Button Content="层间位移变形性能" IsEnabled ="{Binding IsCJBXViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7111" Grid.Row ="3" Grid.Column ="3" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Width="250" Height="50"/>
 
-        <Button Content="动态风压下水密性能校准" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7136" Grid.Row ="4" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="220" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
-        <Button Content="动态风压下水密性能测试" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7137" Grid.Row ="4" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="220" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+        <Button Content="动态风压下水密性能校准" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7136" Grid.Row ="4" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="250" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+        <Button Content="动态风压下水密性能测试" IsEnabled ="{Binding IsDTFYViewCanBeOpened}" Command="{Binding WinManCommand}" CommandParameter="7137" Grid.Row ="4" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="250" Height="50" Visibility="{Binding PublicData.Dev.DtfysmParam.IsWithDTFY,Mode=OneWay,Converter={StaticResource Boolean2VisibilityConverter}}"/>
 
-        <Button Content="紧急停机" Command="{Binding MainViewCommand}" CommandParameter="119" BorderBrush="Red" Foreground="OrangeRed" Grid.Row ="5" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="120" Height="50" />
-        <Button Content="退  出" Click ="Button_Quit_Click" Grid.Row ="5" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="120" Height="50" />
+        <Button Content="紧急停机" Command="{Binding MainViewCommand}" CommandParameter="119" BorderBrush="Red" Foreground="OrangeRed" Grid.Row ="5" Grid.Column ="2" FontSize="16" FontWeight="Bold" Width="200" Height="50" />
+        <Button Content="退  出" Click ="Button_Quit_Click" Grid.Row ="5" Grid.Column ="3" FontSize="16" FontWeight="Bold" Width="200" Height="50" />
         <Label Content="{Binding PublicData.Dev.ErrorInfo}" 
                Grid.Row="6" Grid.Column ="0" Grid.ColumnSpan="4" Height ="50" Width ="1000"
                 FontSize="30" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" Foreground="Red" Background="Transparent"

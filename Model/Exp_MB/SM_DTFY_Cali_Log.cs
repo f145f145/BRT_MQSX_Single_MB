@@ -76,6 +76,24 @@ namespace MQDFJ_MB.Model.Exp_MB
             }
         }
 
+        /// <summary>
+        /// 记录点序号
+        /// </summary>
+        private int _logNo = 1;
+        /// <summary>
+        /// 记录点序号
+        /// </summary>
+        [SugarColumn(ColumnName = "LogNo")]
+        public int LogNo
+        {
+            get { return _logNo; }
+            set
+            {
+                _logNo = value;
+                RaisePropertyChanged(() => LogNo);
+            }
+        }
+
 
         /// <summary>
         /// 风速实测值左上

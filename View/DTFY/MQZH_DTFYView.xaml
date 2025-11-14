@@ -7,458 +7,385 @@
         xmlns:converterPath="clr-namespace:MQDFJ_MB.UICtl.Converter"
         mc:Ignorable="d"
         Title="动态风压下水密性能检测" 
-        Width="1600" Height="900" 
+        Width="1920" Height="1000" 
         WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
-        Closing="Window_Closing" WindowState="Normal"
+        Closing="Window_Closing" WindowState="Maximized"
         DataContext="{Binding Source={StaticResource Locator},Path=Main_ViewModel}">
 
-    <Window.Resources>
-        <!--Slider模板-->
-        <LinearGradientBrush x:Key="SliderBackground"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#59ccfc"/>
-            <GradientStop Offset="0.5" Color="#00b3fe"/>
-            <GradientStop Offset="1" Color="#59ccfc"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SliderThumb"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#FFD9D3E8"/>
-            <!--<GradientStop Offset="1" Color="#dfdfdf"/>-->
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SliderText"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="#7cce45"/>
-            <GradientStop Offset="1" Color="#4ea017"/>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="SliderBackground2"  StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Offset="0" Color="Gray"/>
-            <GradientStop Offset="0.5" Color="Gray"/>
-            <GradientStop Offset="1" Color="#59ccfc"/>
-        </LinearGradientBrush>
-        <Style x:Key="Slider_RepeatButton" TargetType="RepeatButton">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Height" Value="10"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RepeatButton">
-                        <Border Background="{StaticResource SliderBackground}" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="Slider_RepeatButton1" TargetType="RepeatButton">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Height" Value="10"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RepeatButton">
-                        <Border Background="Gray" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="Slider_Thumb" TargetType="Thumb">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Thumb">
-                        <Grid MinHeight="20">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Border Background="{StaticResource SliderBackground}"/>
-                            <Border Grid.ColumnSpan="2" CornerRadius="4"  Background="{StaticResource SliderThumb}" Width="18">
-                                <!--<TextBlock Text="||" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="Slider_CustomStyle" TargetType="Slider">
-            <Setter Property="Focusable" Value="false" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Slider">
-                        <Grid>
-                            <!--<Grid.ColumnDefinitions>  
-                                <ColumnDefinition Width="80"/>  
-                                <ColumnDefinition/>  
-                                <ColumnDefinition Width="40"/>  
-                            </Grid.ColumnDefinitions>-->
-                            <Grid.Effect>
-                                <DropShadowEffect BlurRadius="8" ShadowDepth="1" />
-                            </Grid.Effect>
-                            <!--<Border HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="1,1,0,1" Background="{StaticResource SliderText}" Width="80" CornerRadius="8,0,0,8"/>
-                            <Border Grid.Column="2" HorizontalAlignment="Right" BorderBrush="Gray" BorderThickness="0,1,1,1" Background="{StaticResource SliderText}" Width="40" CornerRadius="0,8,8,0"/>
-                            <TextBlock Grid.Column="2" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Tag}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
-                            <TextBlock Grid.Column="0" Text="{Binding ElementName=PART_Track,Path=Value,StringFormat=\{0:N0\}}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" DataContext="{Binding}" />-->
+    <TabControl HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Grid.Row="1"  >
+        <TabItem Header="【试验操作】" Background="#00538A">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1000"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--======================================压力点参数、数据===================================================-->
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5" Background="White">
+                    <Grid Background ="WhiteSmoke">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="1" BorderBrush="Red" BorderThickness="0" CornerRadius="0,0,0,0">
-                                <Track Grid.Column="1" Name="PART_Track">
-                                    <Track.DecreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource Slider_RepeatButton}"  
-                                Command="Slider.DecreaseLarge"/>
-                                    </Track.DecreaseRepeatButton>
-                                    <Track.IncreaseRepeatButton>
-                                        <RepeatButton Style="{StaticResource Slider_RepeatButton1}"  
-                                Command="Slider.IncreaseLarge"/>
-                                    </Track.IncreaseRepeatButton>
-                                    <Track.Thumb>
-                                        <Thumb Style="{StaticResource Slider_Thumb}"/>
-                                    </Track.Thumb>
-                                </Track>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <!--默认CheckBox样式-->
-        <Style TargetType="CheckBox">
-            <Style.Setters>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="20"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Tag">
-                    <Setter.Value>
-                        <SolidColorBrush Color="Black"/>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="CheckBox">
-                            <StackPanel Orientation="Horizontal">
-                                <Border x:Name="bd" BorderBrush="Black" 
-                                        BorderThickness="2" Margin="5,2">
-                                    <Path x:Name="cp" Width="15" Height="15"  
-                                          Stroke="Blue"  
-                                          StrokeThickness="3"/>
-                                </Border>
-                                <ContentPresenter/>
-                            </StackPanel>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="cp" Property="Data"  
-                                            Value="M 0,6 L 6,12 12,0"/>
-                                    <Setter TargetName="bd" 
-                                            Property="BorderBrush">
-                                        <Setter.Value>
-                                            <SolidColorBrush Color="Blue"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
-        </Style>
-        <!--紧急按钮模板-->
-        <ControlTemplate TargetType="Button" x:Key="EmStpButton">
-            <Border Background="Yellow" Name="back" BorderBrush="Red" BorderThickness="1"
-                    CornerRadius="3" Padding="5"
-                    TextBlock.Foreground="Red" TextBlock.FontSize="18" TextBlock.FontWeight="Bold"
-                    Width="120" Height ="50">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back"  Property="Background" Value="Aqua"/>
-                    <Setter Property="TextElement.Foreground" TargetName="back" Value="Red"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="BlueViolet"/>
-                    <Setter Property="TextElement.Foreground" TargetName="back" Value="White"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <!--普通按钮模板-->
-        <ControlTemplate TargetType="Button" x:Key="Button1">
-            <Border Background="LightGray" Name="back" BorderBrush="Black" BorderThickness="0.8"
-                    CornerRadius="3" Padding="5"
-                    TextBlock.Foreground="Black" TextBlock.FontSize="18" Width="150" Height ="50">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="back"  Property="Background" Value="snow"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="back" Property="Background" Value="CadetBlue"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
+                        <Label Content="试验编号：" Grid.Row="0" Grid.Column ="0" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.TestNO, Mode =OneWay}" Grid.Row="0" Grid.Column ="1" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="测试时间：" Grid.Row="1" Grid.Column ="0" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.TestTime, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss" Grid.Row="1" Grid.Column ="1" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
-        <!--Label模板1，参数名-->
-        <Style x:Key="Label1" TargetType="Label">
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <!--Label模板2，参数值-->
-        <Style x:Key="Label2" TargetType="Label">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="95"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="{DynamicResource DigifaceWide}"/>
-            <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <!--Label模板3，参数单位-->
-        <Style x:Key="Label3" TargetType="Label">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <!--Label模板4，状态标题-->
-        <Style x:Key="Label4" TargetType="Label">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5,5,5,5"/>
-        </Style>
-        <!--Label模板5，输出状态文字-->
-        <Style x:Key="Label5" TargetType="Label">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="{StaticResource HeiTi}"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5,5,5,5"/>
-        </Style>
-        <!--圆圈模版1，绿色-->
-        <Style x:Key="Ellipse1" TargetType="Ellipse">
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Fill" Value="Chartreuse"/>
-        </Style>
-        <!--圆圈模版2，无色-->
-        <Style x:Key="Ellipse2" TargetType="Ellipse">
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Stroke" Value="Black"/>
-            <Setter Property="Fill" Value="DarkGray"/>
-        </Style>
-        <!--TextBox模板2-->
-        <Style x:Key="TextBox1" TargetType="{x:Type TextBox}">
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Margin" Value="5,5,5,0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Background" Value="GhostWhite"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        </Style>
-        <!--DataGrid-->
-        <Style x:Key="DataGridStyle" TargetType="DataGrid">
-            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle}"></Setter>
-            <Setter Property="CellStyle" Value="{DynamicResource CellStyle}"></Setter>
-            <Setter Property="RowStyle" Value="{DynamicResource RowStyle}"></Setter>
-            <Setter Property="Background" Value="White"></Setter>
-            <Setter Property="EnableRowVirtualization" Value="False"></Setter>
-            <Setter Property="GridLinesVisibility" Value="None"></Setter>
-            <Setter Property="CanUserAddRows" Value="False"></Setter>
-            <!--禁止在尾行手动添加数据-->
-            <Setter Property="AutoGenerateColumns" Value="False"></Setter>
-            <Setter Property="IsEnabled" Value="True"></Setter>
-        </Style>
-        <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Height" Value="35"></Setter>
-            <Setter Property="Background" Value="#F2F2F2"></Setter>
-            <Setter Property="BorderThickness" Value="1"></Setter>
-            <Setter Property="BorderBrush" Value="#CBCBCB"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-            <!--水平居中-->
-            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-            <!--垂直居中-->
-        </Style>
-        <Style x:Key="RowStyle" TargetType="DataGridRow">
-            <Setter Property="Cursor" Value="Hand"></Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="#F2F2F2"/>
-                </Trigger>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background"  Value="#CBCBCB" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="CellStyle" TargetType="DataGridCell">
-            <Setter Property="Height" Value="35"></Setter>
-            <Setter Property="FontSize" Value="13"></Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="DataGridCell">
-                        <Border x:Name="Bg" Background="Transparent" BorderThickness="1" UseLayoutRounding="True" BorderBrush="#FFCBCBCB">
-                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
+                        <Label Content="是否完成：" Grid.Row="0" Grid.Column ="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.CommpletedStr, Mode =OneWay}" Grid.Row="0" Grid.Column ="3" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="是否可用：" Grid.Row="0" Grid.Column ="4" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.UsefullStr, Mode =OneWay}" Grid.Row="0" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="是否在用：" Grid.Row="0" Grid.Column ="6" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.UsingStr, Mode =OneWay}" Grid.Row="0" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background"  Value="#CBCBCB" />
-                    <Setter Property="Foreground" Value="#000000" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <!--值转换器-->
-        <converterPath:BoolToVisibilityConverter x:Key="BVConverter"/>
-        <converterPath:BoolToVisibilityNotConverter x:Key="BVNotConverter"/>
-        <converterPath:BoolToCollorGConverter x:Key="BGConverter"/>
-        <converterPath:BoolToCollorOConverter x:Key="BOConverter"/>
-        <converterPath:BoolToCollorNotOConverter x:Key="BNotOConverter"/>
-        <converterPath:BoolToCollorRConverter x:Key="BRConverter"/>
-        <converterPath:IntToCollorOConverter x:Key="ComCollorConverter"/>
-        <converterPath:StrToCollorOConverter x:Key="SGBOConverter"/>
+                        <Label Content="测试距离：" Grid.Row="1" Grid.Column ="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <TextBox Grid.Row ="1" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PublicData.SM_DTFY_CaliDQ.DistanceSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="30" Width ="120" FontSize="18"/>
+                        <Label Content="mm" Grid.Row="1" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
-        <converterPath:IntToFFModeConverter x:Key="FFModeConverter"/>
-        <converterPath:IntToFFErrConverter x:Key="FFErrConverter"/>
-        <converterPath:IntToFFSTConverter x:Key="FFSTConverter"/>
-        <converterPath:IntToFFSDConverter x:Key="FFSDConverter"/>
-        <converterPath:IntToFFZDZBConverter x:Key="FFZDZBConverter"/>
-        <converterPath:IntToFFFDZBConverter x:Key="FFFDZBConverter"/>
-        <converterPath:IntToFFZBConverter x:Key="FFZBConverter"/>
-        <converterPath:IntToFFFBConverter x:Key="FFFBConverter"/>
-        <converterPath:IntToFFActionConverter x:Key="FFActionConverter"/>
-    </Window.Resources>
+                        
+                    </Grid>
+                </Border>
 
-    <TabControl  Grid.Row="0" Grid.Column="2" Grid.RowSpan="6" Margin="2,2,2,2">
-        <!--校准-->
-        <TabItem Header="【校准】" Background="LightGray">
-            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                <Grid Background="#fafafa">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="300"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" MinWidth="550"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <!--试验列表-->
-                    <Border Grid.Row="0" Grid.Column ="0"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="校准试验列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
-                            <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
-                            <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
+                <!--======================================压力点参数、数据===================================================-->
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5" Background="White">
+                    <Grid Background ="WhiteSmoke">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
 
-                            <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
-                   Background="#80a5c7" Opacity="1" RowHeight="25" ColumnHeaderHeight="30"
-                   IsReadOnly="False"
-                   AutoGenerateColumns="False" 
-                   CanUserSortColumns="True"
-                   CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
-                   CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
-                   ItemsSource="{Binding PublicData.TestList_DTFYCali}"
-                   SelectedItem="{Binding PublicData.SelectedTest_DTFYCali}">
-                                <DataGrid.Resources>
-                                    <Style TargetType="ScrollBar">
-                                        <Style.Triggers>
-                                            <Trigger Property="Orientation" Value="Vertical">
-                                                <Setter Property="Width" Value="30"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGrid.Resources>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="试验编号" Width="*" MinWidth="200" Binding="{Binding TestNO,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测试时间" Width="Auto" MinWidth="100" Binding="{Binding TestTime,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测试距离" Width="Auto" MinWidth="60" Binding="{Binding DistanceSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="60" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="是否可用" Width="Auto" MinWidth="60" Binding="{Binding UsefullStr,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="在用标志" Width="Auto" MinWidth="60" Binding="{Binding UsingStr,Mode=OneWay}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </Border>
+                        <!--变频器1调速-->
+                        <Label Content="压力点序号" Grid.Row="0" Grid.Column ="0" Grid.RowSpan="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="设定压力值" Grid.Row="0" Grid.Column ="1" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="设定风速值" Grid.Row="0" Grid.Column ="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="测试起始频率" Grid.Row="0" Grid.Column ="3" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="频率调整步长" Grid.Row="0" Grid.Column ="4" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="是否完成" Grid.Row="0" Grid.Column ="5" Grid.RowSpan="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="测试开始时间" Grid.Row="0" Grid.Column ="6" Grid.RowSpan="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="左上风速值" Grid.Row="0" Grid.Column ="7" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="右上风速值" Grid.Row="0" Grid.Column ="8" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="左下风速值" Grid.Row="0" Grid.Column ="9" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="右上风速值" Grid.Row="0" Grid.Column ="10" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="频率测定值" Grid.Row="0" Grid.Column ="11" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="是否合格" Grid.Row="0" Grid.Column ="12" Grid.RowSpan="2" Margin="0" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
-                    <!--测试点列表-->
-                    <Border Grid.Row="0" Grid.Column ="1"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="压力测试点" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
-                            <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
-                                        Background="#80a5c7" Opacity="1" RowHeight="25" ColumnHeaderHeight="40"
-                                        IsReadOnly="False"
-                                        AutoGenerateColumns="False" 
-                                        CanUserSortColumns="True"
-                                        CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
-                                        CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
-                                        ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}"
-                                        SelectedItem="{Binding PublicData.SelectedTest_DTFYCali.PointDQ}">
-                                <DataGrid.Resources>
-                                    <Style TargetType="ScrollBar">
-                                        <Style.Triggers>
-                                            <Trigger Property="Orientation" Value="Vertical">
-                                                <Setter Property="Width" Value="30"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGrid.Resources>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="压力点序号" Width="Auto" MinWidth="70" Binding="{Binding PointNo,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测试时间" Width="Auto" MinWidth="100" Binding="{Binding TestTimeStart,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="设定压力&#x0A;Pa" Width="Auto" MinWidth="60" Binding="{Binding PressSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="设定风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="平均风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedAvg,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="左上风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxUL,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="右上风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxUR,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="左下风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxDL,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="右下风速" Width="Auto" MinWidth="60" Binding="{Binding SpeedMaxDR,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="60" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="是否合格" Width="Auto" MinWidth="60" Binding="{Binding IsFitStr,Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="测定频率" Width="Auto" MinWidth="60" Binding="{Binding FrequencyCtl,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="起始频率" Width="Auto" MinWidth="60" Binding="{Binding FrequencyStart,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                    <DataGridTextColumn Header="调整步长" Width="Auto" MinWidth="60" Binding="{Binding FrequencyChangeStep,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </Border>
+                        <Label Content="Pa" Grid.Row="1" Grid.Column ="1" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="Hz" Grid.Row="1" Grid.Column ="3" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="Hz" Grid.Row="1" Grid.Column ="4" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="Hz" Grid.Row="1" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <!--压力点序号-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].PointNo, Mode =OneWay, StringFormat={}{0:F1}}" Grid.Row="2" Grid.Column ="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].PointNo, Mode =OneWay, StringFormat={}{0:F1}}" Grid.Row="3" Grid.Column ="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].PointNo, Mode =OneWay, StringFormat={}{0:F1}}" Grid.Row="4" Grid.Column ="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].PointNo, Mode =OneWay, StringFormat={}{0:F1}}" Grid.Row="5" Grid.Column ="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].PointNo, Mode =OneWay, StringFormat={}{0:F1}}" Grid.Row="6" Grid.Column ="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                      
+                        <!--设定压力-->
+                        <TextBox Grid.Row ="2" Grid.Column="1" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].PressSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="3" Grid.Column="1" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].PressSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="4" Grid.Column="1" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].PressSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="5" Grid.Column="1" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].PressSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="6" Grid.Column="1" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].PressSet, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].SpeedSet, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].SpeedSet, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].SpeedSet, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].SpeedSet, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].SpeedSet, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--起始测试频率-->
+                        <TextBox Grid.Row ="2" Grid.Column="3" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].FrequencyStart, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="3" Grid.Column="3" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].FrequencyStart, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="4" Grid.Column="3" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].FrequencyStart, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="5" Grid.Column="3" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].FrequencyStart, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="6" Grid.Column="3" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].FrequencyStart, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+
+                        <!--频率调整步长-->
+                        <TextBox Grid.Row ="2" Grid.Column="4" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].FrequencyChangeStep, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="3" Grid.Column="4" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].FrequencyChangeStep, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="4" Grid.Column="4" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].FrequencyChangeStep, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="5" Grid.Column="4" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].FrequencyChangeStep, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+                        <TextBox Grid.Row ="6" Grid.Column="4" Text="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].FrequencyChangeStep, Mode =TwoWay, StringFormat={}{0:F2}}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height ="40" Width ="100" FontSize="18"/>
+
+                        <!--开始测试时间-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].TestTimeStart, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss"  Grid.Row="2" Grid.Column ="6" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].TestTimeStart, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss"  Grid.Row="3" Grid.Column ="6" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].TestTimeStart, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss"  Grid.Row="4" Grid.Column ="6" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].TestTimeStart, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss"  Grid.Row="5" Grid.Column ="6" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].TestTimeStart, Mode =OneWay}" ContentStringFormat="yyyy-MM-dd HH:mm:ss"  Grid.Row="6" Grid.Column ="6" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--完成情况-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].CommpletedStr, Mode =OneWay}" Grid.Row="2" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].CommpletedStr, Mode =OneWay}" Grid.Row="3" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].CommpletedStr, Mode =OneWay}" Grid.Row="4" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].CommpletedStr, Mode =OneWay}" Grid.Row="5" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].CommpletedStr, Mode =OneWay}" Grid.Row="6" Grid.Column ="5" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--左上风速测定值-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].SpeedMaxUL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].SpeedMaxUL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].SpeedMaxUL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].SpeedMaxUL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].SpeedMaxUL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="7" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--右上风速测定值-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].SpeedMaxUR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].SpeedMaxUR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].SpeedMaxUR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].SpeedMaxUR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].SpeedMaxUR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="8" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--左下风速测定值-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].SpeedMaxDL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].SpeedMaxDL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].SpeedMaxDL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].SpeedMaxDL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].SpeedMaxDL, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="9" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--右下风速测定值-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].SpeedMaxDR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].SpeedMaxDR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].SpeedMaxDR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].SpeedMaxDR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].SpeedMaxDR, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="10" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--频率测定值-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].FrequencyCtl, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="2" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].FrequencyCtl, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="3" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].FrequencyCtl, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="4" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].FrequencyCtl, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="5" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].FrequencyCtl, Mode =OneWay}" ContentStringFormat="{}{0:F2}"  Grid.Row="6" Grid.Column ="11" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--是否合格-->
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[0].IsFitStr, Mode =OneWay}" Grid.Row="2" Grid.Column ="12" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[1].IsFitStr, Mode =OneWay}" Grid.Row="3" Grid.Column ="12" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[2].IsFitStr, Mode =OneWay}" Grid.Row="4" Grid.Column ="12" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[3].IsFitStr, Mode =OneWay}" Grid.Row="5" Grid.Column ="12" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+                        <Label Content="{Binding PublicData.SM_DTFY_CaliDQ.PointList[4].IsFitStr, Mode =OneWay}" Grid.Row="6" Grid.Column ="12" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+
+                        <!--清空数据操作-->
+                        <Button Content="清空" Command="{Binding SDTSCommand}" CommandParameter="point0" Grid.Row="2" Grid.Column ="13" Height="40" Width="60"/>
+                        <Button Content="清空" Command="{Binding SDTSCommand}" CommandParameter="point1" Grid.Row="3" Grid.Column ="13" Height="40" Width="60"/>
+                        <Button Content="清空" Command="{Binding SDTSCommand}" CommandParameter="point2" Grid.Row="4" Grid.Column ="13" Height="40" Width="60"/>
+                        <Button Content="清空" Command="{Binding SDTSCommand}" CommandParameter="point3" Grid.Row="5" Grid.Column ="13" Height="40" Width="60"/>
+                        <Button Content="清空" Command="{Binding SDTSCommand}" CommandParameter="point4" Grid.Row="6" Grid.Column ="13" Height="40" Width="60"/>
+                    </Grid>
+                </Border>
+                
+                <!--======================================参数数据显示区块===================================================-->
+                <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="风机频率：" Grid.Row="0" Grid.Column ="0"/>
+                        <Label Content="Hz" Grid.Row="0" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="0" Grid.Column ="1" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="【试验管理及数据】" Background="#99bad0">
+            <Grid Background="#99bad0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="250"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="650"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--试验列表-->
+                <Border Grid.Row="0" Grid.Column ="0"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="校准试验列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
+                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
+
+                        <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                Background="#80a5c7" Opacity="1" RowHeight="35" ColumnHeaderHeight="45"
+                IsReadOnly="False"
+                AutoGenerateColumns="False" 
+                CanUserSortColumns="True"
+                CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
+                CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
+                ItemsSource="{Binding PublicData.TestList_DTFYCali}"
+                SelectedItem="{Binding PublicData.SelectedTest_DTFYCali}">
+                            <DataGrid.Resources>
+                                <Style TargetType="ScrollBar">
+                                    <Style.Triggers>
+                                        <Trigger Property="Orientation" Value="Vertical">
+                                            <Setter Property="Width" Value="30"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="试验编号" Width="*" MinWidth="200" Binding="{Binding TestNO,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测试时间" Width="Auto" MinWidth="100" Binding="{Binding TestTime,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测试距离&#x0A;    m" Width="Auto" MinWidth="70" Binding="{Binding DistanceSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="70" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="是否可用" Width="Auto" MinWidth="70" Binding="{Binding UsefullStr,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="在用标志" Width="Auto" MinWidth="70" Binding="{Binding UsingStr,Mode=OneWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5" Padding ="10">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--变频器1调速-->
+                        <Label Content="当前试验" Grid.Row="0" Grid.Column ="0"/>
+                        <Label Content="选中试验" Grid.Row="1" Grid.Column ="0"/>
+                        <Label Content="试验编号" Grid.Row="2" Grid.Column ="0"/>
+                        <Label Content="选中试验" Grid.Row="3" Grid.Column ="0"/>
+                        <Label Content="目标试验" Grid.Row="4" Grid.Column ="0"/>
+
+                        <Label Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SM_DTFY_CaliDQ.TestNO, Mode =OneWay}" FontSize="16"/>
+                        <Label Grid.Row ="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SelectedTest_DTFYCali.TestNO, Mode =OneWay}" FontSize="16"/>
+
+                        <TextBox Grid.Row ="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PL1_SDTS, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
+
+                        <Label Grid.Row ="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SelectedTest_DTFYCali.TestNO, Mode =OneWay}" FontSize="16"/>
+                        <TextBox Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PL1_SDTS, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
+
+                        <Button Content="载入" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="1" Grid.Column ="4" Height="40" Width="120"/>
+                        <Button Content="新建试验" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="2" Grid.Column ="4" Height="40" Width="120"/>
+                        <Button Content="复制试验" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="3" Grid.Column ="4" Grid.RowSpan="2" Height="80" Width="120"/>
+                    </Grid>
+                </Border>
+                <!--测试点列表-->
+                <Border Grid.Row="0" Grid.Column ="1"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="压力测试点" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                        <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                                     Background="#80a5c7" Opacity="1" RowHeight="35" ColumnHeaderHeight="45"
+                                     IsReadOnly="False"
+                                     AutoGenerateColumns="False" 
+                                     CanUserSortColumns="True"
+                                     CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
+                                     CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
+                                     ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}" 
+                                     SelectedItem="{Binding PublicData.SelectedTest_DTFYCali.PointDQ}">
+                            <DataGrid.Resources>
+                                <Style TargetType="ScrollBar">
+                                    <Style.Triggers>
+                                        <Trigger Property="Orientation" Value="Vertical">
+                                            <Setter Property="Width" Value="30"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="压力点序号" Width="Auto" MinWidth="70" Binding="{Binding PointNo,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测试时间" Width="*" MinWidth="100" Binding="{Binding TestTimeStart,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="设定压力&#x0A;     Pa" Width="Auto" MinWidth="70" Binding="{Binding PressSet,StringFormat=\{0:F2\},Mode=OneWay}" IsReadOnly="False"/>
+                                <DataGridTextColumn Header="设定风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedSet,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="平均风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedAvg,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="左上风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedMaxUL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="右上风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedMaxUR,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="左下风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedMaxDL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="右下风速&#x0A;   m/s" Width="Auto" MinWidth="70" Binding="{Binding SpeedMaxDR,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测试完成" Width="Auto" MinWidth="70" Binding="{Binding CommpletedStr,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="是否合格" Width="Auto" MinWidth="70" Binding="{Binding IsFitStr,Mode=OneWay}"/>
+                                <DataGridTextColumn Header="测定频率&#x0A;     Hz" Width="Auto" MinWidth="70" Binding="{Binding FrequencyCtl,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="起始频率&#x0A;     Hz" Width="Auto" MinWidth="70" Binding="{Binding FrequencyStart,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="调整步长&#x0A;     Hz" Width="Auto" MinWidth="60" Binding="{Binding FrequencyChangeStep,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
 
 
-                    <Border Grid.Row="1" Grid.Column ="1" Grid.RowSpan ="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="0" Background="#44617b" >
+                <!--记录列表-->
+                <Border Grid.Row="1" Grid.Column ="1"  Grid.RowSpan ="3" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Background="#00538A" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="检测记录" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
                         <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0 0 0 5" Background="#7c90a3" IsReadOnly="False" AutoGenerateColumns="False" 
-                CanUserSortColumns="True" CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single" ColumnHeaderHeight="30"
-                CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" RowHeight="25"
-                ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}">
+             CanUserSortColumns="True" CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single" ColumnHeaderHeight="45"
+             CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" RowHeight="35"
+             ItemsSource="{Binding PublicData.SelectedPoint_DTFYCali.LogList}">
                             <DataGrid.Resources>
                                 <Style TargetType="ScrollBar">
                                     <Style.Triggers>
@@ -471,18 +398,90 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="序号" Width="Auto" MinWidth="40" Binding="{Binding LogNo,Mode=OneWay}"/>
                                 <DataGridTextColumn Header="记录时间" Width="Auto" MinWidth="50" Binding="{Binding RecTime,StringFormat=yyyy-MM-dd HH:mm:ss,Mode=OneWay}"/>
-                                <DataGridTextColumn Header="横滚角°" Width="*" MinWidth="50" Binding="{Binding AngleRoll,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                <DataGridTextColumn Header="俯仰角°" Width="*" MinWidth="50" Binding="{Binding AnglePitch,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                <DataGridTextColumn Header="船体横滚角°" Width="*" MinWidth="50" Binding="{Binding AngleRollShip,StringFormat=\{0:F2\},Mode=OneWay}"/>
-                                <DataGridTextColumn Header="船体俯仰角°" Width="*" MinWidth="50" Binding="{Binding AnglePitchShip,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="风速值左上 m/s" Width="*" MinWidth="50" Binding="{Binding SpeedUL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="风速值右上 m/s" Width="*" MinWidth="50" Binding="{Binding SpeedUR,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="风速值左下 m/s" Width="*" MinWidth="50" Binding="{Binding SpeedDL,StringFormat=\{0:F2\},Mode=OneWay}"/>
+                                <DataGridTextColumn Header="风速值右下 m/s" Width="*" MinWidth="50" Binding="{Binding SpeedDR,StringFormat=\{0:F2\},Mode=OneWay}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Border>
-
-                </Grid>
-            </Border>
-
+                    </Grid>
+                </Border>
+            </Grid>
         </TabItem>
+        <TabItem Header="【手动调试】" Background="#c6ddc4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" MinHeight ="180" MaxHeight ="600"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="300" MinHeight ="180" MaxHeight ="600"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--======================================上半屏，参数数据显示区块===================================================-->
+                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="风速1-左上：" Grid.Row="0" Grid.Column ="0"/>
+                        <Label Content="风速2-右上：" Grid.Row="0" Grid.Column ="3"/>
+                        <Label Content="风速3-左下：" Grid.Row="1" Grid.Column ="0"/>
+                        <Label Content="风速4-右下：" Grid.Row="1" Grid.Column ="3"/>
+                        <Label Content="输出频率：" Grid.Row="2" Grid.Column ="0"/>
+                        <Label Content="m/s" Grid.Row="0" Grid.Column ="2"/>
+                        <Label Content="m/s" Grid.Row="0" Grid.Column ="5"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="2"/>
+                        <Label Content="m/s" Grid.Row="1" Grid.Column ="5"/>
+                        <Label Content="Hz" Grid.Row="2" Grid.Column ="2"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="0" Grid.Column ="1" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="0" Grid.Column ="4" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="1" Grid.Column ="1" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="1" Grid.Column ="4" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                        <Label Content="{Binding PublicData.Dev.AIList[22].ValueFinal}" ContentStringFormat="{}{0:0.00 }" Grid.Row="2" Grid.Column ="1" FontSize="20" FontWeight="Bold" Width="200" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Background="Black" Foreground="White"/>
+                    </Grid>
+                </Border>
 
+                <!--=====================================横向分割线================================================-->
+                <GridSplitter Grid.Row="1" Height="3" VerticalAlignment="Center" HorizontalAlignment="stretch"/>
+
+                <!--======================================下半屏===================================================-->
+                <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5"  HorizontalAlignment="stretch" VerticalAlignment="stretch" Margin="10" Padding ="10" Background="White">
+                    <Grid Background ="WhiteSmoke">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="800"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--变频器1调速-->
+                        <Button Content="动态风压调试模式" Command="{Binding SDTSCommand}" CommandParameter="5102" Grid.Row="0" Grid.Column ="4"/>
+                        <Label Content="风机手动调速" Grid.Row="1" Grid.Column ="0" Height ="60" Width ="150"/>
+                        <Slider Value ="{Binding PL1_SDTS, Mode =TwoWay}" Grid.Row ="1" Grid.Column="1" Style="{StaticResource Slider_CustomStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Margin="10" Foreground="#FF747373" FontSize="18" Minimum="0" Maximum="50" AllowDrop="True" />
+                        <TextBox Grid.Row ="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" 
+                             Text="{Binding PL1_SDTS, Mode =TwoWay, StringFormat={}{0:F1}}" ToolTip ="频率0～50" Height ="40" Width ="100" TextWrapping="Wrap" FontSize="20"/>
+                        <Label Content="Hz" Grid.Row="1" Grid.Column ="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Height ="40" Width ="50" FontSize="20"/>
+                        <Button Content="发送" Command="{Binding SDTSCommand}" CommandParameter="6201"  Grid.Row="1" Grid.Column ="4"/>
+                        <Button Content="风机停机" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="2" Grid.Column ="4"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </TabItem>
     </TabControl>
 </Window>

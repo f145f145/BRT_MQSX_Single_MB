@@ -12,8 +12,8 @@ DEBUG;TRACE
 D:\Code\BRT\BRT_MQSX_Single_MB\App.xaml
 42-427638133
 4724575955
-1161814103518
-154339368043
+129-1476494923
+1572021305560
 View\Authorize\SN_InputView.xaml;View\DebugPlot\MQZH_SDWYPlotView.xaml;View\DebugPlot\MQZH_SLLPIDPlotView.xaml;View\DebugPlot\MQZH_SDSMPlotView.xaml;View\DevSet\MQZH_DTFYParamView.xaml;View\DTFY\MQZH_DTFYView.xaml;View\ExpViews\MQZH_ExpCJBXView.xaml;View\ExpViews\MQZH_DamageView_KFYGC.xaml;View\ExpViews\MQZH_DamageView_KFYDJ.xaml;View\ExpViews\MQZH_DamageView_SMGC.xaml;View\ExpViews\MQZH_DamageView_SMDJ.xaml;View\ExpViews\MQZH_DamageView_CJBXGC.xaml;View\ExpViews\MQZH_DamageView_CJBXDJ.xaml;View\ExpViews\MQZH_ExpKFYp1View.xaml;View\ExpViews\MQZH_ExpKFYp2View.xaml;View\ExpViews\MQZH_ExpKFYp3View.xaml;View\ExpViews\MQZH_ExpKFYpmaxView.xaml;View\ExpViews\MQZH_ExpManagerView.xaml;View\ExpViews\MQZH_ExpQMView.xaml;View\ExpViews\MQZH_ExpSMView.xaml;View\MQZH_DebugView.xaml;View\DevSet\MQZH_CompanyInfoSetView.xaml;View\DevSet\MQZH_CorrectView.xaml;View\DebugPlot\MQZH_SDQMPlotView.xaml;View\MQZH_MainView.xaml;View\ExpViews\MQZH_ExpSettingView.xaml;View\DevSet\MQZH_ComSetting.xaml;View\MQZH_LoadingView.xaml;View\DevSet\MQZH_DevInfoSetView.xaml;View\DevSet\MQZH_PressSetView.xaml;View\DevSet\MQZH_DevParamSetView.xaml;View\DevSet\MQZH_OtherSetView.xaml;View\DevSet\MQZH_PidSetView.xaml;View\DevSet\MQZH_PressCtrlView.xaml;View\DevSet\MQZH_SenssorSetView.xaml;View\DevSet\MQZH_WYCtlView.xaml;View\DevSet\MQZH_WYSetView.xaml;View\Prompt.xaml;View\RepAndData\MQZH_CurrentDataView.xaml;View\FFStatusView.xaml;View\ScrollViewDictionary.xaml;View\UICtl.xaml;
 
 False

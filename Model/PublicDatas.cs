@@ -19,12 +19,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using MQDFJ_MB.BLL;
 using MQDFJ_MB.Communication;
 using MQDFJ_MB.DAL;
 using MQDFJ_MB.Model.DEV;
 using MQDFJ_MB.Model.Exp;
 using MQDFJ_MB.Model.Exp_MB;
+using SqlSugar;
 
 namespace MQDFJ_MB.Model
 {
@@ -178,11 +180,11 @@ namespace MQDFJ_MB.Model
 
 
         /// <summary>
-        /// 动态风压校准试验列表
+        /// 选中的动态风压校准试验
         /// </summary>
         private SM_DTFY_Cali _selectedTest_DTFYCali = new SM_DTFY_Cali() { };
         /// <summary>
-        /// 动态风压校准试验列表
+        /// 选中的动态风压校准试验
         /// </summary>
         public SM_DTFY_Cali SelectedTest_DTFYCali
     {
@@ -196,19 +198,38 @@ namespace MQDFJ_MB.Model
 
 
         /// <summary>
-        /// 列表中选中的动态风压校准试验编号
+        /// 选中的动态风压校准试验压力点
         /// </summary>
-        private string _selectedTestNO_DTFYCali = "";
+        private SM_DTFY_Cali_PressPoint _selectedPoint_DTFYCali = new SM_DTFY_Cali_PressPoint() { };
         /// <summary>
-        /// 列表中选中的动态风压校准试验编号
+        /// 选中的动态风压校准试验压力点
         /// </summary>
-        public string SelectedTestNO_DTFYCali
+        public SM_DTFY_Cali_PressPoint SelectedPoint_DTFYCali
         {
-            get { return _selectedTestNO_DTFYCali; }
+            get { return _selectedPoint_DTFYCali; }
             set
             {
-                _selectedTestNO_DTFYCali = value;
-                RaisePropertyChanged(() => SelectedTestNO_DTFYCali);
+                _selectedPoint_DTFYCali = value;
+                RaisePropertyChanged(() => SelectedPoint_DTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 选中的动态风压校准试验压力点索引
+        /// </summary>
+        private int _selectedTestIndex_DTFYCali = 0;
+        /// <summary>
+        /// 选中的动态风压校准试验压力点索引
+        /// </summary>
+        public int SelectedTestIndex_DTFYCali
+        {
+            get { return _selectedTestIndex_DTFYCali; }
+            set
+            {
+                _selectedTestIndex_DTFYCali = value;
+                RaisePropertyChanged(() => SelectedTestIndex_DTFYCali);
+                Messenger.Default.Send<string>("DTFYCali_LogListForView", "NeedUpdate_DTFYCali");
             }
         }
 
@@ -248,7 +269,52 @@ namespace MQDFJ_MB.Model
             }
         }
 
+
+        /// <summary>
+        /// 动态风压校准试验记录列表-显示用
+        /// </summary>
+        private ObservableCollection<SM_DTFY_Cali_Log> _logList_DTFYCali = new ObservableCollection<SM_DTFY_Cali_Log>() { };
+        /// <summary>
+        /// 动态风压校准试验记录列表-显示用
+        /// </summary>
+        public ObservableCollection<SM_DTFY_Cali_Log> LogList_DTFYCali
+        {
+            get { return _logList_DTFYCali; }
+            set
+            {
+                _logList_DTFYCali = value;
+                RaisePropertyChanged(() => LogList_DTFYCali);
+            }
+        }
+
         #endregion
 
+
+
+        #region sqlite数据库DB属性
+
+        /// <summary>
+        /// 装置参数数据库
+        /// </summary>
+        public SqlSugarClient DevDB = new SqlSugarClient(new ConnectionConfig()
+        {
+            ConnectionString = DAL_Str.ConnString_Dev,
+            DbType = DbType.Sqlite,
+            IsAutoCloseConnection = true,
+            InitKeyType = InitKeyType.Attribute,
+        });
+
+
+        /// <summary>
+        /// 主数据库
+        /// </summary>
+        public SqlSugarScope MainDB = new SqlSugarScope(new ConnectionConfig()
+        {
+            ConnectionString = DAL_Str.ConnString_Main,
+            DbType = DbType.Sqlite,
+            IsAutoCloseConnection = true,
+            InitKeyType = InitKeyType.Attribute,
+        });
+        #endregion
     }
 }

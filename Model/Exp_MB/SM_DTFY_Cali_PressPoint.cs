@@ -86,7 +86,7 @@ namespace MQDFJ_MB.Model.Exp_MB
         /// <summary>
         /// 设定压力值,Pa
         ///</summary>
-        [SugarColumn(ColumnName = "_pressSet")]
+        [SugarColumn(ColumnName = "PressSet")]
         public double PressSet
         {
             get
