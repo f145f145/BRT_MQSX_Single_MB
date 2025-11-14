@@ -61,7 +61,7 @@ namespace MQDFJ_MB.View
         public MQZH_ExpKFYp3View MQZH_KFYp3Win;
         public MQZH_ExpKFYpmaxView MQZH_KFYpmaxWin;
         public MQZH_ExpCJBXView MQZH_CJBXWin;
-        public MQZH_DTFYView MQZH_DTFYCaliWin;
+        public MQZH_DTFYCaliView MQZH_DTFYCaliWin;
         public MQZH_DTFYView MQZH_DTFYWin;
         //试验管理、设定
         public MQZH_ExpManagerView MQZH_ExpManWin;
@@ -159,6 +159,8 @@ namespace MQDFJ_MB.View
                 MQZH_CJBXWin = WindowsManager<MQZH_ExpCJBXView>.Show(new object(), MQZH_WinName.CJBXWinName, this);
             else if (msg == MQZH_WinName.DTFYWinName)
                 MQZH_DTFYWin = WindowsManager<MQZH_DTFYView>.Show(new object(), MQZH_WinName.DTFYWinName, this);
+            else if (msg == MQZH_WinName.DTFYCaliWinName)
+                MQZH_DTFYCaliWin = WindowsManager<MQZH_DTFYCaliView>.Show(new object(), MQZH_WinName.DTFYCaliWinName, this);
 
             //试验管理、设定
             else if (msg == MQZH_WinName.ExpManWinName)

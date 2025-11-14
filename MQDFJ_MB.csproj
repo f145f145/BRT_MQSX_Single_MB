@@ -305,6 +305,9 @@
     <Compile Include="View\DevSet\MQZH_DTFYParamView.xaml.cs">
       <DependentUpon>MQZH_DTFYParamView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DTFY\MQZH_DTFYCaliView.xaml.cs">
+      <DependentUpon>MQZH_DTFYCaliView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DTFY\MQZH_DTFYView.xaml.cs">
       <DependentUpon>MQZH_DTFYView.xaml</DependentUpon>
     </Compile>
@@ -428,6 +431,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DevSet\MQZH_DTFYParamView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DTFY\MQZH_DTFYCaliView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
