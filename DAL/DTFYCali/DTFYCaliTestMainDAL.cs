@@ -274,6 +274,7 @@ namespace MQDFJ_MB.DAL.DTFYCali
         {
             if (LoadTestDTFYCaliByName(msg))
             {
+                PublicData.Dev.DtfysmParam.TestNoDQDTFYCali = PublicData.SM_DTFY_CaliDQ.TestNO;
                 //当前试验已更换
                 Messenger.Default.Send<string>(PublicData.SM_DTFY_CaliDQ.TestNO.Clone().ToString(), "DTFYCaliDQChanged");
             }
@@ -327,7 +328,6 @@ namespace MQDFJ_MB.DAL.DTFYCali
                     case "DTFYCali_TestListForView":
                         PublicData.TestList_DTFYCali = new System.Collections.ObjectModel.ObservableCollection<SM_DTFY_Cali>(LoadTestList());
                         PublicData.SelectedTest_DTFYCali = PublicData.TestList_DTFYCali[0];
-                        PublicData.SelectedTestIndex_DTFYCali = 0;
                         PublicData.SelectedPoint_DTFYCali = PublicData.TestList_DTFYCali[0].PointList[0];
                         break;
                 }

@@ -165,5 +165,93 @@ namespace MQDFJ_MB.Model.DEV
             }
         }
 
+
+        /// <summary>
+        /// 当前校准试验编号
+        /// </summary>
+        private string _testNoDQDTFYCali = "DefaultExp1";
+        /// <summary>
+        /// 当前校准试验编号
+        ///</summary>
+        [SugarColumn(ColumnName = "TestNoDQDTFYCali")]
+        public string TestNoDQDTFYCali
+        {
+            get
+            {
+                return _testNoDQDTFYCali;
+            }
+            set
+            {
+                _testNoDQDTFYCali = value;
+                RaisePropertyChanged(() => TestNoDQDTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 在用校准试验编号
+        /// </summary>
+        private string _testNoUsingDQDTFYCali = "DefaultExp1";
+        /// <summary>
+        /// 在用校准试验编号
+        ///</summary>
+        [SugarColumn(ColumnName = "TestNoUsingDQDTFYCali")]
+        public string TestNoUsingDQDTFYCali
+        {
+            get
+            {
+                return _testNoUsingDQDTFYCali;
+            }
+            set
+            {
+                _testNoUsingDQDTFYCali = value;
+                RaisePropertyChanged(() => TestNoUsingDQDTFYCali);
+            }
+        }
+
+
+        /// <summary>
+        /// 当前试验编号
+        /// </summary>
+        private string _testNoDQDTFY = "DefaultExp1";
+        /// <summary>
+        /// 当前试验编号
+        ///</summary>
+        [SugarColumn(ColumnName = "TestNoDQDTFY")]
+        public string TestNoDQDTFY
+        {
+            get
+            {
+                return _testNoDQDTFY;
+            }
+            set
+            {
+                _testNoDQDTFY= value;
+                RaisePropertyChanged(() => TestNoDQDTFY);
+            }
+        }
+
+
+        /// <summary>
+        /// 在用试验编号
+        /// </summary>
+        private string _testNoUsingDQDTFY = "DefaultExp1";
+        /// <summary>
+        /// 在用试验编号
+        ///</summary>
+        [SugarColumn(ColumnName = "TestNoUsingDQDTFY")]
+        public string TestNoUsingDQDTFY
+        {
+            get
+            {
+                return _testNoUsingDQDTFY;
+            }
+            set
+            {
+                _testNoUsingDQDTFY = value;
+                RaisePropertyChanged(() => TestNoUsingDQDTFY);
+                RaisePropertyChanged(() => TestNoUsingDQDTFY);
+            }
+        }
     }
 }

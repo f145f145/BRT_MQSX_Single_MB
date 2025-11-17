@@ -1,20 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|e:\\work\\uper\\brt_mqsx_single_mb\\viewmodel\\mainviewmodel_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|solutionrelative:viewmodel\\mainviewmodel_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|e:\\work\\uper\\brt_mqsx_single_mb\\view\\mqzh_mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|solutionrelative:view\\mqzh_mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|e:\\work\\uper\\brt_mqsx_single_mb\\viewmodel\\mainviewmodel_winmgt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51FC310A-821D-4627-B9D5-71836DADB0F0}|MQDFJ_MB.csproj|solutionrelative:viewmodel\\mainviewmodel_winmgt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\Code\\BRT\\BRT_MQSX_Single_MB\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,47 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 48,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MQZH_MainView.xaml",
-              "DocumentMoniker": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\View\\MQZH_MainView.xaml",
-              "RelativeDocumentMoniker": "View\\MQZH_MainView.xaml",
-              "ToolTip": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\View\\MQZH_MainView.xaml",
-              "RelativeToolTip": "View\\MQZH_MainView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-14T03:10:33.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainViewModel_Main.cs",
-              "DocumentMoniker": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\ViewModel\\MainViewModel_Main.cs",
-              "RelativeDocumentMoniker": "ViewModel\\MainViewModel_Main.cs",
-              "ToolTip": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\ViewModel\\MainViewModel_Main.cs",
-              "RelativeToolTip": "ViewModel\\MainViewModel_Main.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAAwFkBAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T03:09:33.162Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainViewModel_WinMgt.cs",
-              "DocumentMoniker": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\ViewModel\\MainViewModel_WinMgt.cs",
-              "RelativeDocumentMoniker": "ViewModel\\MainViewModel_WinMgt.cs",
-              "ToolTip": "E:\\Work\\Uper\\BRT_MQSX_Single_MB\\ViewModel\\MainViewModel_WinMgt.cs",
-              "RelativeToolTip": "ViewModel\\MainViewModel_WinMgt.cs",
-              "ViewState": "AQIAANEAAAAAAAAAAAAIwO0AAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T03:09:11.734Z",
-              "EditorCaption": ""
-            }
-          ]
+          "SelectedChildIndex": -1,
+          "Children": []
         },
         {
           "DockedWidth": 132,

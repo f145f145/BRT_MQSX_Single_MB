@@ -62,6 +62,24 @@ namespace MQDFJ_MB.DAL.DTFYCali
                 return false;
             }
 
+            //在用的校准试验不允许载入（避免被修改）
+            try
+            {
+                SM_DTFY_Cali testExp = PublicData.MainDB.Queryable<SM_DTFY_Cali>().AS("B01_SM_DTFY_Cali").First(it => it.TestNO == loadExpNo);   //查询第一条数据
+
+                if ((testExp != null) && (testExp.Flag_Using))
+                {
+                    MessageBox.Show("正在使用的校准试验不允许载入，避免被修改！");
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+
+                //  LogHelper.WriteErrLog("载入A01表时错误", e);//输出日志
+            }
+
             //试验数据复位
             try
             {

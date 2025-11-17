@@ -13,6 +13,7 @@ using MQDFJ_MB.Model.Exp_MB;
 using MQDFJ_MB.DAL.Dev;
 using MQDFJ_MB.DAL.Exp;
 using MQDFJ_MB.DAL.Rep;
+using MQDFJ_MB.DAL.DTFYCali;
 
 
 namespace MQDFJ_MB.ViewModel
@@ -47,6 +48,7 @@ namespace MQDFJ_MB.ViewModel
             MainViewModel_DevDAL = new MQZH_DevDAL();
             MainViewModel_ExpDAL = new MQZH_ExpDAL();
             MainViewModel_RepDAL = new MQZH_RepDAL();
+            MainViewModel_DTFYCaliDAL = new DTFYCaliTestDAL();
 
             //载入装置参数
             Messenger.Default.Send<string>("LoadDevSettings", "DevDataRWMessage");
@@ -54,10 +56,12 @@ namespace MQDFJ_MB.ViewModel
             if (!PublicData.Dev.IsLoadLastExpPowerOn)
             {
                 Messenger.Default.Send<string>("DefaultExp", "LoadExpByName");
+                Messenger.Default.Send<string>("DefaultExp", "LoadExpByNameDTFYCali");
             }
             else
             {
                 Messenger.Default.Send<string>(PublicData.Dev.ExpNOLast, "LoadExpByName");
+                Messenger.Default.Send<string>(PublicData.Dev.DtfysmParam.TestNoDQDTFYCali, "LoadExpByNameDTFYCali");
             }
 
             //通讯初始化
@@ -167,6 +171,23 @@ namespace MQDFJ_MB.ViewModel
             set
             {
                 _mainViewModel_ExpDAL = value;
+                RaisePropertyChanged(() => MainViewModel_ExpDAL);
+            }
+        }
+
+        /// <summary>
+        /// 动态风压校准试验数据读写
+        /// </summary>
+        private DTFYCaliTestDAL _mainViewModel_DTFYCaliDAL;
+        /// <summary>
+        /// 动态风压校准试验数据读写
+        /// </summary>
+        public DTFYCaliTestDAL MainViewModel_DTFYCaliDAL
+        {
+            get { return _mainViewModel_DTFYCaliDAL; }
+            set
+            {
+                _mainViewModel_DTFYCaliDAL = value;
                 RaisePropertyChanged(() => MainViewModel_ExpDAL);
             }
         }

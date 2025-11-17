@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MQDFJ_MB.View.Others"
         mc:Ignorable="d"
-        Title="幕墙四性—动态风压测试设定" Height="500" Width="400"
+        Title="幕墙四性—动态风压测试设定" Height="700" Width="400"
         WindowStartupLocation="CenterScreen" Background="White" ShowInTaskbar="True"
         Closing="Window_Closing" WindowState="Normal " ResizeMode ="CanMinimize"
         DataContext ="{Binding Source ={StaticResource Locator },Path =Main_ViewModel}">
@@ -125,6 +125,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -154,7 +157,17 @@
                 <TextBox Text="{Binding PublicData.Dev.DtfysmParam.TimeWaitForStd, Mode=TwoWay,StringFormat={}{0:0}}"  Grid.Row="5" Grid.Column ="1" Style="{StaticResource TextBox1}"/>
                 <Label Content="s" Grid.Row="5" Grid.Column ="2" Style="{StaticResource Label1}"/>
 
-                <Label Content="修改后请先保存再关闭窗口！" Margin ="10"  Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label2}"/>
+                <Label Content="当前试验编号：" Grid.Row="6" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DtfysmParam.TestNoDQDTFYCali}"  Grid.Row="6" Grid.Column ="1" Grid.ColumnSpan="2" Style="{StaticResource TextBox1}" IsReadOnly="True" Width="150"/>
+                <Label Content="在用试验编号：" Grid.Row="7" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DtfysmParam.TestNoUsingDQDTFYCali}"  Grid.Row="7" Grid.Column ="1" Grid.ColumnSpan="2" Style="{StaticResource TextBox1}" IsReadOnly="True" Width="150"/>
+
+                <Label Content="当前校准试验编号：" Grid.Row="8" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DtfysmParam.TestNoDQDTFYCali}"  Grid.Row="8" Grid.Column ="1" Grid.ColumnSpan="2" Style="{StaticResource TextBox1}" IsReadOnly="True" Width="150"/>
+                <Label Content="在用校准试验编号：" Grid.Row="9" Grid.Column ="0" Style="{StaticResource Label1}"/>
+                <TextBox Text="{Binding PublicData.Dev.DtfysmParam.TestNoUsingDQDTFYCali}"  Grid.Row="9" Grid.Column ="1" Grid.ColumnSpan="2" Style="{StaticResource TextBox1}" IsReadOnly="True" Width="150"/>
+
+                <Label Content="修改后请先保存再关闭窗口！" Margin ="10"  Grid.Row="10" Grid.Column ="0" Style="{StaticResource Label2}"/>
             </Grid>
         </Border>
 

@@ -158,7 +158,6 @@ namespace MQDFJ_MB.Model
         #endregion
 
 
-
         #region 动态风压校准试验管理相关属性
 
         /// <summary>
@@ -191,8 +190,12 @@ namespace MQDFJ_MB.Model
             get { return _selectedTest_DTFYCali; }
             set
             {
-            _selectedTest_DTFYCali = value;
+                _selectedTest_DTFYCali = value;
                 RaisePropertyChanged(() => SelectedTest_DTFYCali);
+                if((SelectedTest_DTFYCali!=null)&&(SelectedTest_DTFYCali.PointList.Count>0))
+                    SelectedPoint_DTFYCali = SelectedTest_DTFYCali.PointList[0];
+                else
+                    SelectedPoint_DTFYCali = new SM_DTFY_Cali_PressPoint() { };
             }
         }
 
@@ -211,43 +214,11 @@ namespace MQDFJ_MB.Model
             {
                 _selectedPoint_DTFYCali = value;
                 RaisePropertyChanged(() => SelectedPoint_DTFYCali);
-            }
-        }
+                if(SelectedPoint_DTFYCali!=null)
+                    Messenger.Default.Send<string>("DTFYCali_LogListForView", "NeedUpdate_DTFYCali");
+                else
+                    LogList_DTFYCali= new ObservableCollection<SM_DTFY_Cali_Log>() { };
 
-
-        /// <summary>
-        /// 选中的动态风压校准试验压力点索引
-        /// </summary>
-        private int _selectedTestIndex_DTFYCali = 0;
-        /// <summary>
-        /// 选中的动态风压校准试验压力点索引
-        /// </summary>
-        public int SelectedTestIndex_DTFYCali
-        {
-            get { return _selectedTestIndex_DTFYCali; }
-            set
-            {
-                _selectedTestIndex_DTFYCali = value;
-                RaisePropertyChanged(() => SelectedTestIndex_DTFYCali);
-                Messenger.Default.Send<string>("DTFYCali_LogListForView", "NeedUpdate_DTFYCali");
-            }
-        }
-
-
-        /// <summary>
-        /// 将要复制的动态风压校准试验编号
-        /// </summary>
-        private string _expNOCopyNew_DTFYCali = "";
-        /// <summary>
-        /// 将要复制的动态风压校准试验编号
-        /// </summary>
-        public string ExpNOCopyNew_DTFYCali
-        {
-            get { return _expNOCopyNew_DTFYCali; }
-            set
-            {
-                _expNOCopyNew_DTFYCali = value;
-                RaisePropertyChanged(() => ExpNOCopyNew_DTFYCali);
             }
         }
 
@@ -288,7 +259,6 @@ namespace MQDFJ_MB.Model
         }
 
         #endregion
-
 
 
         #region sqlite数据库DB属性

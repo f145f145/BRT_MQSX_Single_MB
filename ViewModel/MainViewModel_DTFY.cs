@@ -44,21 +44,24 @@ namespace MQDFJ_MB.ViewModel
                 MessageBoxResult msgBoxResult;
                 switch (param)
                 {
+                    case "fresh":
+                        Messenger.Default.Send<string>("DTFYCali_TestListForView", "NeedUpdate_DTFYCali");
+                        break;
+
                     case "new":
-                        if (ExpNONew != "")
+                        if (PublicData.ExpNONew_DTFYCali != "")
                         {
-                            Messenger.Default.Send<string>(ExpNONew, "NewExpDTFYCaliMessage");
+                            Messenger.Default.Send<string>(PublicData.ExpNONew_DTFYCali, "NewExpDTFYCali");
                         }
                         break;
 
-
                     case "del":
-                        if (SelectedExpNOStr == PublicData.SM_DTFY_CaliDQ.TestNO)
+                        if (PublicData.SelectedTest_DTFYCali.TestNO == PublicData.SM_DTFY_CaliDQ.TestNO)
                         {
                             MessageBox.Show("当前已载入的校准试验不允许删除！");
                             break;
                         }
-                        if (SelectedExpNOStr == PublicData.SM_DTFY_CaliUsing.TestNO)
+                        if (PublicData.SelectedTest_DTFYCali.TestNO == PublicData.SM_DTFY_CaliUsing.TestNO)
                         {
                             MessageBox.Show("当前在用的校准试验不允许删除！");
                             break;
@@ -66,7 +69,7 @@ namespace MQDFJ_MB.ViewModel
                         msgBoxResult = MessageBox.Show("确认要删除选中的试验吗？", "提示", MessageBoxButton.YesNo);
                         if (msgBoxResult == MessageBoxResult.Yes)
                         {
-                            Messenger.Default.Send<string>(SelectedExpNOStr, "DelExpDTFYCaliMessage");
+                            Messenger.Default.Send<string>(PublicData.SelectedTest_DTFYCali.TestNO, "DelExpByNameDTFYCali");
                         }
                         break;
 
@@ -74,7 +77,7 @@ namespace MQDFJ_MB.ViewModel
                          msgBoxResult = MessageBox.Show("载入时当前试验未保存的数据将丢失！确认载入选中的试验？", "提示", MessageBoxButton.YesNo);
                         if (msgBoxResult == MessageBoxResult.Yes)
                         {
-                            Messenger.Default.Send<string>(SelectedExpNOStr, "LoadExpDTFYCaliMessage");
+                            Messenger.Default.Send<string>(PublicData.SelectedTest_DTFYCali.TestNO, "LoadExpByNameDTFYCali");
                         }
                         break;
 
@@ -82,19 +85,19 @@ namespace MQDFJ_MB.ViewModel
                          msgBoxResult = MessageBox.Show("关闭试验前请先保存已修改的数据和测试数据！确认关闭当前试验并载入默认试验？", "提示", MessageBoxButton.YesNo);
                         if (msgBoxResult == MessageBoxResult.Yes)
                         {
-                            Messenger.Default.Send<string>("DefaultExp", "LoadExpDTFYCaliMessage");
+                            Messenger.Default.Send<string>("DefaultExp", "LoadExpDTFYCali");
                         }
                         break;
 
                     case "copy":
 
-                        if (ExpNOCopyNew != "")
+                        if (PublicData.ExpNONew_DTFYCali != "")
                         {
                             msgBoxResult = MessageBox.Show("需要复制试验吗？", "提示", MessageBoxButton.YesNo);
                             if (msgBoxResult == MessageBoxResult.Yes)
                             {
-                                string[] msg = new String[2] { SelectedExpNOStr, ExpNOCopyNew };
-                                Messenger.Default.Send<string[]>(msg, "CopyExpDTFYCaliMessage");
+                                string[] msg = new String[2] { PublicData.SelectedTest_DTFYCali.TestNO, PublicData.ExpNONew_DTFYCali };
+                                Messenger.Default.Send<string[]>(msg, "CopyExpDTFYCali");
                             }
                         }
                         break;

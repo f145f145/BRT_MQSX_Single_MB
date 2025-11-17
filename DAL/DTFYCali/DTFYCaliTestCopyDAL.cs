@@ -100,7 +100,7 @@ namespace MQDFJ_MB.DAL.DTFYCali
                 {
                     SM_DTFY_Cali expOld = PublicData.MainDB.Queryable<SM_DTFY_Cali>().AS("B01_SM_DTFY_Cali").First(it => it.TestNO == oldExpNo); //查询第一条数据
                     expOld.TestNO = newExpNo;
-
+                    expOld.Flag_Using = false;
                     PublicData.MainDB.Insertable<SM_DTFY_Cali>(expOld).AS("B01_SM_DTFY_Cali").ExecuteCommand();
                     
                 }

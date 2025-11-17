@@ -322,8 +322,8 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="校准试验列表" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
-                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
-                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding TestBtnCommand}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
+                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding ExpMgtCmd_DTFYCali}" CommandParameter="fresh" Content="&#xe62a;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 10 0" Width="40" Height="35"/>
+                        <Button Grid.Row="0" HorizontalAlignment="Right" Command="{Binding ExpMgtCmd_DTFYCali}" CommandParameter="del" Content="&#xe633;" FontFamily="{DynamicResource iconfont}" FontSize="26" FontWeight="Normal" VerticalAlignment="Center" Background="#00538A" Foreground="White" BorderThickness="0" Margin="0 0 50 0" Width="40" Height="35"/>
 
                         <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0" 
                 Background="#80a5c7" Opacity="1" RowHeight="35" ColumnHeaderHeight="45"
@@ -379,14 +379,14 @@
                         <Label Grid.Row ="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SM_DTFY_CaliDQ.TestNO, Mode =OneWay}" FontSize="16"/>
                         <Label Grid.Row ="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SelectedTest_DTFYCali.TestNO, Mode =OneWay}" FontSize="16"/>
 
-                        <TextBox Grid.Row ="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PL1_SDTS, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
+                        <TextBox Grid.Row ="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PublicData.ExpNONew_DTFYCali, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
 
                         <Label Grid.Row ="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PublicData.SelectedTest_DTFYCali.TestNO, Mode =OneWay}" FontSize="16"/>
-                        <TextBox Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PL1_SDTS, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
+                        <TextBox Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding PublicData.ExpNONew_DTFYCali, Mode =TwoWay}" Height ="30" Width ="300" FontSize="16"/>
 
-                        <Button Content="载入" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="1" Grid.Column ="4" Height="40" Width="120"/>
-                        <Button Content="新建试验" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="2" Grid.Column ="4" Height="40" Width="120"/>
-                        <Button Content="复制试验" Command="{Binding SDTSCommand}" CommandParameter="6288" Grid.Row="3" Grid.Column ="4" Grid.RowSpan="2" Height="80" Width="120"/>
+                        <Button Content="载入" Command="{Binding ExpMgtCmd_DTFYCali}" CommandParameter="load" Grid.Row="1" Grid.Column ="4" Height="40" Width="120"/>
+                        <Button Content="新建试验" Command="{Binding ExpMgtCmd_DTFYCali}" CommandParameter="new" Grid.Row="2" Grid.Column ="4" Height="40" Width="120"/>
+                        <Button Content="复制试验" Command="{Binding ExpMgtCmd_DTFYCali}" CommandParameter="copy" Grid.Row="3" Grid.Column ="4" Grid.RowSpan="2" Height="80" Width="120"/>
                     </Grid>
                 </Border>
                 <!--测试点列表-->
@@ -405,7 +405,7 @@
                                      CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single"
                                      CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" 
                                      ItemsSource="{Binding PublicData.SelectedTest_DTFYCali.PointList}" 
-                                     SelectedItem="{Binding PublicData.SelectedTest_DTFYCali.PointDQ}">
+                                     SelectedItem="{Binding PublicData.SelectedPoint_DTFYCali}">
                             <DataGrid.Resources>
                                 <Style TargetType="ScrollBar">
                                     <Style.Triggers>
@@ -447,7 +447,7 @@
                         <DataGrid Grid.Row="1" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch" Margin="0 0 0 5" Background="#7c90a3" IsReadOnly="False" AutoGenerateColumns="False" 
              CanUserSortColumns="True" CanUserResizeColumns="True " CanUserResizeRows="True" SelectionMode="Single" ColumnHeaderHeight="45"
              CanUserReorderColumns="True" AlternationCount="2" RowHeaderWidth="0" CanUserAddRows="False" RowHeight="35"
-             ItemsSource="{Binding PublicData.SelectedPoint_DTFYCali.LogList}">
+             ItemsSource="{Binding PublicData.LogList_DTFYCali}">
                             <DataGrid.Resources>
                                 <Style TargetType="ScrollBar">
                                     <Style.Triggers>
